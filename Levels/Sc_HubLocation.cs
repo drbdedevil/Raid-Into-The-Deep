@@ -1,0 +1,10 @@
+using Godot;
+using System;
+
+public partial class Sc_HubLocation : Node
+{
+    public override void _Ready()
+    {
+        GD.Print("Node is ready!");
+    }
+}
