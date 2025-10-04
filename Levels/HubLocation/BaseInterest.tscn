@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://om0wetmbw75c"]
+
+[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="1_18320"]
+
+[node name="BaseInterest" type="AspectRatioContainer"]
+offset_right = 687.0
+offset_bottom = 404.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("1_18320")
+icon_alignment = 1
