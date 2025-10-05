@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://gril3ammqbgk"]
+
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_1o2j7"]
+[ext_resource type="Texture2D" uid="uid://1wor1f8lqygq" path="res://Textures/HubLocation/Icons/Settings.png" id="2_1o2j7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v4f6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7racd"]
+bg_color = Color(0.81960785, 0.62352943, 0.17254902, 0.48235294)
+
+[node name="PanelButton" type="Button"]
+custom_minimum_size = Vector2(95.4, 19.2)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("1_1o2j7")
+theme_override_icons/icon = ExtResource("2_1o2j7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2v4f6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7racd")
+text = "Настройки"

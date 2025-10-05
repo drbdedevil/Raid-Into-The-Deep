@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfjmak03e832k"]
+
+[ext_resource type="Texture2D" uid="uid://cps41ag3dhx65" path="res://Textures/Menu/MenuButton.png" id="1_wvgiv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wswj"]
+bg_color = Color(0.08626736, 0.036768433, 0.0789036, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvgiv"]
+bg_color = Color(0.45252305, 0.15813237, 0.0671426, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3y6e"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MenuButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1wswj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wvgiv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u3y6e")
+icon = ExtResource("1_wvgiv")

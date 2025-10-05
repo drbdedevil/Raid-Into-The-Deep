@@ -1,18 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=20 format=3 uid="uid://dqakekx24s2dj"]
 
-[ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/TEMP_MainUI.cs" id="1_jthpg"]
+[ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://om0wetmbw75c" path="res://Levels/HubLocation/BaseInterest.tscn" id="1_q84gm"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
-[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="3_tpwuv"]
+[ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="3_b23rm"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_l5qfr"]
+[ext_resource type="Texture2D" uid="uid://clq5wold482re" path="res://Textures/HubLocation/Icons/Home.png" id="5_o8esw"]
+[ext_resource type="Texture2D" uid="uid://beuhnla00mg35" path="res://Textures/HubLocation/Icons/Settings.png" id="6_o8esw"]
+[ext_resource type="Texture2D" uid="uid://dtnpq46yyiga3" path="res://Textures/HubLocation/ResourcePanel.png" id="7_bvx2a"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="8_v7bpl"]
+[ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="10_nm55g"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="10_wfr0l"]
+[ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="11_wfr0l"]
+[ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="12_wfr0l"]
+[ext_resource type="Texture2D" uid="uid://vjb7slxgyiyp" path="res://Textures/HubLocation/Icons/Platform_2.png" id="13_twrgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5qfr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvx2a"]
+bg_color = Color(0.7058824, 0.29803923, 0.07450981, 0.1882353)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8esw"]
+bg_color = Color(0.68532646, 0.68532646, 0.68532646, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7bpl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqi6k"]
 bg_color = Color(0.15062094, 0.07662549, 0.0058686547, 1)
 
 [node name="HubLocation" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.667
+anchor_bottom = 1.667
+offset_right = -768.38403
+offset_bottom = -432.21606
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jthpg")
@@ -27,10 +51,241 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MainPanel"]
-custom_minimum_size = Vector2(150, 0)
+[node name="Panel" type="TextureRect" parent="MainPanel"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+texture = ExtResource("3_b23rm")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 189.0
+offset_bottom = 642.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="MainPanel/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_l5qfr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bvx2a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8esw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_v7bpl")
+text = "Меню
+"
+icon = ExtResource("5_o8esw")
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="MainPanel/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_l5qfr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bvx2a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8esw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_v7bpl")
+text = "Настройки"
+icon = ExtResource("6_o8esw")
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "Ресурсы"
+
+[node name="ResourcePanel" type="TextureRect" parent="MainPanel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 56)
+layout_mode = 2
+texture = ExtResource("7_bvx2a")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 52.0
+
+[node name="ChitinHBoxContainer" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("8_v7bpl")
+theme_override_font_sizes/font_size = 14
+text = "Хитин"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("10_wfr0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_nm55g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CrystalBoxContainer" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("8_v7bpl")
+theme_override_font_sizes/font_size = 14
+text = "Кристаллы"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("10_wfr0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "40"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_wfr0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="WarriorsLabel" type="Label" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "Войны"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_wfr0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "Команда"
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_wfr0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TeamVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_twrgc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 14
+text = "Запас"
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(64, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_twrgc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ReserveVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="MainPanel"]
 custom_minimum_size = Vector2(850, 0)
@@ -44,6 +299,8 @@ offset_left = 10.0
 offset_top = 51.0
 offset_right = 342.0
 offset_bottom = 285.0
+focus_mode = 0
+text = "Кузница"
 icon_alignment = 1
 
 [node name="BaseInterest2" parent="MainPanel/Control" instance=ExtResource("1_q84gm")]
@@ -61,8 +318,8 @@ metadata/_edit_use_anchors_ = true
 [node name="BaseInterest3" parent="MainPanel/Control" instance=ExtResource("1_q84gm")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9447059
-anchor_top = 1.0308642
+anchor_left = 0.8329412
+anchor_top = 0.8919753
 anchor_right = 0.8329412
 anchor_bottom = 0.8919753
 offset_left = -292.0
@@ -72,16 +329,6 @@ offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="MainPanel/Control"]
-position = Vector2(177, 167.5)
-scale = Vector2(2.453125, 1.6640625)
-texture = ExtResource("3_tpwuv")
-
-[node name="Panel2" type="Panel" parent="MainPanel"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 oversampling_override = 1.0
