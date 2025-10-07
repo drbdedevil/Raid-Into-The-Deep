@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://bimh3oq4chxe5"]
+
+[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="1_2oxcp"]
+
+[node name="TrainingPits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Уровень"
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(464, 437)
+layout_mode = 2
+texture = ExtResource("1_2oxcp")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+color = Color(1, 0.23137255, 0.34117648, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+color = Color(1, 0.23137255, 0.34117648, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+color = Color(1, 0.23137255, 0.34117648, 1)
+
+[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2

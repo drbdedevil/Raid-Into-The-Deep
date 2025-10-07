@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=25 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
-[ext_resource type="PackedScene" uid="uid://om0wetmbw75c" path="res://Levels/HubLocation/BaseInterest.tscn" id="1_q84gm"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="3_b23rm"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_l5qfr"]
@@ -14,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="11_wfr0l"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="12_wfr0l"]
 [ext_resource type="Texture2D" uid="uid://vjb7slxgyiyp" path="res://Textures/HubLocation/Icons/Platform_2.png" id="13_twrgc"]
+[ext_resource type="Script" uid="uid://66hihla48n3u" path="res://Levels/HubLocation/BaseInterest.cs" id="14_twrgc"]
+[ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
+[ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="16_cf5ii"]
+[ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="17_4e6yu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5qfr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -30,6 +33,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqi6k"]
 bg_color = Color(0.15062094, 0.07662549, 0.0058686547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4e6yu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h0hg"]
+bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
 
 [node name="HubLocation" type="Control"]
 layout_mode = 3
@@ -288,7 +297,6 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="Control" type="Control" parent="MainPanel"]
-custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -303,72 +311,106 @@ focus_mode = 0
 text = "Кузница"
 icon_alignment = 1
 
-[node name="BaseInterest2" parent="MainPanel/Control" instance=ExtResource("1_q84gm")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -433.0
-offset_top = 28.0
-offset_right = -83.0
-offset_bottom = 281.0
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="BaseInterest3" parent="MainPanel/Control" instance=ExtResource("1_q84gm")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8329412
-anchor_top = 0.8919753
-anchor_right = 0.8329412
-anchor_bottom = 0.8919753
-offset_left = -292.0
-offset_top = -294.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
+[node name="TrainingPitsButton" type="Button" parent="MainPanel/Control"]
+modulate = Color(1, 1, 1, 0.16470589)
+layout_mode = 0
+offset_left = 587.0
+offset_top = 394.0
+offset_right = 919.0
+offset_bottom = 628.0
+focus_mode = 0
+text = "Тренировочные ямы"
+icon_alignment = 1
+script = ExtResource("14_twrgc")
+SceneToOpen = ExtResource("15_yj33t")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 oversampling_override = 1.0
-position = Vector2i(130, 25)
-size = Vector2i(900, 600)
+position = Vector2i(310, 49)
+size = Vector2i(725, 550)
 theme_override_styles/panel = SubResource("StyleBoxFlat_uqi6k")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 900.0
-offset_bottom = 600.0
+[node name="TextureRect" type="TextureRect" parent="PopupPanel"]
+offset_right = 725.0
+offset_bottom = 550.0
+texture = ExtResource("16_cf5ii")
+expand_mode = 1
+
+[node name="MarginContainer" type="Control" parent="PopupPanel"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -275.0
+offset_right = 362.5
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="PopupPanel/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.5
+offset_top = -265.0
+offset_right = 352.5
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelLabel" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("4_l5qfr")
+text = "Текст"
+
+[node name="Control" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ClosePopupButton" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4e6yu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4h0hg")
+icon = ExtResource("17_4e6yu")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SceneContainer" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="PopupPanel/MarginContainer/VBoxContainer/SceneContainer"]
 custom_minimum_size = Vector2(190, 0)
-layout_mode = 2
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 509.0
 
-[node name="TempPopup" parent="PopupPanel/HBoxContainer" instance=ExtResource("2_uqi6k")]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="PopupPanel/HBoxContainer"]
-custom_minimum_size = Vector2(68, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="ClosePopupButton" type="Button" parent="PopupPanel/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "X"
+[node name="TempPopup" parent="PopupPanel/MarginContainer/VBoxContainer/SceneContainer" instance=ExtResource("2_uqi6k")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 194.0
+offset_right = 394.0
+offset_bottom = 509.0
