@@ -1,6 +1,111 @@
-[gd_scene load_steps=2 format=3 uid="uid://bimh3oq4chxe5"]
+[gd_scene load_steps=16 format=3 uid="uid://bimh3oq4chxe5"]
 
 [ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="1_2oxcp"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_gdf14"]
+[ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="1_j3no7"]
+[ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_uy08g"]
+[ext_resource type="PackedScene" uid="uid://1u05hx0bg1aw" path="res://Levels/HubLocation/WarriorPanels/HireWarriorPanel.tscn" id="4_ojlly"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_uy08g"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+
+[sub_resource type="Theme" id="Theme_gdf14"]
+VBoxContainer/constants/separation = 10
 
 [node name="TrainingPits" type="Control"]
 layout_mode = 3
@@ -29,16 +134,38 @@ color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="Control2" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_gdf14")
 text = "Уровень"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="LevelView" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("2_uy08g")]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 40)
 layout_mode = 2
+
+[node name="UpgradeButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("1_j3no7")]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -49,23 +176,49 @@ layout_mode = 2
 texture = ExtResource("1_2oxcp")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_uy08g")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_gdf14")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("1_gdf14")
+text = "Воины"
+
+[node name="HireWarriorPanel" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
 layout_mode = 2
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(200, 30)
+[node name="HireWarriorPanel2" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
 layout_mode = 2
-color = Color(1, 0.23137255, 0.34117648, 1)
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(100, 30)
+[node name="HireWarriorPanel3" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
 layout_mode = 2
-color = Color(1, 0.23137255, 0.34117648, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(100, 30)
+[node name="HireWarriorPanel4" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
 layout_mode = 2
-color = Color(1, 0.23137255, 0.34117648, 1)
 
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer/HBoxContainer2"]
+[node name="HireWarriorPanel5" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+layout_mode = 2
+
+[node name="HireWarriorPanel6" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+layout_mode = 2
+
+[node name="HireWarriorPanel7" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+layout_mode = 2
+
+[node name="HireWarriorPanel8" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+layout_mode = 2
+
+[node name="HireWarriorPanel9" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+layout_mode = 2
+
+[node name="HireWarriorPanel10" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
 layout_mode = 2

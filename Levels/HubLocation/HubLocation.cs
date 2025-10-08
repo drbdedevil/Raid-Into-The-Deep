@@ -42,6 +42,8 @@ public partial class HubLocation : Node
 		var TrainingPits = GetNode<BaseInterest>("MainPanel/Control/TrainingPitsButton");
 		Node sceneInstance = TrainingPits.SceneToOpen.Instantiate();
 
+		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+		PanelLabel.Text = TrainingPits.Text.StripEdges();
 		ClearAndAddNewSceneToPopup(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");

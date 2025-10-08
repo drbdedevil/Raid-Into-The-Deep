@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://da41y5lavq6m5"]
+
+[ext_resource type="Texture2D" uid="uid://c1j2axt10r2wk" path="res://Textures/HubLocation/UpgradeButton.png" id="1_v3wme"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="2_400oo"]
+[ext_resource type="Script" uid="uid://lfo15c0c1cbn" path="res://Levels/HubLocation/UpgradeButton.cs" id="2_wgyj1"]
+[ext_resource type="Texture2D" uid="uid://d0gu3rvif27kw" path="res://Textures/HubLocation/Icons/Chitin_white.png" id="3_diwth"]
+[ext_resource type="Texture2D" uid="uid://dam7f475160b2" path="res://Textures/HubLocation/Icons/Crystal_white.png" id="4_safd7"]
+
+[node name="UpgradeButton" type="TextureButton"]
+custom_minimum_size = Vector2(200, 25)
+offset_right = 155.0
+offset_bottom = 35.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("1_v3wme")
+texture_hover = ExtResource("1_v3wme")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_wgyj1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_400oo")
+text = "Улучшить"
+
+[node name="ChitinLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_400oo")
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_diwth")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CrystalLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_400oo")
+text = "2"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_safd7")
+expand_mode = 1
+stretch_mode = 4

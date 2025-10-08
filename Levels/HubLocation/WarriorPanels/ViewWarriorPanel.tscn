@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba7ptlegyigi"]
+
+[ext_resource type="Texture2D" uid="uid://ltam438mr53u" path="res://Textures/Default/ViewWarriorPanel.png" id="1_0m0sx"]
+[ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="2_0m0sx"]
+
+[node name="ViewWarriorPanel" type="Control"]
+custom_minimum_size = Vector2(169, 56)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 169.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(166, 54)
+layout_mode = 2
+texture = ExtResource("1_0m0sx")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 2
+
+[node name="WarriorPanel" parent="PanelContainer/MarginContainer" instance=ExtResource("2_0m0sx")]
+custom_minimum_size = Vector2(165, 52)
+layout_mode = 2

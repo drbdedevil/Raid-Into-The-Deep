@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=27 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
+[ext_resource type="Texture2D" uid="uid://batlwvv7k4u00" path="res://Textures/HubLocation/allpicture.png" id="3_4h0hg"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="3_b23rm"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_l5qfr"]
 [ext_resource type="Texture2D" uid="uid://clq5wold482re" path="res://Textures/HubLocation/Icons/Home.png" id="5_o8esw"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="11_wfr0l"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="12_wfr0l"]
 [ext_resource type="Texture2D" uid="uid://vjb7slxgyiyp" path="res://Textures/HubLocation/Icons/Platform_2.png" id="13_twrgc"]
+[ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="14_ogxw3"]
 [ext_resource type="Script" uid="uid://66hihla48n3u" path="res://Levels/HubLocation/BaseInterest.cs" id="14_twrgc"]
 [ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
 [ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="16_cf5ii"]
@@ -42,14 +44,27 @@ bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
 
 [node name="HubLocation" type="Control"]
 layout_mode = 3
-anchor_right = 1.667
-anchor_bottom = 1.667
-offset_right = -768.38403
-offset_bottom = -432.21606
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jthpg")
 PopupScene = ExtResource("2_uqi6k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_4h0hg")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="MainPanel" type="HBoxContainer" parent="."]
 clip_contents = true
@@ -260,7 +275,20 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TeamVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ViewWarriorPanel" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel2" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel3" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel4" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
@@ -302,24 +330,30 @@ size_flags_horizontal = 3
 
 [node name="OpenPopupButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
+layout_mode = 1
 offset_left = 10.0
 offset_top = 51.0
 offset_right = 342.0
-offset_bottom = 285.0
+offset_bottom = 231.0
 focus_mode = 0
 text = "Кузница"
 icon_alignment = 1
 
 [node name="TrainingPitsButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
-offset_left = 587.0
-offset_top = 394.0
-offset_right = 919.0
-offset_bottom = 628.0
+layout_mode = 1
+offset_left = 741.0
+offset_top = 244.0
+offset_right = 937.0
+offset_bottom = 428.0
 focus_mode = 0
-text = "Тренировочные ямы"
+text = "Тренировочные ямы
+
+
+
+
+
+"
 icon_alignment = 1
 script = ExtResource("14_twrgc")
 SceneToOpen = ExtResource("15_yj33t")
@@ -343,10 +377,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -362.5
-offset_top = -275.0
-offset_right = 362.5
-offset_bottom = 275.0
+offset_right = 725.0
+offset_bottom = 550.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -414,3 +446,5 @@ anchor_bottom = 0.0
 offset_left = 194.0
 offset_right = 394.0
 offset_bottom = 509.0
+grow_horizontal = 1
+grow_vertical = 1
