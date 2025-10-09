@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=42 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
 [ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="16_cf5ii"]
 [ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="17_4e6yu"]
+[ext_resource type="PackedScene" uid="uid://d2jyto1fabcvx" path="res://Levels/HubLocation/Storage/Storage.tscn" id="18_ljn6y"]
+[ext_resource type="PackedScene" uid="uid://lqex6adq1njd" path="res://Levels/HubLocation/CommandBlock/CommandBlock.tscn" id="19_3d8pl"]
+[ext_resource type="PackedScene" uid="uid://dvmhjsev76cws" path="res://Levels/HubLocation/LivingSpace/LivingSpace.tscn" id="20_wk2cf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5qfr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -32,6 +35,111 @@ bg_color = Color(0.68532646, 0.68532646, 0.68532646, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7bpl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_wk2cf"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks1w7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1mhx"]
+
+[sub_resource type="Theme" id="Theme_fn680"]
+VBoxContainer/constants/separation = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqi6k"]
 bg_color = Color(0.15062094, 0.07662549, 0.0058686547, 1)
@@ -238,18 +346,32 @@ texture = ExtResource("11_wfr0l")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="WarriorsLabel" type="Label" parent="MainPanel/Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource("Theme_wk2cf")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ks1w7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p1mhx")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_fn680")
+
+[node name="WarriorsLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("4_l5qfr")
 theme_override_font_sizes/font_size = 14
 text = "Войны"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(56, 3)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -258,14 +380,14 @@ texture = ExtResource("12_wfr0l")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("4_l5qfr")
 theme_override_font_sizes/font_size = 14
 text = "Команда"
 
-[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(56, 3)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -274,28 +396,28 @@ texture = ExtResource("12_wfr0l")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="TeamVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+[node name="TeamVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ViewWarriorPanel" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+[node name="ViewWarriorPanel" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
-[node name="ViewWarriorPanel2" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+[node name="ViewWarriorPanel2" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
-[node name="ViewWarriorPanel3" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+[node name="ViewWarriorPanel3" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
-[node name="ViewWarriorPanel4" parent="MainPanel/Panel/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
+[node name="ViewWarriorPanel4" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(64, 3)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -304,14 +426,14 @@ texture = ExtResource("13_twrgc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+[node name="ResourcesLabel" type="Label" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("4_l5qfr")
 theme_override_font_sizes/font_size = 14
 text = "Запас"
 
-[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(64, 3)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -320,8 +442,21 @@ texture = ExtResource("13_twrgc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ReserveVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+[node name="ReserveVBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ViewWarriorPanel" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/ReserveVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel2" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/ReserveVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel3" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/ReserveVBoxContainer" instance=ExtResource("14_ogxw3")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel4" parent="MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/ReserveVBoxContainer" instance=ExtResource("14_ogxw3")]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="MainPanel"]
@@ -357,6 +492,55 @@ text = "Тренировочные ямы
 icon_alignment = 1
 script = ExtResource("14_twrgc")
 SceneToOpen = ExtResource("15_yj33t")
+
+[node name="StorageButton" type="Button" parent="MainPanel/Control"]
+modulate = Color(1, 1, 1, 0.16470589)
+layout_mode = 0
+offset_left = 145.0
+offset_top = 446.0
+offset_right = 385.0
+offset_bottom = 589.0
+focus_mode = 0
+text = "Склад"
+icon_alignment = 1
+script = ExtResource("14_twrgc")
+SceneToOpen = ExtResource("18_ljn6y")
+
+[node name="CommandBlockButton" type="Button" parent="MainPanel/Control"]
+modulate = Color(1, 1, 1, 0.16470589)
+layout_mode = 0
+offset_left = 656.0
+offset_top = 66.0
+offset_right = 922.0
+offset_bottom = 237.0
+focus_mode = 0
+text = "Коммандный блок
+
+
+
+
+
+
+"
+icon_alignment = 1
+script = ExtResource("14_twrgc")
+SceneToOpen = ExtResource("19_3d8pl")
+
+[node name="LivingSpaceButton" type="Button" parent="MainPanel/Control"]
+modulate = Color(1, 1, 1, 0.16470589)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 237.0
+offset_right = 296.0
+offset_bottom = 441.0
+focus_mode = 0
+text = "Жилое помещение
+
+
+"
+icon_alignment = 1
+script = ExtResource("14_twrgc")
+SceneToOpen = ExtResource("20_wk2cf")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 oversampling_override = 1.0

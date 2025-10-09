@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bimh3oq4chxe5"]
+[gd_scene load_steps=16 format=3 uid="uid://d2jyto1fabcvx"]
 
-[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="1_2oxcp"]
-[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_gdf14"]
-[ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="1_j3no7"]
-[ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_uy08g"]
-[ext_resource type="PackedScene" uid="uid://1u05hx0bg1aw" path="res://Levels/HubLocation/WarriorPanels/HireWarriorPanel.tscn" id="4_ojlly"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_xvnj0"]
+[ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_ow2dr"]
+[ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="3_e53rh"]
+[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="4_ycjnm"]
+[ext_resource type="PackedScene" uid="uid://d3shuau7lurda" path="res://Levels/HubLocation/WeaponPanels/WeaponPanel.tscn" id="5_6t0th"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -141,12 +141,12 @@ size_flags_horizontal = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_gdf14")
+theme_override_fonts/font = ExtResource("1_xvnj0")
 text = "Уровень"
 
 [node name="LevelLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_gdf14")
+theme_override_fonts/font = ExtResource("1_xvnj0")
 text = "1"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
@@ -155,7 +155,7 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="LevelView" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("2_uy08g")]
+[node name="LevelView" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("2_ow2dr")]
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -167,7 +167,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(220, 40)
 layout_mode = 2
 
-[node name="UpgradeButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("1_j3no7")]
+[node name="UpgradeButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("3_e53rh")]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -178,7 +178,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("1_2oxcp")
+texture = ExtResource("4_ycjnm")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]
@@ -195,35 +195,55 @@ theme = SubResource("Theme_gdf14")
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
-theme_override_fonts/font = ExtResource("1_gdf14")
-text = "Воины"
+theme_override_fonts/font = ExtResource("1_xvnj0")
+text = "Оружие"
 
-[node name="HireWarriorPanel" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel2" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel2" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel3" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel3" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel4" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel4" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel5" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel5" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel6" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel6" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel7" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel7" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel8" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel8" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel9" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel9" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HireWarriorPanel10" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_ojlly")]
+[node name="WeaponPanel10" parent="VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_6t0th")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0

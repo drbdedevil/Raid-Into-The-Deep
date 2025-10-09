@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4ecegriurk3t"]
+
+[ext_resource type="Script" uid="uid://cwmj6vbbqvbfr" path="res://Levels/HubLocation/WarriorPanels/FiredWarriorPanel.cs" id="1_4v0db"]
+[ext_resource type="Texture2D" uid="uid://d7jww46tetp4" path="res://Textures/Default/FiredPanel.png" id="1_6m6im"]
+[ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="2_6m6im"]
+[ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="3_4v0db"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emuf1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0e7n"]
+bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
+
+[node name="FiredWarriorPanel" type="Control"]
+custom_minimum_size = Vector2(169, 56)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4v0db")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(185, 54)
+layout_mode = 2
+texture = ExtResource("1_6m6im")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+
+[node name="WarriorPanel" parent="PanelContainer/TextureRect/HBoxContainer/MarginContainer" instance=ExtResource("2_6m6im")]
+custom_minimum_size = Vector2(165, 52)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FiredWarriorButton" type="Button" parent="PanelContainer/TextureRect/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_emuf1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l0e7n")
+icon = ExtResource("3_4v0db")
+icon_alignment = 1
+expand_icon = true

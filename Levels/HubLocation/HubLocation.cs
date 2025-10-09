@@ -14,8 +14,20 @@ public partial class HubLocation : Node
 		var SettingsButton = GetNode<Button>("MainPanel/Panel/VBoxContainer/HBoxContainer/SettingsButton");
 		SettingsButton.ButtonDown += OnSettingsButtonPressed;
 
+		// ----------- Base Interset Button -----------
 		var TrainingPitsButton = GetNode<Button>("MainPanel/Control/TrainingPitsButton");
 		TrainingPitsButton.ButtonDown += OnTrainingPitsPressed;
+
+		var StorageButton = GetNode<Button>("MainPanel/Control/StorageButton");
+		StorageButton.ButtonDown += OnStoragePressed;
+
+		var CommandBlockButton = GetNode<Button>("MainPanel/Control/CommandBlockButton");
+		CommandBlockButton.ButtonDown += OnCommandBlockPressed;
+
+		var LivingSpaceButton = GetNode<Button>("MainPanel/Control/LivingSpaceButton");
+		LivingSpaceButton.ButtonDown += OnLivingSpacePressed;
+
+		//  -----------
 
 		var button = GetNode<Button>("MainPanel/Control/OpenPopupButton");
 		// button.Pressed += OnOpenPopupPressed;
@@ -49,6 +61,42 @@ public partial class HubLocation : Node
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
 	}
+	private void OnStoragePressed()
+	{
+		var Storage = GetNode<BaseInterest>("MainPanel/Control/StorageButton");
+		Node sceneInstance = Storage.SceneToOpen.Instantiate();
+
+		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+		PanelLabel.Text = Storage.Text.StripEdges();
+		ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var popup = GetNode<PopupPanel>("PopupPanel");
+		popup.Popup();
+	}
+	private void OnCommandBlockPressed()
+	{
+		var CommandBlock = GetNode<BaseInterest>("MainPanel/Control/CommandBlockButton");
+		Node sceneInstance = CommandBlock.SceneToOpen.Instantiate();
+
+		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+		PanelLabel.Text = CommandBlock.Text.StripEdges();
+		ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var popup = GetNode<PopupPanel>("PopupPanel");
+		popup.Popup();
+	}
+	private void OnLivingSpacePressed()
+	{
+		var LivingSpace = GetNode<BaseInterest>("MainPanel/Control/LivingSpaceButton");
+		Node sceneInstance = LivingSpace.SceneToOpen.Instantiate();
+
+		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+		PanelLabel.Text = LivingSpace.Text.StripEdges();
+		ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var popup = GetNode<PopupPanel>("PopupPanel");
+		popup.Popup();
+	}
 
 	private void OnOpenPopupPressed()
 	{
@@ -60,15 +108,23 @@ public partial class HubLocation : Node
 	{
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Hide();
+
+		ClearSceneContainer();
 	}
 
 	private void ClearAndAddNewSceneToPopup(Node sceneInstance)
+	{
+		ClearSceneContainer();
+
+		var container = GetNode<Control>("PopupPanel/MarginContainer/VBoxContainer/SceneContainer");
+		container.AddChild(sceneInstance);
+	}
+	private void ClearSceneContainer()
 	{
 		var container = GetNode<Control>("PopupPanel/MarginContainer/VBoxContainer/SceneContainer");
 		foreach (Node child in container.GetChildren())
 		{
 			child.QueueFree();
 		}
-		container.AddChild(sceneInstance);
 	}
 }

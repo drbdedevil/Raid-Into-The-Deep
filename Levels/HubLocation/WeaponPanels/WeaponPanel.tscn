@@ -1,0 +1,172 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3shuau7lurda"]
+
+[ext_resource type="Texture2D" uid="uid://clxcfmpb3v5w3" path="res://Textures/Default/WeaponPanel.png" id="1_uepbi"]
+[ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="2_2ktgm"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="3_5i1ei"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="4_1cc36"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="5_m531f"]
+[ext_resource type="Texture2D" uid="uid://chbyxyih3piff" path="res://Textures/Default/AttackFormExample.png" id="6_m531f"]
+
+[node name="WeaponPanel" type="Control"]
+custom_minimum_size = Vector2(195, 85)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(195, 85.47)
+layout_mode = 1
+offset_right = 195.0
+offset_bottom = 85.47
+texture = ExtResource("1_uepbi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_2ktgm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(142, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="NameLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_5i1ei")
+theme_override_font_sizes/font_size = 14
+text = "Название оружия"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="DamageLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("4_1cc36")
+theme_override_font_sizes/font_size = 10
+text = "Урон"
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("5_m531f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5i1ei")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("4_1cc36")
+theme_override_font_sizes/font_size = 10
+text = "Эффект"
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_m531f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="EffectLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/TextureRect2"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5i1ei")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="DamageLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("4_1cc36")
+theme_override_font_sizes/font_size = 10
+text = "Форма атаки"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("5_m531f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer2/TextureRect"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer2/TextureRect/MarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_m531f")
+expand_mode = 1
+stretch_mode = 4
