@@ -27,11 +27,10 @@ public partial class HubLocation : Node
 		var LivingSpaceButton = GetNode<Button>("MainPanel/Control/LivingSpaceButton");
 		LivingSpaceButton.ButtonDown += OnLivingSpacePressed;
 
-		//  -----------
+		var ForgeButton = GetNode<Button>("MainPanel/Control/ForgeButton");
+		ForgeButton.ButtonDown += OnForgePressed;
 
-		var button = GetNode<Button>("MainPanel/Control/OpenPopupButton");
-		// button.Pressed += OnOpenPopupPressed;
-		button.ButtonDown += OnOpenPopupPressed;
+		//  -----------
 
 		var close_button = GetNode<Button>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/ClosePopupButton");
 		// close_button.Pressed += OnClosePopupPressed;
@@ -97,9 +96,15 @@ public partial class HubLocation : Node
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
 	}
-
-	private void OnOpenPopupPressed()
+	private void OnForgePressed()
 	{
+		var Forge = GetNode<BaseInterest>("MainPanel/Control/ForgeButton");
+		Node sceneInstance = Forge.SceneToOpen.Instantiate();
+
+		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+		PanelLabel.Text = Forge.Text.StripEdges();
+		ClearAndAddNewSceneToPopup(sceneInstance);
+
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
 	}

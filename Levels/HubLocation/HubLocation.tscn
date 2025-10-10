@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=43 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
 [ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="16_cf5ii"]
 [ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="17_4e6yu"]
+[ext_resource type="PackedScene" uid="uid://tiga6w74ljhd" path="res://Levels/HubLocation/Forge/Forge.tscn" id="17_ks1w7"]
 [ext_resource type="PackedScene" uid="uid://d2jyto1fabcvx" path="res://Levels/HubLocation/Storage/Storage.tscn" id="18_ljn6y"]
 [ext_resource type="PackedScene" uid="uid://lqex6adq1njd" path="res://Levels/HubLocation/CommandBlock/CommandBlock.tscn" id="19_3d8pl"]
 [ext_resource type="PackedScene" uid="uid://dvmhjsev76cws" path="res://Levels/HubLocation/LivingSpace/LivingSpace.tscn" id="20_wk2cf"]
@@ -277,6 +278,7 @@ text = "Хитин"
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 custom_minimum_size = Vector2(23, 23)
@@ -316,8 +318,9 @@ theme_override_font_sizes/font_size = 14
 text = "Кристаллы"
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
 custom_minimum_size = Vector2(23, 23)
@@ -354,6 +357,7 @@ theme = SubResource("Theme_wk2cf")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ks1w7")
 theme_override_styles/focus = SubResource("StyleBoxFlat_p1mhx")
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Panel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
@@ -463,7 +467,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OpenPopupButton" type="Button" parent="MainPanel/Control"]
+[node name="ForgeButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
 layout_mode = 1
 offset_left = 10.0
@@ -473,6 +477,8 @@ offset_bottom = 231.0
 focus_mode = 0
 text = "Кузница"
 icon_alignment = 1
+script = ExtResource("14_twrgc")
+SceneToOpen = ExtResource("17_ks1w7")
 
 [node name="TrainingPitsButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
@@ -561,8 +567,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 725.0
-offset_bottom = 550.0
+offset_left = -362.5
+offset_top = -275.0
+offset_right = 362.5
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\A_Repositories\\raid-into-the-deep\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F9B44D6D-DD10-4404-9F70-B50D0E8E1106}|Raid-Into-The-Deep.csproj|d:\\a_repositories\\raid-into-the-deep\\levels\\hublocation\\hublocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9B44D6D-DD10-4404-9F70-B50D0E8E1106}|Raid-Into-The-Deep.csproj|solutionrelative:levels\\hublocation\\hublocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9B44D6D-DD10-4404-9F70-B50D0E8E1106}|Raid-Into-The-Deep.csproj|d:\\a_repositories\\raid-into-the-deep\\levels\\hublocation\\forge\\forge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9B44D6D-DD10-4404-9F70-B50D0E8E1106}|Raid-Into-The-Deep.csproj|solutionrelative:levels\\hublocation\\forge\\forge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{34c7837f-3b3a-449c-bdf0-bdad86cbaf4a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HubLocation.cs",
+              "DocumentMoniker": "D:\\A_Repositories\\raid-into-the-deep\\Levels\\HubLocation\\HubLocation.cs",
+              "RelativeDocumentMoniker": "Levels\\HubLocation\\HubLocation.cs",
+              "ToolTip": "D:\\A_Repositories\\raid-into-the-deep\\Levels\\HubLocation\\HubLocation.cs",
+              "RelativeToolTip": "Levels\\HubLocation\\HubLocation.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAwEUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T22:54:50.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Forge.cs",
+              "DocumentMoniker": "D:\\A_Repositories\\raid-into-the-deep\\Levels\\HubLocation\\Forge\\Forge.cs",
+              "RelativeDocumentMoniker": "Levels\\HubLocation\\Forge\\Forge.cs",
+              "ToolTip": "D:\\A_Repositories\\raid-into-the-deep\\Levels\\HubLocation\\Forge\\Forge.cs",
+              "RelativeToolTip": "Levels\\HubLocation\\Forge\\Forge.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAC+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T23:40:17.571Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
