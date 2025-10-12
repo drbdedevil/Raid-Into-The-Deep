@@ -1,0 +1,239 @@
+[gd_scene load_steps=12 format=3 uid="uid://dvhuja3f2n8a0"]
+
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_4morl"]
+[ext_resource type="Script" uid="uid://ba038hpgpqym4" path="res://Levels/HubLocation/Forge/WeaponSelector.cs" id="1_6d74d"]
+[ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_m553q"]
+[ext_resource type="PackedScene" uid="uid://d3shuau7lurda" path="res://Levels/HubLocation/WeaponPanels/WeaponPanel.tscn" id="3_5b0pp"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_5b0pp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6d74d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyr08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im6w8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4k5w"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvq22"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_la6gv"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_5b0pp")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_5b0pp")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_5b0pp")
+VScrollBar/icons/increment = SubResource("ImageTexture_5b0pp")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_5b0pp")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_5b0pp")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6d74d")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_kyr08")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_im6w8")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_o4k5w")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_pvq22")
+
+[node name="WeaponSelector" type="ColorRect"]
+custom_minimum_size = Vector2(700, 485)
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+script = ExtResource("1_6d74d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4morl")
+theme_override_font_sizes/font_size = 14
+text = "Выбор оружия"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(77, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("2_m553q")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_4morl")
+theme_override_font_sizes/font_size = 12
+text = "Вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0.5568628, 0.2627451, 0.105882354, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_la6gv")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="WeaponPanel" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel2" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel3" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel4" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel5" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel6" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel7" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel8" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel9" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel10" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel11" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel12" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel13" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel14" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel15" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel16" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel17" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel18" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel19" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel20" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel21" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel22" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel23" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel24" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel25" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel26" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2
+
+[node name="WeaponPanel27" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("3_5b0pp")]
+layout_mode = 2

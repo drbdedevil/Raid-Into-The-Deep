@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=44 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d2jyto1fabcvx" path="res://Levels/HubLocation/Storage/Storage.tscn" id="18_ljn6y"]
 [ext_resource type="PackedScene" uid="uid://lqex6adq1njd" path="res://Levels/HubLocation/CommandBlock/CommandBlock.tscn" id="19_3d8pl"]
 [ext_resource type="PackedScene" uid="uid://dvmhjsev76cws" path="res://Levels/HubLocation/LivingSpace/LivingSpace.tscn" id="20_wk2cf"]
+[ext_resource type="Script" uid="uid://cofu64iusem5y" path="res://Levels/HubLocation/PopupNavigator.cs" id="22_p1mhx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5qfr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -553,6 +554,7 @@ oversampling_override = 1.0
 position = Vector2i(310, 49)
 size = Vector2i(725, 550)
 theme_override_styles/panel = SubResource("StyleBoxFlat_uqi6k")
+script = ExtResource("22_p1mhx")
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel"]
 offset_right = 725.0
@@ -567,10 +569,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -362.5
-offset_top = -275.0
-offset_right = 362.5
-offset_bottom = 275.0
+offset_right = 725.0
+offset_bottom = 550.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -622,21 +622,3 @@ expand_icon = true
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="PopupPanel/MarginContainer/VBoxContainer/SceneContainer"]
-custom_minimum_size = Vector2(190, 0)
-layout_mode = 0
-offset_right = 190.0
-offset_bottom = 509.0
-
-[node name="TempPopup" parent="PopupPanel/MarginContainer/VBoxContainer/SceneContainer" instance=ExtResource("2_uqi6k")]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 194.0
-offset_right = 394.0
-offset_bottom = 509.0
-grow_horizontal = 1
-grow_vertical = 1

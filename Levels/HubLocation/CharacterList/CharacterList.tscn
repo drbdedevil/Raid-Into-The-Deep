@@ -1,0 +1,755 @@
+[gd_scene load_steps=15 format=3 uid="uid://cfkgaibxcnv4v"]
+
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
+[ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
+[ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_jb1gh"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="3_jb1gh"]
+[ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="3_q3ehw"]
+[ext_resource type="Texture2D" uid="uid://g6d3qew8l7fn" path="res://Textures/HubLocation/Icons/Level.png" id="5_137wh"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="6_ah2t4"]
+[ext_resource type="Texture2D" uid="uid://bhx223fduq0bk" path="res://Textures/HubLocation/Icons/Health.png" id="7_6n0i5"]
+[ext_resource type="Texture2D" uid="uid://4d1u8sugr8a" path="res://Textures/HubLocation/Icons/Speed.png" id="8_sgqvt"]
+[ext_resource type="Texture2D" uid="uid://3pi7c6mod5wh" path="res://Textures/HubLocation/Icons/Damage.png" id="9_ouvy8"]
+[ext_resource type="Texture2D" uid="uid://b2uqcrsvt0a4g" path="res://Textures/HubLocation/Icons/DamageByEffects.png" id="10_iu0dr"]
+[ext_resource type="Texture2D" uid="uid://1ukq3plxdp85" path="res://Textures/HubLocation/Icons/Heal.png" id="11_ayih5"]
+[ext_resource type="Texture2D" uid="uid://c1j2axt10r2wk" path="res://Textures/HubLocation/UpgradeButton.png" id="12_6n0i5"]
+[ext_resource type="Texture2D" uid="uid://chbyxyih3piff" path="res://Textures/Default/AttackFormExample.png" id="13_sgqvt"]
+
+[node name="CharacterList" type="ColorRect"]
+custom_minimum_size = Vector2(700, 485)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+script = ExtResource("1_ouvy8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="HiddenPanel" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HiddenPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Лист персонажа"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer/HiddenPanel"]
+custom_minimum_size = Vector2(77, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("2_jb1gh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HiddenPanel/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0.5568628, 0.2627451, 0.105882354, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(340, 202)
+layout_mode = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_q3ehw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Жук Жучок"
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(340, 202)
+layout_mode = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Характеристики"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 167)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_137wh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Уровень"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_6n0i5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Здоровье"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_sgqvt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Скорость"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_ouvy8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Урон"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer4/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "28"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_iu0dr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Урон от эффектов"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer5/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "16"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_ayih5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 14
+text = "Лечение"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer6/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "27"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(340, 229)
+layout_mode = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Оружие"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(110, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("12_6n0i5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Выбрать оружие"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_q3ehw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = -5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Жучиный ультраган"
+autowrap_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 12
+text = "Оно прям офигенно подходит для мальчишки жучишки которому хочется всех убить перебить нафик и пофик ему кто там че на него бычит лишний раз врагам лучше рот не открывать"
+autowrap_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DamageLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Урон"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Эффект"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("6_ah2t4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="EffectLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/TextureRect2"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DamageLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Форма атаки"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("13_sgqvt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(340, 202)
+layout_mode = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Навык"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(110, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("12_6n0i5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Дерево навыков"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_q3ehw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(230, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 14
+text = "Раздражать громким жужжанием"
+autowrap_mode = 1
+
+[node name="TextLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_jb1gh")
+theme_override_font_sizes/font_size = 12
+text = "Жучок залетает в комнату и начинает жестко всех бесить чтобы никто ничего сделать не мог но не уверенна что жучок специально это делает ведь он по сути не плохой потому что природа плохого создать не может а он и есть сама природа он просто жужжит потому что радуется жизни. Как навык сомнителен, от урона одно слово урон если и есть то только моральный."
+autowrap_mode = 1

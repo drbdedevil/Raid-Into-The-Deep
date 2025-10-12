@@ -33,8 +33,9 @@ public partial class HubLocation : Node
 		//  -----------
 
 		var close_button = GetNode<Button>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/ClosePopupButton");
-		// close_button.Pressed += OnClosePopupPressed;
 		close_button.ButtonDown += OnClosePopupPressed;
+		var popup = GetNode<PopupPanel>("PopupPanel");
+		popup.PopupHide += OnClosePopupPressed;
 	}
 
 	private void OnMenuButtonPressed()
@@ -103,7 +104,10 @@ public partial class HubLocation : Node
 
 		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
 		PanelLabel.Text = Forge.Text.StripEdges();
-		ClearAndAddNewSceneToPopup(sceneInstance);
+		// ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.PushInstance(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
@@ -111,6 +115,9 @@ public partial class HubLocation : Node
 
 	private void OnClosePopupPressed()
 	{
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.ClearHistory(true);
+
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Hide();
 
