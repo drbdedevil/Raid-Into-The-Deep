@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Raid-Into-The-Deep"
-run/main_scene="uid://dda3q28m2xroq"
+run/main_scene="uid://dqakekx24s2dj"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
