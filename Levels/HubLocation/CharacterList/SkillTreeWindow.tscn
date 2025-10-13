@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1je8gc73xr08"]
+
+[ext_resource type="Script" uid="uid://bun15vs8nkdhw" path="res://Levels/HubLocation/CharacterList/SkillTreeWidnow.cs" id="1_7k0av"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_os10u"]
+[ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_7k0av"]
+
+[node name="SkillTreeWindow" type="ColorRect"]
+custom_minimum_size = Vector2(700, 485)
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+script = ExtResource("1_7k0av")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="HiddenPanel" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HiddenPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_os10u")
+theme_override_font_sizes/font_size = 14
+text = "Дерево навыков персонажа:"
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer/HiddenPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_os10u")
+theme_override_font_sizes/font_size = 14
+text = "Жук Жучок"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer/HiddenPanel"]
+custom_minimum_size = Vector2(77, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("2_7k0av")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HiddenPanel/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_os10u")
+theme_override_font_sizes/font_size = 12
+text = "Вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ColorRect"]
+layout_mode = 0
+offset_top = 204.0
+offset_right = 670.0
+offset_bottom = 227.0
+text = "Дерево навыков!!!!!!!!"
+horizontal_alignment = 1

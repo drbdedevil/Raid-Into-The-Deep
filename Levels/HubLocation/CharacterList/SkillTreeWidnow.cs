@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WeaponSelector : Node, IStackPage
+public partial class SkillTreeWidnow : ColorRect, IStackPage
 {
     [Signal]
     public delegate void RequestBackEventHandler();
@@ -10,10 +10,8 @@ public partial class WeaponSelector : Node, IStackPage
 
     public override void _Ready()
     {
-        var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/TextureButton");
+        var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HiddenPanel/TextureButton");
         BackButton.ButtonDown += OnBackButtonPressed;
-
-        GD.Print("Weapon Selector Ready");
     }
 
     private void OnBackButtonPressed()
@@ -23,10 +21,10 @@ public partial class WeaponSelector : Node, IStackPage
 
     public void OnShow()
     {
-        GD.Print("WeaponSelector Popup shown");
+        GD.Print("SkillTreeWidnow Popup shown");
     }
     public void OnHide()
     {
-        GD.Print("WeaponSelector Popup hidden");
+        GD.Print("SkillTreeWidnow Popup hidden");
     }
 }

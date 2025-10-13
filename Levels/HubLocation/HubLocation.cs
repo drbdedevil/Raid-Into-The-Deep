@@ -56,7 +56,10 @@ public partial class HubLocation : Node
 
 		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
 		PanelLabel.Text = TrainingPits.Text.StripEdges();
-		ClearAndAddNewSceneToPopup(sceneInstance);
+		// ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.PushInstance(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();

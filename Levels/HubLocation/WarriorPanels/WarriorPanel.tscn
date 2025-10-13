@@ -97,7 +97,6 @@ grow_vertical = 0
 [node name="Button" type="Button" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
-focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_b7yq7")
 icon_alignment = 1
 expand_icon = true

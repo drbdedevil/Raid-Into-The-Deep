@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfkgaibxcnv4v"]
+[gd_scene load_steps=17 format=3 uid="uid://cfkgaibxcnv4v"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
 [ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
+[ext_resource type="PackedScene" uid="uid://dvhuja3f2n8a0" path="res://Levels/HubLocation/Forge/WeaponSelector.tscn" id="2_iu0dr"]
 [ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_jb1gh"]
+[ext_resource type="PackedScene" uid="uid://b1je8gc73xr08" path="res://Levels/HubLocation/CharacterList/SkillTreeWindow.tscn" id="3_ayih5"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="3_jb1gh"]
 [ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="3_q3ehw"]
 [ext_resource type="Texture2D" uid="uid://g6d3qew8l7fn" path="res://Textures/HubLocation/Icons/Level.png" id="5_137wh"]
@@ -21,6 +23,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 script = ExtResource("1_ouvy8")
+ChooseWeaponScene = ExtResource("2_iu0dr")
+SkillTreeScene = ExtResource("3_ayih5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

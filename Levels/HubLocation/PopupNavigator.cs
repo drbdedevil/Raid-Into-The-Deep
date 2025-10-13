@@ -88,6 +88,7 @@ public partial class PopupNavigator : PopupPanel
             var prev = _history.Pop();
             _container.AddChild(prev);
             CallOnShow(prev);
+            GetViewport().GuiReleaseFocus();
         }
         else
         {
@@ -97,6 +98,7 @@ public partial class PopupNavigator : PopupPanel
 
     public bool CanGoBack() => _history.Count > 0;
     public bool IsHistoryEmpty() => _history.Count == 0;
+    public bool IsSomethingOpen() => _container.GetChildCount() != 0;
 
     public void ClearHistory(bool freeNodes = true)
     {
@@ -124,7 +126,6 @@ public partial class PopupNavigator : PopupPanel
     {
         if (_container.GetChildCount() == 0)
         {
-
             return null;
         }
         return _container.GetChild(0);

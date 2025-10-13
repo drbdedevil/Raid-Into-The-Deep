@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bimh3oq4chxe5"]
+[gd_scene load_steps=17 format=3 uid="uid://bimh3oq4chxe5"]
 
 [ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="1_2oxcp"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_gdf14"]
 [ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="1_j3no7"]
+[ext_resource type="Script" uid="uid://cv1jkmoekoj3y" path="res://Levels/HubLocation/TrainingPits/TrainingPits.cs" id="1_ojxyu"]
 [ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_uy08g"]
 [ext_resource type="PackedScene" uid="uid://1u05hx0bg1aw" path="res://Levels/HubLocation/WarriorPanels/HireWarriorPanel.tscn" id="4_ojlly"]
 
@@ -114,6 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ojxyu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
