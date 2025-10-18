@@ -7,6 +7,5 @@ namespace RaidIntoTheDeep.Levels.FightScene.Scripts
         public Vector2I GamePosition { get; set; }
         public Vector2I MapPosition { get; set; }
         
-        
     }
 }

@@ -1,43 +1,53 @@
+#nullable enable
 using Godot;
 using System;
 using System.Collections.Generic;
+using RaidIntoTheDeep.Levels.FightScene.Scripts;
 
-public partial class MapManager : TileMapLayer
+public partial class MapManager : Node2D
 {
-	private List<List<Vector2I>> _decartCoords = [];
+	private List<List<Vector2I>> _cartesianCoords = [];
 	private List<List<Vector2I>> _isometricCoords = [];
-
+	private readonly List<Tile> _mapTiles = [];
+	
+	private TileMapLayer _floorLayer;
+	private TileMapLayer _entityLayer;
 	
 	/// <summary>
 	/// Ассоциативный массив для получения изометрической координаты по декартовой
 	/// </summary>
-	private readonly Dictionary<Vector2I, Vector2I> _isometricByDecart = new();
+	private readonly Dictionary<Vector2I, Tile> _tilesByCartesian = new();
 	
 	/// <summary>
 	/// Ассоциативный массив для получения декартовой координаты по изометрической
 	/// </summary>
-	private readonly Dictionary<Vector2I, Vector2I> _decartByIsometric = new();
+	private readonly Dictionary<Vector2I, Tile> _tilesByIsometric = new();
 	
 	public override void _Ready()
 	{
+		_floorLayer = GetNode<TileMapLayer>("Floor");
+		_entityLayer = GetNode<TileMapLayer>("Entities");
+		
 		var ySize = 8;
 		var xSize = 8;
 		for (int y = 0; y < ySize; y++)
 		{
-			var normalRow = new List<Vector2I>();
+			var cartesianRow = new List<Vector2I>();
 			var isometricRow = new List<Vector2I>();
 			for (int x = 0; x < xSize; x++)
 			{
-				var decartCoord = new Vector2I(x, y); 
+				var cartesianCoord = new Vector2I(x, y); 
 				var isometricCoord = y % 2 == 0 ? CalculateEvenVector(x) : CalculateOddVector(x);
 				
 				isometricRow.Add(isometricCoord);
-				normalRow.Add(decartCoord);
-				SetCell(isometricCoord, 0, new Vector2I(0, 0));
-				_decartByIsometric.Add(isometricCoord, decartCoord);
-				_isometricByDecart.Add(decartCoord, isometricCoord);
+				cartesianRow.Add(cartesianCoord);
+				_floorLayer.SetCell(isometricCoord, 0, new Vector2I(0, 0));
+				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16));
+				_tilesByIsometric.Add(isometricCoord, mapTile);
+				_tilesByCartesian.Add(cartesianCoord, mapTile);
+				_mapTiles.Add(mapTile);
 			}
-			_decartCoords.Add(normalRow);
+			_cartesianCoords.Add(cartesianRow);
 			_isometricCoords.Add(isometricRow);
 
 			Vector2I CalculateEvenVector(int x) => new (
@@ -55,17 +65,41 @@ public partial class MapManager : TileMapLayer
 		
 	}
 
-	public Vector2I GetIsometricCoordByDecartCoord(Vector2I decartCoord)
+	public Tile? GetTileByCartesianCoord(Vector2I cartesianCoord)
 	{
-		if (!_isometricByDecart.TryGetValue(decartCoord, out Vector2I isometricCoord))
-			throw new ApplicationException($"Не нашёлся Tile с такими декартовыми координатами-{decartCoord}");
-		return isometricCoord;
+		_tilesByCartesian.TryGetValue(cartesianCoord, out var tile);
+		return tile;
 	}
 
-	public Vector2I GetDecartCoordByIsometricCoord(Vector2I isometricCoord)
+	public Tile? GetTileByIsometricCoord(Vector2I isometricCoord)
 	{
-		if (!_decartByIsometric.TryGetValue(isometricCoord, out Vector2I decartCoord))
-			throw new ApplicationException($"Не нашёлся Tile с такими изометрическими координатами-{isometricCoord}");
-		return decartCoord;
+		_tilesByIsometric.TryGetValue(isometricCoord, out var tile);
+		return tile;
 	}
+
+	public void SetEnemyOnTile(Tile tile, GameEntity enemy)
+	{
+		_entityLayer.EraseCell(enemy.MapPosition);
+		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
+		enemy.MapPosition = tile.IsometricPosition;
+		enemy.GamePosition = tile.CartesianPosition;
+	}
+
+	public Tile? GetTileUnderMousePosition()
+	{
+		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
+		return GetTileByIsometricCoord(clickedCell);
+	}
+
+	public void SelectTile(Tile tile)
+	{
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
+	}
+	
+	public void DeselectTile(Tile tile)
+	{
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+	}
+	
+
 }
