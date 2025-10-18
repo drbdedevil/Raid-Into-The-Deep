@@ -24,10 +24,10 @@ public class CharacterData
 
 public class StorageData
 {
-    public int Level { get; set; }
-    public int Crystals { get; set; }
-    public int ChitinFragments { get; set; }
-    public List<WeaponData> Weapons { get; set; }
+    public int Level { get; set; } = 1;
+    public int Crystals { get; set; } = 120;
+    public int ChitinFragments { get; set; } = 90;
+    public List<WeaponData> Weapons { get; set; } = new();
 }
 
 public class LivingSpaceData

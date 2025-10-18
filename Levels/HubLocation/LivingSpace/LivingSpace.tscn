@@ -109,7 +109,7 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
 [sub_resource type="Theme" id="Theme_gdf14"]
 VBoxContainer/constants/separation = 10
 
-[node name="TrainingPits" type="Control"]
+[node name="LivingSpace" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

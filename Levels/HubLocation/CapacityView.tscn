@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmd3x3hti8lmo"]
+[gd_scene load_steps=3 format=3 uid="uid://bmd3x3hti8lmo"]
 
+[ext_resource type="Script" uid="uid://c8pfct80uj2qq" path="res://Levels/HubLocation/CapacityView.cs" id="1_a2nlu"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_horjc"]
 
 [node name="CapacityView" type="MarginContainer"]
+script = ExtResource("1_a2nlu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(40, 20)
+custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
@@ -22,6 +24,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="CurrentLabel" type="Label" parent="ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
