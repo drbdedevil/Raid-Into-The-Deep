@@ -83,6 +83,7 @@ public partial class MapManager : Node2D
 		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
 		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
 		enemy.Tile = tile;
+		tile.BattleEntity = enemy;
 	}
 
 	public Tile? GetTileUnderMousePosition()

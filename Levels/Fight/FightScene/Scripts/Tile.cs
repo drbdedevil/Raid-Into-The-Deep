@@ -14,6 +14,8 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
         public Vector2I CartesianPosition { get; }
         public Vector2I IsometricPosition { get; }
         public Vector2I TileTextureSize { get; }
-        public Vector2I WorldPosition { get; }
+        
+        public BattleEntity? BattleEntity { get; set; }
+        
     }
 }
