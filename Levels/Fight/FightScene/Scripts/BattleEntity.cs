@@ -1,5 +1,4 @@
 ﻿using Godot;
-using RaidIntoTheDeep.GameDataManager;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
 {
