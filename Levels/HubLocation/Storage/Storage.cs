@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Storage : Node
+public partial class Storage : Control
 {
     public override void _Ready()
     {

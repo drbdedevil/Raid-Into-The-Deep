@@ -20,7 +20,7 @@ public partial class StorageDataManager : Node
 
     public bool TryUpdateLevel()
     {
-        bool IsCanUpdateUpper = gameDataManager.currentData.storageData.Level < 5;
+        bool IsCanUpdateUpper = gameDataManager.currentData.storageData.Level < gameDataManager.storageDatabase.Levels.Count;
         if (IsCanUpdateUpper)
         {
             gameDataManager.currentData.storageData.Level += 1;

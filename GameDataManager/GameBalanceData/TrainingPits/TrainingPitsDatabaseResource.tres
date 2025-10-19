@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="TrainingPitsDatabase" load_steps=8 format=3 uid="uid://umuo5vyxarmx"]
+
+[ext_resource type="Script" uid="uid://c1dm6vxwjgteq" path="res://GameDataManager/GameBalanceData/TrainingPits/TrainingPitsLevelData.cs" id="1_6npps"]
+[ext_resource type="Script" uid="uid://bbxrp0i0m585t" path="res://GameDataManager/GameBalanceData/TrainingPits/TrainingPitsDatabase.cs" id="2_g2x23"]
+
+[sub_resource type="Resource" id="Resource_6npps"]
+script = ExtResource("1_6npps")
+Capacity = 10
+metadata/_custom_type_script = "uid://c1dm6vxwjgteq"
+
+[sub_resource type="Resource" id="Resource_g2x23"]
+script = ExtResource("1_6npps")
+Level = 2
+CrystalUpgradeCost = 10
+ChitinFragmentsUpgradeCost = 12
+Capacity = 12
+metadata/_custom_type_script = "uid://c1dm6vxwjgteq"
+
+[sub_resource type="Resource" id="Resource_4seo6"]
+script = ExtResource("1_6npps")
+Level = 3
+CrystalUpgradeCost = 15
+ChitinFragmentsUpgradeCost = 20
+Capacity = 15
+metadata/_custom_type_script = "uid://c1dm6vxwjgteq"
+
+[sub_resource type="Resource" id="Resource_iqgfm"]
+script = ExtResource("1_6npps")
+Level = 4
+CrystalUpgradeCost = 20
+ChitinFragmentsUpgradeCost = 30
+Capacity = 18
+metadata/_custom_type_script = "uid://c1dm6vxwjgteq"
+
+[sub_resource type="Resource" id="Resource_m2nsl"]
+script = ExtResource("1_6npps")
+Level = 5
+CrystalUpgradeCost = 30
+ChitinFragmentsUpgradeCost = 32
+Capacity = 20
+metadata/_custom_type_script = "uid://c1dm6vxwjgteq"
+
+[resource]
+script = ExtResource("2_g2x23")
+Levels = Array[ExtResource("1_6npps")]([SubResource("Resource_6npps"), SubResource("Resource_g2x23"), SubResource("Resource_4seo6"), SubResource("Resource_iqgfm"), SubResource("Resource_m2nsl")])
+metadata/_custom_type_script = "uid://bbxrp0i0m585t"

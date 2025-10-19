@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="LivingSpaceDatabase" load_steps=8 format=3 uid="uid://cngf0roln1w13"]
+
+[ext_resource type="Script" uid="uid://cmna8i648rdiq" path="res://GameDataManager/GameBalanceData/LivingSpace/LivingSpaceLevelData.cs" id="1_oeknq"]
+[ext_resource type="Script" uid="uid://bsw6ts203uuli" path="res://GameDataManager/GameBalanceData/LivingSpace/LivingSpaceDatabase.cs" id="2_0hxps"]
+
+[sub_resource type="Resource" id="Resource_oeknq"]
+script = ExtResource("1_oeknq")
+metadata/_custom_type_script = "uid://cmna8i648rdiq"
+
+[sub_resource type="Resource" id="Resource_0hxps"]
+script = ExtResource("1_oeknq")
+Level = 2
+CrystalUpgradeCost = 4
+ChitinFragmentsUpgradeCost = 5
+metadata/_custom_type_script = "uid://cmna8i648rdiq"
+
+[sub_resource type="Resource" id="Resource_7wroa"]
+script = ExtResource("1_oeknq")
+Level = 3
+CrystalUpgradeCost = 5
+ChitinFragmentsUpgradeCost = 7
+Capacity = 10
+metadata/_custom_type_script = "uid://cmna8i648rdiq"
+
+[sub_resource type="Resource" id="Resource_rr2pg"]
+script = ExtResource("1_oeknq")
+Level = 4
+CrystalUpgradeCost = 10
+ChitinFragmentsUpgradeCost = 10
+Capacity = 12
+metadata/_custom_type_script = "uid://cmna8i648rdiq"
+
+[sub_resource type="Resource" id="Resource_7gpqm"]
+script = ExtResource("1_oeknq")
+Level = 5
+CrystalUpgradeCost = 12
+ChitinFragmentsUpgradeCost = 15
+Capacity = 15
+metadata/_custom_type_script = "uid://cmna8i648rdiq"
+
+[resource]
+script = ExtResource("2_0hxps")
+Levels = Array[ExtResource("1_oeknq")]([SubResource("Resource_oeknq"), SubResource("Resource_0hxps"), SubResource("Resource_7wroa"), SubResource("Resource_rr2pg"), SubResource("Resource_7gpqm")])
+metadata/_custom_type_script = "uid://bsw6ts203uuli"

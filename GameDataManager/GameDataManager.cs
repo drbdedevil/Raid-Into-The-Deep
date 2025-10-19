@@ -11,10 +11,16 @@ public partial class GameDataManager : Node
 	
 	// Submanagers
 	public StorageDataManager storageDataManager { get; private set; }
+	public LivingSpaceDataManager livingSpaceDataManager { get; private set; }
+	public TrainingPitsDataManager trainingPitsDataManager { get; private set; }
 
 	// Databases
-	[Export] 
+	[Export]
 	public StorageDatabase storageDatabase { get; private set; }
+	[Export]
+	public LivingSpaceDatabase livingSpaceDatabase { get; private set; }
+	[Export]
+	public TrainingPitsDatabase trainingPitsDatabase { get; private set; }
 
 	// Scripts
 	public override void _Ready()
@@ -27,6 +33,8 @@ public partial class GameDataManager : Node
 		Instance = this;
 
 		storageDataManager = new StorageDataManager(this);
+		livingSpaceDataManager = new LivingSpaceDataManager(this);
+		trainingPitsDataManager = new TrainingPitsDataManager(this);
 		GD.Print(" -- GameDataManager init -- ");
 	}
 }

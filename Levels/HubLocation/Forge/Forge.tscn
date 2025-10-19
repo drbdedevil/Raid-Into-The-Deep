@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://c7cu50xtgpalq" path="res://Levels/HubLocation/Forge/Forge.cs" id="1_uchbn"]
 [ext_resource type="PackedScene" uid="uid://dvhuja3f2n8a0" path="res://Levels/HubLocation/Forge/WeaponSelector.tscn" id="2_i8ft6"]
 [ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="3_haqc2"]
-[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="4_4ggqj"]
 [ext_resource type="Texture2D" uid="uid://g4kyvt848nts" path="res://Textures/HubLocation/Forge/ForgeBasePanel.png" id="4_wqo7v"]
+[ext_resource type="Texture2D" uid="uid://blc2x82ng2435" path="res://Textures/HubLocation/MainTextures/Forge.png" id="5_i8ft6"]
 [ext_resource type="Texture2D" uid="uid://c75ub61jum8o4" path="res://Textures/HubLocation/Forge/ForgeLightPanel.png" id="5_k50y4"]
 [ext_resource type="Texture2D" uid="uid://d12w3j13hnjrl" path="res://Textures/HubLocation/Forge/ClickButton.png" id="6_7hr67"]
 [ext_resource type="Texture2D" uid="uid://bopgf4fjntw86" path="res://Textures/HubLocation/Forge/MeltButton.png" id="6_lt4vl"]
@@ -81,7 +81,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("4_4ggqj")
+texture = ExtResource("5_i8ft6")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]

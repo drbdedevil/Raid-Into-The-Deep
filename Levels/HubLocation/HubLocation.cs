@@ -46,6 +46,11 @@ public partial class HubLocation : Node
 		OnCrystalsUpdate();
 		OnChitinFragmentsUpdate();
 	}
+	public override void _ExitTree()
+	{
+		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate -= OnCrystalsUpdate;
+		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate -= OnChitinFragmentsUpdate;
+	}
 
 // ---------------------------------------- Buttons ----------------------------------------
 	private void OnMenuButtonPressed()
@@ -154,14 +159,14 @@ public partial class HubLocation : Node
 	}
 
 	// ---------------------------------------- Reactions On Update GameData ----------------------------------------
-	private void OnCrystalsUpdate()
+	private void OnCrystalsUpdate() 
 	{
-		Label CrystalLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
+		Label CrystalLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect/NumberLabel");
 		CrystalLabel.Text = GameDataManager.Instance.currentData.storageData.Crystals.ToString();
 	}
 	private void OnChitinFragmentsUpdate()
 	{
-		Label ChitinFragmentsLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect/NumberLabel");
+		Label ChitinFragmentsLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
 		ChitinFragmentsLabel.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
 	}
 }

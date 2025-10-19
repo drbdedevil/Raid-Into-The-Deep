@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvmhjsev76cws"]
+[gd_scene load_steps=19 format=3 uid="uid://dvmhjsev76cws"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_7myeq"]
+[ext_resource type="Script" uid="uid://cqysb4n6spef3" path="res://Levels/HubLocation/LivingSpace/LivingSpace.cs" id="1_p1tgq"]
 [ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_cm7fx"]
 [ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="3_3wt2k"]
-[ext_resource type="Texture2D" uid="uid://beg6vh05lmkyv" path="res://icon.svg" id="4_hskda"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="5_b82sv"]
+[ext_resource type="Texture2D" uid="uid://d1l1kvc5ffihu" path="res://Textures/HubLocation/MainTextures/LivingSpace.png" id="5_p1tgq"]
 [ext_resource type="PackedScene" uid="uid://c4ecegriurk3t" path="res://Levels/HubLocation/WarriorPanels/FiredWarriorPanel.tscn" id="6_63ks0"]
 [ext_resource type="Texture2D" uid="uid://vjb7slxgyiyp" path="res://Textures/HubLocation/Icons/Platform_2.png" id="7_63ks0"]
 
@@ -116,6 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_p1tgq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -157,7 +159,7 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="LevelView" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("2_cm7fx")]
+[node name="CapacityView" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("2_cm7fx")]
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -180,7 +182,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("4_hskda")
+texture = ExtResource("5_p1tgq")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]

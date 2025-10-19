@@ -13,6 +13,7 @@ public class WeaponData
 
 public class CharacterData
 {
+    public string ID { get; set; }
     public string Name { get; set; }
     public string Portrait { get; set; }
     public int Damage { get; set; }
@@ -26,15 +27,15 @@ public class StorageData
 {
     public int Level { get; set; } = 1;
     public int Crystals { get; set; } = 120;
-    public int ChitinFragments { get; set; } = 90;
+    public int ChitinFragments { get; set; } = 150;
     public List<WeaponData> Weapons { get; set; } = new();
 }
 
 public class LivingSpaceData
 {
-    public int Level { get; set; }
-    public List<CharacterData> UsedCharacters { get; set; }
-    public List<CharacterData> ReserveCharacters { get; set; }
+    public int Level { get; set; } = 1;
+    public List<CharacterData> UsedCharacters { get; set; } = new();
+    public List<CharacterData> ReservedCharacters { get; set; } = new();
 }
 
 public class ForgeData
@@ -44,18 +45,18 @@ public class ForgeData
 
 public class TrainingPitsData
 {
-    public int Level { get; set; }
-    public List<CharacterData> CharactersForHiring { get; set; }
+    public int Level { get; set; } = 1;
+    public List<CharacterData> CharactersForHiring { get; set; } = new();
 }
 
 public class CommandBlockData
 {
-    public int RaidCount { get; set; }
-    public int EnemyDefeated { get; set; }
-    public int SquadLevel { get; set; }
-    public bool VegetableDefeated { get; set; }
-    public bool TankDefeated { get; set; }
-    public bool SpiderBossDefeated { get; set; }
+    public int RaidCount { get; set; } = 5;
+    public int EnemyDefeated { get; set; } = 5;
+    public int SquadLevel { get; set; } = 11;
+    public bool VegetableDefeated { get; set; } = true;
+    public bool TankDefeated { get; set; } = true;
+    public bool SpiderBossDefeated { get; set; } = false;
 }
 
 public class RunMapData
@@ -68,7 +69,7 @@ public class GameData
     public StorageData storageData = new();
     public LivingSpaceData livingSpaceData = new();
     public ForgeData forgeData = new();
-    public TrainingPits trainingPits = new();
+    public TrainingPitsData trainingPitsData = new();
     public CommandBlockData commandBlockData = new();
     public RunMapData runMapData = new();
 }
