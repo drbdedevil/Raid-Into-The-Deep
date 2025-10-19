@@ -1,8 +1,9 @@
 #nullable enable
-using Godot;
 using System;
 using System.Collections.Generic;
-using RaidIntoTheDeep.Levels.FightScene.Scripts;
+using Godot;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 public partial class MapManager : Node2D
 {
@@ -77,12 +78,11 @@ public partial class MapManager : Node2D
 		return tile;
 	}
 
-	public void SetEnemyOnTile(Tile tile, GameEntity enemy)
+	public void SetEnemyOnTile(Tile tile, BattleEntity enemy)
 	{
-		_entityLayer.EraseCell(enemy.MapPosition);
+		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
 		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
-		enemy.MapPosition = tile.IsometricPosition;
-		enemy.GamePosition = tile.CartesianPosition;
+		enemy.Tile = tile;
 	}
 
 	public Tile? GetTileUnderMousePosition()

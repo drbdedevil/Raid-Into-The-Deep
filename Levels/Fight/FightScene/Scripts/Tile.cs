@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace RaidIntoTheDeep.Levels.FightScene.Scripts
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
 {
     public class Tile 
     {

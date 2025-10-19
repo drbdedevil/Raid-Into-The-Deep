@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfl8wr5h7n4u8"
-path="res://.godot/imported/Bug.png-b496598010d4dde8afa602f15d999cc7.ctex"
+uid="uid://do3fgcajd8sn3"
+path="res://.godot/imported/Tile.png-12d94961a4ba75d342f18f6bb312d1e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/FightScene/Bug.png"
-dest_files=["res://.godot/imported/Bug.png-b496598010d4dde8afa602f15d999cc7.ctex"]
+source_file="res://Textures/Fight/FightScene/Tile.png"
+dest_files=["res://.godot/imported/Tile.png-12d94961a4ba75d342f18f6bb312d1e9.ctex"]
 
 [params]
 

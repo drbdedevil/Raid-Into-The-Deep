@@ -1,27 +1,30 @@
-using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using RaidIntoTheDeep.Levels.FightScene.Scripts;
+using Godot;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 public partial class FightSceneManager : Node2D
 {
     private readonly RayCast2D _rayCast = new ();
     private MapManager _mapManager;
 
-    private readonly List<GameEntity> _allies = [];
-    private readonly List<GameEntity> _enemies = [];
+    
+    
+    private readonly List<BattleEntity> _allies = [];
+    private readonly List<BattleEntity> _enemies = [];
 
-    private GameEntity enemyTest;
+    
+    private BattleEntity enemyTest;
     
     private Tile _selectedTile = null;
     
     public override void _Ready()
     {
         _mapManager = GetNode<MapManager>("Map");
-        var enemyScene = GD.Load<PackedScene>("res://Levels/FightScene/Enemy.tscn");
+        var enemyScene = GD.Load<PackedScene>("res://Levels/Fight/FightScene/Enemy.tscn");
         var tile = _mapManager.GetTileByCartesianCoord(new Vector2I(0, 0));
-        var enemy = enemyScene.Instantiate<GameEntity>();
+        var enemy = enemyScene.Instantiate<BattleEntity>();
         enemyTest = enemy;
         _enemies.Add(enemy);
         _mapManager.SetEnemyOnTile(tile, enemy);

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://bieajibc18pln"]
+
+[ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_frj35"]
+[ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
+[ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="2_jxe02"]
+[ext_resource type="Texture2D" uid="uid://cfl8wr5h7n4u8" path="res://Textures/Fight/FightScene/Bug.png" id="3_clwcm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xf8pm"]
+texture = ExtResource("2_jxe02")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqbft"]
+texture = ExtResource("3_clwcm")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+
+[sub_resource type="TileSet" id="TileSet_3gnmf"]
+tile_shape = 1
+tile_size = Vector2i(64, 32)
+sources/1 = SubResource("TileSetAtlasSource_sqbft")
+sources/0 = SubResource("TileSetAtlasSource_xf8pm")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8318"]
+texture = ExtResource("2_jxe02")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0aom"]
+texture = ExtResource("3_clwcm")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 30)
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p76rw"]
+tile_shape = 1
+tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/1 = SubResource("TileSetAtlasSource_j0aom")
+sources/0 = SubResource("TileSetAtlasSource_x8318")
+
+[node name="PrepareFightScene" type="Node2D"]
+script = ExtResource("1_jxe02")
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("1_frj35")
+
+[node name="Floor" type="TileMapLayer" parent="Map"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(500, 150)
+tile_set = SubResource("TileSet_3gnmf")
+
+[node name="Entities" type="TileMapLayer" parent="Map"]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(500, 150)
+tile_set = SubResource("TileSet_p76rw")

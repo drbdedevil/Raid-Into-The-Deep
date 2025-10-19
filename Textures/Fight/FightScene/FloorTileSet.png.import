@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://owfyggiibkdx"
-path="res://.godot/imported/TileSelected.png-365f5861a2630d08608fea9eee8702e5.ctex"
+uid="uid://dureg3fn1jl61"
+path="res://.godot/imported/FloorTileSet.png-bda6ed53b886a8860be0185859bb8aab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/FightScene/TileSelected.png"
-dest_files=["res://.godot/imported/TileSelected.png-365f5861a2630d08608fea9eee8702e5.ctex"]
+source_file="res://Textures/Fight/FightScene/FloorTileSet.png"
+dest_files=["res://.godot/imported/FloorTileSet.png-bda6ed53b886a8860be0185859bb8aab.ctex"]
 
 [params]
 
