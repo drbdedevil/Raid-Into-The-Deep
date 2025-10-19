@@ -36,8 +36,23 @@ public partial class HubLocation : Node
 		close_button.ButtonDown += OnClosePopupPressed;
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.PopupHide += OnClosePopupPressed;
+
+		// ----------- View Realization -----------
+		// ----- Binding Functions
+		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate += OnCrystalsUpdate;
+		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate += OnChitinFragmentsUpdate;
+
+		// ----- Set Init Value
+		OnCrystalsUpdate();
+		OnChitinFragmentsUpdate();
+	}
+	public override void _ExitTree()
+	{
+		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate -= OnCrystalsUpdate;
+		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate -= OnChitinFragmentsUpdate;
 	}
 
+// ---------------------------------------- Buttons ----------------------------------------
 	private void OnMenuButtonPressed()
 	{
 		GD.Print(" -- MenuButtonButtonPressed --");
@@ -141,5 +156,17 @@ public partial class HubLocation : Node
 		{
 			child.QueueFree();
 		}
+	}
+
+	// ---------------------------------------- Reactions On Update GameData ----------------------------------------
+	private void OnCrystalsUpdate() 
+	{
+		Label CrystalLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect/NumberLabel");
+		CrystalLabel.Text = GameDataManager.Instance.currentData.storageData.Crystals.ToString();
+	}
+	private void OnChitinFragmentsUpdate()
+	{
+		Label ChitinFragmentsLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
+		ChitinFragmentsLabel.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
 	}
 }

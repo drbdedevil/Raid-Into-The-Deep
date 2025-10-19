@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="StorageDatabase" load_steps=9 format=3 uid="uid://bte7ql486k3d1"]
+
+[ext_resource type="Script" uid="uid://bvm74ip1jwtoq" path="res://GameDataManager/GameBalanceData/Storage/StorageLevelData.cs" id="1_ama6j"]
+[ext_resource type="Script" uid="uid://biig1qt4kuc6e" path="res://GameDataManager/GameBalanceData/Storage/StorageDatabase.cs" id="1_enjei"]
+
+[sub_resource type="Resource" id="Resource_prp40"]
+script = ExtResource("1_ama6j")
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[sub_resource type="Resource" id="Resource_0w260"]
+script = ExtResource("1_ama6j")
+Level = 2
+CrystalUpgradeCost = 4
+ChitinFragmentsUpgradeCost = 6
+Capacity = 10
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[sub_resource type="Resource" id="Resource_cy36h"]
+script = ExtResource("1_ama6j")
+Level = 3
+CrystalUpgradeCost = 8
+ChitinFragmentsUpgradeCost = 12
+Capacity = 12
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[sub_resource type="Resource" id="Resource_28j2l"]
+script = ExtResource("1_ama6j")
+Level = 4
+CrystalUpgradeCost = 9
+ChitinFragmentsUpgradeCost = 14
+Capacity = 15
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[sub_resource type="Resource" id="Resource_t455o"]
+script = ExtResource("1_ama6j")
+Level = 5
+CrystalUpgradeCost = 12
+ChitinFragmentsUpgradeCost = 15
+Capacity = 20
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[sub_resource type="Resource" id="Resource_vdwn7"]
+script = ExtResource("1_ama6j")
+Level = 6
+CrystalUpgradeCost = 15
+ChitinFragmentsUpgradeCost = 20
+Capacity = 22
+metadata/_custom_type_script = "uid://bvm74ip1jwtoq"
+
+[resource]
+script = ExtResource("1_enjei")
+Levels = Array[ExtResource("1_ama6j")]([SubResource("Resource_prp40"), SubResource("Resource_0w260"), SubResource("Resource_cy36h"), SubResource("Resource_28j2l"), SubResource("Resource_t455o"), SubResource("Resource_vdwn7")])
+metadata/_custom_type_script = "uid://biig1qt4kuc6e"
