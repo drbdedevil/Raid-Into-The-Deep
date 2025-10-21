@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="WeaponDatabase" load_steps=17 format=3 uid="uid://dcdm8m8d5nfqg"]
+
+[ext_resource type="Script" uid="uid://dqqpa1khhctag" path="res://GameDataManager/GameBalanceData/Weapons/WeaponRow.cs" id="1_oi5sk"]
+[ext_resource type="Script" uid="uid://sgjshkne4o3v" path="res://GameDataManager/GameBalanceData/Weapons/WeaponDatabase.cs" id="2_8tvhn"]
+[ext_resource type="Texture2D" uid="uid://dupvjlb80i0a2" path="res://Textures/WeaponsTexture/mech.png" id="2_nf2he"]
+[ext_resource type="Texture2D" uid="uid://chtl45661f4if" path="res://Textures/WeaponsTexture/kopie.png" id="3_5q3s1"]
+[ext_resource type="Texture2D" uid="uid://d34x04utqdg7l" path="res://Textures/WeaponsTexture/rapira.png" id="4_g3n1y"]
+[ext_resource type="Texture2D" uid="uid://dptnsxrol0ar7" path="res://Textures/WeaponsTexture/kinzhal.png" id="5_smskd"]
+[ext_resource type="Texture2D" uid="uid://cv0kmfw10l0cq" path="res://Textures/WeaponsTexture/drobovick.png" id="6_mgoyc"]
+[ext_resource type="Texture2D" uid="uid://e30r6xbs54io" path="res://Textures/WeaponsTexture/mortira.png" id="7_jb67o"]
+[ext_resource type="Texture2D" uid="uid://digsf2l4ckom5" path="res://Textures/WeaponsTexture/bow.png" id="8_p06tq"]
+
+[sub_resource type="Resource" id="Resource_t713x"]
+script = ExtResource("1_oi5sk")
+Name = "Меч"
+WeaponTexture = ExtResource("2_nf2he")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_4qkv5"]
+script = ExtResource("1_oi5sk")
+Name = "Копьё"
+AttackShapeID = 1
+WeaponTexture = ExtResource("3_5q3s1")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_8y10g"]
+script = ExtResource("1_oi5sk")
+Name = "Рапира"
+AttackShapeID = 2
+WeaponTexture = ExtResource("4_g3n1y")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_mxcif"]
+script = ExtResource("1_oi5sk")
+Name = "Кинжал"
+AttackShapeID = 5
+WeaponTexture = ExtResource("5_smskd")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_ael6f"]
+script = ExtResource("1_oi5sk")
+Name = "Дробовик"
+AttackShapeID = 4
+WeaponTexture = ExtResource("6_mgoyc")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_im85c"]
+script = ExtResource("1_oi5sk")
+Name = "Мортира"
+AttackShapeID = 6
+WeaponTexture = ExtResource("7_jb67o")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[sub_resource type="Resource" id="Resource_w857q"]
+script = ExtResource("1_oi5sk")
+Name = "Арбалет"
+AttackShapeID = 3
+WeaponTexture = ExtResource("8_p06tq")
+metadata/_custom_type_script = "uid://dqqpa1khhctag"
+
+[resource]
+script = ExtResource("2_8tvhn")
+Weapons = Array[ExtResource("1_oi5sk")]([SubResource("Resource_t713x"), SubResource("Resource_4qkv5"), SubResource("Resource_8y10g"), SubResource("Resource_mxcif"), SubResource("Resource_ael6f"), SubResource("Resource_im85c"), SubResource("Resource_w857q")])
+metadata/_custom_type_script = "uid://sgjshkne4o3v"

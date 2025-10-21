@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dftffxi0y4e7q"]
+
+[ext_resource type="PackedScene" uid="uid://d3shuau7lurda" path="res://Levels/HubLocation/WeaponPanels/WeaponPanel.tscn" id="1_rkb85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkb85"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu8ft"]
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 0.31764707)
+
+[node name="WeaponPanelButton" instance=ExtResource("1_rkb85")]
+
+[node name="Button" type="Button" parent="TextureRect" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rkb85")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qu8ft")

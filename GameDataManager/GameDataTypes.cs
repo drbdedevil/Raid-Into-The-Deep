@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 public class WeaponData
 {
-    public string ID { get; set; }
-    public string Name { get; set; }
-    public int Damage { get; set; }
-    public int AttackShapeID { get; set; }
-    public int EffectID { get; set; }
-    public string TextureName { get; set; }
+    public string ID { get; set; } = "NONE";
+    public string Name { get; set; } = "NONE";
+    public Vector2 DamageRange { get; set; } = new Vector2(0, 0);
+    public int AttackShapeID { get; set; } = 0;
+    public int EffectID { get; set; } = 0;
+    public string TextureName { get; set; } = "NONE";
 }
 
 public class CharacterData
@@ -40,7 +41,8 @@ public class LivingSpaceData
 
 public class ForgeData
 {
-    public int Level { get; set; }
+    public int Level { get; set; } = 1;
+    public List<WeaponData> WeaponsForShackle { get; set; } = new();
 }
 
 public class TrainingPitsData

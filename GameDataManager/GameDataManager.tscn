@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://t5wswiq72t4i"]
+[gd_scene load_steps=8 format=3 uid="uid://t5wswiq72t4i"]
 
 [ext_resource type="Script" uid="uid://v7dmuhb0frce" path="res://GameDataManager/GameDataManager.cs" id="1_adx02"]
 [ext_resource type="Resource" uid="uid://bte7ql486k3d1" path="res://GameDataManager/GameBalanceData/Storage/StorageDatabaseResource.tres" id="2_6ehcg"]
 [ext_resource type="Resource" uid="uid://cngf0roln1w13" path="res://GameDataManager/GameBalanceData/LivingSpace/LivingSpaceDatabaseResource.tres" id="3_os4ts"]
 [ext_resource type="Resource" uid="uid://umuo5vyxarmx" path="res://GameDataManager/GameBalanceData/TrainingPits/TrainingPitsDatabaseResource.tres" id="4_n1qol"]
+[ext_resource type="Resource" uid="uid://bv0qg1xp3xbgu" path="res://GameDataManager/GameBalanceData/Forge/ForgeDatabaseResource.tres" id="5_mxvbt"]
+[ext_resource type="Resource" uid="uid://bpx6mapf7rklo" path="res://GameDataManager/GameBalanceData/Weapons/AttackShapeDatabaseResource.tres" id="6_nijcr"]
+[ext_resource type="Resource" uid="uid://dcdm8m8d5nfqg" path="res://GameDataManager/GameBalanceData/Weapons/WeaponDatabaseResource.tres" id="7_37ghu"]
 
 [node name="GameDataManager" type="Node"]
 script = ExtResource("1_adx02")
 storageDatabase = ExtResource("2_6ehcg")
 livingSpaceDatabase = ExtResource("3_os4ts")
 trainingPitsDatabase = ExtResource("4_n1qol")
+forgeDatabase = ExtResource("5_mxvbt")
+attackShapeDatabase = ExtResource("6_nijcr")
+weaponDatabase = ExtResource("7_37ghu")

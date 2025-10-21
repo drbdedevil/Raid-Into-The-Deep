@@ -1,24 +1,69 @@
 using Godot;
 using System;
 
+public enum EWeaponList
+{
+    None,
+    Storage,
+    Shackle
+}
+
 public partial class WeaponSelector : Node, IStackPage
 {
     [Signal]
     public delegate void RequestBackEventHandler();
+    [Export]
+	public PackedScene WeaponPanelScene;
 
     public Node Parent = null;
+    public EWeaponList weaponList = EWeaponList.None;
 
     public override void _Ready()
     {
         var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/TextureButton");
         BackButton.ButtonDown += OnBackButtonPressed;
 
+        FillWeaponContainer();
+
         GD.Print("Weapon Selector Ready");
     }
 
     private void OnBackButtonPressed()
     {
+        if (Parent is Forge forge)
+        {
+            GD.Print("Back to Forge");
+        }
+        else if (Parent is CharacterList characterList)
+        {
+            GD.Print("Back to Character List");
+        }
+
         EmitSignal(SignalName.RequestBack);
+    }
+
+    private void FillWeaponContainer()
+    {
+        if (weaponList == EWeaponList.Storage)
+        {
+
+        }
+        else if (weaponList == EWeaponList.Shackle)
+        {
+            GridContainer gridContainer = GetNode<GridContainer>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer");
+            foreach (Node child in gridContainer.GetChildren())
+            {
+                child.QueueFree();
+            }
+
+            foreach (WeaponData weaponData in GameDataManager.Instance.currentData.forgeData.WeaponsForShackle)
+            {
+                WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
+                weaponPanel.SetWeaponInfos(weaponData);
+                weaponPanel.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
+                gridContainer.AddChild(weaponPanel);
+            }
+        }
     }
 
     public void OnShow()

@@ -53,10 +53,10 @@ public partial class Warrior : Node, IStackPage
 		var ListButton = GetNode<Button>("TextureRect/HBoxContainer/MarginContainer/TextureRect/MarginContainer/Button");
 		ListButton.ReleaseFocus();
 		// ListButton.ButtonDown += OnListButtonPressed;
-    }
-    public void OnHide()
+	}
+	public void OnHide()
 	{
 		// var ListButton = GetNode<Button>("TextureRect/HBoxContainer/MarginContainer/TextureRect/MarginContainer/Button");
 		// ListButton.ButtonDown -= OnListButtonPressed;
-    }
+	}
 }
