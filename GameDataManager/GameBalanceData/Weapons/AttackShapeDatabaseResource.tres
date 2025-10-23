@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="AttackShapeDatabase" load_steps=17 format=3 uid="uid://bpx6mapf7rklo"]
+[gd_resource type="Resource" script_class="AttackShapeDatabase" load_steps=15 format=3 uid="uid://bpx6mapf7rklo"]
 
 [ext_resource type="Script" uid="uid://jo0f2uk4f2tt" path="res://GameDataManager/GameBalanceData/Weapons/AttackShapeInfo.cs" id="1_gbnkh"]
 [ext_resource type="Texture2D" uid="uid://5hjon108syvn" path="res://Textures/AttackShapesTextures/CloseRangeAttack.png" id="2_6ugmn"]
 [ext_resource type="Script" uid="uid://di2v4lkheifld" path="res://GameDataManager/GameBalanceData/Weapons/AttackShapeDatabase.cs" id="2_gigjl"]
 [ext_resource type="Texture2D" uid="uid://d0ii670s17gm4" path="res://Textures/AttackShapesTextures/LongAttack.png" id="3_6ugmn"]
 [ext_resource type="Texture2D" uid="uid://d4qvwp08ytji" path="res://Textures/AttackShapesTextures/SweepingAttack.png" id="4_4xuwf"]
-[ext_resource type="Texture2D" uid="uid://csg1pf6df6d3r" path="res://Textures/AttackShapesTextures/DoubleStrike.png" id="5_dafkj"]
 [ext_resource type="Texture2D" uid="uid://stqlyw31puaa" path="res://Textures/AttackShapesTextures/RangedStrikeWithScatter.png" id="6_ksncb"]
 [ext_resource type="Texture2D" uid="uid://ecw7u715x3i5" path="res://Textures/AttackShapesTextures/RangedCombat.png" id="7_wgkf1"]
 [ext_resource type="Texture2D" uid="uid://c0g10vvhwoxx" path="res://Textures/AttackShapesTextures/ArtilleryShot.png" id="8_4k8yc"]
@@ -31,13 +30,6 @@ texture2D = ExtResource("4_4xuwf")
 AttackCood = Array[Vector2i]([Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1)])
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
-[sub_resource type="Resource" id="Resource_rql88"]
-script = ExtResource("1_gbnkh")
-Name = "Двойной удар"
-texture2D = ExtResource("5_dafkj")
-AttackCood = Array[Vector2i]([Vector2i(0, -1), Vector2i(0, 1)])
-metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
-
 [sub_resource type="Resource" id="Resource_v86ru"]
 script = ExtResource("1_gbnkh")
 Name = "Дальний удар с разбросом"
@@ -59,5 +51,5 @@ metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [resource]
 script = ExtResource("2_gigjl")
-AttackShapes = Array[ExtResource("1_gbnkh")]([SubResource("Resource_gigjl"), SubResource("Resource_4xuwf"), SubResource("Resource_dafkj"), SubResource("Resource_rql88"), SubResource("Resource_v86ru"), SubResource("Resource_6v1qd"), SubResource("Resource_5a3dr")])
+AttackShapes = Array[ExtResource("1_gbnkh")]([SubResource("Resource_gigjl"), SubResource("Resource_4xuwf"), SubResource("Resource_dafkj"), SubResource("Resource_v86ru"), SubResource("Resource_6v1qd"), SubResource("Resource_5a3dr")])
 metadata/_custom_type_script = "uid://di2v4lkheifld"

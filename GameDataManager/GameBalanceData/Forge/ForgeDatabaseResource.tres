@@ -56,5 +56,5 @@ metadata/_custom_type_script = "uid://bf5u06orhrwxh"
 [resource]
 script = ExtResource("2_q83n2")
 Levels = Array[ExtResource("1_y58v5")]([SubResource("Resource_y58v5"), SubResource("Resource_q83n2"), SubResource("Resource_ri4k6"), SubResource("Resource_gwbp2"), SubResource("Resource_w2305")])
-MaxWeaponsForShackle = 21
+MaxWeaponsForShackle = 7
 metadata/_custom_type_script = "uid://riddbdolst3s"

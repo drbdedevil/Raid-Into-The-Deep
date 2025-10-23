@@ -6,7 +6,7 @@ public class WeaponData
 {
     public string ID { get; set; } = "NONE";
     public string Name { get; set; } = "NONE";
-    public Vector2 DamageRange { get; set; } = new Vector2(0, 0);
+    public int DamageRange { get; set; } = 0;
     public int AttackShapeID { get; set; } = 0;
     public int EffectID { get; set; } = 0;
     public string TextureName { get; set; } = "NONE";
@@ -18,6 +18,7 @@ public class CharacterData
     public string Name { get; set; }
     public string Portrait { get; set; }
     public int Damage { get; set; }
+    public int Health { get; set; }
     public int Heal { get; set; }
     public int Speed { get; set; }
     public bool[] Upgrades { get; set; }

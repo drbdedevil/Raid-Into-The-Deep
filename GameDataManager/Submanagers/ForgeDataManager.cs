@@ -14,7 +14,7 @@ public partial class ForgeDataManager : Node
     public ForgeDataManager(GameDataManager InGameDataManager)
     {
         gameDataManager = InGameDataManager;
-        GenerateWeaponsForShackleToMaxValue();
+        GenerateWeaponsForShackle();
     }
 
     public bool TryUpdateLevel()
@@ -30,21 +30,14 @@ public partial class ForgeDataManager : Node
 
         return false;
     }
-    public void GenerateWeaponsForShackleToMaxValue()
-    {
-        for (int i = 0; i < gameDataManager.forgeDatabase.MaxWeaponsForShackle; ++i)
-        {
-            TryAddWeaponForShackle(GenerateRandomWeapon());
-        }
-    }
-    public bool TryAddWeaponForShackle(WeaponData InWeaponData)
+    private bool TryAddWeaponForShackle(WeaponData InWeaponData)
     {
         var weaponForShackle = gameDataManager.currentData.forgeData.WeaponsForShackle;
     
-        if (weaponForShackle.Any(weapon => weapon.ID == InWeaponData.ID))
+        /* if (weaponForShackle.Any(weapon => weapon.ID == InWeaponData.ID))
         {
             return false;
-        }
+        } */
 
         weaponForShackle.Add(InWeaponData);
         return true;
@@ -54,25 +47,21 @@ public partial class ForgeDataManager : Node
         return false;
     }
 
-    private WeaponData GenerateRandomWeapon()
+    private void GenerateWeaponsForShackle()
     {
-        WeaponData weaponData = new WeaponData();
-        weaponData.ID = Guid.NewGuid().ToString();
-
-        int randomValue = GD.RandRange(0, gameDataManager.weaponDatabase.Weapons.Count - 1);
-        if (randomValue < gameDataManager.weaponDatabase.Weapons.Count)
+        for (int i = 0; i < gameDataManager.weaponDatabase.Weapons.Count; ++i)
         {
-            WeaponRow randomWeaponRow = gameDataManager.weaponDatabase.Weapons[randomValue];
+            WeaponRow currentWeaponRow = gameDataManager.weaponDatabase.Weapons[i];
 
-            weaponData.Name = randomWeaponRow.Name;
-            weaponData.DamageRange = new System.Numerics.Vector2(randomWeaponRow.DamageRange.X, randomWeaponRow.DamageRange.Y);
-            weaponData.AttackShapeID = randomWeaponRow.AttackShapeID;
-            weaponData.EffectID = 0; // ADD EFFECT DATABASE
-            weaponData.TextureName = randomWeaponRow.WeaponTexture.ResourceName;
+            WeaponData weaponData = new WeaponData();
+            weaponData.ID = "NOT ASSIGNED"; // ПРИСВОИТСЯ ВО ВРЕМЯ КОВКИ
+            weaponData.Name = currentWeaponRow.Name;
+            weaponData.DamageRange = 0; // GD.RandRange(currentWeaponRow.DamageRange.X, currentWeaponRow.DamageRange.Y); ПРИСВОИТСЯ ВО ВРЕМЯ КОВКИ
+            weaponData.AttackShapeID = currentWeaponRow.AttackShapeID;
+            weaponData.EffectID = 0; // ADD EFFECT DATABASE - ВО ВРЕМЯ КОВКИ
+            weaponData.TextureName = currentWeaponRow.WeaponTexture.ResourceName;
 
-            return weaponData;
+            TryAddWeaponForShackle(weaponData);
         }
-
-        return new WeaponData();
     }
 }

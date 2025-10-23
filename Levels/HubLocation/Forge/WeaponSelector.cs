@@ -59,7 +59,7 @@ public partial class WeaponSelector : Node, IStackPage
             foreach (WeaponData weaponData in GameDataManager.Instance.currentData.forgeData.WeaponsForShackle)
             {
                 WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
-                weaponPanel.SetWeaponInfos(weaponData);
+                weaponPanel.SetWeaponInfosShackle(weaponData);
                 weaponPanel.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
                 gridContainer.AddChild(weaponPanel);
             }

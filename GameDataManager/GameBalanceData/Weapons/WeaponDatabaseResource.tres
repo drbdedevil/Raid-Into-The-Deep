@@ -13,12 +13,15 @@
 [sub_resource type="Resource" id="Resource_t713x"]
 script = ExtResource("1_oi5sk")
 Name = "Меч"
+DamageRange = Vector2i(2, 5)
+AttackShapeID = 2
 WeaponTexture = ExtResource("2_nf2he")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_4qkv5"]
 script = ExtResource("1_oi5sk")
 Name = "Копьё"
+DamageRange = Vector2i(1, 6)
 AttackShapeID = 1
 WeaponTexture = ExtResource("3_5q3s1")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
@@ -26,35 +29,38 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_8y10g"]
 script = ExtResource("1_oi5sk")
 Name = "Рапира"
-AttackShapeID = 2
+DamageRange = Vector2i(3, 8)
 WeaponTexture = ExtResource("4_g3n1y")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_mxcif"]
 script = ExtResource("1_oi5sk")
 Name = "Кинжал"
-AttackShapeID = 5
+DamageRange = Vector2i(1, 4)
 WeaponTexture = ExtResource("5_smskd")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_ael6f"]
 script = ExtResource("1_oi5sk")
 Name = "Дробовик"
-AttackShapeID = 4
+DamageRange = Vector2i(4, 12)
+AttackShapeID = 3
 WeaponTexture = ExtResource("6_mgoyc")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_im85c"]
 script = ExtResource("1_oi5sk")
 Name = "Мортира"
-AttackShapeID = 6
+DamageRange = Vector2i(6, 20)
+AttackShapeID = 5
 WeaponTexture = ExtResource("7_jb67o")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_w857q"]
 script = ExtResource("1_oi5sk")
 Name = "Арбалет"
-AttackShapeID = 3
+DamageRange = Vector2i(3, 10)
+AttackShapeID = 4
 WeaponTexture = ExtResource("8_p06tq")
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
