@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="EffectDatabase" load_steps=19 format=3 uid="uid://cho4yxgix0ujh"]
+
+[ext_resource type="Script" uid="uid://bl6nwtprqh342" path="res://GameDataManager/GameBalanceData/Weapons/EffectInfo.cs" id="1_6srn1"]
+[ext_resource type="Script" uid="uid://ctthl5r5rno13" path="res://GameDataManager/GameBalanceData/Weapons/EffectDatabase.cs" id="2_hbc4s"]
+[ext_resource type="Texture2D" uid="uid://bkmj3xt6sgqty" path="res://Textures/EffectsTextures/Yad.png" id="2_l8ofp"]
+[ext_resource type="Texture2D" uid="uid://bidrlcfnurj8g" path="res://Textures/EffectsTextures/Moroz.png" id="3_l8ofp"]
+[ext_resource type="Texture2D" uid="uid://qs3p31lt4phs" path="res://Textures/EffectsTextures/Oslablenie.png" id="4_2kh8b"]
+[ext_resource type="Texture2D" uid="uid://123dkt1a5kl8" path="res://Textures/EffectsTextures/Oglushenie.png" id="5_mftc2"]
+[ext_resource type="Texture2D" uid="uid://c3yqojxcc5orp" path="res://Textures/EffectsTextures/SoprOglushenie.png" id="6_mftc2"]
+[ext_resource type="Texture2D" uid="uid://bfumvegdurp0n" path="res://Textures/EffectsTextures/Tolkanie.png" id="7_pnfla"]
+[ext_resource type="Texture2D" uid="uid://bbpq3c07nd01h" path="res://Textures/EffectsTextures/Son.png" id="8_uvb8r"]
+[ext_resource type="Texture2D" uid="uid://cfmtw60tnu2wm" path="res://Textures/EffectsTextures/Ogon.png" id="9_y0a6f"]
+
+[sub_resource type="Resource" id="Resource_hbc4s"]
+script = ExtResource("1_6srn1")
+Name = "Яд"
+texture2D = ExtResource("2_l8ofp")
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_l8ofp"]
+script = ExtResource("1_6srn1")
+Name = "Мороз"
+texture2D = ExtResource("3_l8ofp")
+effectType = 2
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_iupka"]
+script = ExtResource("1_6srn1")
+Name = "Ослабление"
+texture2D = ExtResource("4_2kh8b")
+effectType = 3
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_2kh8b"]
+script = ExtResource("1_6srn1")
+Name = "Оглушение"
+texture2D = ExtResource("5_mftc2")
+effectType = 1
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_mftc2"]
+script = ExtResource("1_6srn1")
+Name = "Сопротивление оглушению"
+texture2D = ExtResource("6_mftc2")
+effectType = 4
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_pnfla"]
+script = ExtResource("1_6srn1")
+Name = "Толкание"
+texture2D = ExtResource("7_pnfla")
+effectType = 5
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_uvb8r"]
+script = ExtResource("1_6srn1")
+Name = "Сон"
+texture2D = ExtResource("8_uvb8r")
+effectType = 6
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[sub_resource type="Resource" id="Resource_y0a6f"]
+script = ExtResource("1_6srn1")
+Name = "Огонь"
+texture2D = ExtResource("9_y0a6f")
+effectType = 7
+metadata/_custom_type_script = "uid://bl6nwtprqh342"
+
+[resource]
+script = ExtResource("2_hbc4s")
+Effects = Array[ExtResource("1_6srn1")]([SubResource("Resource_hbc4s"), SubResource("Resource_l8ofp"), SubResource("Resource_iupka"), SubResource("Resource_2kh8b"), SubResource("Resource_mftc2"), SubResource("Resource_pnfla"), SubResource("Resource_uvb8r"), SubResource("Resource_y0a6f")])
+metadata/_custom_type_script = "uid://ctthl5r5rno13"

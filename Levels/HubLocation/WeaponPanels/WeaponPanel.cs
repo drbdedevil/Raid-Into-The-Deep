@@ -4,8 +4,24 @@ using System.Linq;
 
 public partial class WeaponPanel : Control
 {
+	public WeaponData weaponData = new();
+
+	[Signal]
+	public delegate void OnWeaponPanelPressedEventHandler(WeaponPanel InWeaponPanel);
+
+	public override void _Ready()
+	{
+		Button button = GetNodeOrNull<Button>("TextureRect/Button");
+		if (button != null)
+		{
+			button.ButtonDown += OnButtonPressed;
+		}
+	}
+
 	public void SetWeaponInfos(WeaponData InWeaponData)
 	{
+		weaponData = InWeaponData;
+
 		Label NameLabel = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/NameLabel");
 		NameLabel.Text = InWeaponData.Name;
 
@@ -20,13 +36,16 @@ public partial class WeaponPanel : Control
 		}
 
 		Label NumberLabel = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect/HBoxContainer/NumberLabel");
-		NumberLabel.Text = InWeaponData.DamageRange.ToString();
+		NumberLabel.Text = InWeaponData.Damage.ToString();
 
-		Label NumberLabel2 = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect/HBoxContainer/NumberLabel2");
-		// NumberLabel2.Text = InWeaponData.DamageRange.Y.ToString();
+		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
+		TextureRect effectTexture = GetNode<TextureRect>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/MarginContainer/EffectTexture");
+		effectTexture.Texture = effectInfo.texture2D;
 	}
 	public void SetWeaponInfosShackle(WeaponData InWeaponData)
 	{
+		weaponData = InWeaponData;
+
 		Label NameLabel = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/NameLabel");
 		NameLabel.Text = InWeaponData.Name;
 
@@ -46,8 +65,8 @@ public partial class WeaponPanel : Control
 			NumberLabel2.Text = existingWeapon.DamageRange.Y.ToString();
 		}
 
-		Label effectLabel = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/EffectLabel");
-		effectLabel.Text = "?";
+		// Label effectLabel = GetNode<Label>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/EffectLabel");
+		// effectLabel.Text = "?";
 	}
 
 	public void HideRangeDamage()
@@ -58,4 +77,8 @@ public partial class WeaponPanel : Control
 		labelN.Visible = false;
 	}
 	
+	public void OnButtonPressed()
+	{
+		EmitSignal(SignalName.OnWeaponPanelPressed, this);
+	}
 }

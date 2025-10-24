@@ -3,75 +3,119 @@ using System;
 
 public enum EWeaponList
 {
-    None,
-    Storage,
-    Shackle
+	None,
+	Storage,
+	Shackle
 }
 
 public partial class WeaponSelector : Node, IStackPage
 {
-    [Signal]
-    public delegate void RequestBackEventHandler();
-    [Export]
+	[Signal]
+	public delegate void RequestBackEventHandler();
+	[Export]
 	public PackedScene WeaponPanelScene;
 
-    public Node Parent = null;
-    public EWeaponList weaponList = EWeaponList.None;
+	public Node Parent = null;
+	public EWeaponList weaponList = EWeaponList.None;
 
-    public override void _Ready()
-    {
-        var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/TextureButton");
-        BackButton.ButtonDown += OnBackButtonPressed;
+	public override void _Ready()
+	{
+		var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/TextureButton");
+		BackButton.ButtonDown += OnBackButtonPressed;
 
-        FillWeaponContainer();
+		FillWeaponContainer();
+		AssignWeaponPanelButtons();
 
-        GD.Print("Weapon Selector Ready");
-    }
+		GD.Print("Weapon Selector Ready");
+	}
 
-    private void OnBackButtonPressed()
-    {
-        if (Parent is Forge forge)
-        {
-            GD.Print("Back to Forge");
-        }
-        else if (Parent is CharacterList characterList)
-        {
-            GD.Print("Back to Character List");
-        }
+	private void OnBackButtonPressed()
+	{
+		if (Parent is Forge forge)
+		{
+			var navigator = GetTree().Root.FindChild("PopupPanel", recursive: true, owned: false) as PopupNavigator;
+			navigator.SetPanelLabelName("Кузница");
 
-        EmitSignal(SignalName.RequestBack);
-    }
+			GD.Print("Back to Forge");
+		}
+		else if (Parent is CharacterList characterList)
+		{
+			GD.Print("Back to Character List");
+		}
 
-    private void FillWeaponContainer()
-    {
-        if (weaponList == EWeaponList.Storage)
-        {
+		EmitSignal(SignalName.RequestBack);
+	}
+	private void OnWeaponPanelButtonPressed(WeaponPanel InWeaponPanel)
+	{
+		if (Parent is Forge forge)
+		{
+			if (weaponList == EWeaponList.Storage)
+			{
+				forge.ChooseWeaponData(InWeaponPanel, EForgeAction.Melt);
+			}
+			else if (weaponList == EWeaponList.Shackle)
+			{
+				forge.ChooseWeaponData(InWeaponPanel, EForgeAction.Shackle);
+			}
+			OnBackButtonPressed();
+		}
+	}
 
-        }
-        else if (weaponList == EWeaponList.Shackle)
-        {
-            GridContainer gridContainer = GetNode<GridContainer>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer");
-            foreach (Node child in gridContainer.GetChildren())
-            {
-                child.QueueFree();
-            }
+	private void FillWeaponContainer()
+	{
+		GridContainer gridContainer = GetNode<GridContainer>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer");
+		foreach (Node child in gridContainer.GetChildren())
+		{
+			child.QueueFree();
+		}
 
-            foreach (WeaponData weaponData in GameDataManager.Instance.currentData.forgeData.WeaponsForShackle)
-            {
-                WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
-                weaponPanel.SetWeaponInfosShackle(weaponData);
-                weaponPanel.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
-                gridContainer.AddChild(weaponPanel);
-            }
-        }
-    }
+		if (weaponList == EWeaponList.Storage)
+		{
+			foreach (WeaponData weaponData in GameDataManager.Instance.currentData.storageData.Weapons)
+			{
+				WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
+				weaponPanel.HideRangeDamage();
+				weaponPanel.SetWeaponInfos(weaponData);
+				weaponPanel.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
+				gridContainer.AddChild(weaponPanel);
+			}
+		}
+		else if (weaponList == EWeaponList.Shackle)
+		{
+			foreach (WeaponData weaponData in GameDataManager.Instance.currentData.forgeData.WeaponsForShackle)
+			{
+				WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
+				weaponPanel.SetWeaponInfosShackle(weaponData);
+				weaponPanel.SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin;
+				gridContainer.AddChild(weaponPanel);
+			}
+		}
+	}
+	private void AssignWeaponPanelButtons()
+	{
+		GridContainer gridContainer = GetNode<GridContainer>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ScrollContainer/GridContainer");
+		foreach (Node child in gridContainer.GetChildren())
+		{
+			if (child is WeaponPanel weaponPanel)
+			{
+				if (weaponPanel != null && !child.IsQueuedForDeletion())
+				{
+					GD.Print(weaponPanel.weaponData.ID);
+					if (Parent is Forge forge)
+					{
+						weaponPanel.OnWeaponPanelPressed += OnWeaponPanelButtonPressed;
+					}
+				}
+			}
+		}
+	}
 
-    public void OnShow()
-    {
-        GD.Print("WeaponSelector Popup shown");
-    }
-    public void OnHide()
-    {
-        GD.Print("WeaponSelector Popup hidden");
-    }
+	public void OnShow()
+	{
+		GD.Print("WeaponSelector Popup shown");
+	}
+	public void OnHide()
+	{
+		GD.Print("WeaponSelector Popup hidden");
+	}
 }

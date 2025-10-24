@@ -56,7 +56,7 @@ public partial class ForgeDataManager : Node
             WeaponData weaponData = new WeaponData();
             weaponData.ID = "NOT ASSIGNED"; // ПРИСВОИТСЯ ВО ВРЕМЯ КОВКИ
             weaponData.Name = currentWeaponRow.Name;
-            weaponData.DamageRange = 0; // GD.RandRange(currentWeaponRow.DamageRange.X, currentWeaponRow.DamageRange.Y); ПРИСВОИТСЯ ВО ВРЕМЯ КОВКИ
+            weaponData.Damage = 0; // GD.RandRange(currentWeaponRow.DamageRange.X, currentWeaponRow.DamageRange.Y); ПРИСВОИТСЯ ВО ВРЕМЯ КОВКИ
             weaponData.AttackShapeID = currentWeaponRow.AttackShapeID;
             weaponData.EffectID = 0; // ADD EFFECT DATABASE - ВО ВРЕМЯ КОВКИ
             weaponData.TextureName = currentWeaponRow.WeaponTexture.ResourceName;

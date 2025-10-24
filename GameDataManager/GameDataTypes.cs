@@ -6,7 +6,7 @@ public class WeaponData
 {
     public string ID { get; set; } = "NONE";
     public string Name { get; set; } = "NONE";
-    public int DamageRange { get; set; } = 0;
+    public int Damage { get; set; } = 0;
     public int AttackShapeID { get; set; } = 0;
     public int EffectID { get; set; } = 0;
     public string TextureName { get; set; } = "NONE";

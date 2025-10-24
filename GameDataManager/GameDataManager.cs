@@ -28,6 +28,8 @@ public partial class GameDataManager : Node
 	[Export]
 	public AttackShapeDatabase attackShapeDatabase { get; private set; }
 	[Export]
+	public EffectDatabase effectDatabase { get; private set; }
+	[Export]
 	public WeaponDatabase weaponDatabase { get; private set; }
 
 	// Scripts

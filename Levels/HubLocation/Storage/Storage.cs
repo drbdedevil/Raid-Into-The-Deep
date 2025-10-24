@@ -3,6 +3,9 @@ using System;
 
 public partial class Storage : Control
 {
+    [Export]
+	public PackedScene WeaponPanelScene;
+
     public override void _Ready()
     {
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
@@ -74,6 +77,12 @@ public partial class Storage : Control
             child.QueueFree();
         }
 
-        
+        foreach (WeaponData weaponData in GameDataManager.Instance.currentData.storageData.Weapons)
+		{
+			WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
+			weaponPanel.HideRangeDamage();
+			weaponPanel.SetWeaponInfos(weaponData);
+			weaponVBoxContainer.AddChild(weaponPanel);
+		}
     }
 }

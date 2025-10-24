@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class StorageDataManager : Node
 {
@@ -59,10 +60,33 @@ public partial class StorageDataManager : Node
     }
     public bool TryAddWeapon(WeaponData InWeaponData)
     {
-        return false;
+        var weapons = gameDataManager.currentData.storageData.Weapons;
+        StorageLevelData levelData = gameDataManager.storageDatabase.Levels[gameDataManager.currentData.storageData.Level - 1];
+        if (levelData.Capacity <= weapons.Count)
+        {
+            return false;
+        }
+    
+        if (weapons.Any(weapon => weapon.ID == InWeaponData.ID))
+        {
+            return false;
+        }
+
+        weapons.Add(InWeaponData);
+        return true;
     }
     public bool TryDeleteWeapon(string WeaponID)
     {
+        var weapons = gameDataManager.currentData.storageData.Weapons;
+
+        var existingWeapon = GameDataManager.Instance.currentData.storageData.Weapons.FirstOrDefault(weapon => weapon.ID == WeaponID);
+        if (existingWeapon != null)
+        {
+            weapons.Remove(existingWeapon);
+
+            return true;
+        }
+
         return false;
     }
 }

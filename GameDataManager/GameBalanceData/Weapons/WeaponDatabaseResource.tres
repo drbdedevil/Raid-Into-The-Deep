@@ -16,6 +16,10 @@ Name = "Меч"
 DamageRange = Vector2i(2, 5)
 AttackShapeID = 2
 WeaponTexture = ExtResource("2_nf2he")
+CrystalCost = 6
+ChitinFragmentsCost = 12
+CrystalYield = 4
+ChitinFragmentsYield = 8
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_4qkv5"]
@@ -24,6 +28,10 @@ Name = "Копьё"
 DamageRange = Vector2i(1, 6)
 AttackShapeID = 1
 WeaponTexture = ExtResource("3_5q3s1")
+CrystalCost = 5
+ChitinFragmentsCost = 10
+CrystalYield = 2
+ChitinFragmentsYield = 5
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_8y10g"]
@@ -31,6 +39,10 @@ script = ExtResource("1_oi5sk")
 Name = "Рапира"
 DamageRange = Vector2i(3, 8)
 WeaponTexture = ExtResource("4_g3n1y")
+CrystalCost = 7
+ChitinFragmentsCost = 16
+CrystalYield = 4
+ChitinFragmentsYield = 10
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_mxcif"]
@@ -38,6 +50,10 @@ script = ExtResource("1_oi5sk")
 Name = "Кинжал"
 DamageRange = Vector2i(1, 4)
 WeaponTexture = ExtResource("5_smskd")
+CrystalCost = 5
+ChitinFragmentsCost = 10
+CrystalYield = 2
+ChitinFragmentsYield = 4
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_ael6f"]
@@ -46,6 +62,10 @@ Name = "Дробовик"
 DamageRange = Vector2i(4, 12)
 AttackShapeID = 3
 WeaponTexture = ExtResource("6_mgoyc")
+CrystalCost = 10
+ChitinFragmentsCost = 20
+CrystalYield = 8
+ChitinFragmentsYield = 15
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_im85c"]
@@ -54,6 +74,10 @@ Name = "Мортира"
 DamageRange = Vector2i(6, 20)
 AttackShapeID = 5
 WeaponTexture = ExtResource("7_jb67o")
+CrystalCost = 20
+ChitinFragmentsCost = 40
+CrystalYield = 10
+ChitinFragmentsYield = 12
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_w857q"]
@@ -62,6 +86,10 @@ Name = "Арбалет"
 DamageRange = Vector2i(3, 10)
 AttackShapeID = 4
 WeaponTexture = ExtResource("8_p06tq")
+CrystalCost = 12
+ChitinFragmentsCost = 20
+CrystalYield = 9
+ChitinFragmentsYield = 14
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [resource]

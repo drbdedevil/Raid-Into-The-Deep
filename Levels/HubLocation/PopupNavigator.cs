@@ -175,6 +175,12 @@ public partial class PopupNavigator : PopupPanel
             node.Call("on_hide");
         }
     }
+
+    public void SetPanelLabelName(string NewName)
+    {
+        Label panelLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
+        panelLabel.Text = NewName;
+    }
 }
 
 public interface IStackPage

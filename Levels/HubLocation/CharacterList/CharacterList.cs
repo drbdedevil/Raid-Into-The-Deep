@@ -29,6 +29,7 @@ public partial class CharacterList : ColorRect, IStackPage
         var navigator = GetTree().Root.FindChild("PopupPanel", recursive: true, owned: false) as PopupNavigator;
         WeaponSelector sceneInstance = ChooseWeaponScene.Instantiate() as WeaponSelector;
         sceneInstance.Parent = this;
+        sceneInstance.weaponList = EWeaponList.Storage;
 
         navigator.PushInstance(sceneInstance);
     }
