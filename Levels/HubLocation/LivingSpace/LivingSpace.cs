@@ -1,21 +1,12 @@
 using Godot;
 using System;
 
-public partial class LivingSpace : Control
+public partial class LivingSpace : Control, IStackPage
 {
     public override void _Ready()
     {
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
         UpgradeButton.ButtonDown += OnLivingSpaceUpgradeButtonPressed;
-
-        // ----------- View Realization -----------
-        // ----- Binding Functions
-        GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate += OnLivingSpaceLevelUpdate;
-
-        // ----- Set Init Value
-        OnLivingSpaceLevelUpdate();
-        UpdateUsedCharactersList();
-        UpdateReservedCharactersList();
     }
     public override void _ExitTree()
     {
@@ -86,6 +77,22 @@ public partial class LivingSpace : Control
             child.QueueFree();
         }
 
-        
+
+    }
+    
+     public void OnShow()
+    {
+        // ----------- View Realization -----------
+        // ----- Binding Functions
+        GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate += OnLivingSpaceLevelUpdate;
+
+        // ----- Set Init Value
+        OnLivingSpaceLevelUpdate();
+        UpdateUsedCharactersList();
+        UpdateReservedCharactersList();
+    }
+    public void OnHide()
+    {
+        GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate -= OnLivingSpaceLevelUpdate;
     }
 }

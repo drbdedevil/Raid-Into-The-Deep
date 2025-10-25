@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://1u05hx0bg1aw"]
+[gd_scene load_steps=8 format=3 uid="uid://1u05hx0bg1aw"]
 
 [ext_resource type="PackedScene" uid="uid://0ldor4jd4q1s" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel.tscn" id="1_2vvqj"]
 [ext_resource type="Texture2D" uid="uid://dft47mgv7eaui" path="res://Textures/Default/HirePanel.png" id="1_b8fd6"]
 [ext_resource type="Script" uid="uid://cj1kklvdioyl5" path="res://Levels/HubLocation/WarriorPanels/HireWarriorPanel.cs" id="1_ugley"]
 [ext_resource type="Texture2D" uid="uid://bdnmjn4po664b" path="res://Textures/Default/HireButton.png" id="3_dlkle"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_f5ob6"]
+[ext_resource type="Texture2D" uid="uid://uh4w6sxsnown" path="res://Textures/Default/Hire_Pressed.png" id="5_5ucmp"]
+[ext_resource type="Texture2D" uid="uid://bulnea4e4swgi" path="res://Textures/Default/Hire_Hover.png" id="6_2x6vi"]
 
 [node name="HireWarriorPanel" type="Control"]
 custom_minimum_size = Vector2(193, 83)
@@ -46,6 +48,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_dlkle")
+texture_pressed = ExtResource("5_5ucmp")
+texture_hover = ExtResource("6_2x6vi")
 ignore_texture_size = true
 stretch_mode = 0
 

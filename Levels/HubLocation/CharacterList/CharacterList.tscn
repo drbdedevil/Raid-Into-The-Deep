@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfkgaibxcnv4v"]
+[gd_scene load_steps=21 format=3 uid="uid://cfkgaibxcnv4v"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
 [ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
@@ -9,13 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="3_q3ehw"]
 [ext_resource type="Texture2D" uid="uid://g6d3qew8l7fn" path="res://Textures/HubLocation/Icons/Level.png" id="5_137wh"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="6_ah2t4"]
+[ext_resource type="Texture2D" uid="uid://bhbwt112vl2oh" path="res://Textures/HubLocation/Forge/BackButton_Pressed.png" id="6_hgs6d"]
 [ext_resource type="Texture2D" uid="uid://bhx223fduq0bk" path="res://Textures/HubLocation/Icons/Health.png" id="7_6n0i5"]
+[ext_resource type="Texture2D" uid="uid://dd7s0ak522xrk" path="res://Textures/HubLocation/Forge/BackButton_Hover.png" id="7_ouhha"]
 [ext_resource type="Texture2D" uid="uid://4d1u8sugr8a" path="res://Textures/HubLocation/Icons/Speed.png" id="8_sgqvt"]
 [ext_resource type="Texture2D" uid="uid://3pi7c6mod5wh" path="res://Textures/HubLocation/Icons/Damage.png" id="9_ouvy8"]
 [ext_resource type="Texture2D" uid="uid://b2uqcrsvt0a4g" path="res://Textures/HubLocation/Icons/DamageByEffects.png" id="10_iu0dr"]
 [ext_resource type="Texture2D" uid="uid://1ukq3plxdp85" path="res://Textures/HubLocation/Icons/Heal.png" id="11_ayih5"]
 [ext_resource type="Texture2D" uid="uid://c1j2axt10r2wk" path="res://Textures/HubLocation/UpgradeButton.png" id="12_6n0i5"]
 [ext_resource type="Texture2D" uid="uid://chbyxyih3piff" path="res://Textures/Default/AttackFormExample.png" id="13_sgqvt"]
+[ext_resource type="Texture2D" uid="uid://co3lfuuxv32im" path="res://Textures/HubLocation/UpgradeButton_Pressed.png" id="18_yr0yq"]
+[ext_resource type="Texture2D" uid="uid://bg4som5jg44q2" path="res://Textures/HubLocation/UpgradeButton_Hover.png" id="19_mohno"]
 
 [node name="CharacterList" type="ColorRect"]
 custom_minimum_size = Vector2(700, 485)
@@ -57,6 +61,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("2_jb1gh")
+texture_pressed = ExtResource("6_hgs6d")
+texture_hover = ExtResource("7_ouhha")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -475,6 +481,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("12_6n0i5")
+texture_pressed = ExtResource("18_yr0yq")
+texture_hover = ExtResource("19_mohno")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -680,6 +688,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("12_6n0i5")
+texture_pressed = ExtResource("18_yr0yq")
+texture_hover = ExtResource("19_mohno")
 ignore_texture_size = true
 stretch_mode = 0
 

@@ -86,7 +86,10 @@ public partial class HubLocation : Node
 
 		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
 		PanelLabel.Text = Storage.Text.StripEdges();
-		ClearAndAddNewSceneToPopup(sceneInstance);
+		// ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.PushInstance(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
@@ -98,7 +101,10 @@ public partial class HubLocation : Node
 
 		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
 		PanelLabel.Text = CommandBlock.Text.StripEdges();
-		ClearAndAddNewSceneToPopup(sceneInstance);
+		// ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.PushInstance(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
@@ -110,7 +116,10 @@ public partial class HubLocation : Node
 
 		var PanelLabel = GetNode<Label>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/PanelLabel");
 		PanelLabel.Text = LivingSpace.Text.StripEdges();
-		ClearAndAddNewSceneToPopup(sceneInstance);
+		// ClearAndAddNewSceneToPopup(sceneInstance);
+
+		var navigator = GetNode<PopupNavigator>("PopupPanel");
+		navigator.PushInstance(sceneInstance);
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();

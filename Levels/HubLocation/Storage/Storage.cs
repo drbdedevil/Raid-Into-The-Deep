@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Storage : Control
+public partial class Storage : Control, IStackPage
 {
     [Export]
 	public PackedScene WeaponPanelScene;
@@ -10,14 +10,6 @@ public partial class Storage : Control
     {
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
         UpgradeButton.ButtonDown += OnStorageUpgradeButtonPressed;
-
-        // ----------- View Realization -----------
-        // ----- Binding Functions
-        GameDataManager.Instance.storageDataManager.OnStorageLevelUpdate += OnStorageLevelUpdate;
-
-        // ----- Set Init Value
-        OnStorageLevelUpdate();
-        UpdateWeaponList();
     }
     public override void _ExitTree()
     {
@@ -78,11 +70,26 @@ public partial class Storage : Control
         }
 
         foreach (WeaponData weaponData in GameDataManager.Instance.currentData.storageData.Weapons)
-		{
-			WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
-			weaponPanel.HideRangeDamage();
-			weaponPanel.SetWeaponInfos(weaponData);
-			weaponVBoxContainer.AddChild(weaponPanel);
-		}
+        {
+            WeaponPanel weaponPanel = WeaponPanelScene.Instantiate() as WeaponPanel;
+            weaponPanel.HideRangeDamage();
+            weaponPanel.SetWeaponInfos(weaponData);
+            weaponVBoxContainer.AddChild(weaponPanel);
+        }
+    }
+    
+     public void OnShow()
+    {
+        // ----------- View Realization -----------
+        // ----- Binding Functions
+        GameDataManager.Instance.storageDataManager.OnStorageLevelUpdate += OnStorageLevelUpdate;
+
+        // ----- Set Init Value
+        OnStorageLevelUpdate();
+        UpdateWeaponList();
+    }
+    public void OnHide()
+    {
+        GameDataManager.Instance.storageDataManager.OnStorageLevelUpdate -= OnStorageLevelUpdate;
     }
 }

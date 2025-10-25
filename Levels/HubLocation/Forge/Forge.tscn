@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tiga6w74ljhd"]
+[gd_scene load_steps=25 format=3 uid="uid://tiga6w74ljhd"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_cxiaa"]
 [ext_resource type="Script" uid="uid://c7cu50xtgpalq" path="res://Levels/HubLocation/Forge/Forge.cs" id="1_uchbn"]
@@ -12,11 +12,24 @@
 [ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="6_qxquo"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="7_ogs3j"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="8_7hr67"]
+[ext_resource type="Texture2D" uid="uid://sqnore5xilpt" path="res://Textures/HubLocation/ForgeCancel.png" id="9_fbpyd"]
 [ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="9_ogs3j"]
 [ext_resource type="Texture2D" uid="uid://wi6gp2vc4x33" path="res://Textures/HubLocation/Forge/Shackle.png" id="12_86c6o"]
+[ext_resource type="Texture2D" uid="uid://mb0tr18pi2mf" path="res://Textures/HubLocation/Forge/Melt_Pressed.png" id="15_fmatj"]
+[ext_resource type="Texture2D" uid="uid://da527c6sbypte" path="res://Textures/HubLocation/Forge/Melt_Hover.png" id="16_ax8h0"]
+[ext_resource type="Texture2D" uid="uid://b5ypgompbso44" path="res://Textures/HubLocation/Forge/Melt_Disable.png" id="17_77u0b"]
+[ext_resource type="Texture2D" uid="uid://esif1aor0k07" path="res://Textures/HubLocation/Forge/Shackle_Pressed.png" id="18_y6f4e"]
+[ext_resource type="Texture2D" uid="uid://b442mendkuynb" path="res://Textures/HubLocation/Forge/Shackle_Hover.png" id="19_77u0b"]
+[ext_resource type="Texture2D" uid="uid://qvpx6onuqchf" path="res://Textures/HubLocation/Forge/Shackle_Disable.png" id="21_qnt0h"]
 
 [sub_resource type="Theme" id="Theme_gdf14"]
 VBoxContainer/constants/separation = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vnbv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmatj"]
+bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
 
 [node name="Forge" type="Control"]
 layout_mode = 3
@@ -138,14 +151,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 22
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 6
 texture_normal = ExtResource("6_7hr67")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="ClearMeltButton" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vnbv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fmatj")
+icon = ExtResource("9_fbpyd")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -248,6 +291,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture_normal = ExtResource("6_lt4vl")
+texture_pressed = ExtResource("15_fmatj")
+texture_hover = ExtResource("16_ax8h0")
+texture_disabled = ExtResource("17_77u0b")
 ignore_texture_size = true
 stretch_mode = 4
 
@@ -312,14 +358,45 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 22
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 6
 texture_normal = ExtResource("6_7hr67")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="ClearShackleButton" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6vnbv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fmatj")
+icon = ExtResource("9_fbpyd")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -422,6 +499,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture_normal = ExtResource("12_86c6o")
+texture_pressed = ExtResource("18_y6f4e")
+texture_hover = ExtResource("19_77u0b")
+texture_disabled = ExtResource("21_qnt0h")
 ignore_texture_size = true
 stretch_mode = 4
 

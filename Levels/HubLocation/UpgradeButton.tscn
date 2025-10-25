@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://da41y5lavq6m5"]
+[gd_scene load_steps=8 format=3 uid="uid://da41y5lavq6m5"]
 
 [ext_resource type="Texture2D" uid="uid://c1j2axt10r2wk" path="res://Textures/HubLocation/UpgradeButton.png" id="1_v3wme"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="2_400oo"]
+[ext_resource type="Texture2D" uid="uid://co3lfuuxv32im" path="res://Textures/HubLocation/UpgradeButton_Pressed.png" id="2_do1pd"]
 [ext_resource type="Script" uid="uid://lfo15c0c1cbn" path="res://Levels/HubLocation/UpgradeButton.cs" id="2_wgyj1"]
 [ext_resource type="Texture2D" uid="uid://d0gu3rvif27kw" path="res://Textures/HubLocation/Icons/Chitin_white.png" id="3_diwth"]
+[ext_resource type="Texture2D" uid="uid://bg4som5jg44q2" path="res://Textures/HubLocation/UpgradeButton_Hover.png" id="3_ek7of"]
 [ext_resource type="Texture2D" uid="uid://dam7f475160b2" path="res://Textures/HubLocation/Icons/Crystal_white.png" id="4_safd7"]
 
 [node name="UpgradeButton" type="TextureButton"]
@@ -13,7 +15,8 @@ offset_bottom = 35.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 texture_normal = ExtResource("1_v3wme")
-texture_hover = ExtResource("1_v3wme")
+texture_pressed = ExtResource("2_do1pd")
+texture_hover = ExtResource("3_ek7of")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_wgyj1")

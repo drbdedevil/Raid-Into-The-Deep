@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvhuja3f2n8a0"]
+[gd_scene load_steps=14 format=3 uid="uid://dvhuja3f2n8a0"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_4morl"]
 [ext_resource type="Script" uid="uid://ba038hpgpqym4" path="res://Levels/HubLocation/Forge/WeaponSelector.cs" id="1_6d74d"]
 [ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_m553q"]
 [ext_resource type="PackedScene" uid="uid://dftffxi0y4e7q" path="res://Levels/HubLocation/WeaponPanels/WeaponPanelButton.tscn" id="4_6d74d"]
+[ext_resource type="Texture2D" uid="uid://bhbwt112vl2oh" path="res://Textures/HubLocation/Forge/BackButton_Pressed.png" id="5_im6w8"]
+[ext_resource type="Texture2D" uid="uid://dd7s0ak522xrk" path="res://Textures/HubLocation/Forge/BackButton_Hover.png" id="6_o4k5w"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_5b0pp"]
 
@@ -109,6 +111,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 texture_normal = ExtResource("2_m553q")
+texture_pressed = ExtResource("5_im6w8")
+texture_hover = ExtResource("6_o4k5w")
 ignore_texture_size = true
 stretch_mode = 0
 

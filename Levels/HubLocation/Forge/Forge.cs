@@ -22,28 +22,32 @@ public partial class Forge : Node, IStackPage
 
     public override void _Ready()
     {
-        var ChooseMeltButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/TextureButton");
+        var ChooseMeltButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
         ChooseMeltButton.ButtonDown += OnChooseWeaponForMeltButtonPressed;
 
-        var ChooseShackleButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/TextureButton");
+        var ChooseShackleButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
         ChooseShackleButton.ButtonDown += OnChooseWeaponForShackleButtonPressed;
-
 
         var MeltButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton");
         MeltButton.ButtonDown += OnMeltButtonPressed;
+        MeltButton.Disabled = true;
+        Label MeltLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton/Label");
+        MeltLabel.AddThemeColorOverride("font_color", new Color("#707070"));
 
         var ShackleButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton");
         ShackleButton.ButtonDown += OnShackleButtonPressed;
+        ShackleButton.Disabled = true;
+        Label ShackleLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton/Label");
+        ShackleLabel.AddThemeColorOverride("font_color", new Color("#707070"));
 
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
         UpgradeButton.ButtonDown += OnForgeUpgradeButtonPressed;
 
-        // ----------- View Realization -----------
-        // ----- Binding Functions
-        GameDataManager.Instance.forgeDataManager.OnForgeLevelUpdate += OnForgeLevelUpdate;
+        Button clearMeltButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearMeltButton");
+        clearMeltButton.ButtonDown += UnchooseWeaponForMelt;
 
-        // ----- Set Init Value
-        OnForgeLevelUpdate();
+        Button clearShackleButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearShackleButton");
+        clearShackleButton.ButtonDown += UnchooseWeaponForShackle;
     }
     public override void _ExitTree()
     {
@@ -93,9 +97,7 @@ public partial class Forge : Node, IStackPage
                 GameDataManager.Instance.storageDataManager.AdjustChitinFragments(ChitinPrice);
             }
 
-            HideMeltPrice();
             UnchooseWeaponForMelt();
-            GD.Print(" -- Melt --");
         }
     }
     private void OnShackleButtonPressed()
@@ -137,9 +139,7 @@ public partial class Forge : Node, IStackPage
                 }
             }
 
-            HideShacklePrice();
             UnchooseWeaponForShackle();
-            GD.Print(" -- Shackle --");
         }
     }
 
@@ -185,6 +185,9 @@ public partial class Forge : Node, IStackPage
         {
             UpgradeButton.Visible = false;
         }
+
+        SetInfoForMelt();
+        SetInfoForShackle();
     }
 
     public void ChooseWeaponData(WeaponPanel InWeaponPanel, EForgeAction forgeAction)
@@ -194,26 +197,56 @@ public partial class Forge : Node, IStackPage
             var json = JsonSerializer.Serialize(InWeaponPanel.weaponData);
             chosenWeaponDataForMelt = JsonSerializer.Deserialize<WeaponData>(json);
 
-            var existingWeapon = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == chosenWeaponDataForMelt.Name);
-            if (existingWeapon != null)
-            {
-                bIsWeaponChosenForMelt = true;
-                TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/TextureButton");
-                textureButton.TextureNormal = existingWeapon.WeaponTexture;
+            SetInfoForMelt();
 
-                ShowMeltPrice(existingWeapon.CrystalYield, existingWeapon.ChitinFragmentsYield);
-            }
+            Button clearMeltButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearMeltButton");
+            clearMeltButton.Visible = true;
+
+            var MeltButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton");
+            MeltButton.Disabled = false;
+            Label MeltLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton/Label");
+            MeltLabel.AddThemeColorOverride("font_color", new Color("#ffffff"));
         }
         else if (forgeAction == EForgeAction.Shackle)
         {
             var json = JsonSerializer.Serialize(InWeaponPanel.weaponData);
             chosenWeaponDataForShackle = JsonSerializer.Deserialize<WeaponData>(json);
 
+            SetInfoForShackle();
+
+            Button clearShackleButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearShackleButton");
+            clearShackleButton.Visible = true;
+
+            var ShackleButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton");
+            ShackleButton.Disabled = false;
+            Label ShackleLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton/Label");
+        ShackleLabel.AddThemeColorOverride("font_color", new Color("#ffffff"));
+        }
+    }
+    private void SetInfoForMelt()
+    {
+        if (chosenWeaponDataForMelt.ID != "NONE")
+        {
+            var existingWeapon = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == chosenWeaponDataForMelt.Name);
+            if (existingWeapon != null)
+            {
+                bIsWeaponChosenForMelt = true;
+                TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
+                textureButton.TextureNormal = existingWeapon.WeaponTexture;
+
+                ShowMeltPrice(existingWeapon.CrystalYield, existingWeapon.ChitinFragmentsYield);
+            }
+        }
+    }
+    private void SetInfoForShackle()
+    {
+        if (chosenWeaponDataForShackle.ID != "NONE")
+        {
             var existingWeapon = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == chosenWeaponDataForShackle.Name);
             if (existingWeapon != null)
             {
                 bIsWeaponChosenForShackle = true;
-                TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/TextureButton");
+                TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
                 textureButton.TextureNormal = existingWeapon.WeaponTexture;
 
                 ShowShacklePrice(existingWeapon.CrystalCost, existingWeapon.ChitinFragmentsCost);
@@ -223,25 +256,45 @@ public partial class Forge : Node, IStackPage
 
     public void UnchooseWeaponForShackle()
     {
+        HideShacklePrice();
+
         Texture2D clickButtonTexture = GD.Load<Texture2D>("res://Textures/HubLocation/Forge/ClickButton.png");
 
         chosenWeaponDataForShackle = new WeaponData();
 
-        TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/TextureButton");
+        TextureButton textureButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
         textureButton.TextureNormal = clickButtonTexture;
 
         bIsWeaponChosenForShackle = false;
+
+        Button clearShackleButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearShackleButton");
+        clearShackleButton.Visible = false;
+
+        var ShackleButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton");
+        ShackleButton.Disabled = true;
+        Label ShackleLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureButton/Label");
+        ShackleLabel.AddThemeColorOverride("font_color", new Color("#707070"));
     }
     public void UnchooseWeaponForMelt()
     {
+        HideMeltPrice();
+
         Texture2D clickButtonTexture = GD.Load<Texture2D>("res://Textures/HubLocation/Forge/ClickButton.png");
 
         chosenWeaponDataForMelt = new WeaponData();
 
-        TextureButton textureButton2 = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/TextureButton");
+        TextureButton textureButton2 = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/TextureButton");
         textureButton2.TextureNormal = clickButtonTexture;
 
         bIsWeaponChosenForMelt = false;
+
+        Button clearMeltButton = GetNode<Button>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3/MarginContainer/ClearMeltButton");
+        clearMeltButton.Visible = false;
+
+        var MeltButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton");
+        MeltButton.Disabled = true;
+        Label MeltLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureButton/Label");
+        MeltLabel.AddThemeColorOverride("font_color", new Color("#707070"));
     }
 
     private void HideMeltPrice()
@@ -254,11 +307,15 @@ public partial class Forge : Node, IStackPage
     }
     private void ShowMeltPrice(int Crystals, int ChitinFragments)
     {
+        ForgeLevelData forgeLevelData = GameDataManager.Instance.forgeDatabase.Levels[GameDataManager.Instance.currentData.forgeData.Level - 1];
+
         Label chitinLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer/TextureRect/NumberLabel");
-        chitinLabel.Text = ChitinFragments.ToString();
+        int chitinResult = (int)Math.Ceiling(ChitinFragments * forgeLevelData.ChitinsIncreaseK);
+        chitinLabel.Text = chitinResult.ToString();
 
         Label crystalLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer2/TextureRect/NumberLabel");
-        crystalLabel.Text = Crystals.ToString();
+        int crystalReslut = (int)Math.Ceiling(Crystals * forgeLevelData.CrystalsIncreaseK);
+        crystalLabel.Text = crystalReslut.ToString();
     }
     private void HideShacklePrice()
     {
@@ -270,19 +327,32 @@ public partial class Forge : Node, IStackPage
     }
     private void ShowShacklePrice(int Crystals, int ChitinFragments)
     {
+        ForgeLevelData forgeLevelData = GameDataManager.Instance.forgeDatabase.Levels[GameDataManager.Instance.currentData.forgeData.Level - 1];
+
         Label chitinLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer/TextureRect/NumberLabel");
-        chitinLabel.Text = ChitinFragments.ToString();
+        int chitinResult = (int)Math.Floor(ChitinFragments * forgeLevelData.ChitinsDiscountK);
+        chitinLabel.Text = chitinResult.ToString();
 
         Label crystalLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer2/TextureRect/NumberLabel");
-        crystalLabel.Text = Crystals.ToString();
+        int crystalResult = (int)Math.Floor(Crystals * forgeLevelData.CrystalsDiscountK);
+        crystalLabel.Text = crystalResult.ToString();
     }
 
     public void OnShow()
     {
+        // ----------- View Realization -----------
+        // ----- Binding Functions
+        GameDataManager.Instance.forgeDataManager.OnForgeLevelUpdate += OnForgeLevelUpdate;
+
+        // ----- Set Init Value
+        OnForgeLevelUpdate();
+
         GD.Print("Forge Popup shown");
     }
     public void OnHide()
     {
+        GameDataManager.Instance.forgeDataManager.OnForgeLevelUpdate -= OnForgeLevelUpdate;
+
         GD.Print("Forge Popup hidden");
     }
 }

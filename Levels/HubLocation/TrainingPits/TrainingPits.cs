@@ -7,14 +7,6 @@ public partial class TrainingPits : Control, IStackPage
     {
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
         UpgradeButton.ButtonDown += OnTrainingPitsUpgradeButtonPressed;
-
-        // ----------- View Realization -----------
-        // ----- Binding Functions
-        GameDataManager.Instance.trainingPitsDataManager.OnTrainingPitsLevelUpdate += OnTrainingPitsLevelUpdate;
-
-        // ----- Set Init Value
-        OnTrainingPitsLevelUpdate();
-        UpdateCharactersForHiringList();
     }
     public override void _ExitTree()
     {
@@ -80,10 +72,16 @@ public partial class TrainingPits : Control, IStackPage
 
     public void OnShow()
     {
-        GD.Print("TrainingPits Popup shown");
+        // ----------- View Realization -----------
+        // ----- Binding Functions
+        GameDataManager.Instance.trainingPitsDataManager.OnTrainingPitsLevelUpdate += OnTrainingPitsLevelUpdate;
+
+        // ----- Set Init Value
+        OnTrainingPitsLevelUpdate();
+        UpdateCharactersForHiringList();
     }
     public void OnHide()
 	{
-        GD.Print("TrainingPits Popup hidden");
+        GameDataManager.Instance.trainingPitsDataManager.OnTrainingPitsLevelUpdate -= OnTrainingPitsLevelUpdate;
     }
 }

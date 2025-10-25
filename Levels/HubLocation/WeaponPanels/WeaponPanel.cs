@@ -41,6 +41,11 @@ public partial class WeaponPanel : Control
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
 		TextureRect effectTexture = GetNode<TextureRect>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/MarginContainer/EffectTexture");
 		effectTexture.Texture = effectInfo.texture2D;
+
+		Texture2D damageTexture = GD.Load<Texture2D>("res://Textures/HubLocation/NumberIcon.png");
+		TextureRect damageTextureRect = GetNode<TextureRect>("TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect");
+		damageTextureRect.Texture = damageTexture;
+		damageTextureRect.SetCustomMinimumSize(new Vector2(23.0f, 23.0f));
 	}
 	public void SetWeaponInfosShackle(WeaponData InWeaponData)
 	{

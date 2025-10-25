@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3shuau7lurda"]
+[gd_scene load_steps=10 format=3 uid="uid://d3shuau7lurda"]
 
 [ext_resource type="Script" uid="uid://ddpkc3l1rg1v" path="res://Levels/HubLocation/WeaponPanels/WeaponPanel.cs" id="1_dp6jp"]
 [ext_resource type="Texture2D" uid="uid://clxcfmpb3v5w3" path="res://Textures/Default/WeaponPanel.png" id="1_uepbi"]
@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="4_1cc36"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="5_m531f"]
 [ext_resource type="Texture2D" uid="uid://chbyxyih3piff" path="res://Textures/Default/AttackFormExample.png" id="6_m531f"]
+[ext_resource type="Texture2D" uid="uid://buui3u31dlxjg" path="res://Textures/HubLocation/WideNumberIcon.png" id="6_ooqb3"]
+[ext_resource type="Texture2D" uid="uid://bxfxakjpccggq" path="res://Textures/EffectsTextures/VoprosDlyaEffects.png" id="7_kgcb4"]
 
 [node name="WeaponPanel" type="Control"]
 custom_minimum_size = Vector2(195, 85)
@@ -94,9 +96,9 @@ theme_override_font_sizes/font_size = 10
 text = "Урон"
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
+custom_minimum_size = Vector2(36, 23)
 layout_mode = 2
-texture = ExtResource("5_m531f")
+texture = ExtResource("6_ooqb3")
 expand_mode = 1
 stretch_mode = 4
 
@@ -105,17 +107,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
 
 [node name="NumberLabel" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5i1ei")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -125,17 +127,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5i1ei")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NumberLabel2" type="Label" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5i1ei")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -171,11 +173,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EffectTexture" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/MarginContainer"]
-custom_minimum_size = Vector2(17, 17)
+custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_m531f")
+texture = ExtResource("7_kgcb4")
 expand_mode = 1
 stretch_mode = 4
 
