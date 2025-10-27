@@ -3,6 +3,9 @@ using System;
 
 public partial class LivingSpace : Control, IStackPage
 {
+    [Export]
+    public PackedScene WarriorPanelScene;
+    
     public override void _Ready()
     {
         var UpgradeButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
@@ -11,6 +14,8 @@ public partial class LivingSpace : Control, IStackPage
     public override void _ExitTree()
     {
         GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate -= OnLivingSpaceLevelUpdate;
+        GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate -= UpdateUsedCharactersList;
+        GameDataManager.Instance.livingSpaceDataManager.OnReservedCharactersListUpdate -= UpdateReservedCharactersList;
     }
 
     private void OnLivingSpaceUpgradeButtonPressed()
@@ -45,9 +50,7 @@ public partial class LivingSpace : Control, IStackPage
 
         LivingSpaceLevelData currentLivingSpaceLevelData = GameDataManager.Instance.livingSpaceDatabase.Levels[GameDataManager.Instance.currentData.livingSpaceData.Level - 1];
 
-        CapacityView capacityView = GetNode<CapacityView>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/CapacityView");
-        capacityView.SetCurrentValue(GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Count + GameDataManager.Instance.currentData.livingSpaceData.ReservedCharacters.Count);
-        capacityView.SetMaxValue(currentLivingSpaceLevelData.Capacity);
+        UpdateCapacityView();
 
         UpgradeButton UpgradeButton = GetNode<UpgradeButton>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/UpgradeButton");
         UpgradeButton.SetCrystalValue(currentLivingSpaceLevelData.CrystalUpgradeCost);
@@ -67,7 +70,13 @@ public partial class LivingSpace : Control, IStackPage
             child.QueueFree();
         }
 
-
+        foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters)
+        {
+            FiredWarriorPanel firedWarriorPanel = WarriorPanelScene.Instantiate() as FiredWarriorPanel;
+            firedWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
+            usedCharactersVBoxContainer.AddChild(firedWarriorPanel);
+        }
+        UpdateCapacityView();
     }
     private void UpdateReservedCharactersList()
     {
@@ -77,7 +86,22 @@ public partial class LivingSpace : Control, IStackPage
             child.QueueFree();
         }
 
+        foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.ReservedCharacters)
+        {
+            FiredWarriorPanel firedWarriorPanel = WarriorPanelScene.Instantiate() as FiredWarriorPanel;
+            firedWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
+            reservedCharactersVBoxContainer.AddChild(firedWarriorPanel);
+        }
+        UpdateCapacityView();
+    }
+    
+    private void UpdateCapacityView()
+    {
+        LivingSpaceLevelData currentLivingSpaceLevelData = GameDataManager.Instance.livingSpaceDatabase.Levels[GameDataManager.Instance.currentData.livingSpaceData.Level - 1];
 
+        CapacityView capacityView = GetNode<CapacityView>("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/CapacityView");
+        capacityView.SetCurrentValue(GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Count + GameDataManager.Instance.currentData.livingSpaceData.ReservedCharacters.Count);
+        capacityView.SetMaxValue(currentLivingSpaceLevelData.Capacity);
     }
     
      public void OnShow()
@@ -85,6 +109,8 @@ public partial class LivingSpace : Control, IStackPage
         // ----------- View Realization -----------
         // ----- Binding Functions
         GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate += OnLivingSpaceLevelUpdate;
+        GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate += UpdateUsedCharactersList;
+        GameDataManager.Instance.livingSpaceDataManager.OnReservedCharactersListUpdate += UpdateReservedCharactersList;
 
         // ----- Set Init Value
         OnLivingSpaceLevelUpdate();
@@ -94,5 +120,7 @@ public partial class LivingSpace : Control, IStackPage
     public void OnHide()
     {
         GameDataManager.Instance.livingSpaceDataManager.OnLivingSpaceLevelUpdate -= OnLivingSpaceLevelUpdate;
+        GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate -= UpdateUsedCharactersList;
+        GameDataManager.Instance.livingSpaceDataManager.OnReservedCharactersListUpdate -= UpdateReservedCharactersList;
     }
 }

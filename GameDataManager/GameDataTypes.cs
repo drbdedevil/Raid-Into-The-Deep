@@ -14,15 +14,23 @@ public class WeaponData
 
 public class CharacterData
 {
-    public string ID { get; set; }
-    public string Name { get; set; }
-    public string Portrait { get; set; }
-    public int Damage { get; set; }
-    public int Health { get; set; }
-    public int Heal { get; set; }
-    public int Speed { get; set; }
-    public bool[] Upgrades { get; set; }
-    public WeaponData Weapon { get; set; }
+    public string ID { get; set; } = "NONE";
+    public string Name { get; set; } = "NONE";
+    public string Portrait { get; set; } = ""; // TODO: DELETE
+    public int PortraitID { get; set; } = 0;
+    public int Damage { get; set; } = 0;
+    public int DamageByEffect { get; set; } = 0;
+    public int Health { get; set; } = 0;
+    public int Heal { get; set; } = 0;
+    public int Speed { get; set; } = 0;
+    public bool[] Upgrades { get; set; } = new bool[0]; // TODO: DELETE
+    public WeaponData Weapon { get; set; } = new();
+    public int SkillPoints { get; set; } = 0;
+    public int Level { get; set; } = 1;
+
+    public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
+    public HashSet<string> ActiveSkills { get; set; } = new();
+    public string ChoosenSkills { get; set; } = "";
 }
 
 public class StorageData
@@ -48,7 +56,7 @@ public class ForgeData
 
 public class TrainingPitsData
 {
-    public int Level { get; set; } = 1;
+    public int Level { get; set; } = 6;
     public List<CharacterData> CharactersForHiring { get; set; } = new();
 }
 
@@ -75,4 +83,16 @@ public class GameData
     public TrainingPitsData trainingPitsData = new();
     public CommandBlockData commandBlockData = new();
     public RunMapData runMapData = new();
+}
+
+
+
+
+public enum EPassiveSkillType
+{
+    Health = 0,
+    Speed = 1,
+    Damage = 2,
+    DamageByEffect = 3,
+    Heal = 4
 }

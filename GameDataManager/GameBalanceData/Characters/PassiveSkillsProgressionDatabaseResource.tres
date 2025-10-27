@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="PassiveSkillsProgressionDatabase" load_steps=8 format=3 uid="uid://d2w3hhifrxtwa"]
+
+[ext_resource type="Script" uid="uid://bulytc3nir06q" path="res://GameDataManager/GameBalanceData/Characters/PassiveSkillsProgressionDatabase.cs" id="1_drqhm"]
+[ext_resource type="Script" uid="uid://dej04w0o3q20l" path="res://GameDataManager/GameBalanceData/Characters/PassiveSkillProgressionRow.cs" id="1_sfwh0"]
+
+[sub_resource type="Resource" id="Resource_sfwh0"]
+script = ExtResource("1_sfwh0")
+increments = Array[int]([5, 6, 10, 12, 15])
+metadata/_custom_type_script = "uid://dej04w0o3q20l"
+
+[sub_resource type="Resource" id="Resource_itugd"]
+script = ExtResource("1_sfwh0")
+skillType = 1
+increments = Array[int]([1, 1, 1, 1, 1])
+metadata/_custom_type_script = "uid://dej04w0o3q20l"
+
+[sub_resource type="Resource" id="Resource_6ugrf"]
+script = ExtResource("1_sfwh0")
+skillType = 2
+increments = Array[int]([3, 3, 5, 6, 7])
+metadata/_custom_type_script = "uid://dej04w0o3q20l"
+
+[sub_resource type="Resource" id="Resource_g28ej"]
+script = ExtResource("1_sfwh0")
+skillType = 3
+increments = Array[int]([5, 6, 7, 8, 10])
+metadata/_custom_type_script = "uid://dej04w0o3q20l"
+
+[sub_resource type="Resource" id="Resource_ivxld"]
+script = ExtResource("1_sfwh0")
+skillType = 4
+increments = Array[int]([1, 2, 3, 4, 5])
+metadata/_custom_type_script = "uid://dej04w0o3q20l"
+
+[resource]
+script = ExtResource("1_drqhm")
+Progressions = Array[ExtResource("1_sfwh0")]([SubResource("Resource_sfwh0"), SubResource("Resource_itugd"), SubResource("Resource_6ugrf"), SubResource("Resource_g28ej"), SubResource("Resource_ivxld")])
+metadata/_custom_type_script = "uid://bulytc3nir06q"

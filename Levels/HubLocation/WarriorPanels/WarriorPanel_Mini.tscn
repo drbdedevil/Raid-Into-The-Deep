@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://8fl78wa8miql" path="res://Textures/Default/WarPanel_Mini.png" id="1_khhap"]
 [ext_resource type="Script" uid="uid://g5bdxhghddo7" path="res://Levels/HubLocation/WarriorPanels/Warrior.cs" id="1_nqti8"]
 [ext_resource type="PackedScene" uid="uid://cfkgaibxcnv4v" path="res://Levels/HubLocation/CharacterList/CharacterList.tscn" id="2_lbwns"]
-[ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="2_nqti8"]
 [ext_resource type="Texture2D" uid="uid://frdfvle2o7dl" path="res://Textures/Default/Info.png" id="3_lbwns"]
+[ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="4_lbwns"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_w4i1u"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="5_4051l"]
 
@@ -63,7 +63,7 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_nqti8")
+texture = ExtResource("4_lbwns")
 expand_mode = 1
 stretch_mode = 4
 
@@ -151,6 +151,7 @@ size_flags_horizontal = 0
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 1
+mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_4k5li")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ykxy3")
 value = 65.0

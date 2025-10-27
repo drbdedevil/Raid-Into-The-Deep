@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharactersSprites" load_steps=3 format=3 uid="uid://dm5fps0pmjadi"]
+
+[ext_resource type="Script" uid="uid://o2lagsc7r65i" path="res://GameDataManager/GameData/CharactersSprites/CharactersSprites.cs" id="1_1xmhx"]
+[ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="1_6qn1q"]
+
+[resource]
+script = ExtResource("1_1xmhx")
+CharactersSpritesArray = Array[Texture2D]([ExtResource("1_6qn1q")])
+metadata/_custom_type_script = "uid://o2lagsc7r65i"

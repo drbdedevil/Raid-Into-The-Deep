@@ -32,6 +32,15 @@ public partial class GameDataManager : Node
 	[Export]
 	public WeaponDatabase weaponDatabase { get; private set; }
 
+	[Export]
+	public BaseStatsDatabase baseStatsDatabase { get; private set; }
+	[Export]
+	public PassiveSkillsProgressionDatabase passiveSkillsProgressionDatabase { get; private set; }
+	[Export]
+	public CharactersSprites charactersSpritesDatabase { get; private set; }
+	[Export]
+	public SkillsDatabase passiveSkillsDatabase { get; private set; }
+
 	// Scripts
 	public override void _Ready()
 	{
@@ -46,6 +55,9 @@ public partial class GameDataManager : Node
 		livingSpaceDataManager = new LivingSpaceDataManager(this);
 		trainingPitsDataManager = new TrainingPitsDataManager(this);
 		forgeDataManager = new ForgeDataManager(this);
+
+		trainingPitsDataManager.GenerateCharactersForHiring(10);
+
 		GD.Print(" -- GameDataManager init -- ");
 	}
 }

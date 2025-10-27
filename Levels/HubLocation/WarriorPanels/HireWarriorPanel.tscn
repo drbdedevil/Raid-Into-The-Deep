@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1u05hx0bg1aw"]
+[gd_scene load_steps=11 format=3 uid="uid://1u05hx0bg1aw"]
 
 [ext_resource type="PackedScene" uid="uid://0ldor4jd4q1s" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel.tscn" id="1_2vvqj"]
 [ext_resource type="Texture2D" uid="uid://dft47mgv7eaui" path="res://Textures/Default/HirePanel.png" id="1_b8fd6"]
@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_f5ob6"]
 [ext_resource type="Texture2D" uid="uid://uh4w6sxsnown" path="res://Textures/Default/Hire_Pressed.png" id="5_5ucmp"]
 [ext_resource type="Texture2D" uid="uid://bulnea4e4swgi" path="res://Textures/Default/Hire_Hover.png" id="6_2x6vi"]
+[ext_resource type="Texture2D" uid="uid://wi6gp2vc4x33" path="res://Textures/HubLocation/Forge/Shackle.png" id="8_au357"]
+[ext_resource type="Texture2D" uid="uid://esif1aor0k07" path="res://Textures/HubLocation/Forge/Shackle_Pressed.png" id="9_nad27"]
+[ext_resource type="Texture2D" uid="uid://b442mendkuynb" path="res://Textures/HubLocation/Forge/Shackle_Hover.png" id="10_mcroo"]
 
 [node name="HireWarriorPanel" type="Control"]
 custom_minimum_size = Vector2(193, 83)
@@ -40,9 +43,14 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 4
 
-[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="HireButton" type="TextureButton" parent="PanelContainer/MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(55, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -53,7 +61,7 @@ texture_hover = ExtResource("6_2x6vi")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer2/TextureButton"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer2/HBoxContainer/HireButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,5 +71,29 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_f5ob6")
 theme_override_font_sizes/font_size = 10
 text = "Нанять"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RejectButton" type="TextureButton" parent="PanelContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(65, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("8_au357")
+texture_pressed = ExtResource("9_nad27")
+texture_hover = ExtResource("10_mcroo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer2/HBoxContainer/RejectButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_f5ob6")
+theme_override_font_sizes/font_size = 10
+text = "Отказать"
 horizontal_alignment = 1
 vertical_alignment = 1

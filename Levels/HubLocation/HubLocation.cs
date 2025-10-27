@@ -5,6 +5,8 @@ public partial class HubLocation : Node
 {
 	[Export]
 	private PackedScene PopupScene;
+	[Export]
+	public PackedScene WarriorPanelScene;
 
 	public override void _Ready()
 	{
@@ -41,10 +43,14 @@ public partial class HubLocation : Node
 		// ----- Binding Functions
 		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate += OnCrystalsUpdate;
 		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate += OnChitinFragmentsUpdate;
+		GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate += UpdateUsedCharactersList;
+		GameDataManager.Instance.livingSpaceDataManager.OnReservedCharactersListUpdate += UpdateReservedCharactersList;
 
 		// ----- Set Init Value
 		OnCrystalsUpdate();
 		OnChitinFragmentsUpdate();
+		UpdateUsedCharactersList();
+		UpdateReservedCharactersList();
 	}
 	public override void _ExitTree()
 	{
@@ -177,5 +183,35 @@ public partial class HubLocation : Node
 	{
 		Label ChitinFragmentsLabel = GetNode<Label>("MainPanel/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
 		ChitinFragmentsLabel.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
+	}
+	private void UpdateUsedCharactersList()
+	{
+		var usedCharactersVBoxContainer = GetNode<VBoxContainer>("MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer");
+		foreach (Node child in usedCharactersVBoxContainer.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters)
+		{
+			ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
+			viewWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
+			usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
+		}
+	}
+	private void UpdateReservedCharactersList()
+	{
+		var reservedCharactersVBoxContainer = GetNode<VBoxContainer>("MainPanel/Panel/VBoxContainer/ScrollContainer/VBoxContainer/ReserveVBoxContainer");
+		foreach (Node child in reservedCharactersVBoxContainer.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.ReservedCharacters)
+		{
+			ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
+			viewWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
+			reservedCharactersVBoxContainer.AddChild(viewWarriorPanel);
+		}
 	}
 }

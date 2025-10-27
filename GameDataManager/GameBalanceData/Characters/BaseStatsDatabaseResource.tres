@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BaseStatsDatabase" load_steps=2 format=3 uid="uid://b25jmpnykg3u8"]
+
+[ext_resource type="Script" uid="uid://c58gg5nwd7bn7" path="res://GameDataManager/GameBalanceData/Characters/BaseStatsDatabase.cs" id="1_tadtg"]
+
+[resource]
+script = ExtResource("1_tadtg")
+metadata/_custom_type_script = "uid://c58gg5nwd7bn7"

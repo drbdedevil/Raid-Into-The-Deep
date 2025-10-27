@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="SkillsDatabase" load_steps=24 format=3 uid="uid://c1aiyoooftg1"]
+
+[ext_resource type="Script" uid="uid://mqg6w3dg4e5r" path="res://GameDataManager/GameData/Skills/SkillsDatabase.cs" id="1_dinwa"]
+[ext_resource type="Script" uid="uid://dkwjy008wun2o" path="res://GameDataManager/GameData/Skills/SkillRow.cs" id="2_j7s7v"]
+[ext_resource type="Texture2D" uid="uid://rqcc44e2p1q" path="res://Textures/Skills/PassiveSkills/Health_Base.png" id="3_nsqd4"]
+[ext_resource type="Texture2D" uid="uid://c0j34888b0m1m" path="res://Textures/Skills/PassiveSkills/Health_Hover.png" id="4_86amq"]
+[ext_resource type="Texture2D" uid="uid://dqr1na1slo03s" path="res://Textures/Skills/PassiveSkills/Health_Upg.png" id="5_6fe6q"]
+[ext_resource type="Texture2D" uid="uid://ctj0hr27d0lu2" path="res://Textures/Skills/PassiveSkills/Speed_Base.png" id="6_yvown"]
+[ext_resource type="Texture2D" uid="uid://bkolrmjkrynsl" path="res://Textures/Skills/PassiveSkills/Speed_Hover.png" id="7_02lkq"]
+[ext_resource type="Texture2D" uid="uid://618ulmfcdmq6" path="res://Textures/Skills/PassiveSkills/Speed_Upg.png" id="8_ojnvj"]
+[ext_resource type="Texture2D" uid="uid://c2ainqerv5k8g" path="res://Textures/Skills/PassiveSkills/Damage_Base.png" id="9_cedlx"]
+[ext_resource type="Texture2D" uid="uid://bg2o35bvygh7u" path="res://Textures/Skills/PassiveSkills/Damage_Hover.png" id="10_cwk3n"]
+[ext_resource type="Texture2D" uid="uid://b20f8gprimvq5" path="res://Textures/Skills/PassiveSkills/Damage_Upg.png" id="11_lvgdg"]
+[ext_resource type="Texture2D" uid="uid://cmelxjffv7ehv" path="res://Textures/Skills/PassiveSkills/DamageByEffect_Base.png" id="12_ye38j"]
+[ext_resource type="Texture2D" uid="uid://cmow3qithenx8" path="res://Textures/Skills/PassiveSkills/DamageByEffect_Hover.png" id="13_nuljj"]
+[ext_resource type="Texture2D" uid="uid://d18ynvrtu72f0" path="res://Textures/Skills/PassiveSkills/DamageByEffect_Upg.png" id="14_nqj70"]
+[ext_resource type="Texture2D" uid="uid://bivcljrtrnx1i" path="res://Textures/Skills/PassiveSkills/Heal_Base.png" id="15_ye38j"]
+[ext_resource type="Texture2D" uid="uid://7f516o6qkvr6" path="res://Textures/Skills/PassiveSkills/Heal_Hover.png" id="16_nuljj"]
+[ext_resource type="Texture2D" uid="uid://gl77dj2b8pxp" path="res://Textures/Skills/PassiveSkills/Heal_Upg.png" id="17_nqj70"]
+
+[sub_resource type="Texture2D" id="Texture2D_ye38j"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Resource" id="Resource_nsqd4"]
+script = ExtResource("2_j7s7v")
+skillTextureBase = ExtResource("3_nsqd4")
+skillTextureHover = ExtResource("4_86amq")
+skillTextureUpgraded = ExtResource("5_6fe6q")
+skillName = "Здоровье"
+skillDescription = "Определяет количество здоровья персонажа"
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_86amq"]
+script = ExtResource("2_j7s7v")
+skillTextureBase = ExtResource("6_yvown")
+skillTextureHover = ExtResource("7_02lkq")
+skillTextureUpgraded = ExtResource("8_ojnvj")
+skillName = "Скорость"
+skillDescription = "Определяет количество скорости персонажа"
+skillType = 1
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_6fe6q"]
+script = ExtResource("2_j7s7v")
+skillTextureBase = ExtResource("9_cedlx")
+skillTextureHover = ExtResource("10_cwk3n")
+skillTextureUpgraded = ExtResource("11_lvgdg")
+skillName = "Урон"
+skillDescription = "Определяет количество урона персонажа"
+skillType = 2
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_agktj"]
+script = ExtResource("2_j7s7v")
+skillTextureBase = ExtResource("12_ye38j")
+skillTextureHover = ExtResource("13_nuljj")
+skillTextureUpgraded = ExtResource("14_nqj70")
+skillName = "Урон от эффектов"
+skillDescription = "Определяет количество урона от эффектов персонажа"
+skillType = 3
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_omgc1"]
+script = ExtResource("2_j7s7v")
+skillTextureBase = ExtResource("15_ye38j")
+skillTextureHover = ExtResource("16_nuljj")
+skillTextureUpgraded = ExtResource("17_nqj70")
+skillName = "Лечение"
+skillDescription = "Определяет количество лечения персонажа"
+skillType = 4
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[resource]
+script = ExtResource("1_dinwa")
+skillsRows = Array[ExtResource("2_j7s7v")]([SubResource("Resource_nsqd4"), SubResource("Resource_86amq"), SubResource("Resource_6fe6q"), SubResource("Resource_agktj"), SubResource("Resource_omgc1")])
+metadata/_custom_type_script = "uid://mqg6w3dg4e5r"
