@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfkgaibxcnv4v"]
+[gd_scene load_steps=23 format=3 uid="uid://cfkgaibxcnv4v"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
 [ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b1je8gc73xr08" path="res://Levels/HubLocation/CharacterList/SkillTreeWindow.tscn" id="3_ayih5"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="3_jb1gh"]
 [ext_resource type="Texture2D" uid="uid://brmb1swd00nvv" path="res://Textures/Default/DefWar.png" id="3_q3ehw"]
+[ext_resource type="PackedScene" uid="uid://7xku4b6yvyap" path="res://Levels/HubLocation/WeaponPanels/NoWeaponPanel.tscn" id="4_mohno"]
 [ext_resource type="Texture2D" uid="uid://g6d3qew8l7fn" path="res://Textures/HubLocation/Icons/Level.png" id="5_137wh"]
+[ext_resource type="PackedScene" uid="uid://by4op0p2oh6i5" path="res://Levels/HubLocation/WeaponPanels/BigWeaponPanel.tscn" id="5_aiuuh"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="6_ah2t4"]
 [ext_resource type="Texture2D" uid="uid://bhbwt112vl2oh" path="res://Textures/HubLocation/Forge/BackButton_Pressed.png" id="6_hgs6d"]
 [ext_resource type="Texture2D" uid="uid://bhx223fduq0bk" path="res://Textures/HubLocation/Icons/Health.png" id="7_6n0i5"]
@@ -29,6 +31,8 @@ color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 script = ExtResource("1_ouvy8")
 ChooseWeaponScene = ExtResource("2_iu0dr")
 SkillTreeScene = ExtResource("3_ayih5")
+noWeaponPanelScene = ExtResource("4_mohno")
+weaponPanelScene = ExtResource("5_aiuuh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

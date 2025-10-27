@@ -1,0 +1,189 @@
+[gd_resource type="Resource" script_class="SkillsDatabase" load_steps=63 format=3 uid="uid://dg2vycgsu4mqc"]
+
+[ext_resource type="Script" uid="uid://mqg6w3dg4e5r" path="res://GameDataManager/GameData/Skills/SkillsDatabase.cs" id="1_0onx4"]
+[ext_resource type="Script" uid="uid://dkwjy008wun2o" path="res://GameDataManager/GameData/Skills/SkillRow.cs" id="2_otcgt"]
+[ext_resource type="Texture2D" uid="uid://dbt0wajqxqbrg" path="res://Textures/Skills/ActiveSkills/volna_Active.png" id="3_kbptl"]
+[ext_resource type="Texture2D" uid="uid://c28auykmk1nkg" path="res://Textures/Skills/ActiveSkills/volna_Base.png" id="4_spuqv"]
+[ext_resource type="Texture2D" uid="uid://cw2vcg6mcc2ml" path="res://Textures/Skills/ActiveSkills/volna_Hover.png" id="5_nghwh"]
+[ext_resource type="Texture2D" uid="uid://cdwiuuwk02ow6" path="res://Textures/Skills/ActiveSkills/volna_Upg.png" id="6_qt08b"]
+[ext_resource type="Texture2D" uid="uid://d1qh50u356a2l" path="res://Textures/Skills/ActiveSkills/rana_Active.png" id="7_73rii"]
+[ext_resource type="Texture2D" uid="uid://r7gjatmu82b" path="res://Textures/Skills/ActiveSkills/rana_Base.png" id="8_8c2mp"]
+[ext_resource type="Texture2D" uid="uid://b514y0ajmy4jg" path="res://Textures/Skills/ActiveSkills/rana_Hover.png" id="9_a4tn5"]
+[ext_resource type="Texture2D" uid="uid://1c5r5x6tvt2o" path="res://Textures/Skills/ActiveSkills/rana_Upg.png" id="10_kiv1r"]
+[ext_resource type="Texture2D" uid="uid://c73xraew3qtqa" path="res://Textures/Skills/ActiveSkills/oblako_Active.png" id="11_b4rl1"]
+[ext_resource type="Texture2D" uid="uid://ca7en65p1rm4c" path="res://Textures/Skills/ActiveSkills/oblako_Base.png" id="12_h4ruq"]
+[ext_resource type="Texture2D" uid="uid://netb0p4ny8en" path="res://Textures/Skills/ActiveSkills/oblako_Hover.png" id="13_h3esq"]
+[ext_resource type="Texture2D" uid="uid://blvxlhp2resmc" path="res://Textures/Skills/ActiveSkills/oblako_Upg.png" id="14_qujly"]
+[ext_resource type="Texture2D" uid="uid://c0xbtwqll3k01" path="res://Textures/Skills/ActiveSkills/medita_Active.png" id="15_rwn7n"]
+[ext_resource type="Texture2D" uid="uid://c8evoq54a27up" path="res://Textures/Skills/ActiveSkills/medita_Base.png" id="16_1mx86"]
+[ext_resource type="Texture2D" uid="uid://dftt4vvjhp7p" path="res://Textures/Skills/ActiveSkills/medita_Hover.png" id="17_22of0"]
+[ext_resource type="Texture2D" uid="uid://b65mpwx5yndt3" path="res://Textures/Skills/ActiveSkills/medita_Upg.png" id="18_xinfg"]
+[ext_resource type="Texture2D" uid="uid://h22577kkqpog" path="res://Textures/Skills/ActiveSkills/stena_Active.png" id="19_2tvq7"]
+[ext_resource type="Texture2D" uid="uid://c663mi6peq5fn" path="res://Textures/Skills/ActiveSkills/stena_Base.png" id="20_qt4d2"]
+[ext_resource type="Texture2D" uid="uid://dbbs72aecqs67" path="res://Textures/Skills/ActiveSkills/stena_Hover.png" id="21_ae4l5"]
+[ext_resource type="Texture2D" uid="uid://ckb0fgtadp1ux" path="res://Textures/Skills/ActiveSkills/stena_Upg.png" id="22_5x1ux"]
+[ext_resource type="Texture2D" uid="uid://c0g84ahcmc5hj" path="res://Textures/Skills/ActiveSkills/boevoiRaj_Active.png" id="23_7p26p"]
+[ext_resource type="Texture2D" uid="uid://dpisit8luyr3h" path="res://Textures/Skills/ActiveSkills/boevoiRaj_Base.png" id="24_7jfvo"]
+[ext_resource type="Texture2D" uid="uid://dx3v63od5hk4q" path="res://Textures/Skills/ActiveSkills/boevoiRaj_Hover.png" id="25_5w4uu"]
+[ext_resource type="Texture2D" uid="uid://cl2a18kusno8n" path="res://Textures/Skills/ActiveSkills/boevoiRaj_Upg.png" id="26_kpsn5"]
+[ext_resource type="Texture2D" uid="uid://35ujepxptvcn" path="res://Textures/Skills/ActiveSkills/metka_Active.png" id="27_kvs4f"]
+[ext_resource type="Texture2D" uid="uid://wad312l2hai4" path="res://Textures/Skills/ActiveSkills/metka_Base.png" id="28_vt378"]
+[ext_resource type="Texture2D" uid="uid://dp7neu4plmttt" path="res://Textures/Skills/ActiveSkills/metka_Hover.png" id="29_ow8dc"]
+[ext_resource type="Texture2D" uid="uid://dydvda2qq1ek8" path="res://Textures/Skills/ActiveSkills/metka_Upg.png" id="30_idhrc"]
+[ext_resource type="Texture2D" uid="uid://c0smwlyfp8qhi" path="res://Textures/Skills/ActiveSkills/noEffect_Active.png" id="31_8tguh"]
+[ext_resource type="Texture2D" uid="uid://b1bsf5p2p6xeg" path="res://Textures/Skills/ActiveSkills/noEffect_Base.png" id="32_oke0j"]
+[ext_resource type="Texture2D" uid="uid://d2lwfnwll68i1" path="res://Textures/Skills/ActiveSkills/noEffect_Hover.png" id="33_wynke"]
+[ext_resource type="Texture2D" uid="uid://d0wop1h32jfo0" path="res://Textures/Skills/ActiveSkills/noEffect_Upg.png" id="34_u8nf1"]
+[ext_resource type="Texture2D" uid="uid://bilgkniiyxg6b" path="res://Textures/Skills/ActiveSkills/defend_Active.png" id="35_pmnnl"]
+[ext_resource type="Texture2D" uid="uid://dtp7f88v47iib" path="res://Textures/Skills/ActiveSkills/defend_Base.png" id="36_nr6lc"]
+[ext_resource type="Texture2D" uid="uid://cmwctscyn1ms6" path="res://Textures/Skills/ActiveSkills/defend_Hover.png" id="37_xdtca"]
+[ext_resource type="Texture2D" uid="uid://bxmf5bbuhbsb7" path="res://Textures/Skills/ActiveSkills/defend_Upg.png" id="38_d36si"]
+[ext_resource type="Texture2D" uid="uid://cs5mhacvsr21y" path="res://Textures/Skills/ActiveSkills/jump_Active.png" id="39_tacjl"]
+[ext_resource type="Texture2D" uid="uid://c52pfrj1q5i1s" path="res://Textures/Skills/ActiveSkills/jump_Base.png" id="40_bxwis"]
+[ext_resource type="Texture2D" uid="uid://cpctgr34w2jqt" path="res://Textures/Skills/ActiveSkills/jump_Hover.png" id="41_bphmu"]
+[ext_resource type="Texture2D" uid="uid://g3xa26a15vx" path="res://Textures/Skills/ActiveSkills/jump_Upg.png" id="42_nvy60"]
+[ext_resource type="Texture2D" uid="uid://d38qx33k2wcnr" path="res://Textures/Skills/ActiveSkills/sled_Active.png" id="43_78gnh"]
+[ext_resource type="Texture2D" uid="uid://4ee447ek6qyh" path="res://Textures/Skills/ActiveSkills/sled_Base.png" id="44_omx76"]
+[ext_resource type="Texture2D" uid="uid://cpfqpcmfubo3y" path="res://Textures/Skills/ActiveSkills/sled_Hover.png" id="45_xsbad"]
+[ext_resource type="Texture2D" uid="uid://cuitltkanep0b" path="res://Textures/Skills/ActiveSkills/sled_Upg.png" id="46_2x343"]
+[ext_resource type="Texture2D" uid="uid://cc44yxqev1wj6" path="res://Textures/Skills/ActiveSkills/pole_Active.png" id="47_txa3q"]
+[ext_resource type="Texture2D" uid="uid://7001r5d5wgeq" path="res://Textures/Skills/ActiveSkills/pole_Base.png" id="48_684po"]
+[ext_resource type="Texture2D" uid="uid://cgyg33hw7wio3" path="res://Textures/Skills/ActiveSkills/pole_Hover.png" id="49_aovfm"]
+[ext_resource type="Texture2D" uid="uid://dvk0pccpravc3" path="res://Textures/Skills/ActiveSkills/pole_Upg.png" id="50_m7cr2"]
+
+[sub_resource type="Resource" id="Resource_0lobm"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("4_spuqv")
+skillTextureHover = ExtResource("5_nghwh")
+skillTextureUpgraded = ExtResource("6_qt08b")
+skillTextureActive = ExtResource("3_kbptl")
+skillName = "Обратная волна"
+skillDescription = "Персонаж получает эффект \"Обратный урон\". Тот кто его атакует получит обратно половину урона"
+skillType = 5
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_kbptl"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("8_8c2mp")
+skillTextureHover = ExtResource("9_a4tn5")
+skillTextureUpgraded = ExtResource("10_kiv1r")
+skillTextureActive = ExtResource("7_73rii")
+skillName = "Тяжёлая рана"
+skillDescription = "Игрок выбирает врага в радиусе 1 клетки. Враг на этой клетке получает эффект \"Тяжелая рана\", который уменьшает его скорость в половину с округлением вниз."
+skillType = 8
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_spuqv"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("12_h4ruq")
+skillTextureHover = ExtResource("13_h3esq")
+skillTextureUpgraded = ExtResource("14_qujly")
+skillTextureActive = ExtResource("11_b4rl1")
+skillName = "Ядовитое облако"
+skillDescription = "На выбранной области (выбрать можно любую область на арене) появляется 2 на 2 клетки препятствия (то есть 4 препятствия а не 1 на целых 4 клетки). Все кто стоят в этом облаке получают урон от эффекта равный характеристике \"Урон от эффекта\"/2. Облако держится 4 раунда"
+skillType = 11
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_nghwh"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("16_1mx86")
+skillTextureHover = ExtResource("17_22of0")
+skillTextureUpgraded = ExtResource("18_xinfg")
+skillTextureActive = ExtResource("15_rwn7n")
+skillName = "Тихая медитация"
+skillDescription = "Восстанавливает всем союзникам в радиусе 2 клеток здоровье в размере характеристики \"Хил\"/2"
+skillType = 13
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_qt08b"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("20_qt4d2")
+skillTextureHover = ExtResource("21_ae4l5")
+skillTextureUpgraded = ExtResource("22_5x1ux")
+skillTextureActive = ExtResource("19_2tvq7")
+skillName = "Железная стена"
+skillDescription = "Игрок выбирает клетку в радиусе 4 клеток от себя и может установить там ломающееся препятствие, препятствие пропадет само через 3 раунда."
+skillType = 6
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_73rii"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("24_7jfvo")
+skillTextureHover = ExtResource("25_5w4uu")
+skillTextureUpgraded = ExtResource("26_kpsn5")
+skillTextureActive = ExtResource("23_7p26p")
+skillName = "Боевой раж"
+skillDescription = "При использовании навыка персонаж получает эффект \"Боевой раж\"."
+skillType = 9
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_8c2mp"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("28_vt378")
+skillTextureHover = ExtResource("29_ow8dc")
+skillTextureUpgraded = ExtResource("30_idhrc")
+skillTextureActive = ExtResource("27_kvs4f")
+skillName = "Кровавая метка"
+skillDescription = "На врага в радиусе 3 клеток накладывается эффект \"Кровавая метка\", этот враг получает \"Урон от эффектов\" х2 3 раунда"
+skillType = 12
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_a4tn5"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("32_oke0j")
+skillTextureHover = ExtResource("33_wynke")
+skillTextureUpgraded = ExtResource("34_u8nf1")
+skillTextureActive = ExtResource("31_8tguh")
+skillName = "Снять эффекты"
+skillDescription = "Игрок выбирает одного из своих персонажей в радиусе 4 клеток. С этого персонажа снимаются все негативные эффекты"
+skillType = 14
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_kiv1r"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("36_nr6lc")
+skillTextureHover = ExtResource("37_xdtca")
+skillTextureUpgraded = ExtResource("38_d36si")
+skillTextureActive = ExtResource("35_pmnnl")
+skillName = "Защита"
+skillDescription = "Накладывает на себя эффект \"Защитник\". При атаке союзника в радиусе скорости персонаж получит урон вместо союзника. Эффект длится 3 раунда"
+skillType = 7
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_b4rl1"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("40_bxwis")
+skillTextureHover = ExtResource("41_bphmu")
+skillTextureUpgraded = ExtResource("42_nvy60")
+skillTextureActive = ExtResource("39_tacjl")
+skillName = "Скачок"
+skillDescription = "Игрок выбирает клетку в радиусе скорости персонажа, персонаж переходит на эту клетку даже если между персонажем и целевой клеткой стоит препятствие или враг"
+skillType = 10
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_h4ruq"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("44_omx76")
+skillTextureHover = ExtResource("45_xsbad")
+skillTextureUpgraded = ExtResource("46_2x343")
+skillTextureActive = ExtResource("43_78gnh")
+skillName = "Горящий след"
+skillDescription = "Все клетки, по которым пройдет персонаж получают препятствие \"Огонь\" на 3 хода"
+skillType = 16
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[sub_resource type="Resource" id="Resource_h3esq"]
+script = ExtResource("2_otcgt")
+skillTextureBase = ExtResource("48_684po")
+skillTextureHover = ExtResource("49_aovfm")
+skillTextureUpgraded = ExtResource("50_m7cr2")
+skillTextureActive = ExtResource("47_txa3q")
+skillName = "Поле восстановления"
+skillDescription = "В выбранной клетке создается препятствие, восстанавливающее здоровье персонажам игрока, равное навыку \"Хила\" 2 хода."
+skillType = 15
+metadata/_custom_type_script = "uid://dkwjy008wun2o"
+
+[resource]
+script = ExtResource("1_0onx4")
+skillsRows = Array[ExtResource("2_otcgt")]([SubResource("Resource_0lobm"), SubResource("Resource_kbptl"), SubResource("Resource_spuqv"), SubResource("Resource_nghwh"), SubResource("Resource_qt08b"), SubResource("Resource_73rii"), SubResource("Resource_8c2mp"), SubResource("Resource_a4tn5"), SubResource("Resource_kiv1r"), SubResource("Resource_b4rl1"), SubResource("Resource_h4ruq"), SubResource("Resource_h3esq")])
+metadata/_custom_type_script = "uid://mqg6w3dg4e5r"

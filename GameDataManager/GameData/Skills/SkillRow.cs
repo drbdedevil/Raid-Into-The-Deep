@@ -10,5 +10,5 @@ public partial class SkillRow : Resource
 	[Export] public Texture2D skillTextureActive { get; set; } = new();
 	[Export] public string skillName { get; set; } = "";
 	[Export] public string skillDescription { get; set; } = "";
-	[Export] public EPassiveSkillType skillType { get; set; } = EPassiveSkillType.Health;
+	[Export] public ESkillType skillType { get; set; } = ESkillType.Health;
 }

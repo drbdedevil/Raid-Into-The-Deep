@@ -1,6 +1,7 @@
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Collections.Generic;
-using System.Numerics;
 
 public class WeaponData
 {
@@ -87,12 +88,78 @@ public class GameData
 
 
 
-
-public enum EPassiveSkillType
+public enum SkillKind
 {
-    Health = 0,
-    Speed = 1,
-    Damage = 2,
-    DamageByEffect = 3,
-    Heal = 4
+    Passive,
+    Active
+}
+[AttributeUsage(AttributeTargets.Field)]
+public class SkillCategoryAttribute : Attribute
+{
+    public SkillKind Kind { get; }
+    public SkillCategoryAttribute(SkillKind kind)
+    {
+        Kind = kind;
+    }
+}
+
+public enum ESkillType
+{
+    // Passive skills
+    [SkillCategory(SkillKind.Passive)]
+    Health,
+    [SkillCategory(SkillKind.Passive)]
+    Speed,
+    [SkillCategory(SkillKind.Passive)]
+    Damage,
+    [SkillCategory(SkillKind.Passive)]
+    DamageByEffect,
+    [SkillCategory(SkillKind.Passive)]
+    Heal,
+
+    // Active skills
+    [SkillCategory(SkillKind.Active)]
+    ReverseWave,
+    [SkillCategory(SkillKind.Active)]
+    IronWall,
+    [SkillCategory(SkillKind.Active)]
+    Defense,
+    [SkillCategory(SkillKind.Active)]
+    SevereWound,
+    [SkillCategory(SkillKind.Active)]
+    BattleFrenzy,
+    [SkillCategory(SkillKind.Active)]
+    Leap,
+    [SkillCategory(SkillKind.Active)]
+    PoisonCloud,
+    [SkillCategory(SkillKind.Active)]
+    BloodMark,
+    [SkillCategory(SkillKind.Active)]
+    SilentMeditations,
+    [SkillCategory(SkillKind.Active)]
+    RemoveEffects,
+    [SkillCategory(SkillKind.Active)]
+    RestorationField,
+    [SkillCategory(SkillKind.Active)]
+    BurningTrail
+}
+
+public static class SkillExtensions
+{
+    public static SkillKind GetCategory(this ESkillType skill)
+    {
+        var member = typeof(ESkillType).GetMember(skill.ToString()).FirstOrDefault();
+        var attribute = member?.GetCustomAttribute<SkillCategoryAttribute>();
+        return attribute?.Kind ?? SkillKind.Passive;
+    }
+
+    public static bool IsPassive(this ESkillType skill)
+    {
+        return skill.GetCategory() == SkillKind.Passive;
+    }
+
+    public static bool IsActive(this ESkillType skill)
+    {
+        return skill.GetCategory() == SkillKind.Active;
+    }
 }

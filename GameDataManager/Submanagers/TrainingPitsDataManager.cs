@@ -84,7 +84,6 @@ public partial class TrainingPitsDataManager : Node
 
         for (int i = 0; i < charactersCountToGenerate; ++i)
         {
-            int MaxLevelToCreate = currentLevel;
             int LevelToCreate = GD.RandRange(1, currentLevel);
 
             CharacterData characterData = new CharacterData();
@@ -107,6 +106,11 @@ public partial class TrainingPitsDataManager : Node
             if (pointsForPassive > 0)
             {
                 SetProgression(characterData.PassiveSkillLevels, characterData);
+            }
+
+            if (gameDataManager.IsShouldGenerateWeaponOnStartToEveryCreatedCharacter)
+            {
+                characterData.Weapon = gameDataManager.forgeDataManager.GenerateRandomWeapon();
             }
 
             TryAddCharacterForHiring(characterData);
@@ -190,12 +194,16 @@ public partial class TrainingPitsDataManager : Node
             return activeSkills;
         }
 
-        // TODO: DELETE
-        for (int i = 0; i < Amount; ++i)
+        int skillsToUpgrade = Amount;
+        while (skillsToUpgrade > 0)
         {
-            activeSkills.Add(i.ToString());
+            int randomActiveSkills = GD.RandRange(0, gameDataManager.activeSkillsDatabase.skillsRows.Count - 1);
+            if (!activeSkills.Contains(gameDataManager.activeSkillsDatabase.skillsRows[randomActiveSkills].skillName))
+            {
+                activeSkills.Add(gameDataManager.activeSkillsDatabase.skillsRows[randomActiveSkills].skillName);
+                --skillsToUpgrade;
+            }
         }
-        //
 
         return activeSkills;
     }
@@ -213,19 +221,19 @@ public partial class TrainingPitsDataManager : Node
             {
                 switch (existingPassiveSkillType.skillType)
                 {
-                    case EPassiveSkillType.Health:
+                    case ESkillType.Health:
                         characterData.Health += existingPassiveSkillType.increments[i];
                         break;
-                    case EPassiveSkillType.Speed:
+                    case ESkillType.Speed:
                         characterData.Speed += existingPassiveSkillType.increments[i];
                         break;
-                    case EPassiveSkillType.Damage:
+                    case ESkillType.Damage:
                         characterData.Damage += existingPassiveSkillType.increments[i];
                         break;
-                    case EPassiveSkillType.DamageByEffect:
+                    case ESkillType.DamageByEffect:
                         characterData.DamageByEffect += existingPassiveSkillType.increments[i];
                         break;
-                    case EPassiveSkillType.Heal:
+                    case ESkillType.Heal:
                         characterData.Heal += existingPassiveSkillType.increments[i];
                         break;
                     default:

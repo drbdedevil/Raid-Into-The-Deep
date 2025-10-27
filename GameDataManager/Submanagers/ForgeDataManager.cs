@@ -64,4 +64,19 @@ public partial class ForgeDataManager : Node
             TryAddWeaponForShackle(weaponData);
         }
     }
+    public WeaponData GenerateRandomWeapon()
+    {
+        int randomIndex = GD.RandRange(0, gameDataManager.weaponDatabase.Weapons.Count - 1);
+        WeaponRow currentWeaponRow = gameDataManager.weaponDatabase.Weapons[randomIndex];
+
+        WeaponData weaponData = new WeaponData();
+        weaponData.ID = Guid.NewGuid().ToString();
+        weaponData.Name = currentWeaponRow.Name;
+        weaponData.Damage = GD.RandRange(currentWeaponRow.DamageRange.X, currentWeaponRow.DamageRange.Y);
+        weaponData.AttackShapeID = currentWeaponRow.AttackShapeID;
+        weaponData.EffectID = GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+        weaponData.TextureName = currentWeaponRow.WeaponTexture.ResourceName;
+
+        return weaponData;
+    }
 }

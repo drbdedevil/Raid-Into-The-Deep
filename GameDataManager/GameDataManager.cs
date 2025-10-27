@@ -8,6 +8,9 @@ public partial class GameDataManager : Node
 	[Export]
 	public string SavePath;
 	public GameData currentData { get; set; } = new();
+
+	[Export]
+	public bool IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
 	
 	// Submanagers
 	public StorageDataManager storageDataManager { get; private set; }
@@ -40,6 +43,8 @@ public partial class GameDataManager : Node
 	public CharactersSprites charactersSpritesDatabase { get; private set; }
 	[Export]
 	public SkillsDatabase passiveSkillsDatabase { get; private set; }
+	[Export]
+	public SkillsDatabase activeSkillsDatabase { get; private set; }
 
 	// Scripts
 	public override void _Ready()

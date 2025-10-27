@@ -8,7 +8,7 @@ public partial class Warrior : Node, IStackPage
 	[Export]
 	public PackedScene CharacterListScene;
 	
-	public CharacterData characterData = new();
+	public CharacterData characterData { get; set; } = new();
 
 	public override void _Ready()
 	{
@@ -22,6 +22,7 @@ public partial class Warrior : Node, IStackPage
 		var navigator = GetTree().Root.FindChild("PopupPanel", recursive: true, owned: false) as PopupNavigator;
 		// GD.Print("2");
 		CharacterList characterList = CharacterListScene.Instantiate() as CharacterList;
+		characterList.warriorOwner = this;
 		// GD.Print("3");
 
 		if (!navigator.IsSomethingOpen())
@@ -50,6 +51,7 @@ public partial class Warrior : Node, IStackPage
 			hBoxContainer.ProcessMode = ProcessModeEnum.Always;
 			// GD.Print("5");
 		}
+		characterList.ShowCharacterInfos();
 	}
 
 	public void SetCharacterInfos(CharacterData InCharacterData)
@@ -65,7 +67,7 @@ public partial class Warrior : Node, IStackPage
 		Label LevelLabel = GetNode<Label>("TextureRect/HBoxContainer/VBoxContainer/HBoxContainer/LevelLabel");
 		LevelLabel.Text = characterData.Level.ToString();
 
-		PassiveSkillProgressionRow existingPassiveSkillType = GameDataManager.Instance.passiveSkillsProgressionDatabase.Progressions.FirstOrDefault(progression => progression.skillType == EPassiveSkillType.Health);
+		PassiveSkillProgressionRow existingPassiveSkillType = GameDataManager.Instance.passiveSkillsProgressionDatabase.Progressions.FirstOrDefault(progression => progression.skillType == ESkillType.Health);
 		if (existingPassiveSkillType != null)
 		{
 			ProgressBar progressBar = GetNode<ProgressBar>("TextureRect/HBoxContainer/VBoxContainer/MarginContainer3/ProgressBar");
@@ -128,6 +130,11 @@ public partial class Warrior : Node, IStackPage
 		GD.Print("Уровень навыка \"Урон от эффектов\": " + characterData.PassiveSkillLevels["Урон от эффектов"].ToString());
 		GD.Print("Уровень навыка \"Лечение\": " + characterData.PassiveSkillLevels["Лечение"].ToString());
 		GD.Print(" -              - - - - - - - - - - - - - -                ");
+		GD.Print("Прокаченные активные навыки:");
+		foreach (string activeSkills in characterData.ActiveSkills)
+        {
+			GD.Print("\t" + activeSkills);
+        }
 
 		GD.Print(" --------------------------------------------------------- ");
     }
