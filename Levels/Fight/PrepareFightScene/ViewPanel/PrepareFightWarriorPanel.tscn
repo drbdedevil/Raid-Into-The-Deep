@@ -21,7 +21,7 @@ border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 
-[node name="WarriorPanel" type="Control"]
+[node name="WarriorPanel" type="Control" node_paths=PackedStringArray("LevelLabel")]
 custom_minimum_size = Vector2(170, 54)
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b5nbf")
+LevelLabel = NodePath("TextureRect/HBoxContainer/VBoxContainer/HBoxContainer/LevelLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

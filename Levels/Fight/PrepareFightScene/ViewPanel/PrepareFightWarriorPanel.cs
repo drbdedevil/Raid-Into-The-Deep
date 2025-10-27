@@ -3,11 +3,17 @@ using System;
 
 public partial class PrepareFightWarriorPanel : Node
 {
+	[Export] private Label LevelLabel;
+	
 	private TextureRect _playerWarriorsContainer;
 	
 	[Signal]
-	public delegate void OnWarriorPanelClickedEventHandler(PrepareFightWarriorPanel warriorPanel);
-	
+	public delegate void OnWarriorPanelLeftButtonClickedEventHandler(PrepareFightWarriorPanel warriorPanel);
+
+	public void SetCharacterData(CharacterData characterData)
+	{
+		LevelLabel.Text = characterData.ID;
+	}
 	public override void _Ready()
 	{
 		_playerWarriorsContainer = GetNode<TextureRect>("TextureRect");
@@ -20,9 +26,10 @@ public partial class PrepareFightWarriorPanel : Node
 	{
 		if (@event is InputEventMouseButton mouseEvent)
 		{
-			if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+			if (mouseEvent.Pressed)
 			{
-				EmitSignalOnWarriorPanelClicked(this);
+				if (mouseEvent.ButtonIndex == MouseButton.Left) EmitSignalOnWarriorPanelLeftButtonClicked(this);
+				else if (mouseEvent.ButtonIndex == MouseButton.Right) EmitSignalOnWarriorPanelLeftButtonClicked(this);
 			}
 		}
 	}

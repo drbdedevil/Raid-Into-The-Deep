@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
-namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
+namespace RaidIntoTheDeep.Levels.Fight.PrepareFightScene;
 
-public partial class MapManager : Node2D
+
+public partial class PrepareFightMapManager : Node2D
 {
 	private List<List<Vector2I>> _cartesianCoords = [];
 	private List<List<Vector2I>> _isometricCoords = [];

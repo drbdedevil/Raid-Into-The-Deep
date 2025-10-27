@@ -1,11 +1,11 @@
 [gd_scene load_steps=28 format=3 uid="uid://bieajibc18pln"]
 
-[ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_frj35"]
 [ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
+[ext_resource type="Script" uid="uid://r5yt8rcihyyi" path="res://Levels/Fight/PrepareFightScene/PrepareFightMapManager.cs" id="2_ed8kp"]
 [ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="2_jxe02"]
 [ext_resource type="Texture2D" uid="uid://cfl8wr5h7n4u8" path="res://Textures/Fight/FightScene/Bug.png" id="3_clwcm"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="5_ed8kp"]
-[ext_resource type="Script" uid="uid://b3jcpgo6dnlyh" path="res://Levels/Fight/PrepareFightScene/PlayerWarriorsMenu.cs" id="5_gkuqp"]
+[ext_resource type="Script" uid="uid://b3jcpgo6dnlyh" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PlayerWarriorsMenu.cs" id="5_gkuqp"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="5_k51bs"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="6_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://ccaqrv4jj4wg3" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PrepareFightWarriorPanel.tscn" id="6_gkuqp"]
@@ -159,7 +159,7 @@ VBoxContainer/constants/separation = 10
 script = ExtResource("1_jxe02")
 
 [node name="Map" type="Node2D" parent="."]
-script = ExtResource("1_frj35")
+script = ExtResource("2_ed8kp")
 
 [node name="Floor" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
@@ -174,11 +174,12 @@ texture_filter = 1
 position = Vector2(500, 150)
 tile_set = SubResource("TileSet_p76rw")
 
-[node name="PlayerWarriorsMenu" type="HBoxContainer" parent="." node_paths=PackedStringArray("_teamWarriorsContainer")]
+[node name="PlayerWarriorsMenu" type="HBoxContainer" parent="." node_paths=PackedStringArray("_teamWarriorsContainer", "_currentSelectedWarriorContainer")]
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("5_gkuqp")
 _teamWarriorsContainer = NodePath("Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamWarriors")
+_currentSelectedWarriorContainer = NodePath("Panel/VBoxContainer/ScrollContainer/VBoxContainer/SelectedWarrior")
 _warriorPanel = ExtResource("6_gkuqp")
 
 [node name="Panel" type="TextureRect" parent="PlayerWarriorsMenu"]
@@ -223,6 +224,40 @@ theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("5_k51bs")
 theme_override_font_sizes/font_size = 14
 text = "Воины"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_ed8kp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResourcesLabel" type="Label" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("5_k51bs")
+theme_override_font_sizes/font_size = 14
+text = "Текущий "
+
+[node name="TextureRect2" type="TextureRect" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_ed8kp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SelectedWarrior" type="VBoxContainer" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PlayerWarriorsMenu/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
