@@ -260,4 +260,15 @@ public partial class TrainingPitsDataManager : Node
 
         return existingNames;
     }
+
+    public bool IsCharacterInHiringList(string CharacterID)
+    {
+        var charactersForHiring = gameDataManager.currentData.trainingPitsData.CharactersForHiring;
+        var existingCharacter = charactersForHiring.FirstOrDefault(character => character.ID == CharacterID);
+        if (existingCharacter != null)
+        {
+            return true;
+        }
+        return false;
+    }
 }

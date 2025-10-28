@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfkgaibxcnv4v"]
+[gd_scene load_steps=28 format=3 uid="uid://cfkgaibxcnv4v"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
 [ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
@@ -21,7 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://c1j2axt10r2wk" path="res://Textures/HubLocation/UpgradeButton.png" id="12_6n0i5"]
 [ext_resource type="Texture2D" uid="uid://chbyxyih3piff" path="res://Textures/Default/AttackFormExample.png" id="13_sgqvt"]
 [ext_resource type="Texture2D" uid="uid://co3lfuuxv32im" path="res://Textures/HubLocation/UpgradeButton_Pressed.png" id="18_yr0yq"]
+[ext_resource type="Texture2D" uid="uid://wi6gp2vc4x33" path="res://Textures/HubLocation/Forge/Shackle.png" id="19_c2ess"]
 [ext_resource type="Texture2D" uid="uid://bg4som5jg44q2" path="res://Textures/HubLocation/UpgradeButton_Hover.png" id="19_mohno"]
+[ext_resource type="Texture2D" uid="uid://esif1aor0k07" path="res://Textures/HubLocation/Forge/Shackle_Pressed.png" id="20_avv06"]
+[ext_resource type="Texture2D" uid="uid://b442mendkuynb" path="res://Textures/HubLocation/Forge/Shackle_Hover.png" id="21_ybu10"]
+[ext_resource type="Texture2D" uid="uid://qvpx6onuqchf" path="res://Textures/HubLocation/Forge/Shackle_Disable.png" id="22_xtu2d"]
+[ext_resource type="Texture2D" uid="uid://dql1mlg0ay7i7" path="res://Textures/HubLocation/UpgradeButton_Disable.png" id="26_avv06"]
 
 [node name="CharacterList" type="ColorRect"]
 custom_minimum_size = Vector2(700, 485)
@@ -473,6 +478,31 @@ theme_override_constants/margin_bottom = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(63.5, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource("19_c2ess")
+texture_pressed = ExtResource("20_avv06")
+texture_hover = ExtResource("21_ybu10")
+texture_disabled = ExtResource("22_xtu2d")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Убрать"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_g6ton")
@@ -487,6 +517,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("12_6n0i5")
 texture_pressed = ExtResource("18_yr0yq")
 texture_hover = ExtResource("19_mohno")
+texture_disabled = ExtResource("26_avv06")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -694,6 +725,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("12_6n0i5")
 texture_pressed = ExtResource("18_yr0yq")
 texture_hover = ExtResource("19_mohno")
+texture_disabled = ExtResource("26_avv06")
 ignore_texture_size = true
 stretch_mode = 0
 

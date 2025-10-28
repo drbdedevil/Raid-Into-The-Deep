@@ -13,6 +13,7 @@
 [sub_resource type="Resource" id="Resource_t713x"]
 script = ExtResource("1_oi5sk")
 Name = "Меч"
+Description = "Клинок выращен из увеличенной предплечной шип-кости богомола, шлифованной песком термитов и запаянной смолой. Зубцы не режут а рвут, цепляясь за врага."
 DamageRange = Vector2i(2, 5)
 AttackShapeID = 2
 WeaponTexture = ExtResource("2_nf2he")
@@ -25,6 +26,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_4qkv5"]
 script = ExtResource("1_oi5sk")
 Name = "Копьё"
+Description = "Удар оставляет тонкую колющую рану, в которую по капиллярам уходит капля яда. Хорошо пробивает панцири жуков благодаря природной гарпунообразной насечке."
 DamageRange = Vector2i(1, 6)
 AttackShapeID = 1
 WeaponTexture = ExtResource("3_5q3s1")
@@ -37,6 +39,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_8y10g"]
 script = ExtResource("1_oi5sk")
 Name = "Рапира"
+Description = "Тонкий, почти невесомый клинок из укреплённого хоботка комара, стянутого кольцами янтарной смолы."
 DamageRange = Vector2i(3, 8)
 WeaponTexture = ExtResource("4_g3n1y")
 CrystalCost = 7
@@ -48,6 +51,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_mxcif"]
 script = ExtResource("1_oi5sk")
 Name = "Кинжал"
+Description = "Рукоять это маленький паучок-плетун, закреплённый янтарным ободком: он обхватывает лапками пальцы, подтягивает хват и смачивает рукоять тонкой паутиной, чтобы не скользила."
 DamageRange = Vector2i(1, 4)
 WeaponTexture = ExtResource("5_smskd")
 CrystalCost = 5
@@ -59,6 +63,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_ael6f"]
 script = ExtResource("1_oi5sk")
 Name = "Дробовик"
+Description = "Собран из панциря жука-бомбардира. в камере тлеют капли ферментов, которые при смешении взрывообразно выбрасывают дробь из хитиновых осколков и семян-ежей."
 DamageRange = Vector2i(4, 12)
 AttackShapeID = 3
 WeaponTexture = ExtResource("6_mgoyc")
@@ -71,6 +76,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_im85c"]
 script = ExtResource("1_oi5sk")
 Name = "Мортира"
+Description = "Орудие медлительное, зато меняет ход стычки одним хлопком."
 DamageRange = Vector2i(12, 20)
 AttackShapeID = 5
 WeaponTexture = ExtResource("7_jb67o")
@@ -83,6 +89,7 @@ metadata/_custom_type_script = "uid://dqqpa1khhctag"
 [sub_resource type="Resource" id="Resource_w857q"]
 script = ExtResource("1_oi5sk")
 Name = "Арбалет"
+Description = "Арбалет из рёбер жука-носорога, тетива скручена из трёх нитей паутины и пропитана липкой росой."
 DamageRange = Vector2i(3, 10)
 AttackShapeID = 4
 WeaponTexture = ExtResource("8_p06tq")
