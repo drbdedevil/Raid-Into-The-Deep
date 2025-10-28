@@ -36,20 +36,6 @@ public partial class PrepareFightMapManager : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion)
-		{
-			var tile = GetTileUnderMousePosition();
-			if (_selectedTile != null && tile == null || (_selectedTile != tile && tile != null && _selectedTile is not null) )
-			{
-				DeselectTile(_selectedTile);
-				_selectedTile = null;
-			}
-			else if (tile != null)
-			{
-				_selectedTile = tile;
-				SelectTile(_selectedTile);
-			}
-		}
 		
 		if (@event is InputEventMouseButton mouseButton && @event.IsPressed())
 		{
@@ -66,6 +52,21 @@ public partial class PrepareFightMapManager : Node2D
 				}
 			}
 			
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		var tile = GetTileUnderMousePosition();
+		if (_selectedTile != null && tile == null || (_selectedTile != tile && tile != null && _selectedTile is not null) )
+		{
+			DeselectTile(_selectedTile);
+			_selectedTile = null;
+		}
+		else if (tile != null)
+		{
+			_selectedTile = tile;
+			SelectTile(_selectedTile);
 		}
 	}
 
