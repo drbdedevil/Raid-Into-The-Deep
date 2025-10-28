@@ -55,16 +55,6 @@ public partial class PlayerWarriorsMenu : HBoxContainer
         _teamWarriorsContainer.AddChild(characterPanel);
         characterPanel.OnWarriorPanelLeftButtonClicked += SelectCharacter;
     }
-    
-    public void AddWarriorIconToTeamContainer(BattleEntity warrior)
-    {
-        GD.Print($"Adding {warrior.Character.ID}");
-        var characterPanel = _allCharacters[warrior.Character];
-        _charactersInTeamContainer.Add(warrior.Character, characterPanel);
-        _teamWarriorsContainer.AddChild(characterPanel);
-        characterPanel.OnWarriorPanelLeftButtonClicked += SelectCharacter;
-        MapManager.RemoveEnemyOnTile(warrior.Tile);
-    }
 
     public void SelectCharacter(PrepareFightWarriorPanel warriorPanel)
     {
@@ -81,7 +71,27 @@ public partial class PlayerWarriorsMenu : HBoxContainer
         _currentSelectedCharacterData = characterData;
         _currentSelectedWarriorContainer.AddChild(warriorPanel);
         warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectCharacter;
+    }
+
+    /// <summary>
+    /// Установка в Select персонажа
+    /// </summary>
+    /// <param name="battleEntity"></param>
+    public void SelectCharacterFromMap(BattleEntity battleEntity)
+    {
+        var characterData = battleEntity.Character;
+        var warriorPanel = _allCharacters[characterData];
         
+        if (_currentSelectedCharacterData is not null)
+        {
+            var prevSelectedWarriorPanel = _allCharacters[_currentSelectedCharacterData];
+            _currentSelectedWarriorContainer.RemoveChild(prevSelectedWarriorPanel);
+            AddWarriorIconToTeamContainer(_currentSelectedCharacterData);
+        }
+        _currentSelectedCharacterData = characterData;
+        _currentSelectedWarriorContainer.AddChild(warriorPanel);
+        warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectCharacter;
+        MapManager.RemoveEnemyOnTile(battleEntity.Tile);
     }
     
     public void RemoveWarriorIconFromTeamContainer(CharacterData warrior)
@@ -102,5 +112,6 @@ public partial class PlayerWarriorsMenu : HBoxContainer
         });
         _currentSelectedWarriorContainer.RemoveChild(_allCharacters[_currentSelectedCharacterData]);
         _currentSelectedCharacterData = null;
+        if (_charactersInTeamContainer.Any()) SelectCharacter(_charactersInTeamContainer.First().Value);
     }
 }

@@ -26,36 +26,16 @@ public partial class PrepareFightManager : Node2D
     private ViewPanel.PlayerWarriorsMenu _playerTeamWarriorsMenu;
     
     private List<BattleEntity> _playerBattleEntities = [];
-    private List<CharacterData> _characterData = new()
-    {
-        new CharacterData()
-        {
-            ID = "1", Damage = 100, Heal = 100, Name = "123", Portrait = "123", Speed = 3, Upgrades = [true],
-            Weapon = null
-        },
-        new CharacterData()
-        {
-            ID = "2", Damage = 100, Heal = 100, Name = "123", Portrait = "123", Speed = 3, Upgrades = [true],
-            Weapon = null
-        }
-    };
     
     private CharacterData? _currentSelectedCharacterData;
     private Tile _selectedTile = null;
     
-    
-    public void Setup(List<CharacterData> characterData)
-    {
-        _characterData = characterData;
-    }
-
-    
     public override void _Ready()
     {
         _playerTeamWarriorsMenu = GetNode<ViewPanel.PlayerWarriorsMenu>("PlayerWarriorsMenu");
-        _playerTeamWarriorsMenu.InitTeam(_characterData);
+        _playerTeamWarriorsMenu.InitTeam(GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters);
         _mapManager = GetNode<PrepareFightScene.PrepareFightMapManager>("Map");
-        _mapManager.OnTileRightButtonClicked += _playerTeamWarriorsMenu.AddWarriorIconToTeamContainer;
+        _mapManager.OnTileRightButtonClicked += _playerTeamWarriorsMenu.SelectCharacterFromMap;
         _mapManager.OnTileLeftButtonClicked += _playerTeamWarriorsMenu.SetCharacterDataOnMap;
         _playerTeamWarriorsMenu.MapManager = _mapManager;
         var enemyScene = GD.Load<PackedScene>("res://Levels/Fight/FightScene/Enemy.tscn");
