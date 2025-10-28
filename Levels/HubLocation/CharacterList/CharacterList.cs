@@ -16,6 +16,9 @@ public partial class CharacterList : ColorRect, IStackPage
 
     public Node Parent = null;
     public Warrior warriorOwner { get; set; } = null;
+
+    private WeaponData chosenWeaponData = new();
+    private bool bIsWeaponChosen = false;
     
     public override void _Ready()
     {
@@ -27,6 +30,9 @@ public partial class CharacterList : ColorRect, IStackPage
 
         var BackButton = GetNode<TextureButton>("VBoxContainer/MarginContainer/HiddenPanel/TextureButton");
         BackButton.ButtonDown += OnBackButtonPressed;
+
+        TextureButton removeWeaponButton = GetNode<TextureButton>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2");
+        removeWeaponButton.ButtonDown += OnRemoveWeaponButtonPressed;
     }
 
     private void OnChooseWeaponButtonPressed()
@@ -48,6 +54,18 @@ public partial class CharacterList : ColorRect, IStackPage
     private void OnBackButtonPressed()
     {
         EmitSignal(SignalName.RequestBack);
+    }
+    private void OnRemoveWeaponButtonPressed()
+    {
+        if (GameDataManager.Instance.storageDataManager.TryAddWeapon(warriorOwner.characterData.Weapon))
+        {
+            warriorOwner.characterData.Weapon = new WeaponData();
+        }
+        else
+        {
+            GD.Print("NO PLACE IN STORAGE");
+        }
+        CheckWeaponInfos();
     }
 
     public void ShowCharacterInfos()
@@ -83,18 +101,53 @@ public partial class CharacterList : ColorRect, IStackPage
         {
             child.QueueFree();
         }
-        
+
+        TextureButton removeWeaponButton = GetNode<TextureButton>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2");
+        TextureButton chooseWeaponButton = GetNode<TextureButton>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer/HBoxContainer/TextureButton");
         if (warriorOwner.characterData.Weapon.ID == "NONE")
         {
+            bIsWeaponChosen = false;
             Control noWeaponPanel = noWeaponPanelScene.Instantiate() as Control;
             marginContainer.AddChild(noWeaponPanel);
+
+            removeWeaponButton.Visible = false;
+
+            if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+            {
+                chooseWeaponButton.Disabled = true;
+            }
         }
         else
         {
+            bIsWeaponChosen = true;
             BigWeaponPanel bigWeaponPanel = weaponPanelScene.Instantiate() as BigWeaponPanel;
             bigWeaponPanel.SetWeaponInfos(warriorOwner.characterData.Weapon);
             marginContainer.AddChild(bigWeaponPanel);
+
+            if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+            {
+                chooseWeaponButton.Disabled = true;
+                removeWeaponButton.Visible = false;
+            }
+            else
+            {
+                chooseWeaponButton.Disabled = false;
+                removeWeaponButton.Visible = true;
+            }
         }
+    }
+    
+    public void ChooseWeaponData(WeaponPanel InWeaponPanel)
+    {
+        if (GameDataManager.Instance.storageDataManager.TryDeleteWeapon(InWeaponPanel.weaponData.ID))
+        {
+            if (warriorOwner.characterData.Weapon.ID != "NONE")
+            {
+                GameDataManager.Instance.storageDataManager.TryAddWeapon(warriorOwner.characterData.Weapon);
+            }
+            warriorOwner.characterData.Weapon = InWeaponPanel.weaponData;
+        }
+        CheckWeaponInfos();
     }
 
     public void OnShow()

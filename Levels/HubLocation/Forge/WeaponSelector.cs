@@ -57,8 +57,16 @@ public partial class WeaponSelector : Node, IStackPage
 			{
 				forge.ChooseWeaponData(InWeaponPanel, EForgeAction.Shackle);
 			}
-			OnBackButtonPressed();
 		}
+		else if (Parent is CharacterList characterList)
+		{
+			if (weaponList == EWeaponList.Storage)
+			{
+				characterList.ChooseWeaponData(InWeaponPanel);
+			}
+
+		}
+		OnBackButtonPressed();
 	}
 
 	private void FillWeaponContainer()
@@ -102,6 +110,10 @@ public partial class WeaponSelector : Node, IStackPage
 				{
 					GD.Print(weaponPanel.weaponData.ID);
 					if (Parent is Forge forge)
+					{
+						weaponPanel.OnWeaponPanelPressed += OnWeaponPanelButtonPressed;
+					}
+					else if (Parent is CharacterList characterList)
 					{
 						weaponPanel.OnWeaponPanelPressed += OnWeaponPanelButtonPressed;
 					}
