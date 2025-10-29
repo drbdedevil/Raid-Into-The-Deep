@@ -210,7 +210,7 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
         skillInfoPanel.OffsetBottom = -10;
         skillInfoPanel.OffsetRight = -30;
         skillInfoPanel.SetAnchorsPreset(Control.LayoutPreset.BottomRight);
-    }
+    } //
     private void SkillButtonMouseExited(SkillButton skillButton)
     {
         ColorRect colorRect = GetNode<ColorRect>("VBoxContainer/MarginContainer2/ColorRect");
