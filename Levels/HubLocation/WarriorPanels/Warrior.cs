@@ -51,7 +51,7 @@ public partial class Warrior : Node, IStackPage
 			hBoxContainer.ProcessMode = ProcessModeEnum.Always;
 			// GD.Print("5");
 		}
-		characterList.ShowCharacterInfos();
+		// characterList.ShowCharacterInfos();
 	}
 
 	public void SetCharacterInfos(CharacterData InCharacterData)
@@ -86,22 +86,22 @@ public partial class Warrior : Node, IStackPage
 		}
 	}
 	public void ReplaceCharacter()
-    {
-        if (GameDataManager.Instance.livingSpaceDataManager.IsCharacterInUsedList(characterData.ID))
-        {
-            if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToReserved(characterData, 1))
-            {
-                GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromUsed(characterData.ID);
-            }
-        }
-        else if (GameDataManager.Instance.livingSpaceDataManager.IsCharacterInReservedList(characterData.ID))
-        {
-            if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToUsed(characterData))
-            {
-                GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(characterData.ID);
-            }
-        }
-    }
+	{
+		if (GameDataManager.Instance.livingSpaceDataManager.IsCharacterInUsedList(characterData.ID))
+		{
+			if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToReserved(characterData, 1))
+			{
+				GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromUsed(characterData.ID);
+			}
+		}
+		else if (GameDataManager.Instance.livingSpaceDataManager.IsCharacterInReservedList(characterData.ID))
+		{
+			if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToUsed(characterData))
+			{
+				GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(characterData.ID);
+			}
+		}
+	}
 	
 	public void DebugCharacterInfos()
 	{
@@ -132,12 +132,12 @@ public partial class Warrior : Node, IStackPage
 		GD.Print(" -              - - - - - - - - - - - - - -                ");
 		GD.Print("Прокаченные активные навыки:");
 		foreach (string activeSkills in characterData.ActiveSkills)
-        {
+		{
 			GD.Print("\t" + activeSkills);
-        }
+		}
 
 		GD.Print(" --------------------------------------------------------- ");
-    }
+	}
 
 	public void OnShow()
 	{

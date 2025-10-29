@@ -65,7 +65,7 @@ theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 theme_override_fonts/font = ExtResource("3_jhepd")
 theme_override_font_sizes/font_size = 12
 text = "Оно прям офигенно подходит для мальчишки жучишки которому хочется всех убить перебить нафик и пофик ему кто там че на него бычит лишний раз врагам лучше рот не открывать"
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

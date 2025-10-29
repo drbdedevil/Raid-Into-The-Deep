@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cfkgaibxcnv4v"]
+[gd_scene load_steps=30 format=3 uid="uid://cfkgaibxcnv4v"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_g6ton"]
 [ext_resource type="Script" uid="uid://c1xshnb6xa38h" path="res://Levels/HubLocation/CharacterList/CharacterList.cs" id="1_ouvy8"]
@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://by4op0p2oh6i5" path="res://Levels/HubLocation/WeaponPanels/BigWeaponPanel.tscn" id="5_aiuuh"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="6_ah2t4"]
 [ext_resource type="Texture2D" uid="uid://bhbwt112vl2oh" path="res://Textures/HubLocation/Forge/BackButton_Pressed.png" id="6_hgs6d"]
+[ext_resource type="PackedScene" uid="uid://cv5w1ohfhj54a" path="res://Levels/HubLocation/CharacterList/NoSkillPanel.tscn" id="6_ybu10"]
 [ext_resource type="Texture2D" uid="uid://bhx223fduq0bk" path="res://Textures/HubLocation/Icons/Health.png" id="7_6n0i5"]
 [ext_resource type="Texture2D" uid="uid://dd7s0ak522xrk" path="res://Textures/HubLocation/Forge/BackButton_Hover.png" id="7_ouhha"]
+[ext_resource type="PackedScene" uid="uid://cf4qx28qyqpvh" path="res://Levels/HubLocation/CharacterList/BigSkillPanel.tscn" id="7_xtu2d"]
 [ext_resource type="Texture2D" uid="uid://4d1u8sugr8a" path="res://Textures/HubLocation/Icons/Speed.png" id="8_sgqvt"]
 [ext_resource type="Texture2D" uid="uid://3pi7c6mod5wh" path="res://Textures/HubLocation/Icons/Damage.png" id="9_ouvy8"]
 [ext_resource type="Texture2D" uid="uid://b2uqcrsvt0a4g" path="res://Textures/HubLocation/Icons/DamageByEffects.png" id="10_iu0dr"]
@@ -38,6 +40,8 @@ ChooseWeaponScene = ExtResource("2_iu0dr")
 SkillTreeScene = ExtResource("3_ayih5")
 noWeaponPanelScene = ExtResource("4_mohno")
 weaponPanelScene = ExtResource("5_aiuuh")
+noSkillPanelScene = ExtResource("6_ybu10")
+skillPanelScene = ExtResource("7_xtu2d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -710,6 +714,31 @@ theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(63.5, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource("19_c2ess")
+texture_pressed = ExtResource("20_avv06")
+texture_hover = ExtResource("21_ybu10")
+texture_disabled = ExtResource("22_xtu2d")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Убрать"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2

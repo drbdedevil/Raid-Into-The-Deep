@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1je8gc73xr08"]
+[gd_scene load_steps=12 format=3 uid="uid://b1je8gc73xr08"]
 
 [ext_resource type="Script" uid="uid://bun15vs8nkdhw" path="res://Levels/HubLocation/CharacterList/SkillTreeWidnow.cs" id="1_7k0av"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_os10u"]
 [ext_resource type="Texture2D" uid="uid://cmmgsej5bmnti" path="res://Textures/HubLocation/Forge/BackButton.png" id="2_7k0av"]
 [ext_resource type="Texture2D" uid="uid://bhbwt112vl2oh" path="res://Textures/HubLocation/Forge/BackButton_Pressed.png" id="4_k5vlu"]
 [ext_resource type="Texture2D" uid="uid://dd7s0ak522xrk" path="res://Textures/HubLocation/Forge/BackButton_Hover.png" id="5_hyabq"]
+[ext_resource type="Texture2D" uid="uid://cep01pw084rdx" path="res://Textures/CharacterList/SkillTree.png" id="6_hyabq"]
+[ext_resource type="Texture2D" uid="uid://bj5voivnbo5op" path="res://Textures/CharacterList/SkillTreeFace.png" id="7_4bemn"]
+[ext_resource type="PackedScene" uid="uid://cx4wb704ae74r" path="res://Levels/HubLocation/CharacterList/SkillButton.tscn" id="8_dkbth"]
+[ext_resource type="Texture2D" uid="uid://dlyw2f2llth6v" path="res://Textures/CharacterList/PointsPanel.png" id="8_mnv3v"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="9_lavyh"]
+[ext_resource type="PackedScene" uid="uid://cdf3721jy3mnh" path="res://Levels/HubLocation/CharacterList/SkillInfoPanel.tscn" id="11_ttfc4"]
 
 [node name="SkillTreeWindow" type="ColorRect"]
 custom_minimum_size = Vector2(700, 485)
 color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 script = ExtResource("1_7k0av")
+skillInfoPanelScene = ExtResource("11_ttfc4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -89,14 +96,235 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("6_hyabq")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/ColorRect"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect"]
+layout_mode = 1
+offset_left = 234.0
+offset_top = 114.0
+offset_right = 274.0
+offset_bottom = 154.0
+texture = ExtResource("7_4bemn")
+expand_mode = 1
+
+[node name="SkillButton" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
 layout_mode = 0
-offset_top = 204.0
-offset_right = 670.0
-offset_bottom = 227.0
-text = "Дерево навыков!!!!!!!!"
+offset_left = 42.0
+offset_top = 33.0
+offset_right = 80.4
+offset_bottom = 71.4
+
+[node name="SkillButton2" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 31.0
+offset_right = 172.4
+offset_bottom = 69.4
+skillType = 1
+
+[node name="SkillButton3" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 29.0
+offset_right = 273.4
+offset_bottom = 67.4
+skillType = 2
+
+[node name="SkillButton4" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 28.0
+offset_right = 381.4
+offset_bottom = 66.4
+skillType = 3
+
+[node name="SkillButton5" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 28.0
+offset_right = 513.4
+offset_bottom = 66.4
+skillType = 4
+
+[node name="SkillButton6" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 200.0
+offset_right = 90.4
+offset_bottom = 238.4
+skillType = 5
+
+[node name="SkillButton7" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 200.0
+offset_right = 215.4
+offset_bottom = 238.4
+skillType = 8
+
+[node name="SkillButton8" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 201.0
+offset_right = 345.4
+offset_bottom = 239.4
+skillType = 11
+
+[node name="SkillButton9" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 200.0
+offset_right = 461.4
+offset_bottom = 238.4
+skillType = 13
+
+[node name="SkillButton10" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 277.0
+offset_right = 92.4
+offset_bottom = 315.4
+skillType = 6
+
+[node name="SkillButton11" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 281.0
+offset_right = 216.4
+offset_bottom = 319.4
+skillType = 9
+
+[node name="SkillButton12" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 278.0
+offset_right = 346.4
+offset_bottom = 316.4
+skillType = 12
+
+[node name="SkillButton13" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 278.0
+offset_right = 461.4
+offset_bottom = 316.4
+skillType = 14
+
+[node name="SkillButton14" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 351.0
+offset_right = 97.4
+offset_bottom = 389.4
+skillType = 7
+
+[node name="SkillButton15" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 351.0
+offset_right = 219.4
+offset_bottom = 389.4
+skillType = 10
+
+[node name="SkillButton16" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 350.0
+offset_right = 349.4
+offset_bottom = 388.4
+skillType = 16
+
+[node name="SkillButton17" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/TextureRect" instance=ExtResource("8_dkbth")]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 352.0
+offset_right = 466.4
+offset_bottom = 390.4
+skillType = 15
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer2"]
+custom_minimum_size = Vector2(118.8, 63.6)
+layout_mode = 2
+texture = ExtResource("8_mnv3v")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer2/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("1_os10u")
+text = "Счётчик очков навыков"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer2/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_lavyh")
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -350.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer3/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer3/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)

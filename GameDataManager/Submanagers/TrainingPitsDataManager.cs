@@ -97,8 +97,10 @@ public partial class TrainingPitsDataManager : Node
             characterData.Speed = gameDataManager.baseStatsDatabase.Speed;
             characterData.Level = LevelToCreate;
 
-            int pointsForPassive = GD.RandRange(0, LevelToCreate - 1);
-            int pointsForActive = LevelToCreate - 1 - pointsForPassive;
+            int pointsForActive = GD.RandRange(0, LevelToCreate > 1 ? 1 : 0);
+            int pointsForPassive = LevelToCreate - 1 - pointsForActive;
+            // int pointsForPassive = GD.RandRange(0, LevelToCreate - 1);
+            // int pointsForActive = LevelToCreate - 1 - pointsForPassive;
 
             characterData.PassiveSkillLevels = GetRandomPassiveSkills(pointsForPassive);
             characterData.ActiveSkills = GetRandomActiveSkills(pointsForActive);
@@ -207,7 +209,7 @@ public partial class TrainingPitsDataManager : Node
 
         return activeSkills;
     }
-    private void SetProgression(Dictionary<string, int> PassiveSkills, CharacterData characterData)
+    public void SetProgression(Dictionary<string, int> PassiveSkills, CharacterData characterData)
     {
         foreach (KeyValuePair<string, int> skill in PassiveSkills)
         {

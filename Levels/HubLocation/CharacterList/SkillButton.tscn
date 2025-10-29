@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx4wb704ae74r"]
+
+[ext_resource type="Texture2D" uid="uid://cmelxjffv7ehv" path="res://Textures/Skills/PassiveSkills/DamageByEffect_Base.png" id="1_7b36h"]
+[ext_resource type="Script" uid="uid://5hvxamw657my" path="res://Levels/HubLocation/CharacterList/SkillButton.cs" id="2_00h6v"]
+
+[node name="SkillButton" type="TextureButton"]
+custom_minimum_size = Vector2(38.4, 38.4)
+texture_normal = ExtResource("1_7b36h")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_00h6v")

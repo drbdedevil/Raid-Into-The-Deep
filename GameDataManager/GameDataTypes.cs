@@ -26,12 +26,12 @@ public class CharacterData
     public int Speed { get; set; } = 0;
     public bool[] Upgrades { get; set; } = new bool[0]; // TODO: DELETE
     public WeaponData Weapon { get; set; } = new();
-    public int SkillPoints { get; set; } = 0;
+    public int SkillPoints { get; set; } = 10;
     public int Level { get; set; } = 1;
 
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
     public HashSet<string> ActiveSkills { get; set; } = new();
-    public string ChoosenSkills { get; set; } = "";
+    public string ChoosenSkills { get; set; } = "NONE";
 }
 
 public class StorageData
@@ -57,7 +57,7 @@ public class ForgeData
 
 public class TrainingPitsData
 {
-    public int Level { get; set; } = 6;
+    public int Level { get; set; } = 1;
     public List<CharacterData> CharactersForHiring { get; set; } = new();
 }
 
