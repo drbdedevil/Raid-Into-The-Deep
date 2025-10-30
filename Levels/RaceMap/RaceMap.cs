@@ -6,10 +6,15 @@ public partial class RaceMap : Control
     // [Export]
     // private PackedScene HubLocationScene;
     [Export]
-	public PackedScene WarriorPanelScene;
+    public PackedScene WarriorPanelScene;
+    [Export]
+    private PackedScene PopupNavigatorScene;
 
     public override void _Ready()
     {
+        PopupNavigator popupNavigator = PopupNavigatorScene.Instantiate() as PopupNavigator;
+        AddChild(popupNavigator);
+
         TextureButton HubLocationButton = GetNode<TextureButton>("HBoxContainer/Panel/VBoxContainer/HBoxContainer/TextureButton");
         HubLocationButton.ButtonDown += OnHubLocationButtonPressed;
 

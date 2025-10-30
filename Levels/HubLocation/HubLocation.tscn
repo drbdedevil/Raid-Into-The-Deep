@@ -1,7 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://dqakekx24s2dj"]
+[gd_scene load_steps=39 format=3 uid="uid://dqakekx24s2dj"]
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
-[ext_resource type="PackedScene" uid="uid://cnxr2el16edkb" path="res://Levels/HubLocation/TEMP_Popup.tscn" id="2_uqi6k"]
+[ext_resource type="PackedScene" uid="uid://clrxyetfap3vs" path="res://Levels/HubLocation/PopupNavigator.tscn" id="2_fn680"]
 [ext_resource type="Texture2D" uid="uid://batlwvv7k4u00" path="res://Textures/HubLocation/allpicture.png" id="3_4h0hg"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="3_b23rm"]
 [ext_resource type="PackedScene" uid="uid://cpr8w1fhvtvii" path="res://Levels/RaceMap/RaceMap.tscn" id="4_fn680"]
@@ -18,13 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="14_ogxw3"]
 [ext_resource type="Script" uid="uid://66hihla48n3u" path="res://Levels/HubLocation/BaseInterest.cs" id="14_twrgc"]
 [ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
-[ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="16_cf5ii"]
-[ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="17_4e6yu"]
 [ext_resource type="PackedScene" uid="uid://tiga6w74ljhd" path="res://Levels/HubLocation/Forge/Forge.tscn" id="17_ks1w7"]
 [ext_resource type="PackedScene" uid="uid://d2jyto1fabcvx" path="res://Levels/HubLocation/Storage/Storage.tscn" id="18_ljn6y"]
 [ext_resource type="PackedScene" uid="uid://lqex6adq1njd" path="res://Levels/HubLocation/CommandBlock/CommandBlock.tscn" id="19_3d8pl"]
 [ext_resource type="PackedScene" uid="uid://dvmhjsev76cws" path="res://Levels/HubLocation/LivingSpace/LivingSpace.tscn" id="20_wk2cf"]
-[ext_resource type="Script" uid="uid://cofu64iusem5y" path="res://Levels/HubLocation/PopupNavigator.cs" id="22_p1mhx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5qfr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -144,15 +141,6 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
 [sub_resource type="Theme" id="Theme_fn680"]
 VBoxContainer/constants/separation = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqi6k"]
-bg_color = Color(0.15062094, 0.07662549, 0.0058686547, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4e6yu"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h0hg"]
-bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
-
 [node name="HubLocation" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -161,7 +149,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jthpg")
-PopupScene = ExtResource("2_uqi6k")
+PopupNavigatorScene = ExtResource("2_fn680")
 WarriorPanelScene = ExtResource("14_ogxw3")
 RaceMapScene = ExtResource("4_fn680")
 
@@ -568,79 +556,3 @@ text = "Вход в забег
 "
 icon_alignment = 1
 script = ExtResource("14_twrgc")
-
-[node name="PopupPanel" type="PopupPanel" parent="."]
-oversampling_override = 1.0
-position = Vector2i(310, 49)
-size = Vector2i(725, 550)
-theme_override_styles/panel = SubResource("StyleBoxFlat_uqi6k")
-script = ExtResource("22_p1mhx")
-
-[node name="TextureRect" type="TextureRect" parent="PopupPanel"]
-offset_right = 725.0
-offset_bottom = 550.0
-texture = ExtResource("16_cf5ii")
-expand_mode = 1
-
-[node name="MarginContainer" type="Control" parent="PopupPanel"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -362.5
-offset_top = -275.0
-offset_right = 362.5
-offset_bottom = 275.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -352.5
-offset_top = -265.0
-offset_right = 352.5
-offset_bottom = 265.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="PanelLabel" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
-theme_override_fonts/font = ExtResource("4_l5qfr")
-text = "Текст"
-
-[node name="Control" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ClosePopupButton" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
-custom_minimum_size = Vector2(17, 17)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_4e6yu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4h0hg")
-icon = ExtResource("17_4e6yu")
-icon_alignment = 1
-expand_icon = true
-
-[node name="SceneContainer" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-size_flags_vertical = 3

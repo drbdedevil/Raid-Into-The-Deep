@@ -4,7 +4,7 @@ using System;
 public partial class HubLocation : Node
 {
 	[Export]
-	private PackedScene PopupScene;
+	private PackedScene PopupNavigatorScene;
 	[Export]
 	public PackedScene WarriorPanelScene;
 	[Export]
@@ -12,6 +12,9 @@ public partial class HubLocation : Node
 
 	public override void _Ready()
 	{
+		PopupNavigator popupNavigator = PopupNavigatorScene.Instantiate() as PopupNavigator;
+		AddChild(popupNavigator);
+		
 		var MenuButton = GetNode<Button>("MainPanel/Panel/VBoxContainer/HBoxContainer/MenuButton");
 		MenuButton.ButtonDown += OnMenuButtonPressed;
 
