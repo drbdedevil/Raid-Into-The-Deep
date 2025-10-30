@@ -7,6 +7,8 @@ public partial class HubLocation : Node
 	private PackedScene PopupScene;
 	[Export]
 	public PackedScene WarriorPanelScene;
+	[Export]
+	private PackedScene RaceMapScene;
 
 	public override void _Ready()
 	{
@@ -15,6 +17,9 @@ public partial class HubLocation : Node
 
 		var SettingsButton = GetNode<Button>("MainPanel/Panel/VBoxContainer/HBoxContainer/SettingsButton");
 		SettingsButton.ButtonDown += OnSettingsButtonPressed;
+
+		Button RaceMapButton = GetNode<Button>("MainPanel/Control/RaceMapButton");
+		RaceMapButton.ButtonDown += OnRaceMapButtonPressed;
 
 		// ----------- Base Interset Button -----------
 		var TrainingPitsButton = GetNode<Button>("MainPanel/Control/TrainingPitsButton");
@@ -34,10 +39,10 @@ public partial class HubLocation : Node
 
 		//  -----------
 
-		var close_button = GetNode<Button>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/ClosePopupButton");
-		close_button.ButtonDown += OnClosePopupPressed;
-		var popup = GetNode<PopupPanel>("PopupPanel");
-		popup.PopupHide += OnClosePopupPressed;
+		// var close_button = GetNode<Button>("PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/ClosePopupButton");
+		// close_button.ButtonDown += OnClosePopupPressed;
+		// var popup = GetNode<PopupPanel>("PopupPanel");
+		// popup.PopupHide += OnClosePopupPressed;
 
 		// ----------- View Realization -----------
 		// ----- Binding Functions
@@ -56,6 +61,8 @@ public partial class HubLocation : Node
 	{
 		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate -= OnCrystalsUpdate;
 		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate -= OnChitinFragmentsUpdate;
+		GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate -= UpdateUsedCharactersList;
+		GameDataManager.Instance.livingSpaceDataManager.OnReservedCharactersListUpdate -= UpdateReservedCharactersList;
 	}
 
 // ---------------------------------------- Buttons ----------------------------------------
@@ -68,6 +75,10 @@ public partial class HubLocation : Node
 	private void OnSettingsButtonPressed()
 	{
 		GD.Print(" -- SettingsButtonPressed --");
+	}
+	private void OnRaceMapButtonPressed()
+	{
+		GetTree().ChangeSceneToPacked(RaceMapScene);
 	}
 
 	private void OnTrainingPitsPressed()

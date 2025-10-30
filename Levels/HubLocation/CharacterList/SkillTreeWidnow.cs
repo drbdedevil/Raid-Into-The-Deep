@@ -194,6 +194,9 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
 
         SkillButtonMouseExited(skillButton);
         SkillButtonMouseEntered(skillButton);
+
+        GameDataManager.Instance.livingSpaceDataManager.EmitSignal(LivingSpaceDataManager.SignalName.OnUsedCharactersListUpdate);
+        GameDataManager.Instance.livingSpaceDataManager.EmitSignal(LivingSpaceDataManager.SignalName.OnReservedCharactersListUpdate);
     }
     private void SkillButtonMouseEntered(SkillButton skillButton)
     {

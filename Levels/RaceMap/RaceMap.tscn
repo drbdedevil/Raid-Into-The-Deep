@@ -1,0 +1,595 @@
+[gd_scene load_steps=38 format=3 uid="uid://cpr8w1fhvtvii"]
+
+[ext_resource type="Script" uid="uid://bi7nkvsn0hne1" path="res://Levels/RaceMap/RaceMap.cs" id="1_b3xk7"]
+[ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="1_uxyyj"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="2_6veol"]
+[ext_resource type="Texture2D" uid="uid://dgr6no3cbudlg" path="res://Textures/RaceMap/RaceMapOut_Base.png" id="2_dm8ju"]
+[ext_resource type="Texture2D" uid="uid://yxgfc867ur88" path="res://Textures/RaceMap/RaceMapOut_Pressed.png" id="3_6veol"]
+[ext_resource type="Texture2D" uid="uid://cdw2tlwhmdy25" path="res://Textures/RaceMap/RaceMapOut_Hover.png" id="4_b3xk7"]
+[ext_resource type="Texture2D" uid="uid://d1v1gi3i0prmh" path="res://Textures/RaceMap/RaceMapOut_Disable.png" id="5_b4cbp"]
+[ext_resource type="Texture2D" uid="uid://dtnpq46yyiga3" path="res://Textures/HubLocation/ResourcePanel.png" id="5_ghq32"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="6_qd4c2"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="7_snhtr"]
+[ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="8_xqrsm"]
+[ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="9_tkyfr"]
+[ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="10_mdk6t"]
+[ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="11_5ehvw"]
+[ext_resource type="Texture2D" uid="uid://5k8u06lyy8o6" path="res://Textures/RaceMap/MapIcons/Fight_White.png" id="15_b4cbp"]
+[ext_resource type="Texture2D" uid="uid://cwyn2tgqwkqhb" path="res://Textures/RaceMap/MapIcons/Otdych_White.png" id="16_ghq32"]
+[ext_resource type="Texture2D" uid="uid://ddroifyrj7ilo" path="res://Textures/RaceMap/MapIcons/Sokrov_White.png" id="17_xqrsm"]
+[ext_resource type="Texture2D" uid="uid://c3ynf2w3lutyx" path="res://Textures/RaceMap/MapIcons/Boss_White.png" id="18_tkyfr"]
+[ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="19_mdk6t"]
+[ext_resource type="Script" uid="uid://cofu64iusem5y" path="res://Levels/HubLocation/PopupNavigator.cs" id="20_5ehvw"]
+[ext_resource type="Texture2D" uid="uid://cg6br126afavy" path="res://Textures/HubLocation/PopupPanel.png" id="21_eke86"]
+[ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="22_gj2ud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_5n8uj"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4bkdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77ja0"]
+
+[sub_resource type="Theme" id="Theme_xhp82"]
+VBoxContainer/constants/separation = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6ldc"]
+bg_color = Color(0.15062094, 0.07662549, 0.0058686547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6igve"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwq6x"]
+bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
+
+[node name="RaceMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b3xk7")
+WarriorPanelScene = ExtResource("11_5ehvw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("1_uxyyj")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 192.0
+offset_bottom = 642.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(181.2, 26.4)
+layout_mode = 2
+texture_normal = ExtResource("2_dm8ju")
+texture_pressed = ExtResource("3_6veol")
+texture_hover = ExtResource("4_b3xk7")
+texture_disabled = ExtResource("5_b4cbp")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6veol")
+text = "Выйти"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ResourcesLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 14
+text = "Ресурсы"
+
+[node name="ResourcePanel" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 56)
+layout_mode = 2
+texture = ExtResource("5_ghq32")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 52.0
+
+[node name="ChitinHBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("6_qd4c2")
+theme_override_font_sizes/font_size = 14
+text = "Хитин"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("7_snhtr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 14
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_xqrsm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CrystalBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("6_qd4c2")
+theme_override_font_sizes/font_size = 14
+text = "Кристаллы"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("7_snhtr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 14
+text = "40"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_tkyfr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource("Theme_5n8uj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4bkdg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_77ja0")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_xhp82")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_mdk6t")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResourcesLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 14
+text = "Команда"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_mdk6t")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TeamVBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ViewWarriorPanel" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("11_5ehvw")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel2" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("11_5ehvw")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel3" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("11_5ehvw")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel4" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("11_5ehvw")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(171.6, 180)
+layout_mode = 2
+color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.5568628, 0.2627451, 0.105882354, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.5999756
+offset_right = -5.4000244
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6veol")
+text = "Справка"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("15_b4cbp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Бой"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("16_ghq32")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Отдых"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("17_xqrsm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Сокровищница"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("18_tkyfr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Битва с боссом"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("19_mdk6t")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Случайная встреча"
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+oversampling_override = 1.0
+position = Vector2i(310, 49)
+size = Vector2i(725, 550)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6ldc")
+script = ExtResource("20_5ehvw")
+
+[node name="TextureRect" type="TextureRect" parent="PopupPanel"]
+offset_right = 725.0
+offset_bottom = 550.0
+texture = ExtResource("21_eke86")
+expand_mode = 1
+
+[node name="MarginContainer" type="Control" parent="PopupPanel"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -275.0
+offset_right = 362.5
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.5
+offset_top = -265.0
+offset_right = 352.5
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelLabel" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("2_6veol")
+text = "Текст"
+
+[node name="Control" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ClosePopupButton" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6igve")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dwq6x")
+icon = ExtResource("22_gj2ud")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SceneContainer" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3

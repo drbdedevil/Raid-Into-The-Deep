@@ -23,7 +23,17 @@ public partial class PopupNavigator : PopupPanel
         {
             GD.PrintErr("PopupNavigator: SceneContainer not found at " + SceneContainerPath);
         }
+
+        Button ClosePopupButton = GetNode<Button>("MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer/ClosePopupButton");
+        ClosePopupButton.ButtonDown += OnClosePopupPressed;
+        PopupHide += OnClosePopupPressed;
     }
+
+    private void OnClosePopupPressed()
+	{
+		ClearHistory(true);
+		Hide();
+	}
 
     public void PushScene(PackedScene scenePrefab)
     {
