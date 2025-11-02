@@ -32,9 +32,10 @@ expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TextureRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 185.0
+offset_bottom = 55.0
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer"]
 layout_mode = 2
@@ -52,11 +53,14 @@ mouse_filter = 2
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
 
 [node name="FiredWarriorButton" type="Button" parent="PanelContainer/TextureRect/HBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_vertical = 4
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_emuf1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l0e7n")
