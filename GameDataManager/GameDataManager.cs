@@ -73,6 +73,9 @@ public partial class GameDataManager : Node
 	[Export]
 	public SkillsDatabase activeSkillsDatabase { get; private set; }
 
+	[Export]
+	public RaceMapDatabase raceMapDatabase { get; private set; }
+
 	// Scripts
 	public override void _Ready()
 	{

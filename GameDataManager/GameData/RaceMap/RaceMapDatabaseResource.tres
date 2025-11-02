@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="RaceMapDatabase" load_steps=22 format=3 uid="uid://0s1vb3fkkh7l"]
+
+[ext_resource type="Script" uid="uid://7oocrq3yarrs" path="res://GameDataManager/GameData/RaceMap/RaceMapEventRow.cs" id="1_2fcsx"]
+[ext_resource type="Texture2D" uid="uid://bwox27xa7qqsu" path="res://Textures/RaceMap/MapIcons/StartPoint_Black.png" id="2_bcg6x"]
+[ext_resource type="Script" uid="uid://0qgukh48m2he" path="res://GameDataManager/GameData/RaceMap/RaceMapDatabase.cs" id="2_ihbqp"]
+[ext_resource type="Texture2D" uid="uid://b7rr7r0r1teth" path="res://Textures/RaceMap/MapIcons/StartPoint_White.png" id="3_hpm2w"]
+[ext_resource type="Texture2D" uid="uid://ddokgigk7nqed" path="res://Textures/RaceMap/MapIcons/Fight_Black.png" id="4_54m8r"]
+[ext_resource type="Texture2D" uid="uid://5k8u06lyy8o6" path="res://Textures/RaceMap/MapIcons/Fight_White.png" id="5_bswsp"]
+[ext_resource type="Texture2D" uid="uid://d20bfh2tvbas4" path="res://Textures/RaceMap/MapIcons/Otdych_Black.png" id="6_qox0u"]
+[ext_resource type="Texture2D" uid="uid://cwyn2tgqwkqhb" path="res://Textures/RaceMap/MapIcons/Otdych_White.png" id="7_6crie"]
+[ext_resource type="Texture2D" uid="uid://bvep36ybg6t4l" path="res://Textures/RaceMap/MapIcons/Sokrov_Black.png" id="8_k5b5v"]
+[ext_resource type="Texture2D" uid="uid://ddroifyrj7ilo" path="res://Textures/RaceMap/MapIcons/Sokrov_White.png" id="9_f4rci"]
+[ext_resource type="Texture2D" uid="uid://chhgf2haxaleo" path="res://Textures/RaceMap/MapIcons/Boss_Black.png" id="10_otrvv"]
+[ext_resource type="Texture2D" uid="uid://c3ynf2w3lutyx" path="res://Textures/RaceMap/MapIcons/Boss_White.png" id="11_yqhjc"]
+[ext_resource type="Texture2D" uid="uid://cb7u34cu8spe8" path="res://Textures/RaceMap/MapIcons/Vopros_Black.png" id="12_21cdx"]
+[ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="13_drbut"]
+
+[sub_resource type="Resource" id="Resource_54m8r"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("3_hpm2w")
+passedNodeIcon = ExtResource("2_bcg6x")
+Weight = 0.0
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_qox0u"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("5_bswsp")
+passedNodeIcon = ExtResource("4_54m8r")
+mapNodeType = 1
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_f4rci"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("7_6crie")
+passedNodeIcon = ExtResource("6_qox0u")
+mapNodeType = 2
+Weight = 0.07
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_otrvv"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("9_f4rci")
+passedNodeIcon = ExtResource("8_k5b5v")
+mapNodeType = 4
+Weight = 0.07
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_yqhjc"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("11_yqhjc")
+passedNodeIcon = ExtResource("10_otrvv")
+mapNodeType = 5
+Weight = 0.0
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_21cdx"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("13_drbut")
+passedNodeIcon = ExtResource("12_21cdx")
+mapNodeType = 6
+Weight = 0.1
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_drbut"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("3_hpm2w")
+passedNodeIcon = ExtResource("2_bcg6x")
+mapNodeType = 3
+Weight = 0.3
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[resource]
+script = ExtResource("2_ihbqp")
+RaceMapInfos = Array[ExtResource("1_2fcsx")]([SubResource("Resource_54m8r"), SubResource("Resource_qox0u"), SubResource("Resource_f4rci"), SubResource("Resource_otrvv"), SubResource("Resource_yqhjc"), SubResource("Resource_21cdx"), SubResource("Resource_drbut")])
+metadata/_custom_type_script = "uid://0qgukh48m2he"

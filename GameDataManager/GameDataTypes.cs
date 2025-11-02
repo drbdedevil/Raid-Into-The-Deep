@@ -87,7 +87,7 @@ public class GameData
 }
 
 
-
+// --------------------------------------- Skills ---------------------------------------
 public enum SkillKind
 {
     Passive,
@@ -162,4 +162,25 @@ public static class SkillExtensions
     {
         return skill.GetCategory() == SkillKind.Active;
     }
+}
+
+
+// --------------------------------------- Map ---------------------------------------
+public enum MapNodeType
+{
+    Start,
+    Battle,
+    Rest,
+    EliteBattle,
+    Treasure,
+    Boss,
+    RandomEvent
+}
+
+public class MapNode
+{
+    public int Row;
+    public int Col;
+    public MapNodeType Type;
+    public List<MapNode> Next = new List<MapNode>();
 }

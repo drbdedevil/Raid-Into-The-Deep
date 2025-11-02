@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://t5wswiq72t4i"]
+[gd_scene load_steps=15 format=3 uid="uid://t5wswiq72t4i"]
 
 [ext_resource type="Script" uid="uid://v7dmuhb0frce" path="res://GameDataManager/GameDataManager.cs" id="1_adx02"]
 [ext_resource type="Resource" uid="uid://bte7ql486k3d1" path="res://GameDataManager/GameBalanceData/Storage/StorageDatabaseResource.tres" id="2_6ehcg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dm5fps0pmjadi" path="res://GameDataManager/GameData/CharactersSprites/CharacterSpritesDatabaseResource.tres" id="11_06qny"]
 [ext_resource type="Resource" uid="uid://c1aiyoooftg1" path="res://GameDataManager/GameData/Skills/PassiveSkillsDatabaseResource.tres" id="12_seoh4"]
 [ext_resource type="Resource" uid="uid://dg2vycgsu4mqc" path="res://GameDataManager/GameData/Skills/ActiveSkillsDatabaseResource.tres" id="13_oika7"]
+[ext_resource type="Resource" uid="uid://0s1vb3fkkh7l" path="res://GameDataManager/GameData/RaceMap/RaceMapDatabaseResource.tres" id="14_i0vva"]
 
 [node name="GameDataManager" type="Node"]
 script = ExtResource("1_adx02")
@@ -28,3 +29,4 @@ passiveSkillsProgressionDatabase = ExtResource("10_qnaf8")
 charactersSpritesDatabase = ExtResource("11_06qny")
 passiveSkillsDatabase = ExtResource("12_seoh4")
 activeSkillsDatabase = ExtResource("13_oika7")
+raceMapDatabase = ExtResource("14_i0vva")

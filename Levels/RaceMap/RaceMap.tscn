@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cpr8w1fhvtvii"]
+[gd_scene load_steps=44 format=3 uid="uid://cpr8w1fhvtvii"]
 
 [ext_resource type="Script" uid="uid://bi7nkvsn0hne1" path="res://Levels/RaceMap/RaceMap.cs" id="1_b3xk7"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="1_uxyyj"]
@@ -17,8 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="11_5ehvw"]
 [ext_resource type="Texture2D" uid="uid://5k8u06lyy8o6" path="res://Textures/RaceMap/MapIcons/Fight_White.png" id="15_b4cbp"]
 [ext_resource type="Texture2D" uid="uid://cwyn2tgqwkqhb" path="res://Textures/RaceMap/MapIcons/Otdych_White.png" id="16_ghq32"]
+[ext_resource type="Script" uid="uid://bw5lu40vtf28c" path="res://Levels/RaceMap/RaceMapContainer.cs" id="16_mdk6t"]
+[ext_resource type="Script" uid="uid://d0jxsdtx6uill" path="res://Levels/RaceMap/MapGenerator.cs" id="17_5ehvw"]
 [ext_resource type="Texture2D" uid="uid://ddroifyrj7ilo" path="res://Textures/RaceMap/MapIcons/Sokrov_White.png" id="17_xqrsm"]
+[ext_resource type="Script" uid="uid://opkjm0x4rcme" path="res://Levels/RaceMap/MapDisplay.cs" id="18_eke86"]
 [ext_resource type="Texture2D" uid="uid://c3ynf2w3lutyx" path="res://Textures/RaceMap/MapIcons/Boss_White.png" id="18_tkyfr"]
+[ext_resource type="PackedScene" uid="uid://dbx0duiwhauq5" path="res://Levels/RaceMap/MapNodeButton.tscn" id="19_gj2ud"]
 [ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="19_mdk6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
@@ -125,6 +129,90 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
 
 [sub_resource type="Theme" id="Theme_xhp82"]
 VBoxContainer/constants/separation = 10
+
+[sub_resource type="ImageTexture" id="ImageTexture_mdk6t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ehvw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eke86"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gj2ud"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6ldc"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6igve"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_dwq6x"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_mdk6t")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_mdk6t")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_mdk6t")
+VScrollBar/icons/increment = SubResource("ImageTexture_mdk6t")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_mdk6t")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_mdk6t")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_5ehvw")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_eke86")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_gj2ud")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_v6ldc")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_6igve")
 
 [node name="RaceMap" type="Control"]
 layout_mode = 3
@@ -361,6 +449,78 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="MapContainer" type="ScrollContainer" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme = SubResource("Theme_dwq6x")
+script = ExtResource("16_mdk6t")
+
+[node name="MapGenerator" type="Node" parent="HBoxContainer/ColorRect/MapContainer"]
+script = ExtResource("17_5ehvw")
+NodesPerRowMax = 5
+
+[node name="MapControl" type="Control" parent="HBoxContainer/ColorRect/MapContainer"]
+custom_minimum_size = Vector2(0, 1900)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="MapNodeButton" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 217.0
+offset_right = 450.0
+offset_bottom = 237.0
+
+[node name="MapNodeButton2" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 884.0
+offset_right = 455.0
+offset_bottom = 904.0
+
+[node name="MapNodeButton3" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 663.0
+offset_right = 141.0
+offset_bottom = 683.0
+
+[node name="MapNodeButton4" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 671.0
+offset_right = 688.0
+offset_bottom = 691.0
+
+[node name="MapNodeButton5" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 82.0
+offset_right = 240.0
+offset_bottom = 102.0
+
+[node name="MapNodeButton6" parent="HBoxContainer/ColorRect/MapContainer/MapControl" instance=ExtResource("19_gj2ud")]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 82.0
+offset_right = 240.0
+offset_bottom = 102.0
+
+[node name="MapDisplay" type="Node" parent="HBoxContainer/ColorRect/MapContainer"]
+script = ExtResource("18_eke86")
+mapNodeScene = ExtResource("19_gj2ud")
+spacingX = 120.0
+spacingY = 100.0
+randomOffsetX = 25.0
+randomOffsetY = 16.0
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ColorRect"]
 layout_mode = 1

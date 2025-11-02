@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbx0duiwhauq5"]
+
+[ext_resource type="Script" uid="uid://cn2j7qahlp53t" path="res://Levels/RaceMap/MapNodeButton.cs" id="1_3n8cd"]
+[ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="1_yxlqg"]
+[ext_resource type="Texture2D" uid="uid://cb7u34cu8spe8" path="res://Textures/RaceMap/MapIcons/Vopros_Black.png" id="2_7y1sl"]
+
+[node name="MapNodeButton" type="TextureButton"]
+custom_minimum_size = Vector2(30, 30)
+texture_normal = ExtResource("1_yxlqg")
+texture_pressed = ExtResource("1_yxlqg")
+texture_hover = ExtResource("2_7y1sl")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("1_3n8cd")
