@@ -86,7 +86,7 @@ public partial class MapManager : Node2D
 				isometricRow.Add(isometricCoord);
 				cartesianRow.Add(cartesianCoord);
 				_floorLayer.SetCell(isometricCoord, 0, new Vector2I(0, 0));
-				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16));
+				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16), false);
 				_tilesByIsometric.Add(isometricCoord, mapTile);
 				_tilesByCartesian.Add(cartesianCoord, mapTile);
 				_mapTiles.Add(mapTile);

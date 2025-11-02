@@ -7,7 +7,34 @@ public partial class GameDataManager : Node
 
 	[Export]
 	public string SavePath;
-	public GameData currentData { get; set; } = new();
+
+	public GameData currentData { get; set; } = new()
+	{
+		livingSpaceData = new LivingSpaceData()
+		{
+			UsedCharacters =
+			[
+				new CharacterData()
+				{
+					ID = "1",
+					Name = "Жук1",
+					Level = 1
+				},
+				new CharacterData()
+				{
+					ID = "2",
+					Name = "Жук2",
+					Level = 2
+				},
+				new CharacterData()
+				{
+					ID = "3",
+					Name = "Жук3",
+					Level = 3
+				}
+			]
+		}
+	};
 
 	[Export]
 	public bool IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;

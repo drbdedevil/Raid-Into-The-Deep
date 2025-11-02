@@ -1,8 +1,10 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
+using FileAccess = Godot.FileAccess;
 
 namespace RaidIntoTheDeep.Levels.Fight.PrepareFightScene;
 
@@ -11,7 +13,7 @@ public partial class PrepareFightMapManager : Node2D
 {
 	private List<List<Vector2I>> _cartesianCoords = [];
 	private List<List<Vector2I>> _isometricCoords = [];
-	private readonly List<Tile> _mapTiles = [];
+	private List<Tile> _mapTiles = [];
 	
 	private TileMapLayer _floorLayer;
 	private TileMapLayer _entityLayer;
@@ -28,6 +30,10 @@ public partial class PrepareFightMapManager : Node2D
 
 	private Tile? _selectedTile = null;
 
+	[Export]
+	public string MapName { get; set; }
+
+	
 	[Signal]
 	public delegate void OnTileLeftButtonClickedEventHandler(Vector2I tile);
 	
@@ -41,7 +47,7 @@ public partial class PrepareFightMapManager : Node2D
 		{
 			if (mouseButton.Pressed)
 			{ 
-				var tile = GetTileUnderMousePosition();
+				var tile = GetTileUnderMousePositionForWarriorPlacement();
 				if (mouseButton.ButtonIndex == MouseButton.Left)
 				{
 					if (tile != null && tile.BattleEntity?.Character == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
@@ -57,7 +63,7 @@ public partial class PrepareFightMapManager : Node2D
 
 	public override void _Process(double delta)
 	{
-		var tile = GetTileUnderMousePosition();
+		var tile = GetTileUnderMousePositionForWarriorPlacement();
 		if (_selectedTile != null && tile == null || (_selectedTile != tile && tile != null && _selectedTile is not null) )
 		{
 			DeselectTile(_selectedTile);
@@ -75,40 +81,25 @@ public partial class PrepareFightMapManager : Node2D
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
 		
-		var ySize = 8;
-		var xSize = 8;
-		for (int y = 0; y < ySize; y++)
+		var mapText = FileAccess.Open($"res://Maps/{MapName}", FileAccess.ModeFlags.Read).GetAsText();
+		(_mapTiles, var mapSize) = MapParser.LoadFromText(mapText);
+
+		for (int y = 0; y < mapSize.Y; y++)
 		{
-			var cartesianRow = new List<Vector2I>();
-			var isometricRow = new List<Vector2I>();
-			for (int x = 0; x < xSize; x++)
+			var cartesianCoords = new List<Vector2I>();
+			var isometricCoords = new List<Vector2I>();
+			for (int x = 0; x < mapSize.X; x++)
 			{
-				var cartesianCoord = new Vector2I(x, y); 
-				var isometricCoord = y % 2 == 0 ? CalculateEvenVector(x) : CalculateOddVector(x);
-				
-				isometricRow.Add(isometricCoord);
-				cartesianRow.Add(cartesianCoord);
-				_floorLayer.SetCell(isometricCoord, 0, new Vector2I(0, 0));
-				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16));
-				_tilesByIsometric.Add(isometricCoord, mapTile);
-				_tilesByCartesian.Add(cartesianCoord, mapTile);
-				_mapTiles.Add(mapTile);
+				var tile = _mapTiles[x+(y * mapSize.Y)];
+				cartesianCoords.Add(tile.CartesianPosition);
+				isometricCoords.Add(tile.IsometricPosition);
+				_tilesByCartesian.Add(tile.CartesianPosition, tile);
+				_tilesByIsometric.Add(tile.IsometricPosition, tile);
+				SetAtlasOriginalTextureForTile(tile);
 			}
-			_cartesianCoords.Add(cartesianRow);
-			_isometricCoords.Add(isometricRow);
-
-			Vector2I CalculateEvenVector(int x) => new (
-				y + (int)Math.Round((x) / 2f, MidpointRounding.ToNegativeInfinity) -
-				3 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity),
-				x + 2 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity));
-
-			Vector2I CalculateOddVector(int x) => new (
-				(int)Math.Round((-y) / 2f, MidpointRounding.ToNegativeInfinity) +
-				(int)Math.Round((decimal)(x + 1) / 2, MidpointRounding.ToNegativeInfinity),
-				(int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity) * 2 + x + 1);
+			_isometricCoords.Add(isometricCoords);
+			_cartesianCoords.Add(cartesianCoords);
 		}
-		
-	   
 		
 	}
 	
@@ -138,22 +129,36 @@ public partial class PrepareFightMapManager : Node2D
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
-
-	public Tile? GetTileUnderMousePosition()
+	
+	public Tile? GetTileUnderMousePositionForWarriorPlacement()
 	{
 		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
-		return GetTileByIsometricCoord(clickedCell);
+		var tile = GetTileByIsometricCoord(clickedCell); 
+		if (tile == null || tile.IsClosedToSetPlayerWarrior) return null;
+		return tile;
 	}
 
 	public void SelectTile(Tile tile)
 	{
-		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
+		if (!tile.IsClosedToSetPlayerWarrior)  _floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
 	}
 	
 	public void DeselectTile(Tile tile)
 	{
-		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		SetAtlasOriginalTextureForTile(tile);
 	}
 
+
+	/// <summary>
+	/// Функция установки тайлу его "Оригинальной" текстуры.
+	/// т.е. той которая не является текстурой "Выделения" 
+	/// </summary>
+	/// <param name="tile"></param>
+	private void SetAtlasOriginalTextureForTile(Tile tile)
+	{
+		const int openedTileTexture = 0;
+		const int closedTileTexture = 2;
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(tile.IsClosedToSetPlayerWarrior ? closedTileTexture : openedTileTexture, 0));
+	}
 
 }

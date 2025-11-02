@@ -16,6 +16,7 @@ texture = ExtResource("2_jxe02")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqbft"]
 texture = ExtResource("3_clwcm")
@@ -153,6 +154,7 @@ script = ExtResource("1_jxe02")
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("2_ed8kp")
+MapName = "map1.txt"
 
 [node name="Floor" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
