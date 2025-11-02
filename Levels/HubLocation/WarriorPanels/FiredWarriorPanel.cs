@@ -26,6 +26,8 @@ public partial class FiredWarriorPanel : Control
         Warrior warrior = GetNode<Warrior>("PanelContainer/TextureRect/HBoxContainer/MarginContainer/WarriorPanel");
         GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromUsed(warrior.characterData.ID);
         GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(warrior.characterData.ID);
+
+        NotificationSystem.Instance.ShowMessage("Воин \'" + warrior.characterData.Name + "\' уволен с позором.");
     }
     
     public void SetCharacterInfosToWarriorPanel(CharacterData InCharacterData)

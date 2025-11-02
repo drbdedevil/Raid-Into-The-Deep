@@ -95,6 +95,8 @@ public partial class Forge : Node, IStackPage
 
                 GameDataManager.Instance.storageDataManager.AdjustCrystals(CrystalPrice);
                 GameDataManager.Instance.storageDataManager.AdjustChitinFragments(ChitinPrice);
+
+                NotificationSystem.Instance.ShowMessage("Оружие \'" + chosenWeaponDataForMelt.Name + "\' успешно переплавлено.");
             }
 
             UnchooseWeaponForMelt();
@@ -126,15 +128,18 @@ public partial class Forge : Node, IStackPage
                         GameDataManager.Instance.storageDataManager.AdjustCrystals(-CrystalPrice);
                         GameDataManager.Instance.storageDataManager.AdjustChitinFragments(-ChitinPrice);
 
+                        NotificationSystem.Instance.ShowMessage("Оружие \'" + existingWeapon.Name + "\' успешно сковано.");
                         GD.Print(" -- Successful shackle! -- ");
                     }
                     else
                     {
+                        NotificationSystem.Instance.ShowMessage("Нет места на складе для: \'" + existingWeapon.Name + "\'.");
                         GD.Print(" -- Can't shackle weapon! -- ");
                     }
                 }
                 else
                 {
+                    NotificationSystem.Instance.ShowMessage("Оружейник не смог сковать оружие - денег нет, но вы держитесь!");
                     GD.Print(" -- Not enough funds for shackle! -- ");
                 }
             }
