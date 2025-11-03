@@ -73,7 +73,8 @@ public class CommandBlockData
 
 public class RunMapData
 {
-    
+    public bool bShouldRegenerate = true;
+    public List<List<MapNode>> runMapList { get; set; } = new();
 }
 
 public class GameData
@@ -179,8 +180,32 @@ public enum MapNodeType
 
 public class MapNode
 {
-    public int Row;
-    public int Col;
-    public MapNodeType Type;
+    public int Row = -1;
+    public int Col = -1;
+    public MapNodeType Type = MapNodeType.Start;
     public List<MapNode> Next = new List<MapNode>();
+    public bool IsActive = true;
+    public bool IsPassed = false;
+    public float randomOffsetX { get; set; } = 0f;
+    public float randomOffsetY { get; set; } = 0f;
+
+    public void PassMapNode()
+    {
+        List<MapNode> neighbors = GameDataManager.Instance.runMapDataManager.GetNeighborsFloor(this);
+        foreach (MapNode neigbor in neighbors)
+        {
+            if (neigbor != this)
+            {
+                neigbor.IsActive = false;
+            }
+        }
+
+        List<MapNode> nexts = Next;
+        foreach (MapNode next in nexts)
+        {
+            next.IsActive = true;
+        }
+        IsActive = false;
+        IsPassed = true;
+    }
 }

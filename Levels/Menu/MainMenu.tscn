@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dda3q28m2xroq"]
+[gd_scene load_steps=6 format=3 uid="uid://dda3q28m2xroq"]
 
 [ext_resource type="Texture2D" uid="uid://2rrfl5qd7hwo" path="res://Textures/GameTitle.png" id="1_b0w40"]
 [ext_resource type="Script" uid="uid://dkn1r1vlxn2ff" path="res://Levels/Menu/MainMenu.cs" id="1_riryq"]
 [ext_resource type="PackedScene" uid="uid://cfjmak03e832k" path="res://Levels/Menu/MenuButton.tscn" id="2_2maog"]
+[ext_resource type="Texture2D" uid="uid://cqfvsqy4f72pl" path="res://Textures/Menu/MainMenu.png" id="2_2tbab"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_riryq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_riryq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2tbab")
+expand_mode = 1
 
 [node name="GameTitleTextureRect" type="TextureRect" parent="."]
 layout_mode = 1

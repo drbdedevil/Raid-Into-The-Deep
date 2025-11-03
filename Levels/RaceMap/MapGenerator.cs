@@ -37,7 +37,7 @@ public partial class MapGenerator : Node
             for (int col = 0; col < count; ++col)
             {
                 MapNodeType type = GetRandomType(row, map[row - 1]);
-                nodes.Add(new MapNode { Row = row, Col = col, Type = type });
+                nodes.Add(new MapNode { Row = row, Col = col, Type = type, IsActive = false });
             }
 
             map.Add(nodes);
@@ -45,9 +45,9 @@ public partial class MapGenerator : Node
 
         // Bosses nodes
         map.Add(new List<MapNode> {
-            new MapNode { Row = Rows - 1, Col = 0, Type = MapNodeType.Boss },
-            new MapNode { Row = Rows - 1, Col = 1, Type = MapNodeType.Boss },
-            new MapNode { Row = Rows - 1, Col = 2, Type = MapNodeType.Boss }
+            new MapNode { Row = Rows - 1, Col = 0, Type = MapNodeType.Boss, IsActive = false },
+            new MapNode { Row = Rows - 1, Col = 1, Type = MapNodeType.Boss, IsActive = false },
+            new MapNode { Row = Rows - 1, Col = 2, Type = MapNodeType.Boss, IsActive = false }
         });
 
         ConnectNodes(map);

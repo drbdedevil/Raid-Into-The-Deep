@@ -14,7 +14,13 @@ public partial class MapDisplay : Node
     {
         Control mapControl = GetTree().Root.FindChild("MapControl", true, false) as Control;
         mapControl.Resized += Display;
+
+        GameDataManager.Instance.runMapDataManager.OnRunMapListUpdate += Display;
     }
+    public override void _ExitTree()
+	{
+		GameDataManager.Instance.runMapDataManager.OnRunMapListUpdate -= Display;
+	}
 
     private void Display()
     {
@@ -28,7 +34,18 @@ public partial class MapDisplay : Node
                 child.QueueFree();
             }
 
-            List<List<MapNode>> map = mapGenerator.Generate();
+            List<List<MapNode>> map = new List<List<MapNode>>();
+            if (GameDataManager.Instance.currentData.runMapData.bShouldRegenerate)
+            {
+                map = mapGenerator.Generate();
+                GameDataManager.Instance.currentData.runMapData.runMapList = map;
+                GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = false;
+            }
+            else
+            {
+                map = GameDataManager.Instance.currentData.runMapData.runMapList;
+            }
+            
             float centerX = mapControl.GetSize().X / 2;
 
             Random random = new Random();
@@ -57,15 +74,36 @@ public partial class MapDisplay : Node
                     {
                         MapNodeButton mapNodeButton = mapNodeScene.Instantiate() as MapNodeButton;
                         mapNodeButton.TextureNormal = raceMapEventRow.unpassedNodeIcon;
+                        mapNodeButton.TextureHover = raceMapEventRow.hoverNodeIcon;
+                        mapNodeButton.TexturePressed = raceMapEventRow.pressedNodeIcon;
+                        mapNodeButton.TextureDisabled = raceMapEventRow.disabledNodeIcon;
+                        mapNodeButton.mapNode = mapNode;
+
+                        if (!mapNode.IsActive)
+                        {
+                            mapNodeButton.Disabled = true;
+                        }
+                        if (mapNode.IsPassed)
+                        {
+                            mapNodeButton.TextureDisabled = raceMapEventRow.passedNodeIcon;
+                        }
+
                         mapControl.AddChild(mapNodeButton);
 
-                        Vector2 randomOffset = new Vector2(
-                            (float)(random.NextDouble() * 2 - 1) * randomOffsetX,
-                            (float)(random.NextDouble() * 2 - 1) * randomOffsetY
-                        );
-
-                        mapNodeButton.RandomOffset = randomOffset;
-                        mapNodeButton.MapNode = mapNode;
+                        Vector2 randomOffset = new Vector2();
+                        if (GameDataManager.Instance.currentData.runMapData.bShouldRegenerate)
+                        {
+                            randomOffset = new Vector2(
+                                (float)(random.NextDouble() * 2 - 1) * randomOffsetX,
+                                (float)(random.NextDouble() * 2 - 1) * randomOffsetY
+                            );
+                            mapNodeButton.SetRandomOffset(randomOffset);
+                            randomOffset = mapNodeButton.GetRandomOffset();
+                        }
+                        else
+                        {
+                            randomOffset = mapNodeButton.GetRandomOffset();
+                        }  
 
                         mapNodeButton.Position = new Vector2(
                             mapNode.Col * spacingX + centerX - supposedWidth / 2,
@@ -94,13 +132,26 @@ public partial class MapDisplay : Node
                         MapNodeButton endButton = nodeButtons[next];
 
                         Line2D line = new Line2D();
-                        line.Width = 1.5f;
+                        line.Width = 1.8f;
 
                         Vector2 startPos = startButton.Position + new Vector2(15f, 30f);
                         Vector2 endPos = endButton.Position + new Vector2(15f, 0f);
 
                         line.AddPoint(startPos);
                         line.AddPoint(endPos);
+
+                        if (mapNode.IsPassed && next.IsActive)
+                        {
+                            line.DefaultColor = new Color("#d19f2c");
+                        }
+                        else if (mapNode.IsPassed && next.IsPassed)
+                        {
+                            line.DefaultColor = new Color("#271b00ff");
+                        }
+                        else
+                        {
+                            line.DefaultColor = new Color("#715b2aff");
+                        }
 
                         mapControl.AddChild(line);
                     }

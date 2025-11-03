@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cpr8w1fhvtvii"]
+[gd_scene load_steps=45 format=3 uid="uid://cpr8w1fhvtvii"]
 
 [ext_resource type="Script" uid="uid://bi7nkvsn0hne1" path="res://Levels/RaceMap/RaceMap.cs" id="1_b3xk7"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="1_uxyyj"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ynf2w3lutyx" path="res://Textures/RaceMap/MapIcons/Boss_White.png" id="18_tkyfr"]
 [ext_resource type="PackedScene" uid="uid://dbx0duiwhauq5" path="res://Levels/RaceMap/MapNodeButton.tscn" id="19_gj2ud"]
 [ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="19_mdk6t"]
+[ext_resource type="Texture2D" uid="uid://bl3501iijndsh" path="res://Textures/RaceMap/MapIcons/EliteBattle_White.png" id="21_v6ldc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -534,7 +535,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/ColorRect/MarginContainer"]
-custom_minimum_size = Vector2(171.6, 180)
+custom_minimum_size = Vector2(171.6, 210)
 layout_mode = 2
 color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 
@@ -591,6 +592,25 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6veol")
 theme_override_font_sizes/font_size = 12
 text = "Бой"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(19.2, 19.2)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("21_v6ldc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 12
+text = "Элитный бой"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/ColorRect/MarginContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
