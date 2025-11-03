@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using FileAccess = Godot.FileAccess;
@@ -30,6 +31,8 @@ public partial class PrepareFightMapManager : Node2D
 
 	private Tile? _selectedTile = null;
 
+	public List<Tile> MapTiles => _mapTiles.ToList();
+	
 	[Export]
 	public string MapName { get; set; }
 

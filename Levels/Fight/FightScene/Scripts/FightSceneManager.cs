@@ -9,26 +9,18 @@ public partial class FightSceneManager : Node2D
     private readonly RayCast2D _rayCast = new ();
     private MapManager _mapManager;
 
+    private readonly List<BattleEntity> _allEntities = [];
     
-    
-    private readonly List<Fight.BattleEntity> _allies = [];
-    private readonly List<Fight.BattleEntity> _enemies = [];
-
-    
-    private Fight.BattleEntity enemyTest;
+    private readonly List<PlayerEntity> _allies = [];
+    private readonly List<EnemyEntity> _enemies = [];
     
     private Tile _selectedTile = null;
+    
     
     public override void _Ready()
     {
         _mapManager = GetNode<MapManager>("Map");
-        var enemyScene = GD.Load<PackedScene>("res://Levels/Fight/FightScene/Enemy.tscn");
-        var tile = _mapManager.GetTileByCartesianCoord(new Vector2I(0, 0));
-        var enemy = enemyScene.Instantiate<Fight.BattleEntity>();
-        enemyTest = enemy;
-        _enemies.Add(enemy);
-        _mapManager.SetEnemyOnTile(tile, enemy);
-        
+        GD.Print(BattleMapInitStateManager.Instance.Tiles.Count);
     }
 
     public override void _Process(double delta)
@@ -59,7 +51,6 @@ public partial class FightSceneManager : Node2D
 
         if (_selectedTile is not null && Input.IsMouseButtonPressed(MouseButton.Left))
         {
-            _mapManager.SetEnemyOnTile(_selectedTile, _enemies.First());
         }
     }
 }

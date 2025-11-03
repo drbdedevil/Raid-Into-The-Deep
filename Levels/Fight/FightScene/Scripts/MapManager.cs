@@ -71,42 +71,14 @@ public partial class MapManager : Node2D
 	{
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
-		
-		var ySize = 8;
-		var xSize = 8;
-		for (int y = 0; y < ySize; y++)
+		foreach (var instanceTile in BattleMapInitStateManager.Instance.Tiles)
 		{
-			var cartesianRow = new List<Vector2I>();
-			var isometricRow = new List<Vector2I>();
-			for (int x = 0; x < xSize; x++)
-			{
-				var cartesianCoord = new Vector2I(x, y); 
-				var isometricCoord = y % 2 == 0 ? CalculateEvenVector(x) : CalculateOddVector(x);
-				
-				isometricRow.Add(isometricCoord);
-				cartesianRow.Add(cartesianCoord);
-				_floorLayer.SetCell(isometricCoord, 0, new Vector2I(0, 0));
-				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16), false);
-				_tilesByIsometric.Add(isometricCoord, mapTile);
-				_tilesByCartesian.Add(cartesianCoord, mapTile);
-				_mapTiles.Add(mapTile);
-			}
-			_cartesianCoords.Add(cartesianRow);
-			_isometricCoords.Add(isometricRow);
-
-			Vector2I CalculateEvenVector(int x) => new (
-				y + (int)Math.Round((x) / 2f, MidpointRounding.ToNegativeInfinity) -
-				3 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity),
-				x + 2 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity));
-
-			Vector2I CalculateOddVector(int x) => new (
-				(int)Math.Round((-y) / 2f, MidpointRounding.ToNegativeInfinity) +
-				(int)Math.Round((decimal)(x + 1) / 2, MidpointRounding.ToNegativeInfinity),
-				(int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity) * 2 + x + 1);
+			_mapTiles.Add(instanceTile);
+			_tilesByCartesian.Add(instanceTile.CartesianPosition, instanceTile);
+			_tilesByIsometric.Add(instanceTile.IsometricPosition, instanceTile);
+			DeselectTile(instanceTile);
+			if (instanceTile.BattleEntity is not null) InitBattleEntityOnTile(instanceTile);
 		}
-		
-	   
-		
 	}
 	
 	
@@ -122,12 +94,17 @@ public partial class MapManager : Node2D
 		return tile;
 	}
 
-	public void SetEnemyOnTile(Tile tile, Fight.BattleEntity enemy)
+	private void InitBattleEntityOnTile(Tile tile)
 	{
-		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
-		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
-		enemy.Tile = tile;
-		tile.BattleEntity = enemy;
+		if (tile.BattleEntity is null) return;
+		if (tile.BattleEntity is PlayerEntity playerEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		}
+		else if (tile.BattleEntity is EnemyEntity enemyEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+		}
 	}
 	
 	public void RemoveEnemyOnTile(Tile tile)

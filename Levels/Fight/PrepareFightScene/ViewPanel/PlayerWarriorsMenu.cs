@@ -25,8 +25,14 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     
     private readonly Dictionary<PlayerEntity, PrepareFightWarriorPanel> _playerEntitiesInTeamContainer = new();
 
+    public static readonly int PlayerUserWarriorsCount = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters .Count;
+
     public PlayerEntity? CurrentSelectedPlayerEntity => _currentSelectedPlayerEntity;
 
+    
+    private int _placedWarriorsOnMap = 0;
+    public bool IsPlayerPlacedAnyoneWarrior => _placedWarriorsOnMap != 0 ;
+    
     public void InitTeam(List<CharacterData> characters)
     {
         var playerEntities = characters.Select(x => new PlayerEntity()
@@ -97,6 +103,7 @@ public partial class PlayerWarriorsMenu : HBoxContainer
         _currentSelectedWarriorContainer.AddChild(warriorPanel);
         warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectPlayerEntity;
         MapManager.RemoveEnemyOnTile(playerEntity.Tile);
+        _placedWarriorsOnMap -= 1;
     }
     
     public void RemoveWarriorIconFromTeamContainer(PlayerEntity warrior)
@@ -118,5 +125,6 @@ public partial class PlayerWarriorsMenu : HBoxContainer
         _currentSelectedWarriorContainer.RemoveChild(_allPlayerEntity[_currentSelectedPlayerEntity]);
         _currentSelectedPlayerEntity = null;
         if (_playerEntitiesInTeamContainer.Any()) SelectPlayerEntity(_playerEntitiesInTeamContainer.First().Value);
+        _placedWarriorsOnMap += 1;
     }
 }
