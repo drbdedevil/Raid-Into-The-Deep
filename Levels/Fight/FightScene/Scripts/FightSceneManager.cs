@@ -9,48 +9,56 @@ public partial class FightSceneManager : Node2D
     private readonly RayCast2D _rayCast = new ();
     private MapManager _mapManager;
 
-    private readonly List<BattleEntity> _allEntities = [];
+    private List<BattleEntity> _allEntities = [];
+    private List<PlayerEntity> _allies = [];
+    private List<EnemyEntity> _enemies = [];
+
     
-    private readonly List<PlayerEntity> _allies = [];
-    private readonly List<EnemyEntity> _enemies = [];
+    private List<PlayerEntity> _playerWarriorsTurn = [];
     
-    private Tile _selectedTile = null;
-    
+    private PlayerEntity? _currentPlayerWarriorToTurn; 
+
+    private bool _isPlayerTurn = true;
     
     public override void _Ready()
     {
         _mapManager = GetNode<MapManager>("Map");
-        GD.Print(BattleMapInitStateManager.Instance.Tiles.Count);
+        _allies = BattleMapInitStateManager.Instance.PlayerEntities.ToList();
+        _enemies = BattleMapInitStateManager.Instance.EnemyEntities.ToList();
+        
+        _allEntities.AddRange(_allies);
+        _allEntities.AddRange(_enemies);
+        
+        _playerWarriorsTurn.AddRange(_allies.OrderBy(x => x.Speed).ToList());
+        _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
+        _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
+    }
+
+
+    public override void _Input(InputEvent @event)
+    {
+        if (_isPlayerTurn)
+        {
+            if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
+            {
+                if (_mapManager.MovePlayerEntityInSpeedZone(_currentPlayerWarriorToTurn!))
+                {
+                    _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
+                    if (!_playerWarriorsTurn.Any())
+                    {
+                        _mapManager.ClearAllSelectedTiles();
+                        _isPlayerTurn = false;
+                        return;
+                    }
+                    _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
+                    _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
+                }
+            }
+        }
     }
 
     public override void _Process(double delta)
     {
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        var selectedTile = _mapManager.GetTileUnderMousePosition();
-
-        if (selectedTile is null)
-        {
-            if (_selectedTile != null)
-            {
-                _mapManager.DeselectTile(_selectedTile);
-                _selectedTile = null;
-            }   
-        }
-        else if (_selectedTile == null || selectedTile.IsometricPosition != _selectedTile.IsometricPosition)
-        {
-            if (_selectedTile != null)
-            {
-                _mapManager.DeselectTile(_selectedTile);
-            }   
-            _selectedTile = selectedTile;
-            if (_selectedTile is not null) _mapManager.SelectTile(_selectedTile);
-        }
-
-        if (_selectedTile is not null && Input.IsMouseButtonPressed(MouseButton.Left))
-        {
-        }
+        
     }
 }

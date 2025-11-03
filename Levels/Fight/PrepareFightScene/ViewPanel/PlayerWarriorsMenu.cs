@@ -35,11 +35,7 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     
     public void InitTeam(List<CharacterData> characters)
     {
-        var playerEntities = characters.Select(x => new PlayerEntity()
-        {
-            Tile = null,
-            ID = x.ID,
-        });
+        var playerEntities = characters.Select(x => new PlayerEntity(null, x));
         
         foreach (var playerEntity in playerEntities)
         {
@@ -61,7 +57,7 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     /// <returns></returns>
     public void AddWarriorIconToTeamContainer(PlayerEntity warrior)
     {
-        GD.Print($"Adding {warrior.ID}");
+        GD.Print($"Adding {warrior.Id}");
         var characterPanel = _allPlayerEntity[warrior];
         _playerEntitiesInTeamContainer.Add(warrior, characterPanel);
         _teamWarriorsContainer.AddChild(characterPanel);
@@ -71,7 +67,7 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     public void SelectPlayerEntity(PrepareFightWarriorPanel warriorPanel)
     {
         var playerEntity = _playerEntitiesInTeamContainer.FirstOrDefault(x => x.Value == warriorPanel).Key;
-        GD.Print($"Adding to selected {playerEntity.ID}");
+        GD.Print($"Adding to selected {playerEntity.Id}");
         RemoveWarriorIconFromTeamContainer(playerEntity);
 
         if (_currentSelectedPlayerEntity is not null)
@@ -108,7 +104,7 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     
     public void RemoveWarriorIconFromTeamContainer(PlayerEntity warrior)
     {
-        GD.Print($"remove from Team Container {warrior.ID}");
+        GD.Print($"remove from Team Container {warrior.Id}");
         var characterView = _playerEntitiesInTeamContainer[warrior];
         _teamWarriorsContainer.RemoveChild(characterView);
         _playerEntitiesInTeamContainer.Remove(warrior);
@@ -118,10 +114,8 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     {
         if (_currentSelectedPlayerEntity is null) return;
         var tile = MapManager.GetTileByCartesianCoord(tileCartesianPosition);
-        MapManager.SetBattleEntityOnTile(tile!, new PlayerEntity()
-        {
-            ID = _currentSelectedPlayerEntity.ID,
-        });
+        
+        MapManager.SetBattleEntityOnTile(tile!, _currentSelectedPlayerEntity);
         _currentSelectedWarriorContainer.RemoveChild(_allPlayerEntity[_currentSelectedPlayerEntity]);
         _currentSelectedPlayerEntity = null;
         if (_playerEntitiesInTeamContainer.Any()) SelectPlayerEntity(_playerEntitiesInTeamContainer.First().Value);

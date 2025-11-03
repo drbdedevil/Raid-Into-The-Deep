@@ -25,22 +25,19 @@ public static class MapParser
             {
                 var mapElement = row[x];
                 var cartesianCoord = new Vector2I(x, y);
+
+                var tile = new Tile(cartesianCoord, CalculateIsometricCoord(cartesianCoord), new Vector2I(32, 16),
+                    mapElement != "o");
+                tiles.Add(tile);
+                
+                
                 BattleEntity? battleEntity = null;
                 if (mapElement != "e" && mapElement != "o" && mapElement != "c")
                 {
-                    battleEntity = new EnemyEntity()
-                    {
-                        ID = Guid.NewGuid().ToString(),
-                        EnemyId = (GameEnemyCode)mapElement.ToInt()
-                    };
+                    battleEntity = new EnemyEntity(tile, Guid.NewGuid().ToString(), 2, 100, 10, (GameEnemyCode)mapElement.ToInt());
                 }
+                tile.BattleEntity = battleEntity;
 
-                tiles.Add(new Tile(cartesianCoord, CalculateIsometricCoord(cartesianCoord), new Vector2I(32, 16),
-                        mapElement != "o")
-                    {
-                        BattleEntity = battleEntity,   
-                    }
-                );
             }
         }
         

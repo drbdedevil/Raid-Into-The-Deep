@@ -31,39 +31,25 @@ public partial class MapManager : Node2D
 	
 	[Signal]
 	public delegate void OnTileRightButtonClickedEventHandler(Fight.BattleEntity battleEntity);
-	
+
+
+	private List<Tile> _selectedTilesForPlayerWarriorMove { get; set; } = [];
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion)
 		{
 			var tile = GetTileUnderMousePosition();
-			if (_selectedTile != null && tile == null || (_selectedTile != tile && tile != null && _selectedTile is not null) )
-			{
-				DeselectTile(_selectedTile);
-				_selectedTile = null;
-			}
-			else if (tile != null)
-			{
-				_selectedTile = tile;
-				SelectTile(_selectedTile);
-			}
 		}
 		
 		if (@event is InputEventMouseButton mouseButton && @event.IsPressed())
 		{
-			if (mouseButton.Pressed)
-			{ 
-				var tile = GetTileUnderMousePosition();
-				if (mouseButton.ButtonIndex == MouseButton.Left)
-				{
-					if (tile != null && tile.BattleEntity == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
-				}
-				else if (mouseButton.ButtonIndex == MouseButton.Right)
-				{
-					if (tile?.BattleEntity != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity);
-				}
+			if (!mouseButton.Pressed) return;
+			var tile = GetTileUnderMousePosition();
+			if (mouseButton.ButtonIndex == MouseButton.Left)
+			{
+				if (tile != null && tile.BattleEntity == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
 			}
-			
+
 		}
 	}
 
@@ -79,6 +65,10 @@ public partial class MapManager : Node2D
 			DeselectTile(instanceTile);
 			if (instanceTile.BattleEntity is not null) InitBattleEntityOnTile(instanceTile);
 		}
+	}
+	
+	public override void _Process(double delta)
+	{
 	}
 	
 	
@@ -106,19 +96,29 @@ public partial class MapManager : Node2D
 			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
 		}
 	}
-	
-	public void RemoveEnemyOnTile(Tile tile)
+
+	public bool SetBattleEntityOnTile(Tile tile, BattleEntity battleEntity)
+	{
+		if (tile.BattleEntity is not null) return false;
+		RemoveBattleEntityOnTile(battleEntity.Tile);
+		tile.BattleEntity = battleEntity;
+		if (tile.BattleEntity is PlayerEntity playerEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		}
+		else if (tile.BattleEntity is EnemyEntity enemyEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+		}
+		
+		return true;
+	}
+	public void RemoveBattleEntityOnTile(Tile tile)
 	{
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
-
-	public Tile? GetTileUnderMousePosition()
-	{
-		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
-		return GetTileByIsometricCoord(clickedCell);
-	}
-
+	
 	public void SelectTile(Tile tile)
 	{
 		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
@@ -130,4 +130,118 @@ public partial class MapManager : Node2D
 	}
 
 
+	/// <summary>
+	/// Метод для отрисовки возможных тайлов к передвижению воина игрока
+	/// </summary>
+	public void DrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
+	{
+		foreach (var selectedTile in _selectedTilesForPlayerWarriorMove)
+		{
+			DeselectTile(selectedTile);	
+		}
+		_selectedTilesForPlayerWarriorMove.Clear();
+		var tile = playerEntity.Tile;
+		
+		for (int i = 1; i <= playerEntity.Speed; i++)
+		{
+			var upPosition = tile.CartesianPosition + Vector2I.Up;
+			var downPosition = tile.CartesianPosition + Vector2I.Down;
+			var leftPosition = tile.CartesianPosition + Vector2I.Left;
+			var rightPosition = tile.CartesianPosition + Vector2I.Right;
+			
+			var upTile = GetTileByCartesianCoord(upPosition);
+			var downTile = GetTileByCartesianCoord(downPosition);
+			var leftTile = GetTileByCartesianCoord(leftPosition);
+			var rightTile = GetTileByCartesianCoord(rightPosition);
+
+			if (upTile is not null)
+			{
+				SelectTile(upTile);
+				_selectedTilesForPlayerWarriorMove.Add(upTile);
+			}
+
+			if (downTile is not null)
+			{
+				SelectTile(downTile);
+				_selectedTilesForPlayerWarriorMove.Add(downTile);
+			}
+
+			if (leftTile is not null)
+			{
+				SelectTile(leftTile);
+				_selectedTilesForPlayerWarriorMove.Add(leftTile);
+			}
+
+			if (rightTile is not null)
+			{
+				SelectTile(rightTile);
+				_selectedTilesForPlayerWarriorMove.Add(rightTile);
+			}
+
+			if (i % 2 != 0) continue;
+			var upLeftPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Left;
+			var upRightPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Right;
+			var downLeftPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Left;
+			var downRightPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Right;
+				
+			var upLeftTile = GetTileByCartesianCoord(upLeftPosition);
+			var upRightTile = GetTileByCartesianCoord(upRightPosition);
+			var downLeftTile = GetTileByCartesianCoord(downLeftPosition);
+			var downRightTile = GetTileByCartesianCoord(downRightPosition);
+
+			if (upLeftTile is not null)
+			{
+				SelectTile(upLeftTile);
+				_selectedTilesForPlayerWarriorMove.Add(upLeftTile);
+			}
+
+			if (upRightTile is not null)
+			{
+				SelectTile(upRightTile);
+				_selectedTilesForPlayerWarriorMove.Add(upRightTile);
+			}
+
+			if (downLeftTile is not null)
+			{
+				SelectTile(downLeftTile);
+				_selectedTilesForPlayerWarriorMove.Add(downLeftTile);
+			}
+
+			if (downRightTile is not null)
+			{
+				SelectTile(downRightTile);
+				_selectedTilesForPlayerWarriorMove.Add(downRightTile);
+			}
+		}
+	}
+
+	public bool MovePlayerEntityInSpeedZone(PlayerEntity playerEntity)
+	{
+		var tile = GetTileInSelectedUnderMousePosition();
+		return tile is not null && SetBattleEntityOnTile(tile, playerEntity);
+	}
+
+	public void ClearAllSelectedTiles()
+	{
+		foreach (var selectedTile in _selectedTilesForPlayerWarriorMove)
+		{
+			DeselectTile(selectedTile);
+		}
+		_selectedTilesForPlayerWarriorMove.Clear();
+	}
+	
+	public Tile? GetTileUnderMousePosition()
+	{
+		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
+		return GetTileByIsometricCoord(clickedCell);
+	}
+
+	public Tile? GetTileInSelectedUnderMousePosition()
+	{
+		var tile = GetTileUnderMousePosition();
+		if (tile is null) return null;
+		if (!_selectedTilesForPlayerWarriorMove.Contains(tile)) return null;
+		return tile;
+	}
+	
 }

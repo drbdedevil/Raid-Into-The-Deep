@@ -13,7 +13,7 @@ public partial class PrepareFightWarriorPanel : Node
 
 	public void SetPlayerEntityData(PlayerEntity playerEntity)
 	{
-		LevelLabel.Text = playerEntity.ID;
+		LevelLabel.Text = playerEntity.Id;
 	}
 	public override void _Ready()
 	{

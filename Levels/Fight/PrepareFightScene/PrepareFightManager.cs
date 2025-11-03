@@ -30,19 +30,22 @@ public partial class PrepareFightManager : Node2D
                 {
                     ID = "1",
                     Name = "Жук1",
-                    Level = 1
+                    Level = 1,
+                    Speed = 2
                 },
                 new CharacterData()
                 {
                     ID = "2",
                     Name = "Жук2",
-                    Level = 2
+                    Level = 2,
+                    Speed = 2
                 },
                 new CharacterData()
                 {
                     ID = "3",
                     Name = "Жук3",
-                    Level = 3
+                    Level = 3,
+                    Speed = 2
                 }
             ]
         };
