@@ -11,11 +11,11 @@ public partial class FightSceneManager : Node2D
 
     
     
-    private readonly List<BattleEntity> _allies = [];
-    private readonly List<BattleEntity> _enemies = [];
+    private readonly List<Fight.BattleEntity> _allies = [];
+    private readonly List<Fight.BattleEntity> _enemies = [];
 
     
-    private BattleEntity enemyTest;
+    private Fight.BattleEntity enemyTest;
     
     private Tile _selectedTile = null;
     
@@ -24,7 +24,7 @@ public partial class FightSceneManager : Node2D
         _mapManager = GetNode<MapManager>("Map");
         var enemyScene = GD.Load<PackedScene>("res://Levels/Fight/FightScene/Enemy.tscn");
         var tile = _mapManager.GetTileByCartesianCoord(new Vector2I(0, 0));
-        var enemy = enemyScene.Instantiate<BattleEntity>();
+        var enemy = enemyScene.Instantiate<Fight.BattleEntity>();
         enemyTest = enemy;
         _enemies.Add(enemy);
         _mapManager.SetEnemyOnTile(tile, enemy);

@@ -20,10 +20,27 @@ public static class MapParser
         
         for (int y = 0; y < height; y++)
         {
+            var row = mapLines[y].Split(' ');
             for (int x = 0; x < width; x++)
             {
+                var mapElement = row[x];
                 var cartesianCoord = new Vector2I(x, y);
-                tiles.Add(new Tile(cartesianCoord, CalculateIsometricCoord(cartesianCoord), new Vector2I(32, 16), mapLines[y][x] != 'o'));
+                BattleEntity? battleEntity = null;
+                if (mapElement != "e" && mapElement != "o" && mapElement != "c")
+                {
+                    battleEntity = new EnemyEntity()
+                    {
+                        ID = Guid.NewGuid().ToString(),
+                        EnemyId = (GameEnemyCode)mapElement.ToInt()
+                    };
+                }
+
+                tiles.Add(new Tile(cartesianCoord, CalculateIsometricCoord(cartesianCoord), new Vector2I(32, 16),
+                        mapElement != "o")
+                    {
+                        BattleEntity = battleEntity,   
+                    }
+                );
             }
         }
         

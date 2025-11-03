@@ -17,7 +17,7 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
         public Vector2I TileTextureSize { get; }
         public bool IsClosedToSetPlayerWarrior { get; } = false;
         
-        public BattleEntity? BattleEntity { get; set; }
+        public Fight.BattleEntity? BattleEntity { get; set; }
         
     }
 }

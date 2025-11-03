@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bieajibc18pln"]
+[gd_scene load_steps=43 format=3 uid="uid://bieajibc18pln"]
 
 [ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
 [ext_resource type="Script" uid="uid://r5yt8rcihyyi" path="res://Levels/Fight/PrepareFightScene/PrepareFightMapManager.cs" id="2_ed8kp"]
@@ -10,6 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://hqt7k2bpme1r" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="5_kbenw"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="6_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://ccaqrv4jj4wg3" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PrepareFightWarriorPanel.tscn" id="6_gkuqp"]
+[ext_resource type="Texture2D" uid="uid://dmkd6ee3kj1bq" path="res://Textures/Fight/FightScene/Root.png" id="6_ts8f3"]
+[ext_resource type="Texture2D" uid="uid://bu5b8l7mq8fpm" path="res://Textures/Fight/FightScene/Spider.png" id="7_jrqxl"]
+[ext_resource type="Texture2D" uid="uid://fy48rl7qw78y" path="res://Textures/Fight/FightScene/Centipede.png" id="8_p5cou"]
+[ext_resource type="Texture2D" uid="uid://crmaxpinu55tq" path="res://Textures/Fight/FightScene/EvilEye.png" id="9_a28lv"]
+[ext_resource type="Texture2D" uid="uid://cos1ef2g53qm" path="res://Textures/Fight/FightScene/SpiderBoss.png" id="10_wgaum"]
+[ext_resource type="Texture2D" uid="uid://codkx165trplj" path="res://Textures/Fight/FightScene/Tank.png" id="11_f52gy"]
+[ext_resource type="Texture2D" uid="uid://c1km3kf6kglux" path="res://Textures/Fight/FightScene/Vegetable.png" id="12_rxuek"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xf8pm"]
 texture = ExtResource("2_jxe02")
@@ -37,12 +44,75 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/texture_origin = Vector2i(0, 32)
 0:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eso07"]
+texture = ExtResource("3_clwcm")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkuku"]
+texture = ExtResource("6_ts8f3")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsbxw"]
+texture = ExtResource("7_jrqxl")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_af861"]
+texture = ExtResource("8_p5cou")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42w84"]
+texture = ExtResource("9_a28lv")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cfqx"]
+texture = ExtResource("10_wgaum")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i52v"]
+texture = ExtResource("11_f52gy")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fo76c"]
+texture = ExtResource("12_rxuek")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_p76rw"]
 tile_shape = 1
 tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/1 = SubResource("TileSetAtlasSource_gep0n")
+sources/0 = SubResource("TileSetAtlasSource_gep0n")
+sources/1 = SubResource("TileSetAtlasSource_eso07")
+sources/2 = SubResource("TileSetAtlasSource_vkuku")
+sources/3 = SubResource("TileSetAtlasSource_nsbxw")
+sources/4 = SubResource("TileSetAtlasSource_af861")
+sources/5 = SubResource("TileSetAtlasSource_42w84")
+sources/6 = SubResource("TileSetAtlasSource_4cfqx")
+sources/7 = SubResource("TileSetAtlasSource_2i52v")
+sources/8 = SubResource("TileSetAtlasSource_fo76c")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkuqp"]
 content_margin_left = 4.0
@@ -287,3 +357,10 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="."]
+offset_left = 948.0
+offset_top = 603.0
+offset_right = 1151.0
+offset_bottom = 643.0
+text = "В бой"

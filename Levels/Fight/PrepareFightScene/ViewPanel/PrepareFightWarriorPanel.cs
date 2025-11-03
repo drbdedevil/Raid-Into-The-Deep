@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using RaidIntoTheDeep.Levels.Fight;
 
 public partial class PrepareFightWarriorPanel : Node
 {
@@ -10,9 +11,9 @@ public partial class PrepareFightWarriorPanel : Node
 	[Signal]
 	public delegate void OnWarriorPanelLeftButtonClickedEventHandler(PrepareFightWarriorPanel warriorPanel);
 
-	public void SetCharacterData(CharacterData characterData)
+	public void SetPlayerEntityData(PlayerEntity playerEntity)
 	{
-		LevelLabel.Text = characterData.ID;
+		LevelLabel.Text = playerEntity.ID;
 	}
 	public override void _Ready()
 	{

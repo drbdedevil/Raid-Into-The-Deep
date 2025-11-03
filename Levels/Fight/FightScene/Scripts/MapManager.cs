@@ -30,7 +30,7 @@ public partial class MapManager : Node2D
 	public delegate void OnTileLeftButtonClickedEventHandler(Vector2I tile);
 	
 	[Signal]
-	public delegate void OnTileRightButtonClickedEventHandler(BattleEntity battleEntity);
+	public delegate void OnTileRightButtonClickedEventHandler(Fight.BattleEntity battleEntity);
 	
 	public override void _Input(InputEvent @event)
 	{
@@ -56,11 +56,11 @@ public partial class MapManager : Node2D
 				var tile = GetTileUnderMousePosition();
 				if (mouseButton.ButtonIndex == MouseButton.Left)
 				{
-					if (tile != null && tile.BattleEntity?.Character == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
+					if (tile != null && tile.BattleEntity == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
 				}
 				else if (mouseButton.ButtonIndex == MouseButton.Right)
 				{
-					if (tile?.BattleEntity?.Character != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity);
+					if (tile?.BattleEntity != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity);
 				}
 			}
 			
@@ -122,7 +122,7 @@ public partial class MapManager : Node2D
 		return tile;
 	}
 
-	public void SetEnemyOnTile(Tile tile, BattleEntity enemy)
+	public void SetEnemyOnTile(Tile tile, Fight.BattleEntity enemy)
 	{
 		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
 		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));

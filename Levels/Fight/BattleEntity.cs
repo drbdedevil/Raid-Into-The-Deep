@@ -1,6 +1,7 @@
 ﻿using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
-namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
+namespace RaidIntoTheDeep.Levels.Fight
 {
     public partial class BattleEntity : Node2D 
     {
@@ -9,8 +10,7 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
         /// </summary>
         public Tile Tile { get; set; }
         
-        public CharacterData Character { get; set; }
-        
+        public string ID { get; set; }
 
     }
 }
