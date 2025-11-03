@@ -39,17 +39,16 @@ public partial class MapDisplay : Node
             {
                 map = mapGenerator.Generate();
                 GameDataManager.Instance.currentData.runMapData.runMapList = map;
-                GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = false;
             }
             else
             {
                 map = GameDataManager.Instance.currentData.runMapData.runMapList;
             }
-            
+
             float centerX = mapControl.GetSize().X / 2;
 
             Random random = new Random();
-            
+
             Dictionary<MapNode, MapNodeButton> nodeButtons = new Dictionary<MapNode, MapNodeButton>();
 
             int rowIndex = 0;
@@ -103,7 +102,7 @@ public partial class MapDisplay : Node
                         else
                         {
                             randomOffset = mapNodeButton.GetRandomOffset();
-                        }  
+                        }
 
                         mapNodeButton.Position = new Vector2(
                             mapNode.Col * spacingX + centerX - supposedWidth / 2,
@@ -158,5 +157,7 @@ public partial class MapDisplay : Node
                 }
             }
         }
+        
+        GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = false;
     }
 }
