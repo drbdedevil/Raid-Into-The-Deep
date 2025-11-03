@@ -8,10 +8,12 @@ custom_minimum_size = Vector2(200, 30)
 offset_right = 200.0
 offset_bottom = 30.0
 mouse_filter = 2
-color = Color(0.45882353, 0.49019608, 0.38039216, 0.5803922)
+color = Color(0.28627452, 0.54901963, 0.21960784, 0.78431374)
 script = ExtResource("1_5oaea")
 Duration = 3.0
 FadeInTime = 0.1
+warningColor = Color(0.89411765, 0.59607846, 0, 0.78431374)
+alertColor = Color(0.84705883, 0.21960784, 0.2627451, 0.78431374)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

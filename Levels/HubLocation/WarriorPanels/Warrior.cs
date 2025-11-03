@@ -100,6 +100,10 @@ public partial class Warrior : Node, IStackPage
 			{
 				GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(characterData.ID);
 			}
+			else
+			{
+				NotificationSystem.Instance.ShowMessage("В команде нет места для этого персонажа.", EMessageType.Alert);
+			}
 		}
 	}
 	

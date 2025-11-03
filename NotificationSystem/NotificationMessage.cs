@@ -1,11 +1,21 @@
 using Godot;
 using System;
 
+public enum EMessageType
+{
+    Default = 0,
+    Warning = 1,
+    Alert = 2
+}
+
 public partial class NotificationMessage : ColorRect
 {
     [Export] public float Duration = 2.0f;
     [Export] public float FadeTime = 0.5f;
     [Export] public float FadeInTime = 0.2f;
+
+    [Export] public Color warningColor = new Color();
+    [Export] public Color alertColor = new Color();
 
     private float timer = 0f;
 
@@ -36,10 +46,19 @@ public partial class NotificationMessage : ColorRect
         }
     }
 
-    public void SetMessage(string msg)
+    public void SetMessage(string msg, EMessageType messageType = EMessageType.Default)
     {
         Label msgLabel = GetNode<Label>("Label");
         msgLabel.Text = msg;
+
+        if (messageType == EMessageType.Warning)
+        {
+            this.Color = warningColor;
+        }
+        else if (messageType == EMessageType.Alert)
+        {
+            this.Color = alertColor;
+        }
 
         CallDeferred(nameof(UpdateSize));
     }

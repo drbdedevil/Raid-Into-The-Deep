@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class LivingSpaceDataManager : Node
@@ -116,5 +117,24 @@ public partial class LivingSpaceDataManager : Node
             return true;
         }
         return false;
+    }
+
+    public int GetUsedCharactersCount()
+    {
+        return gameDataManager.currentData.livingSpaceData.UsedCharacters.Count;
+    }
+    public List<CharacterData> GetListUnarmedCharactersFormUsed()
+    {
+        List<CharacterData> characters = new List<CharacterData>();
+
+        foreach (CharacterData characterData in gameDataManager.currentData.livingSpaceData.UsedCharacters)
+        {
+            if (characterData.Weapon.Name == "NONE")
+            {
+                characters.Add(characterData);
+            }
+        }
+
+        return characters;
     }
 }

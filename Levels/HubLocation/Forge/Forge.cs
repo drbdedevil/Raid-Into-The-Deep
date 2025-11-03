@@ -133,13 +133,13 @@ public partial class Forge : Node, IStackPage
                     }
                     else
                     {
-                        NotificationSystem.Instance.ShowMessage("Нет места на складе для: \'" + existingWeapon.Name + "\'.");
+                        NotificationSystem.Instance.ShowMessage("Нет места на складе для: \'" + existingWeapon.Name + "\'.", EMessageType.Warning);
                         GD.Print(" -- Can't shackle weapon! -- ");
                     }
                 }
                 else
                 {
-                    NotificationSystem.Instance.ShowMessage("Оружейник не смог сковать оружие - денег нет, но вы держитесь!");
+                    NotificationSystem.Instance.ShowMessage("Нечем платить оружейнику - денег нет, но вы держитесь!", EMessageType.Alert);
                     GD.Print(" -- Not enough funds for shackle! -- ");
                 }
             }
@@ -170,6 +170,7 @@ public partial class Forge : Node, IStackPage
         }
         else
         {
+            NotificationSystem.Instance.ShowMessage("Не хватает ресурсов!", EMessageType.Alert);
             GD.Print(" -- Not enough funds to upgrade Forge! -- ");
         }
     }

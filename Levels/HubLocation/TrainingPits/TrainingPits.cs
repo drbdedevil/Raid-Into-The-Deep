@@ -39,6 +39,7 @@ public partial class TrainingPits : Control, IStackPage
 		}
 		else
 		{
+			NotificationSystem.Instance.ShowMessage("Не хватает ресурсов!", EMessageType.Alert);
 			GD.Print(" -- Not enough funds to upgrade Training Pits! -- ");
 		}
 	}
