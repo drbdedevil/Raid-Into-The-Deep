@@ -43,6 +43,7 @@ public partial class FightSceneManager : Node2D
             {
                 if (_mapManager.MovePlayerEntityInSpeedZone(_currentPlayerWarriorToTurn!))
                 {
+                    _mapManager.ClearAllSelectedTiles();
                     _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
                     if (!_playerWarriorsTurn.Any())
                     {

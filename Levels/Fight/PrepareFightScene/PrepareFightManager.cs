@@ -45,7 +45,7 @@ public partial class PrepareFightManager : Node2D
                     ID = "3",
                     Name = "Жук3",
                     Level = 3,
-                    Speed = 3
+                    Speed = 5
                 }
             ]
         };
