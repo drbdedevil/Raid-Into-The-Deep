@@ -31,7 +31,7 @@ public partial class PrepareFightManager : Node2D
                     ID = "1",
                     Name = "Жук1",
                     Level = 1,
-                    Speed = 2
+                    Speed = 1
                 },
                 new CharacterData()
                 {
@@ -45,7 +45,7 @@ public partial class PrepareFightManager : Node2D
                     ID = "3",
                     Name = "Жук3",
                     Level = 3,
-                    Speed = 2
+                    Speed = 3
                 }
             ]
         };

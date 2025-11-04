@@ -29,7 +29,7 @@ public partial class FightSceneManager : Node2D
         _allEntities.AddRange(_allies);
         _allEntities.AddRange(_enemies);
         
-        _playerWarriorsTurn.AddRange(_allies.OrderBy(x => x.Speed).ToList());
+        _playerWarriorsTurn.AddRange(_allies.OrderByDescending(x => x.Speed).ToList());
         _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
         _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
     }

@@ -144,74 +144,70 @@ public partial class MapManager : Node2D
 		
 		for (int i = 1; i <= playerEntity.Speed; i++)
 		{
-			var upPosition = tile.CartesianPosition + Vector2I.Up;
-			var downPosition = tile.CartesianPosition + Vector2I.Down;
-			var leftPosition = tile.CartesianPosition + Vector2I.Left;
-			var rightPosition = tile.CartesianPosition + Vector2I.Right;
+			var upPosition = tile.CartesianPosition + Vector2I.Up * i;
+			var downPosition = tile.CartesianPosition + Vector2I.Down * i;
+			var leftPosition = tile.CartesianPosition + Vector2I.Left * i;
+			var rightPosition = tile.CartesianPosition + Vector2I.Right * i;
 			
 			var upTile = GetTileByCartesianCoord(upPosition);
 			var downTile = GetTileByCartesianCoord(downPosition);
 			var leftTile = GetTileByCartesianCoord(leftPosition);
 			var rightTile = GetTileByCartesianCoord(rightPosition);
 
-			if (upTile is not null)
-			{
-				SelectTile(upTile);
-				_selectedTilesForPlayerWarriorMove.Add(upTile);
-			}
-
-			if (downTile is not null)
-			{
-				SelectTile(downTile);
-				_selectedTilesForPlayerWarriorMove.Add(downTile);
-			}
-
-			if (leftTile is not null)
-			{
-				SelectTile(leftTile);
-				_selectedTilesForPlayerWarriorMove.Add(leftTile);
-			}
-
-			if (rightTile is not null)
-			{
-				SelectTile(rightTile);
-				_selectedTilesForPlayerWarriorMove.Add(rightTile);
-			}
+			SelectTileLocal(upTile);
+			SelectTileLocal(downTile);
+			SelectTileLocal(leftTile);
+			SelectTileLocal(rightTile);
 
 			if (i % 2 != 0) continue;
-			var upLeftPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Left;
-			var upRightPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Right;
-			var downLeftPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Left;
-			var downRightPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Right;
+			var upLeftPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Left * i / 2;
+			var upRightPosition = tile.CartesianPosition + Vector2I.Up + Vector2I.Right * i / 2;
+			var downLeftPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Left * i / 2;
+			var downRightPosition = tile.CartesianPosition + Vector2I.Down + Vector2I.Right * i / 2;
 				
 			var upLeftTile = GetTileByCartesianCoord(upLeftPosition);
 			var upRightTile = GetTileByCartesianCoord(upRightPosition);
 			var downLeftTile = GetTileByCartesianCoord(downLeftPosition);
 			var downRightTile = GetTileByCartesianCoord(downRightPosition);
+			
+			SelectTileLocal(upLeftTile);
+			SelectTileLocal(upRightTile);
+			SelectTileLocal(downLeftTile);
+			SelectTileLocal(downRightTile);
+			
+			if (upLeftTile is not null && i + 1 <=  playerEntity.Speed) SelectNeighbourTiles(upLeftTile);
+			if (upRightTile is not null && i + 1 <=  playerEntity.Speed) SelectNeighbourTiles(upRightTile);
+			if (downLeftTile is not null && i + 1 <=  playerEntity.Speed) SelectNeighbourTiles(downLeftTile);
+			if (downRightTile is not null && i + 1 <=  playerEntity.Speed) SelectNeighbourTiles(downRightTile);
+			
 
-			if (upLeftTile is not null)
+			void SelectNeighbourTiles(Tile currentTile)
 			{
-				SelectTile(upLeftTile);
-				_selectedTilesForPlayerWarriorMove.Add(upLeftTile);
+				var upPositionNeighbour = currentTile.CartesianPosition + Vector2I.Up;
+				var downPositionNeighbour = currentTile.CartesianPosition + Vector2I.Down;
+				var leftPositionNeighbour = currentTile.CartesianPosition + Vector2I.Left;
+				var rightPositionNeighbour = currentTile.CartesianPosition + Vector2I.Right;
+				
+				var upTileNeighbour = GetTileByCartesianCoord(upPositionNeighbour);
+				var downTileNeighbour = GetTileByCartesianCoord(downPositionNeighbour);
+				var leftTileNeighbour = GetTileByCartesianCoord(leftPositionNeighbour);
+				var rightTileNeighbour = GetTileByCartesianCoord(rightPositionNeighbour);
+				
+				SelectTileLocal(upTileNeighbour);
+				SelectTileLocal(downTileNeighbour);
+				SelectTileLocal(leftTileNeighbour);
+				SelectTileLocal(rightTileNeighbour);
 			}
-
-			if (upRightTile is not null)
+			
+			void SelectTileLocal(Tile? tile)
 			{
-				SelectTile(upRightTile);
-				_selectedTilesForPlayerWarriorMove.Add(upRightTile);
+				if (tile is not null)
+				{
+					SelectTile(tile);
+					_selectedTilesForPlayerWarriorMove.Add(tile);;
+				}
 			}
-
-			if (downLeftTile is not null)
-			{
-				SelectTile(downLeftTile);
-				_selectedTilesForPlayerWarriorMove.Add(downLeftTile);
-			}
-
-			if (downRightTile is not null)
-			{
-				SelectTile(downRightTile);
-				_selectedTilesForPlayerWarriorMove.Add(downRightTile);
-			}
+			
 		}
 	}
 
