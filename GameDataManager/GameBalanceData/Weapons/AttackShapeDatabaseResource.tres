@@ -21,6 +21,7 @@ script = ExtResource("1_gbnkh")
 Name = "Длинная атака"
 texture2D = ExtResource("3_6ugmn")
 AttackCood = Array[Vector2i]([Vector2i(-2, 0), Vector2i(0, -2), Vector2i(2, 0), Vector2i(0, 2)])
+shapeType = 1
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [sub_resource type="Resource" id="Resource_dafkj"]
@@ -28,6 +29,7 @@ script = ExtResource("1_gbnkh")
 Name = "Размашистая атака"
 texture2D = ExtResource("4_4xuwf")
 AttackCood = Array[Vector2i]([Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1)])
+shapeType = 2
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [sub_resource type="Resource" id="Resource_v86ru"]
@@ -35,18 +37,21 @@ script = ExtResource("1_gbnkh")
 Name = "Дальний удар с разбросом"
 texture2D = ExtResource("6_ksncb")
 AttackCood = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0)])
+shapeType = 3
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [sub_resource type="Resource" id="Resource_6v1qd"]
 script = ExtResource("1_gbnkh")
 Name = "Дальний бой"
 texture2D = ExtResource("7_wgkf1")
+shapeType = 4
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [sub_resource type="Resource" id="Resource_5a3dr"]
 script = ExtResource("1_gbnkh")
 Name = "Артиллерийский выстрел"
 texture2D = ExtResource("8_4k8yc")
+shapeType = 5
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
 [resource]

@@ -87,6 +87,16 @@ public class GameData
 }
 
 
+public enum AttackShapeType
+{
+    Melee = 0,
+    LongMelee = 1,
+    Sweep = 2,
+    ScatterShot = 3,
+    Ranged = 4,
+    Artillery = 5
+}
+
 // --------------------------------------- Skills ---------------------------------------
 public enum SkillKind
 {
