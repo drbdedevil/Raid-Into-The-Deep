@@ -33,7 +33,10 @@ public partial class MapManager : Node2D
 	public delegate void OnTileRightButtonClickedEventHandler(Fight.BattleEntity battleEntity);
 
 
-	private List<Tile> _selectedTilesForPlayerWarriorMove { get; set; } = [];
+	/// <summary>
+	/// Тайлики которые на данный момент выбраны для отображения
+	/// </summary>
+	private List<Tile> _selectedTilesForPlayerAction { get; set; } = [];
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion)
@@ -102,6 +105,7 @@ public partial class MapManager : Node2D
 		if (tile.BattleEntity is not null) return false;
 		RemoveBattleEntityOnTile(battleEntity.Tile);
 		tile.BattleEntity = battleEntity;
+		battleEntity.Tile = tile;
 		if (tile.BattleEntity is PlayerEntity playerEntity)
 		{
 			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
@@ -113,15 +117,21 @@ public partial class MapManager : Node2D
 		
 		return true;
 	}
+	
 	public void RemoveBattleEntityOnTile(Tile tile)
 	{
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
 	
-	public void SelectTile(Tile tile)
+	public void SelectTileForMovement(Tile tile)
 	{
 		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
+	}
+
+	public void SelectTileForAttack(Tile tile)
+	{
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(2, 0));
 	}
 	
 	public void DeselectTile(Tile tile)
@@ -136,10 +146,23 @@ public partial class MapManager : Node2D
 	public void DrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
 	{
 		var tilesToMove = PathFinder.FindTilesToMove(playerEntity.Tile, this, playerEntity.Speed);
-		_selectedTilesForPlayerWarriorMove = tilesToMove;
-		foreach (var tile in _selectedTilesForPlayerWarriorMove)
+		_selectedTilesForPlayerAction = tilesToMove;
+		foreach (var tile in _selectedTilesForPlayerAction)
 		{
-			SelectTile(tile);
+			SelectTileForMovement(tile);
+		}
+	}
+	
+	/// <summary>
+	/// Метод для отрисовки возможных тайлов к атаке
+	/// </summary>
+	public void DrawPlayerEntityAttackZone(PlayerEntity playerEntity, Tile targetTile)
+	{
+		var tileToAttack = PathFinder.FindTilesToAttack(playerEntity, targetTile, this);
+		_selectedTilesForPlayerAction = tileToAttack;
+		foreach (var tile in _selectedTilesForPlayerAction)
+		{
+			SelectTileForAttack(tile);
 		}
 	}
 
@@ -151,11 +174,11 @@ public partial class MapManager : Node2D
 
 	public void ClearAllSelectedTiles()
 	{
-		foreach (var selectedTile in _selectedTilesForPlayerWarriorMove)
+		foreach (var selectedTile in _selectedTilesForPlayerAction)
 		{
 			DeselectTile(selectedTile);
 		}
-		_selectedTilesForPlayerWarriorMove.Clear();
+		_selectedTilesForPlayerAction.Clear();
 	}
 	
 	public Tile? GetTileUnderMousePosition()
@@ -168,7 +191,7 @@ public partial class MapManager : Node2D
 	{
 		var tile = GetTileUnderMousePosition();
 		if (tile is null) return null;
-		if (!_selectedTilesForPlayerWarriorMove.Contains(tile)) return null;
+		if (!_selectedTilesForPlayerAction.Contains(tile)) return null;
 		return tile;
 	}
 	

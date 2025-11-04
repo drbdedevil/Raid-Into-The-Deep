@@ -166,3 +166,17 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(500, 150)
 tile_set = SubResource("TileSet_if2d1")
+
+[node name="ConfirmTurn" type="Button" parent="."]
+offset_left = 948.0
+offset_top = 603.0
+offset_right = 1151.0
+offset_bottom = 643.0
+text = "В бой"
+
+[node name="CancelMove" type="Button" parent="."]
+offset_left = 721.0
+offset_top = 603.0
+offset_right = 924.0
+offset_bottom = 643.0
+text = "В бой"

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 [GlobalClass]
 public partial class AttackShapeInfo : Resource

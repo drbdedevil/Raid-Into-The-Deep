@@ -16,9 +16,10 @@ public partial class FightSceneManager : Node2D
     
     private List<PlayerEntity> _playerWarriorsTurn = [];
     
-    private PlayerEntity? _currentPlayerWarriorToTurn; 
-
+    private PlayerEntity? _currentPlayerWarriorToTurn;
+    private Tile? _currentPlayerWarriorPrevTile;
     private bool _isPlayerTurn = true;
+    private bool _isPlayerAttackTurn = false;
     
     public override void _Ready()
     {
@@ -45,14 +46,10 @@ public partial class FightSceneManager : Node2D
                 {
                     _mapManager.ClearAllSelectedTiles();
                     _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
-                    if (!_playerWarriorsTurn.Any())
-                    {
-                        _mapManager.ClearAllSelectedTiles();
-                        _isPlayerTurn = false;
-                        return;
-                    }
                     _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
+                    _currentPlayerWarriorPrevTile = _currentPlayerWarriorToTurn!.Tile;
                     _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
+                    _isPlayerAttackTurn = true;
                 }
             }
         }
@@ -60,6 +57,21 @@ public partial class FightSceneManager : Node2D
 
     public override void _Process(double delta)
     {
-        
+        if (_isPlayerAttackTurn)
+        {
+            var tile = _mapManager.GetTileUnderMousePosition();
+            if (tile is not null)
+            {
+                _mapManager.ClearAllSelectedTiles();
+                _mapManager.DrawPlayerEntityAttackZone(_currentPlayerWarriorToTurn, tile);
+            }
+        }
+    }
+
+    public void ResetPlayerWarriorTurn()
+    {
+        _isPlayerTurn = false;
+        _mapManager.SetBattleEntityOnTile(_currentPlayerWarriorPrevTile, _currentPlayerWarriorToTurn);
+        _currentPlayerWarriorToTurn = null;
     }
 }

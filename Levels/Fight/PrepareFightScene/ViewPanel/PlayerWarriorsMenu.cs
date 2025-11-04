@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 namespace RaidIntoTheDeep.Levels.Fight.PrepareFightScene.ViewPanel;
 

@@ -57,7 +57,21 @@ public static class PathFinder
         result.Remove(startTile);
         
         return result;
-    } 
+    }
+
+    public static List<Tile> FindTilesToAttack(BattleEntity attacker, Tile targetTile, MapManager mapManager)
+    {
+        var result = new List<Tile>();
+
+        var shapeTargets = attacker.Weapon.CalculateShapeAttackPositions(attacker.Tile.CartesianPosition, targetTile.CartesianPosition);
+        
+        foreach (var shapeTarget in shapeTargets)
+        {
+            var attackTile = mapManager.GetTileByCartesianCoord(shapeTarget);
+            if (attackTile is not null) result.Add(attackTile);
+        }
+        return result;
+    }
 }
 
 class TileCostPair
