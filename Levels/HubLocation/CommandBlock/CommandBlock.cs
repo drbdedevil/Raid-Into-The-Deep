@@ -19,7 +19,7 @@ public partial class CommandBlock : Control
 
         allRaids.Text = GameDataManager.Instance.currentData.commandBlockData.RaidCount.ToString();
         enemyDefeated.Text = GameDataManager.Instance.currentData.commandBlockData.EnemyDefeated.ToString();
-        squadLevel.Text = GameDataManager.Instance.currentData.commandBlockData.SquadLevel.ToString();
+        squadLevel.Text = GameDataManager.Instance.livingSpaceDataManager.GetSquadLevel().ToString();
         squadCount.Text = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Count.ToString();
         chitins.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
         crystals.Text = GameDataManager.Instance.currentData.storageData.Crystals.ToString();
@@ -29,9 +29,12 @@ public partial class CommandBlock : Control
         InfoBoss SpiderBossInfo = GetNode<InfoBoss>("HBoxContainer/VBoxContainer/VBoxContainer/InfoBoss3");
         VegetableInfo.bIsDefeated = GameDataManager.Instance.currentData.commandBlockData.VegetableDefeated;
         VegetableInfo.Check();
+        VegetableInfo.SetInfos(MapNodeType.VegetableBoss);
         TankInfo.bIsDefeated = GameDataManager.Instance.currentData.commandBlockData.TankDefeated;
         TankInfo.Check();
+        TankInfo.SetInfos(MapNodeType.TankBoss);
         SpiderBossInfo.bIsDefeated = GameDataManager.Instance.currentData.commandBlockData.SpiderBossDefeated;
         SpiderBossInfo.Check();
+        SpiderBossInfo.SetInfos(MapNodeType.SpiderBoss);
     }
 }

@@ -24,7 +24,7 @@ public partial class HireWarriorPanel : Node
 		}
 		else
 		{
-			NotificationSystem.Instance.ShowMessage("Не получилось нанять \'" + warrior.characterData.Name + "\'. Вероятно, нет места в жилом помещении.");
+			NotificationSystem.Instance.ShowMessage("Не получилось нанять \'" + warrior.characterData.Name + "\'. Вероятно, нет места в жилом помещении.", EMessageType.Alert);
 		}
 	}
 	private void OnRejectButtonPressed()

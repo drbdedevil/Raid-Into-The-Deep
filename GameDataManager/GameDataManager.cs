@@ -18,6 +18,7 @@ public partial class GameDataManager : Node
 	public LivingSpaceDataManager livingSpaceDataManager { get; private set; }
 	public TrainingPitsDataManager trainingPitsDataManager { get; private set; }
 	public ForgeDataManager forgeDataManager { get; private set; }
+	public RunMapDataManager runMapDataManager { get; private set; }
 
 	// Databases
 	[Export]
@@ -49,6 +50,8 @@ public partial class GameDataManager : Node
 
 	[Export]
 	public RaceMapDatabase raceMapDatabase { get; private set; }
+	[Export]
+	public RaceMapValuesDatabase raceMapValuesDatabase  { get; private set; }
 
 	// Scripts
 	public override void _Ready()
@@ -64,6 +67,7 @@ public partial class GameDataManager : Node
 		livingSpaceDataManager = new LivingSpaceDataManager(this);
 		trainingPitsDataManager = new TrainingPitsDataManager(this);
 		forgeDataManager = new ForgeDataManager(this);
+		runMapDataManager = new RunMapDataManager(this);
 
 		trainingPitsDataManager.GenerateCharactersForHiring(10);
 

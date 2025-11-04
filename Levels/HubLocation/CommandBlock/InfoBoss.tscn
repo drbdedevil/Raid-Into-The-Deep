@@ -70,11 +70,13 @@ alignment = 1
 [node name="ResultLabel" type="Label" parent="TextureRect/MarginContainer/ColorRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1bn3k")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Не побеждён"
 
 [node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ColorRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1bn3k")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Жук жучок"
+autowrap_mode = 1

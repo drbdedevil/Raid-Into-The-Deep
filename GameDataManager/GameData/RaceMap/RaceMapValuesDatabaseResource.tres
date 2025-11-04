@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RaceMapValuesDatabase" load_steps=2 format=3 uid="uid://wyq2tafu0i4h"]
+
+[ext_resource type="Script" uid="uid://34aglqh0c8i" path="res://GameDataManager/GameData/RaceMap/RaceMapValuesDatabase.cs" id="1_cf8eh"]
+
+[resource]
+script = ExtResource("1_cf8eh")
+metadata/_custom_type_script = "uid://34aglqh0c8i"

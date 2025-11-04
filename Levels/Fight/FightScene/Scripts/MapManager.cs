@@ -30,40 +30,26 @@ public partial class MapManager : Node2D
 	public delegate void OnTileLeftButtonClickedEventHandler(Vector2I tile);
 	
 	[Signal]
-	public delegate void OnTileRightButtonClickedEventHandler(BattleEntity battleEntity);
-	
+	public delegate void OnTileRightButtonClickedEventHandler(Fight.BattleEntity battleEntity);
+
+
+	private List<Tile> _selectedTilesForPlayerWarriorMove { get; set; } = [];
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion)
 		{
 			var tile = GetTileUnderMousePosition();
-			if (_selectedTile != null && tile == null || (_selectedTile != tile && tile != null && _selectedTile is not null) )
-			{
-				DeselectTile(_selectedTile);
-				_selectedTile = null;
-			}
-			else if (tile != null)
-			{
-				_selectedTile = tile;
-				SelectTile(_selectedTile);
-			}
 		}
 		
 		if (@event is InputEventMouseButton mouseButton && @event.IsPressed())
 		{
-			if (mouseButton.Pressed)
-			{ 
-				var tile = GetTileUnderMousePosition();
-				if (mouseButton.ButtonIndex == MouseButton.Left)
-				{
-					if (tile != null && tile.BattleEntity?.Character == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
-				}
-				else if (mouseButton.ButtonIndex == MouseButton.Right)
-				{
-					if (tile?.BattleEntity?.Character != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity);
-				}
+			if (!mouseButton.Pressed) return;
+			var tile = GetTileUnderMousePosition();
+			if (mouseButton.ButtonIndex == MouseButton.Left)
+			{
+				if (tile != null && tile.BattleEntity == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
 			}
-			
+
 		}
 	}
 
@@ -71,42 +57,18 @@ public partial class MapManager : Node2D
 	{
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
-		
-		var ySize = 8;
-		var xSize = 8;
-		for (int y = 0; y < ySize; y++)
+		foreach (var instanceTile in BattleMapInitStateManager.Instance.Tiles)
 		{
-			var cartesianRow = new List<Vector2I>();
-			var isometricRow = new List<Vector2I>();
-			for (int x = 0; x < xSize; x++)
-			{
-				var cartesianCoord = new Vector2I(x, y); 
-				var isometricCoord = y % 2 == 0 ? CalculateEvenVector(x) : CalculateOddVector(x);
-				
-				isometricRow.Add(isometricCoord);
-				cartesianRow.Add(cartesianCoord);
-				_floorLayer.SetCell(isometricCoord, 0, new Vector2I(0, 0));
-				var mapTile = new Tile(cartesianCoord, isometricCoord, new Vector2I(32, 16), false);
-				_tilesByIsometric.Add(isometricCoord, mapTile);
-				_tilesByCartesian.Add(cartesianCoord, mapTile);
-				_mapTiles.Add(mapTile);
-			}
-			_cartesianCoords.Add(cartesianRow);
-			_isometricCoords.Add(isometricRow);
-
-			Vector2I CalculateEvenVector(int x) => new (
-				y + (int)Math.Round((x) / 2f, MidpointRounding.ToNegativeInfinity) -
-				3 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity),
-				x + 2 * (int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity));
-
-			Vector2I CalculateOddVector(int x) => new (
-				(int)Math.Round((-y) / 2f, MidpointRounding.ToNegativeInfinity) +
-				(int)Math.Round((decimal)(x + 1) / 2, MidpointRounding.ToNegativeInfinity),
-				(int)Math.Round((decimal)(y) / 2, MidpointRounding.ToNegativeInfinity) * 2 + x + 1);
+			_mapTiles.Add(instanceTile);
+			_tilesByCartesian.Add(instanceTile.CartesianPosition, instanceTile);
+			_tilesByIsometric.Add(instanceTile.IsometricPosition, instanceTile);
+			DeselectTile(instanceTile);
+			if (instanceTile.BattleEntity is not null) InitBattleEntityOnTile(instanceTile);
 		}
-		
-	   
-		
+	}
+	
+	public override void _Process(double delta)
+	{
 	}
 	
 	
@@ -122,26 +84,41 @@ public partial class MapManager : Node2D
 		return tile;
 	}
 
-	public void SetEnemyOnTile(Tile tile, BattleEntity enemy)
+	private void InitBattleEntityOnTile(Tile tile)
 	{
-		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
-		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
-		enemy.Tile = tile;
-		tile.BattleEntity = enemy;
+		if (tile.BattleEntity is null) return;
+		if (tile.BattleEntity is PlayerEntity playerEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		}
+		else if (tile.BattleEntity is EnemyEntity enemyEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+		}
 	}
-	
-	public void RemoveEnemyOnTile(Tile tile)
+
+	public bool SetBattleEntityOnTile(Tile tile, BattleEntity battleEntity)
+	{
+		if (tile.BattleEntity is not null) return false;
+		RemoveBattleEntityOnTile(battleEntity.Tile);
+		tile.BattleEntity = battleEntity;
+		if (tile.BattleEntity is PlayerEntity playerEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		}
+		else if (tile.BattleEntity is EnemyEntity enemyEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+		}
+		
+		return true;
+	}
+	public void RemoveBattleEntityOnTile(Tile tile)
 	{
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
-
-	public Tile? GetTileUnderMousePosition()
-	{
-		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
-		return GetTileByIsometricCoord(clickedCell);
-	}
-
+	
 	public void SelectTile(Tile tile)
 	{
 		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
@@ -153,4 +130,46 @@ public partial class MapManager : Node2D
 	}
 
 
+	/// <summary>
+	/// Метод для отрисовки возможных тайлов к передвижению воина игрока
+	/// </summary>
+	public void DrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
+	{
+		var tilesToMove = PathFinder.FindTilesToMove(playerEntity.Tile, this, playerEntity.Speed);
+		_selectedTilesForPlayerWarriorMove = tilesToMove;
+		foreach (var tile in _selectedTilesForPlayerWarriorMove)
+		{
+			SelectTile(tile);
+		}
+	}
+
+	public bool MovePlayerEntityInSpeedZone(PlayerEntity playerEntity)
+	{
+		var tile = GetTileInSelectedUnderMousePosition();
+		return tile is not null && SetBattleEntityOnTile(tile, playerEntity);
+	}
+
+	public void ClearAllSelectedTiles()
+	{
+		foreach (var selectedTile in _selectedTilesForPlayerWarriorMove)
+		{
+			DeselectTile(selectedTile);
+		}
+		_selectedTilesForPlayerWarriorMove.Clear();
+	}
+	
+	public Tile? GetTileUnderMousePosition()
+	{
+		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
+		return GetTileByIsometricCoord(clickedCell);
+	}
+
+	public Tile? GetTileInSelectedUnderMousePosition()
+	{
+		var tile = GetTileUnderMousePosition();
+		if (tile is null) return null;
+		if (!_selectedTilesForPlayerWarriorMove.Contains(tile)) return null;
+		return tile;
+	}
+	
 }

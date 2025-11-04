@@ -1,19 +1,51 @@
-[gd_resource type="Resource" script_class="RaceMapDatabase" load_steps=22 format=3 uid="uid://0s1vb3fkkh7l"]
+[gd_resource type="Resource" script_class="RaceMapDatabase" load_steps=47 format=3 uid="uid://0s1vb3fkkh7l"]
 
 [ext_resource type="Script" uid="uid://7oocrq3yarrs" path="res://GameDataManager/GameData/RaceMap/RaceMapEventRow.cs" id="1_2fcsx"]
 [ext_resource type="Texture2D" uid="uid://bwox27xa7qqsu" path="res://Textures/RaceMap/MapIcons/StartPoint_Black.png" id="2_bcg6x"]
 [ext_resource type="Script" uid="uid://0qgukh48m2he" path="res://GameDataManager/GameData/RaceMap/RaceMapDatabase.cs" id="2_ihbqp"]
 [ext_resource type="Texture2D" uid="uid://b7rr7r0r1teth" path="res://Textures/RaceMap/MapIcons/StartPoint_White.png" id="3_hpm2w"]
+[ext_resource type="Texture2D" uid="uid://deobn4yugsd55" path="res://Textures/RaceMap/MapIcons/Fight_Disabled.png" id="4_8x2di"]
 [ext_resource type="Texture2D" uid="uid://ddokgigk7nqed" path="res://Textures/RaceMap/MapIcons/Fight_Black.png" id="4_54m8r"]
 [ext_resource type="Texture2D" uid="uid://5k8u06lyy8o6" path="res://Textures/RaceMap/MapIcons/Fight_White.png" id="5_bswsp"]
+[ext_resource type="Texture2D" uid="uid://basnr5imae6th" path="res://Textures/RaceMap/MapIcons/Fight_Hover.png" id="5_cvmu1"]
 [ext_resource type="Texture2D" uid="uid://d20bfh2tvbas4" path="res://Textures/RaceMap/MapIcons/Otdych_Black.png" id="6_qox0u"]
 [ext_resource type="Texture2D" uid="uid://cwyn2tgqwkqhb" path="res://Textures/RaceMap/MapIcons/Otdych_White.png" id="7_6crie"]
+[ext_resource type="Texture2D" uid="uid://cqq1885i6mckt" path="res://Textures/RaceMap/MapIcons/Fight_Pressed.png" id="7_7kbbc"]
 [ext_resource type="Texture2D" uid="uid://bvep36ybg6t4l" path="res://Textures/RaceMap/MapIcons/Sokrov_Black.png" id="8_k5b5v"]
+[ext_resource type="Texture2D" uid="uid://d247j8ctq0r27" path="res://Textures/RaceMap/MapIcons/Otdych_Disabled.png" id="9_4dc4b"]
 [ext_resource type="Texture2D" uid="uid://ddroifyrj7ilo" path="res://Textures/RaceMap/MapIcons/Sokrov_White.png" id="9_f4rci"]
-[ext_resource type="Texture2D" uid="uid://chhgf2haxaleo" path="res://Textures/RaceMap/MapIcons/Boss_Black.png" id="10_otrvv"]
-[ext_resource type="Texture2D" uid="uid://c3ynf2w3lutyx" path="res://Textures/RaceMap/MapIcons/Boss_White.png" id="11_yqhjc"]
+[ext_resource type="Texture2D" uid="uid://i2x2p0nr32x2" path="res://Textures/RaceMap/MapIcons/Otdych_Hover.png" id="10_mtaje"]
 [ext_resource type="Texture2D" uid="uid://cb7u34cu8spe8" path="res://Textures/RaceMap/MapIcons/Vopros_Black.png" id="12_21cdx"]
+[ext_resource type="Texture2D" uid="uid://detiss2exh1fl" path="res://Textures/RaceMap/MapIcons/Otdych_Pressed.png" id="12_p6et5"]
 [ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="13_drbut"]
+[ext_resource type="Texture2D" uid="uid://cf5nqdcr6dqcn" path="res://Textures/RaceMap/MapIcons/EliteBattle_Black.png" id="14_4lsst"]
+[ext_resource type="Texture2D" uid="uid://dokxedfebx0em" path="res://Textures/RaceMap/MapIcons/Sokrov_Disabled.png" id="14_y8cu1"]
+[ext_resource type="Texture2D" uid="uid://bl3501iijndsh" path="res://Textures/RaceMap/MapIcons/EliteBattle_White.png" id="15_mnx8r"]
+[ext_resource type="Texture2D" uid="uid://nxs0ifcc7ogy" path="res://Textures/RaceMap/MapIcons/Sokrov_Hover.png" id="15_yw1cw"]
+[ext_resource type="Texture2D" uid="uid://dbw4ux2j1i21y" path="res://Textures/RaceMap/MapIcons/Sokrov_Pressed.png" id="17_7mpu7"]
+[ext_resource type="Texture2D" uid="uid://cos1ef2g53qm" path="res://Textures/Fight/FightScene/SpiderBoss.png" id="19_qe8aa"]
+[ext_resource type="Texture2D" uid="uid://talbu5a1bwfm" path="res://Textures/RaceMap/MapIcons/Boss_Hover.png" id="20_shbo7"]
+[ext_resource type="Texture2D" uid="uid://dr7iw6pfl65uq" path="res://Textures/RaceMap/MapIcons/Boss_Pressed.png" id="22_15fi3"]
+[ext_resource type="Texture2D" uid="uid://du7hbhuyfjcek" path="res://Textures/RaceMap/MapIcons/Vopros_Disabled.png" id="24_n5nkd"]
+[ext_resource type="Texture2D" uid="uid://dtamklhed2usd" path="res://Textures/RaceMap/MapIcons/Vopros_Hover.png" id="25_b6pey"]
+[ext_resource type="Texture2D" uid="uid://cnmvax7df8p7g" path="res://Textures/RaceMap/MapIcons/Vopros_Pressed.png" id="27_m7651"]
+[ext_resource type="Texture2D" uid="uid://dt3w74wpmxkq3" path="res://Textures/RaceMap/MapIcons/EliteBattle_Disabled.png" id="29_yddre"]
+[ext_resource type="Texture2D" uid="uid://l8t27uqbbsrl" path="res://Textures/RaceMap/MapIcons/EliteBattle_Hover.png" id="30_qe8aa"]
+[ext_resource type="Texture2D" uid="uid://uhnwnjutgkup" path="res://Textures/RaceMap/MapIcons/EliteBattle_Pressed.png" id="32_vv6oq"]
+[ext_resource type="Texture2D" uid="uid://codkx165trplj" path="res://Textures/Fight/FightScene/Tank.png" id="33_vv6oq"]
+[ext_resource type="Texture2D" uid="uid://c1km3kf6kglux" path="res://Textures/Fight/FightScene/Vegetable.png" id="34_0wn8h"]
+
+[sub_resource type="Texture2D" id="Texture2D_su14k"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Texture2D" id="Texture2D_jdy0t"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Texture2D" id="Texture2D_2uju0"]
+resource_local_to_scene = false
+resource_name = ""
 
 [sub_resource type="Resource" id="Resource_54m8r"]
 script = ExtResource("1_2fcsx")
@@ -26,6 +58,9 @@ metadata/_custom_type_script = "uid://7oocrq3yarrs"
 script = ExtResource("1_2fcsx")
 unpassedNodeIcon = ExtResource("5_bswsp")
 passedNodeIcon = ExtResource("4_54m8r")
+hoverNodeIcon = ExtResource("5_cvmu1")
+pressedNodeIcon = ExtResource("7_7kbbc")
+disabledNodeIcon = ExtResource("4_8x2di")
 mapNodeType = 1
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
@@ -33,6 +68,9 @@ metadata/_custom_type_script = "uid://7oocrq3yarrs"
 script = ExtResource("1_2fcsx")
 unpassedNodeIcon = ExtResource("7_6crie")
 passedNodeIcon = ExtResource("6_qox0u")
+hoverNodeIcon = ExtResource("10_mtaje")
+pressedNodeIcon = ExtResource("12_p6et5")
+disabledNodeIcon = ExtResource("9_4dc4b")
 mapNodeType = 2
 Weight = 0.07
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
@@ -41,14 +79,20 @@ metadata/_custom_type_script = "uid://7oocrq3yarrs"
 script = ExtResource("1_2fcsx")
 unpassedNodeIcon = ExtResource("9_f4rci")
 passedNodeIcon = ExtResource("8_k5b5v")
+hoverNodeIcon = ExtResource("15_yw1cw")
+pressedNodeIcon = ExtResource("17_7mpu7")
+disabledNodeIcon = ExtResource("14_y8cu1")
 mapNodeType = 4
 Weight = 0.07
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_yqhjc"]
 script = ExtResource("1_2fcsx")
-unpassedNodeIcon = ExtResource("11_yqhjc")
-passedNodeIcon = ExtResource("10_otrvv")
+unpassedNodeIcon = ExtResource("19_qe8aa")
+passedNodeIcon = ExtResource("19_qe8aa")
+hoverNodeIcon = ExtResource("20_shbo7")
+pressedNodeIcon = ExtResource("22_15fi3")
+disabledNodeIcon = ExtResource("19_qe8aa")
 mapNodeType = 5
 Weight = 0.0
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
@@ -57,19 +101,45 @@ metadata/_custom_type_script = "uid://7oocrq3yarrs"
 script = ExtResource("1_2fcsx")
 unpassedNodeIcon = ExtResource("13_drbut")
 passedNodeIcon = ExtResource("12_21cdx")
-mapNodeType = 6
+hoverNodeIcon = ExtResource("25_b6pey")
+pressedNodeIcon = ExtResource("27_m7651")
+disabledNodeIcon = ExtResource("24_n5nkd")
+mapNodeType = 8
 Weight = 0.1
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_drbut"]
 script = ExtResource("1_2fcsx")
-unpassedNodeIcon = ExtResource("3_hpm2w")
-passedNodeIcon = ExtResource("2_bcg6x")
+unpassedNodeIcon = ExtResource("15_mnx8r")
+passedNodeIcon = ExtResource("14_4lsst")
+hoverNodeIcon = ExtResource("30_qe8aa")
+pressedNodeIcon = ExtResource("32_vv6oq")
+disabledNodeIcon = ExtResource("29_yddre")
 mapNodeType = 3
 Weight = 0.3
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
+[sub_resource type="Resource" id="Resource_jvmo1"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("33_vv6oq")
+passedNodeIcon = ExtResource("33_vv6oq")
+hoverNodeIcon = ExtResource("20_shbo7")
+pressedNodeIcon = ExtResource("22_15fi3")
+disabledNodeIcon = ExtResource("33_vv6oq")
+mapNodeType = 6
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
+[sub_resource type="Resource" id="Resource_bvqin"]
+script = ExtResource("1_2fcsx")
+unpassedNodeIcon = ExtResource("34_0wn8h")
+passedNodeIcon = ExtResource("34_0wn8h")
+hoverNodeIcon = ExtResource("20_shbo7")
+pressedNodeIcon = ExtResource("22_15fi3")
+disabledNodeIcon = ExtResource("34_0wn8h")
+mapNodeType = 7
+metadata/_custom_type_script = "uid://7oocrq3yarrs"
+
 [resource]
 script = ExtResource("2_ihbqp")
-RaceMapInfos = Array[ExtResource("1_2fcsx")]([SubResource("Resource_54m8r"), SubResource("Resource_qox0u"), SubResource("Resource_f4rci"), SubResource("Resource_otrvv"), SubResource("Resource_yqhjc"), SubResource("Resource_21cdx"), SubResource("Resource_drbut")])
+RaceMapInfos = Array[ExtResource("1_2fcsx")]([SubResource("Resource_54m8r"), SubResource("Resource_qox0u"), SubResource("Resource_f4rci"), SubResource("Resource_otrvv"), SubResource("Resource_yqhjc"), SubResource("Resource_21cdx"), SubResource("Resource_drbut"), SubResource("Resource_jvmo1"), SubResource("Resource_bvqin")])
 metadata/_custom_type_script = "uid://0qgukh48m2he"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs2qyfj2uebrd"]
+
+[ext_resource type="Script" uid="uid://dwvpcijds1duv" path="res://Levels/Fight/BattleMapInitStateManager.cs" id="1_4yfia"]
+
+[node name="BattleMapInitStateManager" type="Node"]
+script = ExtResource("1_4yfia")

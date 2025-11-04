@@ -19,27 +19,35 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     
     
     
-    private CharacterData? _currentSelectedCharacterData;
+    private PlayerEntity? _currentSelectedPlayerEntity;
     
-    private readonly Dictionary<CharacterData, PrepareFightWarriorPanel> _allCharacters = new();
+    private readonly Dictionary<PlayerEntity, PrepareFightWarriorPanel> _allPlayerEntity = new();
     
-    private readonly Dictionary<CharacterData, PrepareFightWarriorPanel> _charactersInTeamContainer = new();
+    private readonly Dictionary<PlayerEntity, PrepareFightWarriorPanel> _playerEntitiesInTeamContainer = new();
 
-    public CharacterData? CurrentSelectedCharacterData => _currentSelectedCharacterData;
+    public static readonly int PlayerUserWarriorsCount = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters .Count;
 
+    public PlayerEntity? CurrentSelectedPlayerEntity => _currentSelectedPlayerEntity;
+
+    
+    private int _placedWarriorsOnMap = 0;
+    public bool IsPlayerPlacedAnyoneWarrior => _placedWarriorsOnMap != 0 ;
+    
     public void InitTeam(List<CharacterData> characters)
     {
-        foreach (var character in characters)
+        var playerEntities = characters.Select(x => new PlayerEntity(null, x));
+        
+        foreach (var playerEntity in playerEntities)
         {
             var panel = _warriorPanel.Instantiate<PrepareFightWarriorPanel>();
-            panel.SetCharacterData(character);
-            _allCharacters.Add(character, panel);
-            AddWarriorIconToTeamContainer(character);
+            panel.SetPlayerEntityData(playerEntity);
+            _allPlayerEntity.Add(playerEntity, panel);
+            AddWarriorIconToTeamContainer(playerEntity);
         }
     }
-    public CharacterData GetCharacterDataByPrepareFightWarriorPanel(PrepareFightWarriorPanel warriorPanel)
+    public PlayerEntity GetCharacterDataByPrepareFightWarriorPanel(PrepareFightWarriorPanel warriorPanel)
     {
-        return _charactersInTeamContainer.FirstOrDefault(x => x.Value == warriorPanel).Key;
+        return _playerEntitiesInTeamContainer.FirstOrDefault(x => x.Value == warriorPanel).Key;
     }
     
     /// <summary>
@@ -47,71 +55,70 @@ public partial class PlayerWarriorsMenu : HBoxContainer
     /// </summary>
     /// <param name="warrior"></param>
     /// <returns></returns>
-    public void AddWarriorIconToTeamContainer(CharacterData warrior)
+    public void AddWarriorIconToTeamContainer(PlayerEntity warrior)
     {
-        GD.Print($"Adding {warrior.ID}");
-        var characterPanel = _allCharacters[warrior];
-        _charactersInTeamContainer.Add(warrior, characterPanel);
+        GD.Print($"Adding {warrior.Id}");
+        var characterPanel = _allPlayerEntity[warrior];
+        _playerEntitiesInTeamContainer.Add(warrior, characterPanel);
         _teamWarriorsContainer.AddChild(characterPanel);
-        characterPanel.OnWarriorPanelLeftButtonClicked += SelectCharacter;
+        characterPanel.OnWarriorPanelLeftButtonClicked += SelectPlayerEntity;
     }
 
-    public void SelectCharacter(PrepareFightWarriorPanel warriorPanel)
+    public void SelectPlayerEntity(PrepareFightWarriorPanel warriorPanel)
     {
-        var characterData = _charactersInTeamContainer.FirstOrDefault(x => x.Value == warriorPanel).Key;
-        GD.Print($"Adding to selected {characterData.ID}");
-        RemoveWarriorIconFromTeamContainer(characterData);
+        var playerEntity = _playerEntitiesInTeamContainer.FirstOrDefault(x => x.Value == warriorPanel).Key;
+        GD.Print($"Adding to selected {playerEntity.Id}");
+        RemoveWarriorIconFromTeamContainer(playerEntity);
 
-        if (_currentSelectedCharacterData is not null)
+        if (_currentSelectedPlayerEntity is not null)
         {
-            var prevSelectedWarriorPanel = _allCharacters[_currentSelectedCharacterData];
+            var prevSelectedWarriorPanel = _allPlayerEntity[_currentSelectedPlayerEntity];
             _currentSelectedWarriorContainer.RemoveChild(prevSelectedWarriorPanel);
-            AddWarriorIconToTeamContainer(_currentSelectedCharacterData);
+            AddWarriorIconToTeamContainer(_currentSelectedPlayerEntity);
         }
-        _currentSelectedCharacterData = characterData;
+        _currentSelectedPlayerEntity = playerEntity;
         _currentSelectedWarriorContainer.AddChild(warriorPanel);
-        warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectCharacter;
+        warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectPlayerEntity;
     }
 
     /// <summary>
     /// Установка в Select персонажа
     /// </summary>
-    /// <param name="battleEntity"></param>
-    public void SelectCharacterFromMap(BattleEntity battleEntity)
+    /// <param name="playerEntity"></param>
+    public void SelectPlayerEntityFromMap(PlayerEntity playerEntity)
     {
-        var characterData = battleEntity.Character;
-        var warriorPanel = _allCharacters[characterData];
+        var warriorPanel = _allPlayerEntity[playerEntity];
         
-        if (_currentSelectedCharacterData is not null)
+        if (_currentSelectedPlayerEntity is not null)
         {
-            var prevSelectedWarriorPanel = _allCharacters[_currentSelectedCharacterData];
+            var prevSelectedWarriorPanel = _allPlayerEntity[_currentSelectedPlayerEntity];
             _currentSelectedWarriorContainer.RemoveChild(prevSelectedWarriorPanel);
-            AddWarriorIconToTeamContainer(_currentSelectedCharacterData);
+            AddWarriorIconToTeamContainer(_currentSelectedPlayerEntity);
         }
-        _currentSelectedCharacterData = characterData;
+        _currentSelectedPlayerEntity = playerEntity;
         _currentSelectedWarriorContainer.AddChild(warriorPanel);
-        warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectCharacter;
-        MapManager.RemoveEnemyOnTile(battleEntity.Tile);
+        warriorPanel.OnWarriorPanelLeftButtonClicked -= SelectPlayerEntity;
+        MapManager.RemoveEnemyOnTile(playerEntity.Tile);
+        _placedWarriorsOnMap -= 1;
     }
     
-    public void RemoveWarriorIconFromTeamContainer(CharacterData warrior)
+    public void RemoveWarriorIconFromTeamContainer(PlayerEntity warrior)
     {
-        GD.Print($"remove from Team Container {warrior.ID}");
-        var characterView = _charactersInTeamContainer[warrior];
+        GD.Print($"remove from Team Container {warrior.Id}");
+        var characterView = _playerEntitiesInTeamContainer[warrior];
         _teamWarriorsContainer.RemoveChild(characterView);
-        _charactersInTeamContainer.Remove(warrior);
+        _playerEntitiesInTeamContainer.Remove(warrior);
     }
 
-    public void SetCharacterDataOnMap(Vector2I tileCartesianPosition)
+    public void SetPlayerEntityOnMap(Vector2I tileCartesianPosition)
     {
-        if (_currentSelectedCharacterData is null) return;
+        if (_currentSelectedPlayerEntity is null) return;
         var tile = MapManager.GetTileByCartesianCoord(tileCartesianPosition);
-        MapManager.SetEnemyOnTile(tile!, new BattleEntity()
-        {
-            Character = _currentSelectedCharacterData
-        });
-        _currentSelectedWarriorContainer.RemoveChild(_allCharacters[_currentSelectedCharacterData]);
-        _currentSelectedCharacterData = null;
-        if (_charactersInTeamContainer.Any()) SelectCharacter(_charactersInTeamContainer.First().Value);
+        
+        MapManager.SetBattleEntityOnTile(tile!, _currentSelectedPlayerEntity);
+        _currentSelectedWarriorContainer.RemoveChild(_allPlayerEntity[_currentSelectedPlayerEntity]);
+        _currentSelectedPlayerEntity = null;
+        if (_playerEntitiesInTeamContainer.Any()) SelectPlayerEntity(_playerEntitiesInTeamContainer.First().Value);
+        _placedWarriorsOnMap += 1;
     }
 }

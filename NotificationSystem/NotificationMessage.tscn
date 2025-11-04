@@ -4,20 +4,24 @@
 [ext_resource type="Script" uid="uid://dlajlm0ol5xf0" path="res://NotificationSystem/NotificationMessage.cs" id="1_5oaea"]
 
 [node name="NotificationMessage" type="ColorRect"]
-custom_minimum_size = Vector2(200, 30)
+custom_minimum_size = Vector2(220, 30)
 offset_right = 200.0
 offset_bottom = 30.0
 mouse_filter = 2
-color = Color(0.45882353, 0.49019608, 0.38039216, 0.5803922)
+color = Color(0.28627452, 0.54901963, 0.21960784, 0.8627451)
 script = ExtResource("1_5oaea")
-Duration = 3.0
-FadeInTime = 0.1
+Duration = 4.0
+FadeInTime = 0.25
+warningColor = Color(0.89411765, 0.59607846, 0, 0.8627451)
+alertColor = Color(0.84705883, 0.21960784, 0.2627451, 0.8627451)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_2ytdr")

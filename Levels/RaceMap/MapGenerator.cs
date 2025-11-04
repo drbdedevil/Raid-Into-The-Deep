@@ -37,17 +37,18 @@ public partial class MapGenerator : Node
             for (int col = 0; col < count; ++col)
             {
                 MapNodeType type = GetRandomType(row, map[row - 1]);
-                nodes.Add(new MapNode { Row = row, Col = col, Type = type });
+                nodes.Add(new MapNode { Row = row, Col = col, Type = type, IsActive = false });
             }
 
             map.Add(nodes);
         }
 
+        List<KeyValuePair<MapNodeType, bool>> randomBosses = GetRandomBosses();
         // Bosses nodes
         map.Add(new List<MapNode> {
-            new MapNode { Row = Rows - 1, Col = 0, Type = MapNodeType.Boss },
-            new MapNode { Row = Rows - 1, Col = 1, Type = MapNodeType.Boss },
-            new MapNode { Row = Rows - 1, Col = 2, Type = MapNodeType.Boss }
+            new MapNode { Row = Rows - 1, Col = 0, Type = randomBosses[0].Key, IsActive = false, IsPassed = randomBosses[0].Value },
+            new MapNode { Row = Rows - 1, Col = 1, Type = randomBosses[1].Key, IsActive = false, IsPassed = randomBosses[1].Value },
+            new MapNode { Row = Rows - 1, Col = 2, Type = randomBosses[2].Key, IsActive = false, IsPassed = randomBosses[2].Value }
         });
 
         ConnectNodes(map);
@@ -281,6 +282,10 @@ public partial class MapGenerator : Node
         {
             result = MapNodeType.Battle;
         }
+        if (result == MapNodeType.SpiderBoss || result == MapNodeType.TankBoss || result == MapNodeType.VegetableBoss)
+        {
+            result = MapNodeType.Battle;
+        }
 
         return result;
     }
@@ -305,5 +310,18 @@ public partial class MapGenerator : Node
             if (idx < min) min = idx;
         }
         return min;
+    }
+
+    private List<KeyValuePair<MapNodeType, bool>> GetRandomBosses()
+    {
+        List<KeyValuePair<MapNodeType, bool>> bosses = new List<KeyValuePair<MapNodeType, bool>>() {
+            new KeyValuePair<MapNodeType, bool>(MapNodeType.SpiderBoss, GameDataManager.Instance.currentData.commandBlockData.SpiderBossDefeated),
+            new KeyValuePair<MapNodeType, bool>(MapNodeType.TankBoss, GameDataManager.Instance.currentData.commandBlockData.TankDefeated),
+            new KeyValuePair<MapNodeType, bool>(MapNodeType.VegetableBoss, GameDataManager.Instance.currentData.commandBlockData.VegetableDefeated) };
+
+        Random random = new Random();
+        List<KeyValuePair<MapNodeType, bool>> shuffled = bosses.OrderBy(x => random.Next()).ToList();
+
+        return shuffled;
     }
 }

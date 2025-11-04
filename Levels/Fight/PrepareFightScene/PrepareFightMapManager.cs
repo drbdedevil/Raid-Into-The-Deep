@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using FileAccess = Godot.FileAccess;
@@ -30,6 +31,8 @@ public partial class PrepareFightMapManager : Node2D
 
 	private Tile? _selectedTile = null;
 
+	public List<Tile> MapTiles => _mapTiles.ToList();
+	
 	[Export]
 	public string MapName { get; set; }
 
@@ -38,7 +41,7 @@ public partial class PrepareFightMapManager : Node2D
 	public delegate void OnTileLeftButtonClickedEventHandler(Vector2I tile);
 	
 	[Signal]
-	public delegate void OnTileRightButtonClickedEventHandler(BattleEntity battleEntity);
+	public delegate void OnTileRightButtonClickedEventHandler(PlayerEntity battleEntity);
 	
 	public override void _Input(InputEvent @event)
 	{
@@ -50,11 +53,11 @@ public partial class PrepareFightMapManager : Node2D
 				var tile = GetTileUnderMousePositionForWarriorPlacement();
 				if (mouseButton.ButtonIndex == MouseButton.Left)
 				{
-					if (tile != null && tile.BattleEntity?.Character == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
+					if (tile != null && tile.BattleEntity == null) EmitSignalOnTileLeftButtonClicked(tile.CartesianPosition);
 				}
 				else if (mouseButton.ButtonIndex == MouseButton.Right)
 				{
-					if (tile?.BattleEntity?.Character != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity);
+					if (tile?.BattleEntity != null) EmitSignalOnTileRightButtonClicked(tile.BattleEntity as PlayerEntity);
 				}
 			}
 			
@@ -96,6 +99,7 @@ public partial class PrepareFightMapManager : Node2D
 				_tilesByCartesian.Add(tile.CartesianPosition, tile);
 				_tilesByIsometric.Add(tile.IsometricPosition, tile);
 				SetAtlasOriginalTextureForTile(tile);
+				if (tile.BattleEntity != null) SetBattleEntityOnTile(tile, tile.BattleEntity);
 			}
 			_isometricCoords.Add(isometricCoords);
 			_cartesianCoords.Add(cartesianCoords);
@@ -116,12 +120,19 @@ public partial class PrepareFightMapManager : Node2D
 		return tile;
 	}
 
-	public void SetEnemyOnTile(Tile tile, BattleEntity enemy)
+	public void SetBattleEntityOnTile(Tile tile, BattleEntity entity)
 	{
-		if (enemy.Tile is not null) _entityLayer.EraseCell(enemy.Tile.IsometricPosition);
-		_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, 0));
-		enemy.Tile = tile;
-		tile.BattleEntity = enemy;
+		if (entity.Tile is not null) _entityLayer.EraseCell(entity.Tile.IsometricPosition);
+		if (entity is PlayerEntity)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		}
+		else if  (entity is EnemyEntity enemy)
+		{
+			_entityLayer.SetCell(tile.IsometricPosition, (int)enemy.EnemyId, new Vector2I(0, 0));
+		}
+		entity.Tile = tile;
+		tile.BattleEntity = entity;
 	}
 	
 	public void RemoveEnemyOnTile(Tile tile)
