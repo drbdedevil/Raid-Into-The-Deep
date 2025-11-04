@@ -95,7 +95,7 @@ public partial class RaceMap : Control
 
 	private void CheckBossWasDefeated()
 	{
-		if (GameDataManager.Instance.runMapDataManager.bShouldShowRegenerateButton)
+		if (GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton)
 		{
 			TextureButton regenerateButton = GetNode<TextureButton>("HBoxContainer/ColorRect/MarginContainer2/TextureButton");
 			regenerateButton.Visible = true;
@@ -109,7 +109,7 @@ public partial class RaceMap : Control
 		GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = true;
 		GameDataManager.Instance.runMapDataManager.EmitSignal(RunMapDataManager.SignalName.OnRunMapListUpdate);
 
-		GameDataManager.Instance.runMapDataManager.bShouldShowRegenerateButton = false;
+		GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = false;
 
 		DisableInput();
 	}

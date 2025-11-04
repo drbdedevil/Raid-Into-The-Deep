@@ -45,15 +45,15 @@
 [ext_resource type="Texture2D" uid="uid://csf8pa3rmu3aa" path="res://Textures/RaceMap/MapIcons/Vegetable_Pressed.png" id="42_8o7l3"]
 [ext_resource type="Texture2D" uid="uid://d0ba8eojgw7pn" path="res://Textures/RaceMap/MapIcons/Vegetable_White.png" id="43_brka4"]
 
-[sub_resource type="Texture2D" id="Texture2D_mtaje"]
+[sub_resource type="Texture2D" id="Texture2D_sk0kt"]
 resource_local_to_scene = false
 resource_name = ""
 
-[sub_resource type="Texture2D" id="Texture2D_p6et5"]
+[sub_resource type="Texture2D" id="Texture2D_oulc2"]
 resource_local_to_scene = false
 resource_name = ""
 
-[sub_resource type="Texture2D" id="Texture2D_y8cu1"]
+[sub_resource type="Texture2D" id="Texture2D_jqoew"]
 resource_local_to_scene = false
 resource_name = ""
 

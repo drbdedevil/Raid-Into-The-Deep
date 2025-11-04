@@ -1,0 +1,215 @@
+[gd_scene load_steps=18 format=3 uid="uid://bb4bbcwf4vm0k"]
+
+[ext_resource type="Script" uid="uid://cofd057w8wsa6" path="res://Levels/Menu/SavesScene.cs" id="1_8o12y"]
+[ext_resource type="PackedScene" uid="uid://ctlusxlj6ypsp" path="res://Levels/Menu/SaveButton.tscn" id="1_xoqu0"]
+[ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="2_n65di"]
+[ext_resource type="Texture2D" uid="uid://cqfvsqy4f72pl" path="res://Textures/Menu/MainMenu.png" id="3_3irqk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3irqk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5st8"]
+bg_color = Color(0.6039216, 0.3372549, 0.1254902, 0.43137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_xoqu0"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8o12y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n65di"]
+
+[node name="SavesScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8o12y")
+saveButtonScene = ExtResource("1_xoqu0")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3irqk")
+expand_mode = 1
+
+[node name="CloseButton" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3irqk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f5st8")
+icon = ExtResource("2_n65di")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(0, 390)
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 285.0
+offset_bottom = 648.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource("Theme_xoqu0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8o12y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n65di")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="SaveButton" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton2" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton3" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton4" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton5" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton6" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton7" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton8" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton9" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton10" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton11" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton12" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton13" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton14" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton15" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2
+
+[node name="SaveButton16" parent="ColorRect/ScrollContainer/VBoxContainer" instance=ExtResource("1_xoqu0")]
+layout_mode = 2

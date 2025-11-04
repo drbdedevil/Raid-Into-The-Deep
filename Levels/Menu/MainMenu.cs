@@ -20,13 +20,17 @@ public partial class MainMenu : Node
 
     private void OnContinueButtonPressed()
     {
-        GD.Print(" -- ContinueButtonPressed --");
-
-        GetTree().ChangeSceneToFile("res://Levels/HubLocation/HubLocation.tscn");
+        GetTree().ChangeSceneToFile("res://Levels/Menu/SavesScene.tscn");
     }
     private void OnNewGameButtonPressed()
     {
-        GD.Print(" -- NewGameButtonPressed --");
+        string saveName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+
+        GameDataManager.Instance.CreateNewGame();
+        GameDataManager.Instance.SetSavePath(saveName);
+        GameDataManager.Instance.Save();
+
+        GetTree().ChangeSceneToFile("res://Levels/HubLocation/HubLocation.tscn");
     }
     private void OnSettingsButtonPressed()
     {

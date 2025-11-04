@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
+[Serializable]
 public class WeaponData
 {
     public string ID { get; set; } = "NONE";
@@ -13,6 +15,7 @@ public class WeaponData
     public string TextureName { get; set; } = "NONE";
 }
 
+[Serializable]
 public class CharacterData
 {
     public string ID { get; set; } = "NONE";
@@ -34,6 +37,7 @@ public class CharacterData
     public string ChoosenSkills { get; set; } = "NONE";
 }
 
+[Serializable]
 public class StorageData
 {
     public int Level { get; set; } = 1;
@@ -42,6 +46,7 @@ public class StorageData
     public List<WeaponData> Weapons { get; set; } = new();
 }
 
+[Serializable]
 public class LivingSpaceData
 {
     public int Level { get; set; } = 1;
@@ -49,18 +54,21 @@ public class LivingSpaceData
     public List<CharacterData> ReservedCharacters { get; set; } = new();
 }
 
+[Serializable]
 public class ForgeData
 {
     public int Level { get; set; } = 1;
     public List<WeaponData> WeaponsForShackle { get; set; } = new();
 }
 
+[Serializable]
 public class TrainingPitsData
 {
     public int Level { get; set; } = 1;
     public List<CharacterData> CharactersForHiring { get; set; } = new();
 }
 
+[Serializable]
 public class CommandBlockData
 {
     public int RaidCount { get; set; } = 0;
@@ -71,12 +79,15 @@ public class CommandBlockData
     public bool SpiderBossDefeated { get; set; } = false;
 }
 
+[Serializable]
 public class RunMapData
 {
-    public bool bShouldRegenerate = true;
+    public bool bShouldShowRegenerateButton { get; set; } = false;
+    public bool bShouldRegenerate { get; set; } = true;
     public List<List<MapNode>> runMapList { get; set; } = new();
 }
 
+[Serializable]
 public class GameData
 {
     public StorageData storageData = new();
@@ -177,6 +188,7 @@ public static class SkillExtensions
 
 
 // --------------------------------------- Map ---------------------------------------
+[Serializable]
 public enum MapNodeType
 {
     Start = 0,
@@ -190,16 +202,25 @@ public enum MapNodeType
     RandomEvent = 8
 }
 
+[Serializable]
 public class MapNode
 {
+    private static int _nextId = 0;
+     public static void ResetIds() => _nextId = 0;
+    public MapNode() { Id = _nextId++; }
     public int Row = -1;
     public int Col = -1;
     public MapNodeType Type = MapNodeType.Start;
+
+    [JsonIgnore]
     public List<MapNode> Next = new List<MapNode>();
     public bool IsActive = true;
     public bool IsPassed = false;
     public float randomOffsetX { get; set; } = 0f;
     public float randomOffsetY { get; set; } = 0f;
+
+    public int Id { get; set; }
+    public List<int> NextIds = new List<int>();
 
     public void PassMapNode()
     {

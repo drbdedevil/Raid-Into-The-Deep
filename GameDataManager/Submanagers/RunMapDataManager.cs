@@ -12,8 +12,6 @@ public partial class RunMapDataManager : Node
     [Signal]
     public delegate void OnBossWasDefeatedEventHandler();
 
-    public bool bShouldShowRegenerateButton { get; set; } = false;
-
     public RunMapDataManager(GameDataManager InGameDataManager)
     {
         gameDataManager = InGameDataManager;
@@ -111,7 +109,7 @@ public partial class RunMapDataManager : Node
             default:
                 break;
         } // TODO: запустить уровень с нужным боссом и при победе сделать PassMapNode для pressedMapNode
-        bShouldShowRegenerateButton = true;
+        gameDataManager.currentData.runMapData.bShouldShowRegenerateButton = true;
         EmitSignal(SignalName.OnBossWasDefeated);
     }
 
@@ -121,5 +119,56 @@ public partial class RunMapDataManager : Node
         pressedMapNode = new MapNode();
 
         GameDataManager.Instance.runMapDataManager.EmitSignal(RunMapDataManager.SignalName.OnRunMapListUpdate); // TODO: По идее, это временно
+    }
+
+    public void SaveNodeIds()
+    {
+        foreach (var floor in gameDataManager.currentData.runMapData.runMapList)
+        {
+            foreach (var node in floor)
+            {
+                node.NextIds.Clear();
+                foreach (var next in node.Next)
+                {
+                    node.NextIds.Add(next.Id);
+                }
+            }
+        }
+    }
+    public void LoadNodeIds()
+    {
+        List<MapNode> allNodes = new List<MapNode>();
+        foreach (var floor in gameDataManager.currentData.runMapData.runMapList)
+        {
+            foreach (var node in floor)
+            {
+                allNodes.Add(node);
+            }
+        }
+
+        var lookup = new Dictionary<int, MapNode>();
+        foreach (var node in allNodes)
+        {
+            if (!lookup.ContainsKey(node.Id))
+                lookup.Add(node.Id, node);
+            else
+                GD.PrintErr($"Дублирующийся ID найден: {node.Id}");
+        }
+
+        foreach (var node in allNodes)
+        {
+            node.Next.Clear();
+            foreach (int nextId in node.NextIds)
+            {
+                if (lookup.TryGetValue(nextId, out var nextNode))
+                {
+                    node.Next.Add(nextNode);
+                }
+                else
+                {
+                    GD.PrintErr($"Не найден узел с ID {nextId} для ноды {node.Id}");
+                }
+            }
+        }
     }
 }

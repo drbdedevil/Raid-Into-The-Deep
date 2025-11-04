@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctlusxlj6ypsp"]
+
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_3bo06"]
+[ext_resource type="Script" uid="uid://d01rcrvo6c3qb" path="res://Levels/Menu/SaveButton.cs" id="1_8aao7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aao7"]
+bg_color = Color(0.9882353, 0.7764706, 0.5372549, 0.54509807)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19164404, 0.1560669, 0.017619235, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0f4e"]
+bg_color = Color(0.24313726, 0.30980393, 0.101960786, 0.6745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19164404, 0.1560669, 0.017619235, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k66wt"]
+bg_color = Color(0.7371177, 0.8857995, 0.44142997, 0.54509807)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19164404, 0.1560669, 0.017619235, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[node name="SaveButton" type="HBoxContainer"]
+custom_minimum_size = Vector2(235, 30)
+offset_right = 200.0
+offset_bottom = 30.0
+script = ExtResource("1_8aao7")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_8aao7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q0f4e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k66wt")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.19215687, 0.15686275, 0.015686275, 1)
+theme_override_fonts/font = ExtResource("1_3bo06")
+text = "2024-01-15 14:30:25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="DeleteButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_8aao7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q0f4e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k66wt")
+
+[node name="Label" type="Label" parent="MarginContainer/DeleteButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.19215687, 0.15686275, 0.015686275, 1)
+theme_override_fonts/font = ExtResource("1_3bo06")
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

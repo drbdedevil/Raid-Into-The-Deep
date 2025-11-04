@@ -36,7 +36,7 @@ bg_color = Color(0.68532646, 0.68532646, 0.68532646, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7bpl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk2cf"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -58,15 +58,15 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1mhx"]
 content_margin_left = 20.0
 content_margin_top = 10.0
 content_margin_right = 0.0
 content_margin_bottom = 10.0
 
-[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+[sub_resource type="ImageTexture" id="ImageTexture_fn680"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awwbt"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -74,7 +74,7 @@ content_margin_bottom = 4.0
 bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6iq3"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -82,7 +82,7 @@ content_margin_bottom = 4.0
 bg_color = Color(1, 1, 1, 0.75)
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2rlr"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -90,7 +90,7 @@ content_margin_bottom = 4.0
 bg_color = Color(0.75, 0.75, 0.75, 0.75)
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_waq7e"]
 content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
@@ -98,7 +98,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxo85"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -120,19 +120,19 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="Theme" id="Theme_wk2cf"]
-ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
-ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
-VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
-VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
-VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
-VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
-VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
-VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_wk2cf")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_p1mhx")
+VScrollBar/icons/decrement = SubResource("ImageTexture_fn680")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_fn680")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_fn680")
+VScrollBar/icons/increment = SubResource("ImageTexture_fn680")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_fn680")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_fn680")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_awwbt")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_w6iq3")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_s2rlr")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_waq7e")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_qxo85")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks1w7"]
 
@@ -229,7 +229,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l5qfr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bvx2a")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o8esw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_v7bpl")
-text = "Настройки"
+text = "Сохранить"
 icon = ExtResource("6_o8esw")
 expand_icon = true
 

@@ -47,7 +47,7 @@ public partial class ForgeDataManager : Node
         return false;
     }
 
-    private void GenerateWeaponsForShackle()
+    public void GenerateWeaponsForShackle()
     {
         for (int i = 0; i < gameDataManager.weaponDatabase.Weapons.Count; ++i)
         {

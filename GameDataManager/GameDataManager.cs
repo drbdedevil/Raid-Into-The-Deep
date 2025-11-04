@@ -1,12 +1,16 @@
 using Godot;
 using System;
+using System.IO;
+using System.Text.Json;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 public partial class GameDataManager : Node
 {
 	public static GameDataManager Instance { get; private set; }
 
 	[Export]
-	public string SavePath;
+	private string saveName = "";
 
 	public GameData currentData { get; set; } = new();
 
@@ -69,8 +73,110 @@ public partial class GameDataManager : Node
 		forgeDataManager = new ForgeDataManager(this);
 		runMapDataManager = new RunMapDataManager(this);
 
-		trainingPitsDataManager.GenerateCharactersForHiring(10);
-
 		GD.Print(" -- GameDataManager init -- ");
 	}
+	public void CreateNewGame()
+	{
+		currentData = new GameData();
+		forgeDataManager.GenerateWeaponsForShackle();
+		trainingPitsDataManager.GenerateCharactersForHiring(10);
+	}
+
+	public void SetSavePath(string InSaveName)
+	{
+		saveName = InSaveName;
+	}
+	public string GetSavePath()
+	{
+		return "user://saves/" + saveName + ".json";
+	}
+	public void Save()
+	{
+		try
+		{
+			var options = new JsonSerializerOptions
+			{
+				WriteIndented = true,
+				IncludeFields = true,
+			};
+
+			runMapDataManager.SaveNodeIds();
+			string json = JsonSerializer.Serialize(currentData, options);
+			File.WriteAllText(ProjectSettings.GlobalizePath(GetSavePath()), json);
+			GD.Print($"Игра сохранена: {GetSavePath()}");
+		}
+		catch (Exception e)
+		{
+			GD.PrintErr($"Ошибка при сохранении: {e.Message}");
+		}
+	}
+	public void Load()
+	{
+		try
+		{
+			if (!File.Exists(ProjectSettings.GlobalizePath(GetSavePath())))
+			{
+				GD.Print("Сохранение не найдено");
+				currentData = new GameData();
+			}
+
+			string json = File.ReadAllText(ProjectSettings.GlobalizePath(GetSavePath()));
+			var options = new JsonSerializerOptions { IncludeFields = true };
+
+			MapNode.ResetIds();
+			currentData = JsonSerializer.Deserialize<GameData>(json, options);
+			runMapDataManager.LoadNodeIds();
+			GD.Print("Сохранение загружено.");
+		}
+		catch (Exception e)
+		{
+			GD.PrintErr($"Ошибка при pfuheprt: {e.Message}");
+		}
+	}
+
+	public void DeleteSave(string saveName)
+	{
+		string saveToDelete = "user://saves/" + saveName + ".json";
+
+		if (File.Exists(ProjectSettings.GlobalizePath(saveToDelete)))
+		{
+			File.Delete(ProjectSettings.GlobalizePath(saveToDelete));
+		}
+	}
+	
+	public List<string> GetSaveList()
+	{
+		var saveNames = new List<string>();
+
+		var absPath = ProjectSettings.GlobalizePath("user://saves/");
+		if (!DirAccess.DirExistsAbsolute(absPath))
+		{
+			GD.Print("Папка сохранений не найдена, создаю новую...");
+			DirAccess.MakeDirRecursiveAbsolute(absPath);
+			return saveNames;
+		}
+
+		using var dir = DirAccess.Open("user://saves/");
+		if (dir == null)
+		{
+			GD.PrintErr("Не удалось открыть папку сохранений!");
+			return saveNames;
+		}
+
+		dir.ListDirBegin();
+		string fileName = dir.GetNext();
+		while (!string.IsNullOrEmpty(fileName))
+		{
+			if (!dir.CurrentIsDir() && fileName.EndsWith(".json"))
+			{
+				string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+				saveNames.Add(nameWithoutExt);
+			}
+			fileName = dir.GetNext();
+		}
+		dir.ListDirEnd();
+
+		return saveNames;
+	}
+
 }

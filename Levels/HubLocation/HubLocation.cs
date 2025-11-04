@@ -77,7 +77,7 @@ public partial class HubLocation : Node
 	}
 	private void OnSettingsButtonPressed()
 	{
-		GD.Print(" -- SettingsButtonPressed --");
+		GameDataManager.Instance.Save();
 	}
 	private void OnRaceMapButtonPressed()
 	{
