@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cpr8w1fhvtvii"]
+[gd_scene load_steps=49 format=3 uid="uid://cpr8w1fhvtvii"]
 
 [ext_resource type="Script" uid="uid://bi7nkvsn0hne1" path="res://Levels/RaceMap/RaceMap.cs" id="1_b3xk7"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="1_uxyyj"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://dbx0duiwhauq5" path="res://Levels/RaceMap/MapNodeButton.tscn" id="19_gj2ud"]
 [ext_resource type="Texture2D" uid="uid://c7x44iey60no2" path="res://Textures/RaceMap/MapIcons/Vopros_White.png" id="19_mdk6t"]
 [ext_resource type="Texture2D" uid="uid://bl3501iijndsh" path="res://Textures/RaceMap/MapIcons/EliteBattle_White.png" id="21_v6ldc"]
+[ext_resource type="Texture2D" uid="uid://bopgf4fjntw86" path="res://Textures/HubLocation/Forge/MeltButton.png" id="26_4bkdg"]
+[ext_resource type="Texture2D" uid="uid://mb0tr18pi2mf" path="res://Textures/HubLocation/Forge/Melt_Pressed.png" id="27_77ja0"]
+[ext_resource type="Texture2D" uid="uid://da527c6sbypte" path="res://Textures/HubLocation/Forge/Melt_Hover.png" id="28_xhp82"]
+[ext_resource type="Texture2D" uid="uid://b5ypgompbso44" path="res://Textures/HubLocation/Forge/Melt_Disable.png" id="29_ido6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -467,7 +471,7 @@ script = ExtResource("17_5ehvw")
 NodesPerRowMax = 5
 
 [node name="MapControl" type="Control" parent="HBoxContainer/ColorRect/MapContainer"]
-custom_minimum_size = Vector2(0, 1900)
+custom_minimum_size = Vector2(0, 2400)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -519,7 +523,7 @@ offset_bottom = 102.0
 script = ExtResource("18_eke86")
 mapNodeScene = ExtResource("19_gj2ud")
 spacingX = 120.0
-spacingY = 100.0
+spacingY = 130.0
 randomOffsetX = 25.0
 randomOffsetY = 16.0
 
@@ -687,3 +691,48 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6veol")
 theme_override_font_sizes/font_size = 12
 text = "Случайная встреча"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/ColorRect/MarginContainer2"]
+visible = false
+custom_minimum_size = Vector2(141, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture_normal = ExtResource("26_4bkdg")
+texture_pressed = ExtResource("27_77ja0")
+texture_hover = ExtResource("28_xhp82")
+texture_disabled = ExtResource("29_ido6t")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/MarginContainer2/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.5
+offset_top = 2.0
+offset_right = -1.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6veol")
+theme_override_font_sizes/font_size = 11
+text = "Перегенерировать
+карту"
+horizontal_alignment = 1
+vertical_alignment = 1

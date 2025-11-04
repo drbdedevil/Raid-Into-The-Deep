@@ -9,6 +9,10 @@ public partial class RunMapDataManager : Node
 
     [Signal]
     public delegate void OnRunMapListUpdateEventHandler();
+    [Signal]
+    public delegate void OnBossWasDefeatedEventHandler();
+
+    public bool bShouldShowRegenerateButton { get; set; } = false;
 
     public RunMapDataManager(GameDataManager InGameDataManager)
     {
@@ -87,10 +91,28 @@ public partial class RunMapDataManager : Node
         pressedMapNode = mapNode;
         PassMapNode(); // TODO: запустить уровень с элитным боем и при победе сделать PassMapNode для pressedMapNode
     }
-    public void RunBossBattle(MapNode mapNode)
+    public void RunBossBattle(MapNode mapNode, MapNodeType bossType)
     {
         pressedMapNode = mapNode;
-        PassMapNode(); // TODO: запустить уровень с боссом и при победе сделать PassMapNode для pressedMapNode
+        switch (bossType)
+        {
+            case MapNodeType.SpiderBoss:
+                PassMapNode();
+                gameDataManager.currentData.commandBlockData.SpiderBossDefeated = true;
+                break;
+            case MapNodeType.TankBoss:
+                PassMapNode();
+                gameDataManager.currentData.commandBlockData.TankDefeated = true;
+                break;
+            case MapNodeType.VegetableBoss:
+                PassMapNode();
+                gameDataManager.currentData.commandBlockData.VegetableDefeated = true;
+                break;
+            default:
+                break;
+        } // TODO: запустить уровень с нужным боссом и при победе сделать PassMapNode для pressedMapNode
+        bShouldShowRegenerateButton = true;
+        EmitSignal(SignalName.OnBossWasDefeated);
     }
 
     public void PassMapNode()

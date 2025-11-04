@@ -137,4 +137,19 @@ public partial class LivingSpaceDataManager : Node
 
 		return characters;
 	}
+	public float GetSquadLevel()
+	{
+		if (gameDataManager.currentData.livingSpaceData.UsedCharacters.Count == 0)
+		{
+			return 0f;
+		}
+		
+		int levels = 0;
+		foreach (CharacterData characterData in gameDataManager.currentData.livingSpaceData.UsedCharacters)
+		{
+			levels += characterData.Level;
+		}
+
+		return levels / gameDataManager.currentData.livingSpaceData.UsedCharacters.Count;
+	}
 }

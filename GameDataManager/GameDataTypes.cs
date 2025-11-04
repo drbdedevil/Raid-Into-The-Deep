@@ -63,11 +63,11 @@ public class TrainingPitsData
 
 public class CommandBlockData
 {
-    public int RaidCount { get; set; } = 5;
-    public int EnemyDefeated { get; set; } = 5;
+    public int RaidCount { get; set; } = 0;
+    public int EnemyDefeated { get; set; } = 0;
     public int SquadLevel { get; set; } = 11;
-    public bool VegetableDefeated { get; set; } = true;
-    public bool TankDefeated { get; set; } = true;
+    public bool VegetableDefeated { get; set; } = false;
+    public bool TankDefeated { get; set; } = false;
     public bool SpiderBossDefeated { get; set; } = false;
 }
 
@@ -169,13 +169,15 @@ public static class SkillExtensions
 // --------------------------------------- Map ---------------------------------------
 public enum MapNodeType
 {
-    Start,
-    Battle,
-    Rest,
-    EliteBattle,
-    Treasure,
-    Boss,
-    RandomEvent
+    Start = 0,
+    Battle = 1,
+    Rest = 2,
+    EliteBattle = 3,
+    Treasure = 4,
+    SpiderBoss = 5,
+    TankBoss = 6,
+    VegetableBoss = 7,
+    RandomEvent = 8
 }
 
 public class MapNode

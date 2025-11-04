@@ -7,8 +7,10 @@ public partial class RaceMap : Control
     // private PackedScene HubLocationScene;
     [Export]
     public PackedScene WarriorPanelScene;
-    [Export]
-    private PackedScene PopupNavigatorScene;
+	[Export]
+	private PackedScene PopupNavigatorScene;
+
+	private bool bShouldGoUp = false;
 
     public override void _Ready()
     {
@@ -16,25 +18,48 @@ public partial class RaceMap : Control
         AddChild(popupNavigator);
 
         TextureButton HubLocationButton = GetNode<TextureButton>("HBoxContainer/Panel/VBoxContainer/HBoxContainer/TextureButton");
-        HubLocationButton.ButtonDown += OnHubLocationButtonPressed;
+		HubLocationButton.ButtonDown += OnHubLocationButtonPressed;
+
+		TextureButton regenerateButton = GetNode<TextureButton>("HBoxContainer/ColorRect/MarginContainer2/TextureButton");
+		regenerateButton.Pressed += OnGenerateNewMapButtonPressed;
 
         // ----------- View Realization -----------
 		// ----- Binding Functions
 		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate += OnCrystalsUpdate;
 		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate += OnChitinFragmentsUpdate;
-        GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate += UpdateUsedCharactersList;
+		GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate += UpdateUsedCharactersList;
+		GameDataManager.Instance.runMapDataManager.OnBossWasDefeated += CheckBossWasDefeated;
         
         // ----- Set Init Value
 		OnCrystalsUpdate();
 		OnChitinFragmentsUpdate();
 		UpdateUsedCharactersList();
+
+		CheckBossWasDefeated();
     }
-    public override void _ExitTree()
+	public override void _ExitTree()
 	{
 		GameDataManager.Instance.storageDataManager.OnCrystalsUpdate -= OnCrystalsUpdate;
 		GameDataManager.Instance.storageDataManager.OnChitinFragmentsUpdate -= OnChitinFragmentsUpdate;
 		GameDataManager.Instance.livingSpaceDataManager.OnUsedCharactersListUpdate -= UpdateUsedCharactersList;
+		GameDataManager.Instance.runMapDataManager.OnBossWasDefeated -= CheckBossWasDefeated;
 	}
+
+    public override void _Process(double delta)
+    {
+		base._Process(delta);
+		
+		if (bShouldGoUp)
+        {
+			ScrollContainer scrollContainer = GetNode<ScrollContainer>("HBoxContainer/ColorRect/MapContainer");
+			scrollContainer.ScrollVertical = (int)Mathf.Lerp(scrollContainer.ScrollVertical, 0f, (float)delta * 2f);
+
+			if (scrollContainer.ScrollVertical == 0)
+            {
+				EnableInput();
+            }
+        }
+    }
 
     private void OnHubLocationButtonPressed()
     {
@@ -61,10 +86,42 @@ public partial class RaceMap : Control
 
 		foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters)
 		{
-            ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
-            viewWarriorPanel.bShouldChangeCharacterList = false;
+			ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
+			viewWarriorPanel.bShouldChangeCharacterList = false;
 			viewWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
 			usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
 		}
 	}
+
+	private void CheckBossWasDefeated()
+	{
+		if (GameDataManager.Instance.runMapDataManager.bShouldShowRegenerateButton)
+		{
+			TextureButton regenerateButton = GetNode<TextureButton>("HBoxContainer/ColorRect/MarginContainer2/TextureButton");
+			regenerateButton.Visible = true;
+		}
+	}
+	private void OnGenerateNewMapButtonPressed()
+	{
+		TextureButton regenerateButton = GetNode<TextureButton>("HBoxContainer/ColorRect/MarginContainer2/TextureButton");
+		regenerateButton.Visible = false;
+
+		GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = true;
+		GameDataManager.Instance.runMapDataManager.EmitSignal(RunMapDataManager.SignalName.OnRunMapListUpdate);
+
+		GameDataManager.Instance.runMapDataManager.bShouldShowRegenerateButton = false;
+
+		DisableInput();
+	}
+
+	private void DisableInput()
+	{
+		bShouldGoUp = true;
+		GetViewport().GuiDisableInput = true;
+	}
+	private void EnableInput()
+    {
+        bShouldGoUp = false;
+		GetViewport().GuiDisableInput = false;
+    }
 }
