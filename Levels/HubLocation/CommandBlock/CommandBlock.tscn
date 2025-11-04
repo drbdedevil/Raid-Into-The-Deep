@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://lqex6adq1njd"]
 
 [ext_resource type="Script" uid="uid://f70ljhs23ieg" path="res://Levels/HubLocation/CommandBlock/CommandBlock.cs" id="1_2kwty"]
-[ext_resource type="Texture2D" uid="uid://b0jy7vf3bkofv" path="res://Textures/HubLocation/MainTextures/CommandBlock.png" id="2_2kwty"]
+[ext_resource type="Texture2D" uid="uid://bbkfwubs6ujpx" path="res://Textures/HubLocation/MainTextures/Command.png" id="2_2kwty"]
 [ext_resource type="Texture2D" uid="uid://ejq7r3w234ku" path="res://Textures/Default/StatisticPanel.png" id="2_eo6n8"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="3_uwnrh"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="4_huh1y"]

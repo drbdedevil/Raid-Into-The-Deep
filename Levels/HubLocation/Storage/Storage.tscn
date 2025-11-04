@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_ow2dr"]
 [ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="3_e53rh"]
 [ext_resource type="PackedScene" uid="uid://d3shuau7lurda" path="res://Levels/HubLocation/WeaponPanels/WeaponPanel.tscn" id="5_6t0th"]
-[ext_resource type="Texture2D" uid="uid://dq3p58f4uv14t" path="res://Textures/HubLocation/MainTextures/Storage.png" id="5_50nfn"]
+[ext_resource type="Texture2D" uid="uid://5e2b63s1o7g6" path="res://Textures/HubLocation/MainTextures/Sklad.png" id="6_50nfn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -181,7 +181,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("5_50nfn")
+texture = ExtResource("6_50nfn")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]

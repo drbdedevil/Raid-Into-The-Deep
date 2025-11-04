@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cv1jkmoekoj3y" path="res://Levels/HubLocation/TrainingPits/TrainingPits.cs" id="1_ojxyu"]
 [ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_uy08g"]
 [ext_resource type="PackedScene" uid="uid://1u05hx0bg1aw" path="res://Levels/HubLocation/WarriorPanels/HireWarriorPanel.tscn" id="4_ojlly"]
-[ext_resource type="Texture2D" uid="uid://bowrashjs3ecx" path="res://Textures/HubLocation/MainTextures/TrainingPits.png" id="5_ojxyu"]
+[ext_resource type="Texture2D" uid="uid://db5wxcbqsury4" path="res://Textures/HubLocation/MainTextures/Yama.png" id="6_ojxyu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -181,7 +181,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("5_ojxyu")
+texture = ExtResource("6_ojxyu")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]

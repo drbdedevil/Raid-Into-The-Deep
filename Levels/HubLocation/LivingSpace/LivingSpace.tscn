@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bmd3x3hti8lmo" path="res://Levels/HubLocation/CapacityView.tscn" id="2_cm7fx"]
 [ext_resource type="PackedScene" uid="uid://da41y5lavq6m5" path="res://Levels/HubLocation/UpgradeButton.tscn" id="3_3wt2k"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="5_b82sv"]
-[ext_resource type="Texture2D" uid="uid://d1l1kvc5ffihu" path="res://Textures/HubLocation/MainTextures/LivingSpace.png" id="5_p1tgq"]
 [ext_resource type="PackedScene" uid="uid://c4ecegriurk3t" path="res://Levels/HubLocation/WarriorPanels/FiredWarriorPanel.tscn" id="6_63ks0"]
+[ext_resource type="Texture2D" uid="uid://caenopw7xb4ve" path="res://Textures/HubLocation/MainTextures/Zhilie.png" id="6_p1tgq"]
 [ext_resource type="Texture2D" uid="uid://vjb7slxgyiyp" path="res://Textures/HubLocation/Icons/Platform_2.png" id="7_63ks0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
@@ -183,7 +183,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
-texture = ExtResource("5_p1tgq")
+texture = ExtResource("6_p1tgq")
 expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2"]

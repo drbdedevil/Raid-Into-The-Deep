@@ -84,9 +84,9 @@ public partial class HubLocation : Node
 		var livingSpace = GameDataManager.Instance.livingSpaceDataManager;
 		int teamCount = livingSpace.GetUsedCharactersCount();
 		if (teamCount <= 0)
-        {
-            NotificationSystem.Instance.ShowMessage("Собственно, кто будет воевать? Ты? Не смеши меня...\nСформируй команду!", EMessageType.Alert);
-        }
+		{
+			NotificationSystem.Instance.ShowMessage("Собственно, кто будет воевать? Ты? Не смеши меня...\nСформируй команду!", EMessageType.Alert);
+		}
 		else if (teamCount < 4)
 		{
 			NotificationSystem.Instance.ShowMessage("Может, стоит взять побольше воинов?", EMessageType.Warning);
@@ -105,9 +105,9 @@ public partial class HubLocation : Node
 		foreach (CharacterData characterData in team)
 		{
 			if (characterData.SkillPoints > 0)
-            {
-                NotificationSystem.Instance.ShowMessage("Следует пересмотреть навыки воина: " + characterData.Name, EMessageType.Warning);
-            }
+			{
+				NotificationSystem.Instance.ShowMessage("Следует пересмотреть навыки воина: " + characterData.Name, EMessageType.Warning);
+			}
 		}
 
 		GetTree().ChangeSceneToPacked(RaceMapScene);

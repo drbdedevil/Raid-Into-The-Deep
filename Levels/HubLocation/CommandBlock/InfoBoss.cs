@@ -16,27 +16,27 @@ public partial class InfoBoss : Control
 		var nameLabel = GetNode<Label>("TextureRect/MarginContainer/ColorRect/HBoxContainer/VBoxContainer/NameLabel");
 		var textureRect = GetNode<TextureRect>("TextureRect/MarginContainer/ColorRect/HBoxContainer/MarginContainer/TextureRect");
 
-        switch (bossType)
-        {
-            case MapNodeType.SpiderBoss:
+		switch (bossType)
+		{
+			case MapNodeType.SpiderBoss:
 				Texture2D texture1 = GD.Load<Texture2D>("res://Textures/Characters/Bosses/SpiderBoss.png");
 				textureRect.Texture = texture1;
 				nameLabel.Text = "Паук, пожиратель племён";
-                break;
-            case MapNodeType.TankBoss:
+				break;
+			case MapNodeType.TankBoss:
 				Texture2D texture2 = GD.Load<Texture2D>("res://Textures/Characters/Bosses/Tank.png");
 				textureRect.Texture = texture2;
 				nameLabel.Text = "Бронированный медленный разрушитель";
-                break;
-            case MapNodeType.VegetableBoss:
+				break;
+			case MapNodeType.VegetableBoss:
 				Texture2D texture3 = GD.Load<Texture2D>("res://Textures/Characters/Bosses/Vegetable.png");
 				textureRect.Texture = texture3;
 				nameLabel.Text = "Гигантская разросшаяся мухоловка";
-                break;
-            default:
-                break;
-        }
-    }
+				break;
+			default:
+				break;
+		}
+	}
 
 	public void Check()
 	{
