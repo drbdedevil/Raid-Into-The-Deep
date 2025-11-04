@@ -29,10 +29,10 @@ public static class PathFinder
                 var leftTile = mapManager.GetTileByCartesianCoord(leftPosition);
                 var rightTile = mapManager.GetTileByCartesianCoord(rightPosition);
                 
-                if (upTile is not null) queue.Enqueue(new TileCostPair(upTile, currentTileCost.Cost + 1));
-                if (downTile is not null) queue.Enqueue(new TileCostPair(downTile, currentTileCost.Cost + 1));
-                if (leftTile is not null) queue.Enqueue(new TileCostPair(leftTile, currentTileCost.Cost + 1));
-                if (rightTile is not null) queue.Enqueue(new TileCostPair(rightTile, currentTileCost.Cost + 1));
+                if (upTile is not null && upTile.BattleEntity is null) queue.Enqueue(new TileCostPair(upTile, currentTileCost.Cost + 1));
+                if (downTile is not null && downTile.BattleEntity is null) queue.Enqueue(new TileCostPair(downTile, currentTileCost.Cost + 1));
+                if (leftTile is not null && leftTile.BattleEntity is null) queue.Enqueue(new TileCostPair(leftTile, currentTileCost.Cost + 1));
+                if (rightTile is not null && rightTile.BattleEntity is null) queue.Enqueue(new TileCostPair(rightTile, currentTileCost.Cost + 1));
             }
             if (currentTileCost.Cost + 2 <= speed)
             {
@@ -46,10 +46,10 @@ public static class PathFinder
                 var downLeftTile = mapManager.GetTileByCartesianCoord(downLeftPosition);
                 var downRightTile = mapManager.GetTileByCartesianCoord(downRightPosition);
                 
-                if (upLeftTile is not null) queue.Enqueue(new TileCostPair(upLeftTile, currentTileCost.Cost + 2));
-                if (upRightTile is not null) queue.Enqueue(new TileCostPair(upRightTile, currentTileCost.Cost + 2));
-                if (downLeftTile is not null) queue.Enqueue(new TileCostPair(downLeftTile, currentTileCost.Cost + 2));
-                if (downRightTile is not null) queue.Enqueue(new TileCostPair(downRightTile, currentTileCost.Cost + 2));
+                if (upLeftTile is not null && upLeftTile.BattleEntity is null) queue.Enqueue(new TileCostPair(upLeftTile, currentTileCost.Cost + 2));
+                if (upRightTile is not null && upRightTile.BattleEntity is null) queue.Enqueue(new TileCostPair(upRightTile, currentTileCost.Cost + 2));
+                if (downLeftTile is not null && downLeftTile.BattleEntity is null) queue.Enqueue(new TileCostPair(downLeftTile, currentTileCost.Cost + 2));
+                if (downRightTile is not null && downRightTile.BattleEntity is null) queue.Enqueue(new TileCostPair(downRightTile, currentTileCost.Cost + 2));
             }
             result.Add(tile);
         }
