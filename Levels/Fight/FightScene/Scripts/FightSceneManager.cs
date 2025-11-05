@@ -38,26 +38,18 @@ public partial class FightSceneManager : Node2D
 
     public override void _Input(InputEvent @event)
     {
-        if (_isPlayerTurn)
+        if (_isPlayerTurn && !_isPlayerAttackTurn)
         {
             if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
             {
                 if (_mapManager.MovePlayerEntityInSpeedZone(_currentPlayerWarriorToTurn!))
                 {
                     _mapManager.ClearAllSelectedTiles();
-                    _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
-                    _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
-                    _currentPlayerWarriorPrevTile = _currentPlayerWarriorToTurn!.Tile;
-                    _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
                     _isPlayerAttackTurn = true;
                 }
             }
         }
-    }
-
-    public override void _Process(double delta)
-    {
-        if (_isPlayerAttackTurn)
+        else if (_isPlayerAttackTurn)
         {
             var tile = _mapManager.GetTileUnderMousePosition();
             if (tile is not null)
@@ -65,6 +57,23 @@ public partial class FightSceneManager : Node2D
                 _mapManager.ClearAllSelectedTiles();
                 _mapManager.DrawPlayerEntityAttackZone(_currentPlayerWarriorToTurn, tile);
             }
+            
+            if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
+            {
+                _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
+                _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
+                _currentPlayerWarriorPrevTile = _currentPlayerWarriorToTurn!.Tile;
+                _mapManager.DrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
+            }
+            
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_isPlayerAttackTurn)
+        {
+            
         }
     }
 
