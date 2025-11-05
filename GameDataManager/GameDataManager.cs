@@ -100,6 +100,13 @@ public partial class GameDataManager : Node
 				IncludeFields = true,
 			};
 
+			var absPath = ProjectSettings.GlobalizePath("user://saves/");
+			if (!DirAccess.DirExistsAbsolute(absPath))
+			{
+				GD.Print("Папка сохранений не найдена, создаю новую...");
+				DirAccess.MakeDirRecursiveAbsolute(absPath);
+			}
+
 			runMapDataManager.SaveNodeIds();
 			string json = JsonSerializer.Serialize(currentData, options);
 			File.WriteAllText(ProjectSettings.GlobalizePath(GetSavePath()), json);
