@@ -18,6 +18,8 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
         public bool IsClosedToSetPlayerWarrior { get; } = false;
         
         public Fight.BattleEntity? BattleEntity { get; set; }
-        
+
+
+        public bool IsAllowedToSetBattleEntity => BattleEntity is null;
     }
 }

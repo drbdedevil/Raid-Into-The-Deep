@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
@@ -37,6 +38,9 @@ public partial class MapManager : Node2D
 	/// Тайлики которые на данный момент выбраны для отображения
 	/// </summary>
 	private List<Tile> _selectedTilesForPlayerAction { get; set; } = [];
+
+	public IReadOnlyCollection<Tile> SelectedTilesForPlayerAction => _selectedTilesForPlayerAction.ToList(); 
+	
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion)
@@ -100,25 +104,32 @@ public partial class MapManager : Node2D
 		}
 	}
 
-	public bool SetBattleEntityOnTile(Tile tile, BattleEntity battleEntity)
+	/// <summary>
+	/// Перемещает сущность на тайл
+	/// Если сущность стоит на тайле, то "стирает" её с предыдущего тайла
+	/// </summary>
+	/// <param name="targetTile">Тайл на который будет совершено перемещение</param>
+	/// <param name="battleEntity">Сущность которая будет перемещаться</param>
+	/// <returns></returns>
+	public bool SetBattleEntityOnTile(Tile targetTile, BattleEntity battleEntity)
 	{
-		if (tile.BattleEntity is not null) return false;
-		RemoveBattleEntityOnTile(battleEntity.Tile);
-		tile.BattleEntity = battleEntity;
-		battleEntity.Tile = tile;
-		if (tile.BattleEntity is PlayerEntity playerEntity)
+		if (targetTile.BattleEntity is not null) return false;
+		RemoveBattleEntityFromTile(battleEntity.Tile);
+		targetTile.BattleEntity = battleEntity;
+		battleEntity.Tile = targetTile;
+		if (targetTile.BattleEntity is PlayerEntity)
 		{
-			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+			_entityLayer.SetCell(targetTile.IsometricPosition, 0, new Vector2I(0, 0));
 		}
-		else if (tile.BattleEntity is EnemyEntity enemyEntity)
+		else if (targetTile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+			_entityLayer.SetCell(targetTile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
 		}
 		
 		return true;
 	}
 	
-	public void RemoveBattleEntityOnTile(Tile tile)
+	public void RemoveBattleEntityFromTile(Tile tile)
 	{
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
@@ -141,9 +152,9 @@ public partial class MapManager : Node2D
 
 
 	/// <summary>
-	/// Метод для отрисовки возможных тайлов к передвижению воина игрока
+	/// Метод для подсчёта и отрисовки возможных тайлов к передвижению воина игрока
 	/// </summary>
-	public void DrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
+	public void CalculateAndDrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
 	{
 		var tilesToMove = PathFinder.FindTilesToMove(playerEntity.Tile, this, playerEntity.Speed);
 		_selectedTilesForPlayerAction = tilesToMove;
@@ -156,7 +167,7 @@ public partial class MapManager : Node2D
 	/// <summary>
 	/// Метод для отрисовки возможных тайлов к атаке
 	/// </summary>
-	public void DrawPlayerEntityAttackZone(PlayerEntity playerEntity, Tile targetTile)
+	public void CalculateAndDrawPlayerEntityAttackZone(PlayerEntity playerEntity, Tile targetTile)
 	{
 		var tileToAttack = PathFinder.FindTilesToAttack(playerEntity, targetTile, this);
 		_selectedTilesForPlayerAction = tileToAttack;

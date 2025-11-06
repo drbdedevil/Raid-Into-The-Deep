@@ -1,0 +1,59 @@
+using System.Threading.Tasks;
+using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleStates;
+
+public class PlayerWarriorConfirmationBattleState : BattleState
+{
+    public PlayerWarriorConfirmationBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
+    {
+        FightSceneManager.ConfirmTurnButton.ButtonUp += ConfirmTurn;
+        FightSceneManager.ConfirmTurnButton.SetDisabled(false);
+        FightSceneManager.CancelTurnButton.ButtonUp += CancelTurn;
+        FightSceneManager.CancelTurnButton.SetDisabled(false);
+    }
+
+    public override void InputUpdate(InputEvent @event)
+    {
+    }
+
+    public override void ProcessUpdate(double delta)
+    {
+    }
+
+    private void ConfirmTurn()
+    {
+        MapManager.ClearAllSelectedTiles();
+        foreach (var notExecutedCommand in FightSceneManager.NotExecutedCommands)
+        {
+            notExecutedCommand.Execute();
+        }
+        FightSceneManager.NotExecutedCommands.Clear();
+        FightSceneManager.ExecutedCommands.Clear();
+        FightSceneManager.PlayerWarriorsThatTurned.Add(FightSceneManager.CurrentPlayerWarriorToTurn);
+        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+        DisableButtons();
+    }
+
+    private void CancelTurn()
+    {
+        MapManager.ClearAllSelectedTiles();
+        foreach (var executedCommand in FightSceneManager.ExecutedCommands)
+        {
+            executedCommand.UnExecute();
+        }
+        FightSceneManager.NotExecutedCommands.Clear();
+        FightSceneManager.ExecutedCommands.Clear();
+        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+        DisableButtons();
+    }
+
+    private void DisableButtons()
+    {
+        FightSceneManager.ConfirmTurnButton.ButtonUp -= ConfirmTurn;
+        FightSceneManager.ConfirmTurnButton.SetDisabled(true);
+        FightSceneManager.CancelTurnButton.ButtonUp -= CancelTurn;
+        FightSceneManager.CancelTurnButton.SetDisabled(true);
+    }
+}
