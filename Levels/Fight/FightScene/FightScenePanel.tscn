@@ -1,0 +1,342 @@
+[gd_scene load_steps=30 format=3 uid="uid://bhuo1shstknrt"]
+
+[ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="1_ov140"]
+[ext_resource type="Texture2D" uid="uid://dgr6no3cbudlg" path="res://Textures/RaceMap/RaceMapOut_Base.png" id="2_0wcpu"]
+[ext_resource type="Script" uid="uid://t3b2fyujr2nx" path="res://Levels/Fight/FightScene/Scripts/FightScenePanel.cs" id="2_u5tof"]
+[ext_resource type="PackedScene" uid="uid://cpr8w1fhvtvii" path="res://Levels/RaceMap/RaceMap.tscn" id="3_4u44l"]
+[ext_resource type="Texture2D" uid="uid://yxgfc867ur88" path="res://Textures/RaceMap/RaceMapOut_Pressed.png" id="3_u5tof"]
+[ext_resource type="Texture2D" uid="uid://cdw2tlwhmdy25" path="res://Textures/RaceMap/RaceMapOut_Hover.png" id="4_4u44l"]
+[ext_resource type="Texture2D" uid="uid://d1v1gi3i0prmh" path="res://Textures/RaceMap/RaceMapOut_Disable.png" id="5_i7dmb"]
+[ext_resource type="PackedScene" uid="uid://qkur4duvfokj" path="res://Levels/HubLocation/WarriorPanels/ChosenWarriorPanel.tscn" id="5_jgeiq"]
+[ext_resource type="PackedScene" uid="uid://clrxyetfap3vs" path="res://Levels/HubLocation/PopupNavigator.tscn" id="5_mg3rq"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="6_mg3rq"]
+[ext_resource type="Texture2D" uid="uid://dtnpq46yyiga3" path="res://Textures/HubLocation/ResourcePanel.png" id="7_jgeiq"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="8_utgxf"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="9_bsy3p"]
+[ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="10_wmhyu"]
+[ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="11_fas3m"]
+[ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="12_axjvr"]
+[ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="13_fk81j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7exd"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 0.0
+content_margin_bottom = 10.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_6mtvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwusj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_588d7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auwnb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynt07"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uox08"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_cp258"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_ojxyu")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_s7exd")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6mtvy")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6mtvy")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_mwusj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_588d7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_auwnb")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ynt07")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_uox08")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uluqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpxg7"]
+
+[sub_resource type="Theme" id="Theme_bfw4r"]
+VBoxContainer/constants/separation = 10
+
+[node name="FightScenePanel" type="TextureRect"]
+custom_minimum_size = Vector2(200, 648)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+texture = ExtResource("1_ov140")
+expand_mode = 1
+script = ExtResource("2_u5tof")
+runMapScene = ExtResource("3_4u44l")
+WarriorPanelScene = ExtResource("13_fk81j")
+ChosenWarriorPanelScene = ExtResource("5_jgeiq")
+PopupNavigatorScene = ExtResource("5_mg3rq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 192.0
+offset_bottom = 642.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(181.2, 26.4)
+layout_mode = 2
+texture_normal = ExtResource("2_0wcpu")
+texture_pressed = ExtResource("3_u5tof")
+texture_hover = ExtResource("4_4u44l")
+texture_disabled = ExtResource("5_i7dmb")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_mg3rq")
+text = "Сбежать"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ResourcesLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("6_mg3rq")
+theme_override_font_sizes/font_size = 14
+text = "Ресурсы"
+
+[node name="ResourcePanel" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 56)
+layout_mode = 2
+texture = ExtResource("7_jgeiq")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ResourcePanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 52.0
+
+[node name="ChitinHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("8_utgxf")
+theme_override_font_sizes/font_size = 14
+text = "Хитин"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("9_bsy3p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("6_mg3rq")
+theme_override_font_sizes/font_size = 14
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_wmhyu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CrystalBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("8_utgxf")
+theme_override_font_sizes/font_size = 14
+text = "Кристаллы"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+texture = ExtResource("9_bsy3p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect"]
+layout_mode = 0
+offset_right = 23.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("6_mg3rq")
+theme_override_font_sizes/font_size = 14
+text = "40"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_fas3m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource("Theme_cp258")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uluqu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tpxg7")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_bfw4r")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_axjvr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ResourcesLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("6_mg3rq")
+theme_override_font_sizes/font_size = 14
+text = "Команда"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(56, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_axjvr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TeamVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ViewWarriorPanel" parent="VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("13_fk81j")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel2" parent="VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("13_fk81j")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel3" parent="VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("13_fk81j")]
+layout_mode = 2
+
+[node name="ViewWarriorPanel4" parent="VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer" instance=ExtResource("13_fk81j")]
+layout_mode = 2

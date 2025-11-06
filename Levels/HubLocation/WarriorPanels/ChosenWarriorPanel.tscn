@@ -1,0 +1,255 @@
+[gd_scene load_steps=16 format=3 uid="uid://qkur4duvfokj"]
+
+[ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="1_32mhb"]
+[ext_resource type="Script" uid="uid://bwgvxjm6hx44l" path="res://Levels/HubLocation/WarriorPanels/ChosenWarriorPanel.cs" id="1_tk6gk"]
+[ext_resource type="Texture2D" uid="uid://frdfvle2o7dl" path="res://Textures/Default/Info.png" id="2_bn3xa"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="2_hve40"]
+[ext_resource type="PackedScene" uid="uid://cfkgaibxcnv4v" path="res://Levels/HubLocation/CharacterList/CharacterList.tscn" id="2_u0ol2"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="3_84233"]
+[ext_resource type="Texture2D" uid="uid://dupvjlb80i0a2" path="res://Textures/WeaponsTexture/mech.png" id="5_84233"]
+[ext_resource type="Texture2D" uid="uid://d38qx33k2wcnr" path="res://Textures/Skills/ActiveSkills/sled_Active.png" id="6_67ktj"]
+[ext_resource type="Texture2D" uid="uid://dk6p1d2kx2gip" path="res://Textures/ChooseAttack/ChooseAttack_Hover.png" id="7_c8dd8"]
+[ext_resource type="Texture2D" uid="uid://v6iexc16nnrd" path="res://Textures/ChooseAttack/ChooseAttack_Selected.png" id="7_xdw37"]
+[ext_resource type="Texture2D" uid="uid://coqnrinh6p17i" path="res://Textures/ChooseAttack/ChooseAttack_Pressed.png" id="8_jkquy"]
+[ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="10_0wh75"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hve40"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84233"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67ktj"]
+bg_color = Color(0.25882354, 0.7372549, 0.49803922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="ChosenWarriorPanel" type="Control"]
+custom_minimum_size = Vector2(169, 208)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tk6gk")
+CharacterListScene = ExtResource("2_u0ol2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(169, 208)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+custom_minimum_size = Vector2(165, 204)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect"]
+custom_minimum_size = Vector2(161, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("1_32mhb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -21.0
+offset_right = 18.0
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("2_hve40")
+theme_override_font_sizes/font_size = 10
+text = "Жук жучок"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_84233")
+theme_override_font_sizes/font_size = 10
+text = "lvl"
+
+[node name="LevelLabel" type="Label" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("3_84233")
+theme_override_font_sizes/font_size = 10
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_bn3xa")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/MarginContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hve40")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(153, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_84233")
+theme_override_styles/fill = SubResource("StyleBoxFlat_67ktj")
+value = 65.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="WeaponButton" type="TextureButton" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = ExtResource("7_xdw37")
+texture_pressed = ExtResource("8_jkquy")
+texture_hover = ExtResource("7_c8dd8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton"]
+z_as_relative = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_84233")
+expand_mode = 1
+
+[node name="SkillButton" type="TextureButton" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture_normal = ExtResource("7_xdw37")
+texture_pressed = ExtResource("8_jkquy")
+texture_hover = ExtResource("7_c8dd8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton"]
+z_as_relative = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_67ktj")
+expand_mode = 1
+
+[node name="WarriorPanel" parent="." instance=ExtResource("10_0wh75")]
+visible = false
+layout_mode = 1

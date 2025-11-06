@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using RaidIntoTheDeep.Levels.Fight;
 
 public partial class PrepareFightWarriorPanel : Node
@@ -13,7 +15,31 @@ public partial class PrepareFightWarriorPanel : Node
 
 	public void SetPlayerEntityData(PlayerEntity playerEntity)
 	{
-		LevelLabel.Text = playerEntity.Id;
+		LevelLabel.Text = playerEntity.Level.ToString();
+
+		TextureRect textureRect = GetNode<TextureRect>("TextureRect/HBoxContainer/MarginContainer/TextureRect");
+		textureRect.Texture = GameDataManager.Instance.charactersSpritesDatabase.CharactersSpritesArray[playerEntity.PortraitID];
+
+		Label NameLabel = GetNode<Label>("TextureRect/HBoxContainer/VBoxContainer/NameLabel");
+		NameLabel.Text = playerEntity.CharacterName;
+
+		PassiveSkillProgressionRow existingPassiveSkillType = GameDataManager.Instance.passiveSkillsProgressionDatabase.Progressions.FirstOrDefault(progression => progression.skillType == ESkillType.Health);
+		if (existingPassiveSkillType != null)
+		{
+			ProgressBar progressBar = GetNode<ProgressBar>("TextureRect/HBoxContainer/VBoxContainer/MarginContainer3/ProgressBar");
+			progressBar.Value = playerEntity.Health;
+
+			Dictionary<string, int> passiveSkillLevels = playerEntity.PassiveSkillLevels;
+			int healthSkillLevel = passiveSkillLevels["Здоровье"];
+			int maxHealthToSet = GameDataManager.Instance.baseStatsDatabase.Health;
+
+			for (int i = 0; i < healthSkillLevel; ++i)
+			{
+				maxHealthToSet += existingPassiveSkillType.increments[i];
+			}
+
+			progressBar.MaxValue = maxHealthToSet;
+		}
 	}
 	public override void _Ready()
 	{

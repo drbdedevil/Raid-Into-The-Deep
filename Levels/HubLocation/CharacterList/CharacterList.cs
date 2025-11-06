@@ -71,6 +71,7 @@ public partial class CharacterList : ColorRect, IStackPage
 		}
 		else
 		{
+			NotificationSystem.Instance.ShowMessage("Не получится забрать оружие.\nНет места на складе...", EMessageType.Warning);
 			GD.Print("NO PLACE IN STORAGE");
 		}
 		CheckWeaponInfos();

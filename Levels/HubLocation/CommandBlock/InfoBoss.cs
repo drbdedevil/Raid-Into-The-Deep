@@ -26,12 +26,12 @@ public partial class InfoBoss : Control
 			case MapNodeType.TankBoss:
 				Texture2D texture2 = GD.Load<Texture2D>("res://Textures/Characters/Bosses/Tank.png");
 				textureRect.Texture = texture2;
-				nameLabel.Text = "Бронированный медленный разрушитель";
+				nameLabel.Text = "Прогрызатель туннелей";
 				break;
 			case MapNodeType.VegetableBoss:
 				Texture2D texture3 = GD.Load<Texture2D>("res://Textures/Characters/Bosses/Vegetable.png");
 				textureRect.Texture = texture3;
-				nameLabel.Text = "Гигантская разросшаяся мухоловка";
+				nameLabel.Text = "Гигантская жуколовка";
 				break;
 			default:
 				break;
