@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -24,7 +25,21 @@ public partial class FightSceneManager : Node2D
     /// Воины игрока которые уже сходили
     /// </summary>
     public List<PlayerEntity> PlayerWarriorsThatTurned { get; set; } = [];
-    public PlayerEntity? CurrentPlayerWarriorToTurn { get; set; }
+
+    [Signal]
+    public delegate void CurrentPlayerWarriorToTurnChangedEventHandler(string playerWarriorId);
+    
+    private PlayerEntity? _currentPlayerWarriorToTurn;
+    public PlayerEntity? CurrentPlayerWarriorToTurn
+    {
+        get => _currentPlayerWarriorToTurn;
+        set
+        {
+            _currentPlayerWarriorToTurn = value;
+            if (_currentPlayerWarriorToTurn != null) EmitSignalCurrentPlayerWarriorToTurnChanged(_currentPlayerWarriorToTurn.Id);
+        }
+    }
+
     public BattleState  CurrentBattleState { get; set; }
     
     
@@ -56,33 +71,6 @@ public partial class FightSceneManager : Node2D
     public override void _Input(InputEvent @event)
     {
         CurrentBattleState.InputUpdate(@event);
-        /*
-         * 
-        else if (_isPlayerAttackTurn)
-        {
-            var tile = _mapManager.GetTileUnderMousePosition();
-            if (tile is not null)
-            {
-                _mapManager.ClearAllSelectedTiles();
-                _mapManager.DrawPlayerEntityAttackZone(_currentPlayerWarriorToTurn, tile);
-            }
-            
-            if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
-            {
-                _playerWarriorsTurn.Remove(_currentPlayerWarriorToTurn);
-                if (!_playerWarriorsTurn.Any())
-                {
-                    _playerWarriorsTurn = _allies.OrderByDescending(x => x.Speed).ToList();
-                }
-                _currentPlayerWarriorToTurn = _playerWarriorsTurn.First();
-                _currentPlayerWarriorPrevTile = _currentPlayerWarriorToTurn!.Tile;
-                _mapManager.ClearAllSelectedTiles();
-                _mapManager.CalculateAndDrawPlayerEntitySpeedZone(_currentPlayerWarriorToTurn!);
-                _isPlayerAttackTurn = false;
-            }
-            
-        }
-         */
     }
 
     public override void _Process(double delta)
