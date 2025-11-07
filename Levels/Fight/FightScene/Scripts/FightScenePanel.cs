@@ -1,6 +1,9 @@
 using Godot;
+using RaidIntoTheDeep.Levels.Fight;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class FightScenePanel : TextureRect
 {
@@ -12,6 +15,12 @@ public partial class FightScenePanel : TextureRect
     public PackedScene ChosenWarriorPanelScene;
     [Export]
     private PackedScene PopupNavigatorScene;
+
+    [Signal]
+    public delegate void WarriorPanelsUpdateEventHandler();
+    private string currentCharacterID = "NONE";
+
+    public ChosenWarriorPanel chosenWarriorPanel = new();
     
     public override void _Ready()
     {
@@ -20,6 +29,13 @@ public partial class FightScenePanel : TextureRect
 
         TextureButton escapeButton = GetNode<TextureButton>("VBoxContainer/HBoxContainer/TextureButton");
         escapeButton.Pressed += OnEscapeButtonPressed;
+
+        FightSceneManager fightSceneManager = GetTree().CurrentScene as FightSceneManager;
+        if (fightSceneManager != null)
+        {
+            fightSceneManager.CurrentPlayerWarriorToTurnChanged += OnCurrentPlayerWarriorToTurnChanged;
+            // WarriorPanelsUpdate += fightSceneManager.OnWarriorPanelsUpdate;
+        }
 
         // ----------- View Realization -----------
         // ----- Binding Functions
@@ -30,7 +46,7 @@ public partial class FightScenePanel : TextureRect
         // ----- Set Init Value
 		OnCrystalsUpdate();
 		OnChitinFragmentsUpdate();
-		UpdateUsedCharactersList();
+		// UpdateUsedCharactersList();
     }
     public override void _ExitTree()
     {
@@ -43,6 +59,7 @@ public partial class FightScenePanel : TextureRect
     public override void _Process(double delta)
     {
         base._Process(delta);
+        return;
 
         timer += delta;
         if (timer >= 10d)
@@ -69,39 +86,45 @@ public partial class FightScenePanel : TextureRect
 		Label ChitinFragmentsLabel = GetNode<Label>("VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
 		ChitinFragmentsLabel.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
 	}
-	private void UpdateUsedCharactersList()
-	{
-		var usedCharactersVBoxContainer = GetNode<VBoxContainer>("VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer");
-		foreach (Node child in usedCharactersVBoxContainer.GetChildren())
-		{
-			child.QueueFree();
-		}
-
-        /* foreach (CharacterData characterData in GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters)
+    private void UpdateUsedCharactersList()
+    {
+        FightSceneManager fightSceneManager = GetTree().CurrentScene as FightSceneManager;
+        if (fightSceneManager == null)
         {
-            ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
-            viewWarriorPanel.bShouldChangeCharacterList = false;
-            viewWarriorPanel.SetCharacterInfosToWarriorPanel(characterData);
-            usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
-        }*/
+            return;
+        }
 
-        List<CharacterData> team = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters;
-        int randomValue = GD.RandRange(0, team.Count - 1);
+        var usedCharactersVBoxContainer = GetNode<VBoxContainer>("VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer");
+        foreach (Node child in usedCharactersVBoxContainer.GetChildren())
+        {
+            child.QueueFree();
+        }
+
+        List<PlayerEntity> playerEntities = fightSceneManager.Allies.ToList();
+        List<CharacterData> team = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Where(x => playerEntities.Select(e => e.Id).Contains(x.ID)).ToList();
         for (int i = 0; i < team.Count; ++i)
         {
-            if (i == randomValue)
+            if (team[i].ID == currentCharacterID)
             {
-                ChosenWarriorPanel chosenWarriorPanel = ChosenWarriorPanelScene.Instantiate() as ChosenWarriorPanel;
+                chosenWarriorPanel = ChosenWarriorPanelScene.Instantiate() as ChosenWarriorPanel;
                 chosenWarriorPanel.SetCharacterInfos(team[i]);
+                chosenWarriorPanel.DisableButtonsForSelectingSubjectAttack();
                 usedCharactersVBoxContainer.AddChild(chosenWarriorPanel);
             }
             else
             {
                 ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
                 viewWarriorPanel.bShouldChangeCharacterList = false;
-                viewWarriorPanel.SetCharacterInfosToWarriorPanel(team[i]);
+                viewWarriorPanel.SetCharacterInfosToWarriorPanel(team[i], true);
                 usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
             }
         }
-	}
+        EmitSignal(SignalName.WarriorPanelsUpdate);
+    }
+
+    public void OnCurrentPlayerWarriorToTurnChanged(string playerWarriorId)
+    {
+        currentCharacterID = playerWarriorId;
+        UpdateUsedCharactersList();
+    }
 }

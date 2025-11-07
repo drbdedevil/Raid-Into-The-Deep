@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0lfp5wm1gccn"
-path="res://.godot/imported/ChooseAttack_Disabled.png-7a368c6c9b7287813825c85b373b0c30.ctex"
+uid="uid://182c3b2noymq"
+path="res://.godot/imported/ChooseAttack_No.png-7e416e9a6ba04e40e0bcf3f2195513c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ChooseAttack/ChooseAttack_Disabled.png"
-dest_files=["res://.godot/imported/ChooseAttack_Disabled.png-7a368c6c9b7287813825c85b373b0c30.ctex"]
+source_file="res://Textures/ChooseAttack/ChooseAttack_No.png"
+dest_files=["res://.godot/imported/ChooseAttack_No.png-7e416e9a6ba04e40e0bcf3f2195513c0.ctex"]
 
 [params]
 

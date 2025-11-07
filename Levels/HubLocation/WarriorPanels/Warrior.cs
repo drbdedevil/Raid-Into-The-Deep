@@ -7,8 +7,9 @@ public partial class Warrior : Node, IStackPage
 {
 	[Export]
 	public PackedScene CharacterListScene;
-	
+
 	public CharacterData characterData { get; set; } = new();
+	public bool bShouldHideAbilityToChange = false;
 
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public partial class Warrior : Node, IStackPage
 		// GD.Print("2");
 		CharacterList characterList = CharacterListScene.Instantiate() as CharacterList;
 		characterList.warriorOwner = this;
+		characterList.bShouldHideAbilityToChange = bShouldHideAbilityToChange;
 		// GD.Print("3");
 
 		if (!navigator.IsSomethingOpen())

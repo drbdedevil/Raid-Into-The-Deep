@@ -21,6 +21,8 @@ public partial class CharacterList : ColorRect, IStackPage
 	public Node Parent = null;
 	public Warrior warriorOwner { get; set; } = null;
 
+	public bool bShouldHideAbilityToChange = false;
+
 	private WeaponData chosenWeaponData = new();
 	private bool bIsWeaponChosen = false;
 	
@@ -127,7 +129,7 @@ public partial class CharacterList : ColorRect, IStackPage
 
 			removeWeaponButton.Visible = false;
 
-			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID) || bShouldHideAbilityToChange)
 			{
 				chooseWeaponButton.Disabled = true;
 			}
@@ -139,7 +141,7 @@ public partial class CharacterList : ColorRect, IStackPage
 			bigWeaponPanel.SetWeaponInfos(warriorOwner.characterData.Weapon);
 			marginContainer.AddChild(bigWeaponPanel);
 
-			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID) || bShouldHideAbilityToChange)
 			{
 				chooseWeaponButton.Disabled = true;
 				removeWeaponButton.Visible = false;
@@ -168,7 +170,7 @@ public partial class CharacterList : ColorRect, IStackPage
 
 			removeSkillButton.Visible = false;
 
-			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID) || bShouldHideAbilityToChange)
 			{
 				chooseSkillButton.Disabled = true;
 			}
@@ -179,7 +181,7 @@ public partial class CharacterList : ColorRect, IStackPage
 			bigSkillPanel.SetSkillInfos(warriorOwner.characterData.ChoosenSkills);
 			marginContainer.AddChild(bigSkillPanel);
 
-			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID))
+			if (GameDataManager.Instance.trainingPitsDataManager.IsCharacterInHiringList(warriorOwner.characterData.ID) || bShouldHideAbilityToChange)
 			{
 				chooseSkillButton.Disabled = true;
 				removeSkillButton.Visible = false;

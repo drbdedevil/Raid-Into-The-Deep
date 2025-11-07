@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dupvjlb80i0a2" path="res://Textures/WeaponsTexture/mech.png" id="5_84233"]
 [ext_resource type="Texture2D" uid="uid://d38qx33k2wcnr" path="res://Textures/Skills/ActiveSkills/sled_Active.png" id="6_67ktj"]
 [ext_resource type="Texture2D" uid="uid://dk6p1d2kx2gip" path="res://Textures/ChooseAttack/ChooseAttack_Hover.png" id="7_c8dd8"]
-[ext_resource type="Texture2D" uid="uid://v6iexc16nnrd" path="res://Textures/ChooseAttack/ChooseAttack_Selected.png" id="7_xdw37"]
 [ext_resource type="Texture2D" uid="uid://coqnrinh6p17i" path="res://Textures/ChooseAttack/ChooseAttack_Pressed.png" id="8_jkquy"]
+[ext_resource type="Texture2D" uid="uid://0lfp5wm1gccn" path="res://Textures/ChooseAttack/ChooseAttack_Disabled.png" id="9_xdw37"]
 [ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="10_0wh75"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hve40"]
@@ -198,9 +198,9 @@ alignment = 1
 z_index = 1
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("7_xdw37")
 texture_pressed = ExtResource("8_jkquy")
 texture_hover = ExtResource("7_c8dd8")
+texture_disabled = ExtResource("9_xdw37")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -226,9 +226,9 @@ expand_mode = 1
 z_index = 1
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("7_xdw37")
 texture_pressed = ExtResource("8_jkquy")
 texture_hover = ExtResource("7_c8dd8")
+texture_disabled = ExtResource("9_xdw37")
 ignore_texture_size = true
 stretch_mode = 0
 

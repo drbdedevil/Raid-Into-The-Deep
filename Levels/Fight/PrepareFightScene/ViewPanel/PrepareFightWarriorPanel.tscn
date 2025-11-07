@@ -110,6 +110,7 @@ size_flags_horizontal = 0
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 1
+mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_4k5li")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ykxy3")
 value = 65.0

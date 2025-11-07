@@ -64,7 +64,7 @@ public partial class FightSceneManager : Node2D
         ConfirmTurnButton.SetDisabled(true);
         CancelTurnButton = GetNode<Button>("CancelTurnButton");
         CancelTurnButton.SetDisabled(true);
-        
+
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
     }
     

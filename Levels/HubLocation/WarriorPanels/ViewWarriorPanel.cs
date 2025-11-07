@@ -26,9 +26,10 @@ public partial class ViewWarriorPanel : Control
 		}
 	}
 
-	public void SetCharacterInfosToWarriorPanel(CharacterData InCharacterData)
+	public void SetCharacterInfosToWarriorPanel(CharacterData InCharacterData, bool ShouldHideAbilityToChange = false)
 	{
 		Warrior warrior = GetNode<Warrior>("PanelContainer/MarginContainer/WarriorPanel");
 		warrior.SetCharacterInfos(InCharacterData);
+		warrior.bShouldHideAbilityToChange = ShouldHideAbilityToChange;
 	}
 }

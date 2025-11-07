@@ -35,7 +35,7 @@ public class PlayerWarriorMovementBattleState : BattleState
                 moveCommand.Execute();
                 FightSceneManager.ExecutedCommands.Add(moveCommand);
                 //MapManager.ClearAllSelectedTiles();
-                FightSceneManager.CurrentBattleState = new PlayerWarriorAttackChoosingBattleState(FightSceneManager, MapManager);
+                FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
             } 
         }
     }
