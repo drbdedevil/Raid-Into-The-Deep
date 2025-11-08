@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
-namespace RaidIntoTheDeep.Levels.Fight;
+namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public abstract class Weapon
 {

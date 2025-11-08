@@ -24,7 +24,9 @@ public partial class FightSceneManager : Node2D
     /// <summary>
     /// Воины игрока которые уже сходили
     /// </summary>
-    public List<PlayerEntity> PlayerWarriorsThatTurned { get; set; } = [];
+    public List<PlayerEntity> PlayerWarriorsThatTurned = [];
+
+    public List<EnemyEntity> EnemyWarriorsThatTurned = [];
 
     [Signal]
     public delegate void CurrentPlayerWarriorToTurnChangedEventHandler(string playerWarriorId);

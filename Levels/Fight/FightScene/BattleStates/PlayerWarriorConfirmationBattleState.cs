@@ -32,7 +32,12 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.NotExecutedCommands.Clear();
         FightSceneManager.ExecutedCommands.Clear();
         FightSceneManager.PlayerWarriorsThatTurned.Add(FightSceneManager.CurrentPlayerWarriorToTurn);
-        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+        
+        if (FightSceneManager.PlayerWarriorsThatTurned.Count == FightSceneManager.Allies.Count)
+            FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
+        else 
+            FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+        
         DisableButtons();
     }
 

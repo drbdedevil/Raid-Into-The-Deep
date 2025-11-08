@@ -59,11 +59,12 @@ public static class PathFinder
         return result;
     }
 
-    public static List<Tile> FindTilesToAttack(BattleEntity attacker, Tile targetTile, MapManager mapManager)
+    public static List<Tile> FindTilesToAttack(BattleEntity attacker, Tile targetTile, MapManager mapManager, Tile startTile = null)
     {
         var result = new List<Tile>();
-
-        var shapeTargets = attacker.Weapon.CalculateShapeAttackPositions(attacker.Tile.CartesianPosition, targetTile.CartesianPosition, mapManager);
+        
+        if (startTile is null) startTile = attacker.Tile;
+        var shapeTargets = attacker.Weapon.CalculateShapeAttackPositions(startTile.CartesianPosition, targetTile.CartesianPosition, mapManager);
         
         foreach (var shapeTarget in shapeTargets)
         {
@@ -71,6 +72,11 @@ public static class PathFinder
             if (attackTile is not null) result.Add(attackTile);
         }
         return result;
+    }
+
+    public static int CalculateDistanceToTile(Tile startTile, Tile targetTile)
+    {
+        return (int)startTile.CartesianPosition.DistanceTo(targetTile.CartesianPosition);
     }
 }
 

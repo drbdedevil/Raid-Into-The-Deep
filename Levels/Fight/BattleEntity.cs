@@ -1,5 +1,6 @@
 ﻿using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
+using RaidIntoTheDeep.Levels.Fight.Weapons;
 
 namespace RaidIntoTheDeep.Levels.Fight
 {

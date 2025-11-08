@@ -25,7 +25,6 @@ public partial class MapManager : Node2D
 	/// </summary>
 	private readonly Dictionary<Vector2I, Tile> _tilesByIsometric = new();
 
-	private Tile? _selectedTile = null;
 
 	[Signal]
 	public delegate void OnTileLeftButtonClickedEventHandler(Vector2I tile);
@@ -43,11 +42,6 @@ public partial class MapManager : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion)
-		{
-			var tile = GetTileUnderMousePosition();
-		}
-		
 		if (@event is InputEventMouseButton mouseButton && @event.IsPressed())
 		{
 			if (!mouseButton.Pressed) return;
@@ -165,7 +159,7 @@ public partial class MapManager : Node2D
 	}
 	
 	/// <summary>
-	/// Метод для отрисовки возможных тайлов к атаке
+	/// Метод для просчёта и отрисовки возможных тайлов к атаке воином игрока
 	/// </summary>
 	public void CalculateAndDrawPlayerEntityAttackZone(PlayerEntity playerEntity, Tile targetTile)
 	{
@@ -174,6 +168,38 @@ public partial class MapManager : Node2D
 		foreach (var tile in _selectedTilesForPlayerAction)
 		{
 			SelectTileForAttack(tile);
+		}
+	}
+
+	public void DrawEnemyEntityTilesToMove(List<Tile> tilesToMove)
+	{
+		foreach (var tile in tilesToMove)
+		{
+			SelectTileForMovement(tile);
+		}
+	}
+
+	public void DrawEnemyEntityTilesToAttack(List<Tile> tilesToAttack)
+	{
+		foreach (var tile in tilesToAttack)
+		{
+			SelectTileForAttack(tile);
+		}
+	}
+	
+	public void ClearDrawEnemyEntityTilesToAttack(List<Tile> tilesToAttack)
+	{
+		foreach (var tile in tilesToAttack)
+		{
+			DeselectTile(tile);
+		}
+	}
+	
+	public void ClearDrawEnemyEntityTilesToMove(List<Tile> tilesToMove)
+	{
+		foreach (var tile in tilesToMove)
+		{
+			DeselectTile(tile);
 		}
 	}
 
