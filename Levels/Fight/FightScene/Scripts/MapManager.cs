@@ -128,20 +128,24 @@ public partial class MapManager : Node2D
 		_entityLayer.EraseCell(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
-	
+
+	public void SelectTileForCurrentEntityTurn(Tile tile)
+	{
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I((int)TileTextureTypes.CurrentTurnEntity, 0));
+	}
 	public void SelectTileForMovement(Tile tile)
 	{
-		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(1, 0));
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I((int)TileTextureTypes.SelectedToMove, 0));
 	}
 
 	public void SelectTileForAttack(Tile tile)
 	{
-		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(2, 0));
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I((int)TileTextureTypes.Closed, 0));
 	}
 	
 	public void DeselectTile(Tile tile)
 	{
-		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
+		_floorLayer.SetCell(tile.IsometricPosition, 0, new Vector2I((int)TileTextureTypes.Opened, 0));
 	}
 
 
@@ -152,9 +156,11 @@ public partial class MapManager : Node2D
 	{
 		var tilesToMove = PathFinder.FindTilesToMove(playerEntity.Tile, this, playerEntity.Speed);
 		_selectedTilesForPlayerAction = tilesToMove;
+		_selectedTilesForPlayerAction.Add(playerEntity.Tile);
 		foreach (var tile in _selectedTilesForPlayerAction)
 		{
-			SelectTileForMovement(tile);
+			if (tile == playerEntity.Tile) SelectTileForCurrentEntityTurn(tile);
+			else SelectTileForMovement(tile);
 		}
 	}
 	
@@ -223,7 +229,7 @@ public partial class MapManager : Node2D
 		var clickedCell = _floorLayer.LocalToMap(_floorLayer.GetLocalMousePosition() + new Vector2I(0, 16));
 		return GetTileByIsometricCoord(clickedCell);
 	}
-
+	
 	public Tile? GetTileInSelectedUnderMousePosition()
 	{
 		var tile = GetTileUnderMousePosition();

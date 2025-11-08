@@ -29,12 +29,15 @@ public class PlayerWarriorMovementBattleState : BattleState
         if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
         {
             var tile = MapManager.GetTileInSelectedUnderMousePosition();
+            if (tile == _currentPlayerWarrior.Tile)
+            {
+                FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
+            }
             if (tile is not null && tile.IsAllowedToSetBattleEntity)
             {
                 var moveCommand = new MoveBattleEntityCommand(_currentPlayerWarrior, MapManager, tile);
                 moveCommand.Execute();
                 FightSceneManager.ExecutedCommands.Add(moveCommand);
-                //MapManager.ClearAllSelectedTiles();
                 FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
             } 
         }
