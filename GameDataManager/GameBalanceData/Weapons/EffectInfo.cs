@@ -1,18 +1,6 @@
 using Godot;
 using System;
 
-public enum EEffectType
-{
-    Poison = 0,
-    Stun = 1,
-    Freezing = 2,
-    Weakening = 3,
-    ResistanceToStun = 4,
-    Pushing = 5,
-    Sleep = 6,
-    Fire = 7
-}
-
 [GlobalClass]
 public partial class EffectInfo : Resource
 {

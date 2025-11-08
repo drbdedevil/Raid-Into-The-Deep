@@ -7,7 +7,7 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public class RangeWeapon : Weapon
 {
-    public RangeWeapon(int attackShapeId) : base(attackShapeId)
+    public RangeWeapon(int attackShapeId, WeaponData InWeaponData) : base(attackShapeId, InWeaponData)
     {
     }
 

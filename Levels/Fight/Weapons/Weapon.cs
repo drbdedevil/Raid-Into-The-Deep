@@ -6,14 +6,17 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public abstract class Weapon
 {
-	public Weapon(int attackShapeId)
+	public Weapon(int attackShapeId, WeaponData InWeaponData)
 	{
 		AttackShapeInfo = GameDataManager.Instance.attackShapeDatabase.AttackShapes[attackShapeId];
+		weaponData = InWeaponData;
+
+		effect = CreateEffectByWeaponData();
 	}
 
 	public AttackShapeInfo AttackShapeInfo { get; private set; }
-
-	
+	public WeaponData weaponData { get; private set; }
+	public Effect effect { get; private set; }
 	
 	protected AttackDirection CalculateDirection( Vector2 startPosition, Vector2 targetPosition)
 	{
@@ -31,4 +34,10 @@ public abstract class Weapon
 		return AttackDirection.Up;
 	}
 	public abstract List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map);
+
+	protected Effect CreateEffectByWeaponData()
+    {
+		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
+		return new EntityEffect(effectInfo.effectType, 0);
+    }
 }

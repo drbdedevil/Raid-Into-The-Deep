@@ -2,16 +2,16 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public static class WeaponFactory
 {
-    public static Weapon CreateWeaponByAttackShapeType(AttackShapeType shapeType)
+    public static Weapon CreateWeaponByAttackShapeType(AttackShapeType shapeType, WeaponData InWeaponData)
     {
         switch (shapeType)
         {
-            case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType);
-            case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType);
-            case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType);
-            case AttackShapeType.ScatterShot: return new RangeWeapon((int)shapeType);
-            case AttackShapeType.Ranged: return new RangeWeapon((int)shapeType);
-            case AttackShapeType.Artillery: return new ArtilleryWeapon((int)shapeType);
+            case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.ScatterShot: return new RangeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Ranged: return new RangeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Artillery: return new ArtilleryWeapon((int)shapeType, InWeaponData);
             default: return null;
         }
     }

@@ -7,7 +7,7 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public class ArtilleryWeapon : Weapon
 {
-    public ArtilleryWeapon(int attackShapeId) : base(attackShapeId)
+    public ArtilleryWeapon(int attackShapeId, WeaponData InWeaponData) : base(attackShapeId, InWeaponData)
     {
     }
 

@@ -7,7 +7,7 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public class MeleeWeapon : Weapon
 {
-    public MeleeWeapon(int attackShapeId) : base(attackShapeId)
+    public MeleeWeapon(int attackShapeId, WeaponData InWeaponData) : base(attackShapeId, InWeaponData)
     {
     }
 

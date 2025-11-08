@@ -10,7 +10,7 @@ public partial class PlayerEntity : BattleEntity
     public int PortraitID { get; set; } = 0;
     public string CharacterName { get; set; } = "NONE";
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
-    public PlayerEntity(Tile tile, CharacterData characterData) : base(tile, WeaponFactory.CreateWeaponByAttackShapeType((AttackShapeType)characterData.Weapon.AttackShapeID), characterData.ID, characterData.Speed, characterData.Health, characterData.Damage)
+    public PlayerEntity(Tile tile, CharacterData characterData) : base(tile, WeaponFactory.CreateWeaponByAttackShapeType((AttackShapeType)characterData.Weapon.AttackShapeID, characterData.Weapon), characterData.ID, characterData.Speed, characterData.Health, characterData.Damage)
     {
         Level = characterData.Level;
         PortraitID = characterData.PortraitID;

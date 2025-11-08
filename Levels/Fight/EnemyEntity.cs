@@ -5,7 +5,8 @@ namespace RaidIntoTheDeep.Levels.Fight;
 
 public partial class EnemyEntity : BattleEntity
 {
-    public EnemyEntity(Tile tile, string id, int speed, int health, int damage, GameEnemyCode enemyId) : base(tile, new MeleeWeapon(0), id, speed, health, damage)
+    // надо будет написать метод для спавна рандомного оружия врагам
+    public EnemyEntity(Tile tile, string id, int speed, int health, int damage, GameEnemyCode enemyId) : base(tile, new MeleeWeapon(0, new WeaponData()), id, speed, health, damage)
     {
         EnemyId = enemyId;
     }

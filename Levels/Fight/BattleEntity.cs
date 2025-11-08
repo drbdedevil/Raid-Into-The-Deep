@@ -1,10 +1,11 @@
 ﻿using Godot;
+using System.Collections.Generic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using RaidIntoTheDeep.Levels.Fight.Weapons;
 
 namespace RaidIntoTheDeep.Levels.Fight
 {
-    public partial class BattleEntity : Node2D 
+    public partial class BattleEntity : Node2D, IEffectHolder
     {
         public BattleEntity(Tile tile, Weapon weapon, string id, int speed, int health, int damage)
         {
@@ -15,6 +16,9 @@ namespace RaidIntoTheDeep.Levels.Fight
             Damage = damage;
             Weapon = weapon;
         }
+
+        public List<Effect> appliedEffects { get; set; } = new();
+        public List<Effect> rawEffects { get; set; } = new();
         
         public Weapon Weapon { get; set; }
         

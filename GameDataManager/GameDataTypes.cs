@@ -206,7 +206,7 @@ public enum MapNodeType
 public class MapNode
 {
     private static int _nextId = 0;
-     public static void ResetIds() => _nextId = 0;
+    public static void ResetIds() => _nextId = 0;
     public MapNode() { Id = _nextId++; }
     public int Row = -1;
     public int Col = -1;
@@ -240,5 +240,72 @@ public class MapNode
         }
         IsActive = false;
         IsPassed = true;
+    }
+}
+
+// --------------------------------------- Effects ---------------------------------------
+public enum EffectKind
+{
+    Positive,
+    Negative
+}
+[AttributeUsage(AttributeTargets.Field)]
+public class EffectCategoryAttribute : Attribute
+{
+    public EffectKind Kind { get; }
+    public EffectCategoryAttribute(EffectKind kind)
+    {
+        Kind = kind;
+    }
+}
+
+public enum EEffectType
+{
+    [EffectCategory(EffectKind.Negative)]
+    Poison = 0,
+    [EffectCategory(EffectKind.Negative)]
+    Stun = 1,
+    [EffectCategory(EffectKind.Negative)]
+    Freezing = 2,
+    [EffectCategory(EffectKind.Negative)]
+    Weakening = 3,
+    [EffectCategory(EffectKind.Positive)]
+    ResistanceToStun = 4,
+    [EffectCategory(EffectKind.Positive)]
+    Pushing = 5,
+    [EffectCategory(EffectKind.Negative)]
+    Sleep = 6,
+    [EffectCategory(EffectKind.Negative)]
+    Fire = 7,
+
+    [EffectCategory(EffectKind.Positive)]
+    BattleFrenzy = 8,
+    [EffectCategory(EffectKind.Negative)]
+    SevereWound = 9,
+    [EffectCategory(EffectKind.Positive)]
+    Defense = 10,
+    [EffectCategory(EffectKind.Negative)]
+    BloodMark = 11,
+    [EffectCategory(EffectKind.Positive)]
+    ReserveDamage = 12
+}
+
+public static class EffectExtensions
+{
+    public static EffectKind GetCategory(this EEffectType effect)
+    {
+        var member = typeof(EEffectType).GetMember(effect.ToString()).FirstOrDefault();
+        var attribute = member?.GetCustomAttribute<EffectCategoryAttribute>();
+        return attribute?.Kind ?? EffectKind.Positive;
+    }
+
+    public static bool IsPositive(this EEffectType effect)
+    {
+        return effect.GetCategory() == EffectKind.Positive;
+    }
+
+    public static bool IsNegative(this EEffectType effect)
+    {
+        return effect.GetCategory() == EffectKind.Negative;
     }
 }

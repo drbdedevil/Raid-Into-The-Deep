@@ -52,6 +52,9 @@ public partial class FightSceneManager : Node2D
     public List<Command> ExecutedCommands { get; set; } = [];
 
     public List<Command> NotExecutedCommands { get; set; } = [];
+
+    private EffectManager _effectManager;
+    public EffectManager EffectManager => _effectManager;
     
     public override void _Ready()
     {
@@ -68,6 +71,8 @@ public partial class FightSceneManager : Node2D
         CancelTurnButton.SetDisabled(true);
 
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
+
+        _effectManager = new EffectManager(_mapManager, this);
     }
     
     public override void _Input(InputEvent @event)
