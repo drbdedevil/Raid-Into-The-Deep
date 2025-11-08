@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
-namespace RaidIntoTheDeep.Levels.Fight;
+namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
-public class Weapon
+public class MeleeWeapon : Weapon
 {
-	public Weapon(int attackShapeId)
-	{
-		AttackShapeInfo = GameDataManager.Instance.attackShapeDatabase.AttackShapes[attackShapeId];
-	}
+    public MeleeWeapon(int attackShapeId) : base(attackShapeId)
+    {
+    }
 
-	public AttackShapeInfo AttackShapeInfo { get; private set; }
-	
-	public List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I targetPosition)
-	{
-		var direction = CalculateDirection();
+    public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
+    {
+        var direction = CalculateDirection(startPosition, playerTargetPosition);
 
 		switch (AttackShapeInfo.shapeType)
 		{
@@ -25,23 +23,6 @@ public class Weapon
 			default: throw new ArgumentOutOfRangeException();
 		}
 		
-		
-
-		AttackDirection CalculateDirection()
-		{
-			var dx = targetPosition.X - startPosition.X;
-			var dy = targetPosition.Y - startPosition.Y;
-		
-			if (Mathf.Abs(dx) > Mathf.Abs(dy))
-			{
-				if (dx > 0)
-					return AttackDirection.Right;
-				return AttackDirection.Left;
-			}
-			if (dy > 0)
-				return AttackDirection.Down;
-			return AttackDirection.Up;
-		}
 
 		List<Vector2I> CalculateMelee()
 		{
@@ -78,6 +59,5 @@ public class Weapon
 				default: throw new ArgumentOutOfRangeException();
 			}
 		}
-		
-	}
+    }
 }

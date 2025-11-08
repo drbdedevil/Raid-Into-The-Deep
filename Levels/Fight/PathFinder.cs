@@ -63,7 +63,7 @@ public static class PathFinder
     {
         var result = new List<Tile>();
 
-        var shapeTargets = attacker.Weapon.CalculateShapeAttackPositions(attacker.Tile.CartesianPosition, targetTile.CartesianPosition);
+        var shapeTargets = attacker.Weapon.CalculateShapeAttackPositions(attacker.Tile.CartesianPosition, targetTile.CartesianPosition, mapManager);
         
         foreach (var shapeTarget in shapeTargets)
         {
