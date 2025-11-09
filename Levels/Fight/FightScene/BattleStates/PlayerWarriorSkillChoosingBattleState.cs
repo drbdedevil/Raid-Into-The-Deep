@@ -26,6 +26,9 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
             FightSceneManager.NotExecutedCommands.Add(attackCommand);
             FightSceneManager.CurrentBattleState = new PlayerWarriorConfirmationBattleState(FightSceneManager, MapManager);
         }
+        
+        
+        StateTitleText = "Вы атакуете навыком! Выбирайте кого атаковать! Выберите клетку из предложенных!";
     }
 
     public override void ProcessUpdate(double delta)

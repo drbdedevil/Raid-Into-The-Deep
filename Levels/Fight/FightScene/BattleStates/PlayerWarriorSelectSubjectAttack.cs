@@ -21,6 +21,8 @@ public class PlayerWarriorSelectSubjectAttack : BattleState
         fightScenePanel.chosenWarriorPanel.PlayerChoseSkill += OnPlayerChoseSkill;
         fightScenePanel.chosenWarriorPanel.EnableButtonsForSelectingSubjectAttack();
         fightScenePanel.chosenWarriorPanel.bShouldShowPlayerNeedSelect = true;
+        
+        StateTitleText = "Выберете чем будете атаковать! Оружием или навыком?";
     }
 
     public override void InputUpdate(InputEvent @event)

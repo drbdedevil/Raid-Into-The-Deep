@@ -21,6 +21,7 @@ public class EnemyWarriorTurnBattleState : BattleState
     
     public EnemyWarriorTurnBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
+        StateTitleText = "Теперь ходит враг. Какая досада!";
         var enemyEntities = FightSceneManager.Enemies.Except(fightSceneManager.EnemyWarriorsThatTurned).OrderByDescending(x => x.Speed).ToList();
         if (!enemyEntities.Any())
         {

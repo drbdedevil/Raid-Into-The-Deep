@@ -21,6 +21,8 @@ public partial class FightSceneManager : Node2D
     private List<EnemyEntity> _enemies = [];
     public IReadOnlyCollection<EnemyEntity> Enemies => _enemies.ToList();
     
+    public Label TitleLabel { get; private set; }
+    
     /// <summary>
     /// Воины игрока которые уже сходили
     /// </summary>
@@ -65,11 +67,12 @@ public partial class FightSceneManager : Node2D
         _allEntities.AddRange(_allies);
         _allEntities.AddRange(_enemies);
         
+        TitleLabel = GetNode<Label>("StateTitleText");
         ConfirmTurnButton = GetNode<Button>("ConfirmTurnButton");
         ConfirmTurnButton.SetDisabled(true);
         CancelTurnButton = GetNode<Button>("CancelTurnButton");
         CancelTurnButton.SetDisabled(true);
-
+    
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
 
         _effectManager = new EffectManager(_mapManager, this);

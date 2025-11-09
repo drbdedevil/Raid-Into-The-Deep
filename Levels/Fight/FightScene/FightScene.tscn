@@ -17,6 +17,7 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
 texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 1
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -69,6 +70,8 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_d7e78"]
 tile_shape = 1
 tile_size = Vector2i(64, 32)
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 0
 sources/0 = SubResource("TileSetAtlasSource_qj2qt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_foig6"]
@@ -193,3 +196,10 @@ offset_top = 603.0
 offset_right = 924.0
 offset_bottom = 643.0
 text = "Отменить ход"
+
+[node name="StateTitleText" type="Label" parent="."]
+offset_left = 200.0
+offset_right = 1150.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1

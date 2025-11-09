@@ -13,6 +13,8 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.ConfirmTurnButton.SetDisabled(false);
         FightSceneManager.CancelTurnButton.ButtonUp += CancelTurn;
         FightSceneManager.CancelTurnButton.SetDisabled(false);
+        
+        StateTitleText = "Уверены ли в своём выборе? Подтвердите ваш выбор!";
     }
 
     public override void InputUpdate(InputEvent @event)

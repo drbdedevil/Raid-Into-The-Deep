@@ -14,6 +14,7 @@ public class PlayerWarriorAttackChoosingBattleState : BattleState
     public PlayerWarriorAttackChoosingBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
         _currentPlayerWarrior = fightSceneManager.CurrentPlayerWarriorToTurn;
+        StateTitleText = "Вы атакуете оружием! Выбирайте кого атаковать! Выберите клетку из предложенных!";
     }
 
     public override void InputUpdate(InputEvent @event)

@@ -9,6 +9,8 @@ public class ApplyingEffectsBattleState : BattleState
     private EffectManager _effectManager;
     public ApplyingEffectsBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
+        StateTitleText = "Ох зря я сюда полез...";
+        
         _effectManager = fightSceneManager.EffectManager;
 
         _effectManager.ApplyEffects();

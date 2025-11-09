@@ -22,6 +22,7 @@ public class PlayerWarriorMovementBattleState : BattleState
         }
         _currentPlayerWarrior = playerEntities.First();
         fightSceneManager.CurrentPlayerWarriorToTurn = _currentPlayerWarrior;
+        StateTitleText = "Вы перемещаетесь! Выберите клетку из предложенных!";
     }
 
     public override void InputUpdate(InputEvent @event)
