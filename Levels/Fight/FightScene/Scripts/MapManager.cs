@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Godot;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
@@ -14,6 +15,11 @@ public partial class MapManager : Node2D
 	
 	private TileMapLayer _floorLayer;
 	private TileMapLayer _entityLayer;
+	
+	/// <summary>
+	/// Слой отвечающий за отрисовку анимаций уничтожения сущности с слоя "Сущностей"
+	/// </summary>
+	private TileMapLayer _removeEntitiesEffectLayer;
 	
 	/// <summary>
 	/// Ассоциативный массив для получения изометрической координаты по декартовой
@@ -58,6 +64,7 @@ public partial class MapManager : Node2D
 	{
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
+		_removeEntitiesEffectLayer = GetNode<TileMapLayer>("RemoveEntitiesEffect");
 		foreach (var instanceTile in BattleMapInitStateManager.Instance.Tiles)
 		{
 			_mapTiles.Add(instanceTile);
@@ -123,9 +130,15 @@ public partial class MapManager : Node2D
 		return true;
 	}
 	
-	public void RemoveBattleEntityFromTile(Tile tile)
+	/// <summary>
+	/// Снятие любой сущности с Tile.
+	/// </summary>
+	/// <param name="tile">Cущность с которой происходит снятие</param>
+	/// <param name="isDead">Флажок указывающий на то, что сущность погибла. Если true, тогда будет проигрываться анимация уничтожения сущности</param>
+	public void RemoveBattleEntityFromTile(Tile tile, bool isDead = false)
 	{
 		_entityLayer.EraseCell(tile.IsometricPosition);
+		if (isDead) _ = PlayRemoveBattleEntityAnimation(tile.IsometricPosition);
 		tile.BattleEntity = null;
 	}
 
@@ -237,5 +250,12 @@ public partial class MapManager : Node2D
 		if (!_selectedTilesForPlayerAction.Contains(tile)) return null;
 		return tile;
 	}
-	
+
+
+	public async Task PlayRemoveBattleEntityAnimation(Vector2I isometricPosition)
+	{	
+		_removeEntitiesEffectLayer.SetCell(isometricPosition, 0, new Vector2I(0, 0));
+		await Task.Delay(500);
+		_removeEntitiesEffectLayer.EraseCell(isometricPosition);
+	}
 }

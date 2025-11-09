@@ -90,14 +90,14 @@ public partial class FightSceneManager : Node2D
 
     public void RemovePlayerWarrior(PlayerEntity playerWarrior)
     {
-        _mapManager.RemoveBattleEntityFromTile(playerWarrior.Tile);
+        _mapManager.RemoveBattleEntityFromTile(playerWarrior.Tile, isDead: true);
         _allies.Remove(playerWarrior);
         _allEntities.Remove(playerWarrior);
     }
 
     public void RemoveEnemyWarrior(EnemyEntity enemyWarrior)
     {
-        _mapManager.RemoveBattleEntityFromTile(enemyWarrior.Tile);
+        _mapManager.RemoveBattleEntityFromTile(enemyWarrior.Tile, isDead: true);
         _enemies.Remove(enemyWarrior);
         _allEntities.Remove(enemyWarrior);
     }
