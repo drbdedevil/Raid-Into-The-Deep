@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -59,5 +60,61 @@ public class MeleeWeapon : Weapon
 				default: throw new ArgumentOutOfRangeException();
 			}
 		}
+    }
+
+    public override List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles)
+    {
+	    switch (AttackShapeInfo.shapeType)
+	    {
+		    case AttackShapeType.Melee: return CalculateMelee();
+		    case AttackShapeType.LongMelee: return CalculateLongMelee();
+		    case AttackShapeType.Sweep: return CalculateSweep();
+		    default: throw new ArgumentOutOfRangeException();
+	    }
+	    
+	    List<TargetWeaponAttackDamage> CalculateMelee()
+	    {
+			var attackedTile = attackedTiles.First();
+			var battleEntityOnTile = attackedTile.BattleEntity;
+			if (battleEntityOnTile == null) return [];
+			if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
+			    || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+			{
+				return [new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage)];
+			}
+
+			return [];
+	    }
+		
+	    List<TargetWeaponAttackDamage> CalculateLongMelee()
+	    {
+		    var attackedTile = attackedTiles.First();
+		    var battleEntityOnTile = attackedTile.BattleEntity;
+		    if (battleEntityOnTile == null) return [];
+		    if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
+		        || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+		    {
+			    return [new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage)];
+		    }
+
+		    return [];
+	    }
+		
+	    List<TargetWeaponAttackDamage> CalculateSweep()
+	    {
+		    List<TargetWeaponAttackDamage> result = [];
+		    foreach (var attackedTile in attackedTiles)
+		    {
+			    var battleEntityOnTile = attackedTile.BattleEntity;
+			    if (battleEntityOnTile == null) continue;
+			    if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
+			        || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+			    {
+				    result.Add(new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage));
+			    }
+		    }
+		    
+		    return result;
+	    }
     }
 }

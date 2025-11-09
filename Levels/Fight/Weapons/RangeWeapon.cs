@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -111,5 +112,62 @@ public class RangeWeapon : Weapon
 			
 			return middleLine;
 		}
+    }
+
+    public override List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles)
+    {
+	    switch (AttackShapeInfo.shapeType)
+	    {
+		    case AttackShapeType.ScatterShot: return CalculateShotgun();
+		    case AttackShapeType.Ranged: return CalculateCrossbow();
+		    default: throw new ArgumentOutOfRangeException();
+	    }
+	    
+	    List<TargetWeaponAttackDamage> CalculateShotgun()
+	    {
+		    List<TargetWeaponAttackDamage> result = [];
+		    
+		    List<BattleEntity> entitiesToAttack = [];
+		    if (attacker is PlayerEntity)
+		    {
+			    entitiesToAttack = attackedTiles.Where(x => x.BattleEntity is not null && x.BattleEntity is EnemyEntity)
+				    .Select(x => x.BattleEntity).ToList();
+		    }
+		    else if (attacker is EnemyEntity)
+		    {
+			    entitiesToAttack = attackedTiles.Where(x => x.BattleEntity is not null && x.BattleEntity is PlayerEntity)
+				    .Select(x => x.BattleEntity).ToList();
+		    }
+			
+		    foreach (var battleEntity in entitiesToAttack)
+		    {
+			    result.Add(new (battleEntity, weaponData.Damage));
+		    }
+		    return result;
+	    }
+	    
+	    List<TargetWeaponAttackDamage> CalculateCrossbow()
+	    {
+		    List<TargetWeaponAttackDamage> result = [];
+		    
+		    List<BattleEntity> entitiesToAttack = [];
+		    if (attacker is PlayerEntity)
+		    {
+			    entitiesToAttack = attackedTiles.Where(x => x.BattleEntity is not null && x.BattleEntity is EnemyEntity)
+				    .Select(x => x.BattleEntity).ToList();
+		    }
+		    else if (attacker is EnemyEntity)
+		    {
+			    entitiesToAttack = attackedTiles.Where(x => x.BattleEntity is not null && x.BattleEntity is PlayerEntity)
+				    .Select(x => x.BattleEntity).ToList();
+		    }
+			
+		    foreach (var battleEntity in entitiesToAttack)
+		    {
+			    result.Add(new (battleEntity, weaponData.Damage));
+		    }
+		    
+		    return result;
+	    }
     }
 }

@@ -40,4 +40,7 @@ public abstract class Weapon
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
 		return new EntityEffect(effectInfo.effectType, 0);
     }
+
+	public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
 }
+

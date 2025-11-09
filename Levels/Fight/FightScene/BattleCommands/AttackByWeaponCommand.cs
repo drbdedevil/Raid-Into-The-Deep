@@ -9,10 +9,13 @@ public class AttackByWeaponCommand : Command
     private BattleEntity _battleEntity { get; set; }
     private List<Tile>  _tilesForAttack { get; set; }
     
-    public AttackByWeaponCommand(BattleEntity battleEntity, List<Tile> tilesForAttack)
+    private FightSceneManager _fightSceneManager { get; set; }
+    
+    public AttackByWeaponCommand(BattleEntity battleEntity, List<Tile> tilesForAttack, FightSceneManager fightSceneManager)
     {
         _battleEntity = battleEntity;
         _tilesForAttack = tilesForAttack;
+        _fightSceneManager = fightSceneManager;
     }
     
     public override void Execute()
@@ -25,6 +28,27 @@ public class AttackByWeaponCommand : Command
             {
                 EntityEffect effect = _battleEntity.Weapon.effect as EntityEffect;
                 tile.BattleEntity.rawEffects.Add(effect);
+            }
+        }
+
+        var entitiesToAttack = _battleEntity.Weapon.CalculateDamageForEntities(_battleEntity, _tilesForAttack);
+        foreach (var targetWeaponAttackDamage in entitiesToAttack)
+        {
+            if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
+            {
+                targetWeaponAttackDamage.EntityToAttack.Health -= targetWeaponAttackDamage.Damage;
+                if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
+                {
+                    _fightSceneManager.RemovePlayerWarrior(playerWarrior);
+                }
+            }
+            else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
+            {
+                targetWeaponAttackDamage.EntityToAttack.Health -= targetWeaponAttackDamage.Damage;
+                if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
+                {
+                    _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
+                }
             }
         }
     }

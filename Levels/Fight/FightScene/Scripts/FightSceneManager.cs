@@ -87,4 +87,18 @@ public partial class FightSceneManager : Node2D
     {
         CurrentBattleState.ProcessUpdate(delta);
     }
+
+    public void RemovePlayerWarrior(PlayerEntity playerWarrior)
+    {
+        _mapManager.RemoveBattleEntityFromTile(playerWarrior.Tile);
+        _allies.Remove(playerWarrior);
+        _allEntities.Remove(playerWarrior);
+    }
+
+    public void RemoveEnemyWarrior(EnemyEntity enemyWarrior)
+    {
+        _mapManager.RemoveBattleEntityFromTile(enemyWarrior.Tile);
+        _enemies.Remove(enemyWarrior);
+        _allEntities.Remove(enemyWarrior);
+    }
 }
