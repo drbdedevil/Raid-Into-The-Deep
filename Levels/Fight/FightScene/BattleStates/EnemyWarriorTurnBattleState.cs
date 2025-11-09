@@ -89,9 +89,9 @@ public class EnemyWarriorTurnBattleState : BattleState
                 {
                     _tilesToAttack = tilesToAttack;
                     MapManager.ClearDrawEnemyEntityTilesToMove(_tilesToMove);
-                    MapManager.DrawEnemyEntityTilesToAttack(_tilesToAttack);
                     var command = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, tileToMove);
                     command.Execute();
+                    MapManager.DrawEnemyEntityTilesToAttack(_tilesToAttack);
                     _drawingTilesToAttackTask = Task.Delay(2000);
                     return new (playerEntity, tileToMove);
                 }
