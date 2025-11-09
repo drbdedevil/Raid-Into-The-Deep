@@ -2,11 +2,12 @@ namespace RaidIntoTheDeep.Levels.Fight;
 
 public enum GameEnemyCode
 {
-    Bug = 1,
-    Root,
     Spider,
-    Centipede,
+    Wasp,
+    Root,
+    Bug,
     EvilEye,
+    Centipede,
     SpiderBoss,
     Tank,
     Vegetable

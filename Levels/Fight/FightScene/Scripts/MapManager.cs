@@ -94,7 +94,7 @@ public partial class MapManager : Node2D
 		}
 		else if (tile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(tile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId));
 		}
 	}
 
@@ -117,7 +117,7 @@ public partial class MapManager : Node2D
 		}
 		else if (targetTile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(targetTile.IsometricPosition, (int)enemyEntity.EnemyId, new Vector2I(0, 0));
+			_entityLayer.SetCell(targetTile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId));
 		}
 		
 		return true;

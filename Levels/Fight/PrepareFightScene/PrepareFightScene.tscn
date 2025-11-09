@@ -1,23 +1,16 @@
-[gd_scene load_steps=43 format=3 uid="uid://bieajibc18pln"]
+[gd_scene load_steps=29 format=3 uid="uid://bieajibc18pln"]
 
 [ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
 [ext_resource type="Script" uid="uid://r5yt8rcihyyi" path="res://Levels/Fight/PrepareFightScene/PrepareFightMapManager.cs" id="2_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://omgqup63apve" path="res://Levels/Fight/FightScene/FightScene.tscn" id="2_jrqxl"]
 [ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="2_jxe02"]
-[ext_resource type="Texture2D" uid="uid://cfl8wr5h7n4u8" path="res://Textures/Fight/FightScene/Bug.png" id="3_clwcm"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="5_ed8kp"]
 [ext_resource type="Script" uid="uid://b3jcpgo6dnlyh" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PlayerWarriorsMenu.cs" id="5_gkuqp"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="5_k51bs"]
 [ext_resource type="Texture2D" uid="uid://hqt7k2bpme1r" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="5_kbenw"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="6_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://ccaqrv4jj4wg3" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PrepareFightWarriorPanel.tscn" id="6_gkuqp"]
-[ext_resource type="Texture2D" uid="uid://dmkd6ee3kj1bq" path="res://Textures/Fight/FightScene/Root.png" id="6_ts8f3"]
-[ext_resource type="Texture2D" uid="uid://bu5b8l7mq8fpm" path="res://Textures/Fight/FightScene/Spider.png" id="7_jrqxl"]
-[ext_resource type="Texture2D" uid="uid://fy48rl7qw78y" path="res://Textures/Fight/FightScene/Centipede.png" id="8_p5cou"]
-[ext_resource type="Texture2D" uid="uid://crmaxpinu55tq" path="res://Textures/Fight/FightScene/EvilEye.png" id="9_a28lv"]
-[ext_resource type="Texture2D" uid="uid://cos1ef2g53qm" path="res://Textures/Fight/FightScene/SpiderBoss.png" id="10_wgaum"]
-[ext_resource type="Texture2D" uid="uid://codkx165trplj" path="res://Textures/Fight/FightScene/Tank.png" id="11_f52gy"]
-[ext_resource type="Texture2D" uid="uid://c1km3kf6kglux" path="res://Textures/Fight/FightScene/Vegetable.png" id="12_rxuek"]
+[ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_kbenw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xf8pm"]
 texture = ExtResource("2_jxe02")
@@ -38,60 +31,81 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/texture_origin = Vector2i(0, 32)
 0:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eso07"]
-texture = ExtResource("3_clwcm")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vkuku"]
-texture = ExtResource("6_ts8f3")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1acj"]
+texture = ExtResource("6_kbenw")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
 0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsbxw"]
-texture = ExtResource("7_jrqxl")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_af861"]
-texture = ExtResource("8_p5cou")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42w84"]
-texture = ExtResource("9_a28lv")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cfqx"]
-texture = ExtResource("10_wgaum")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i52v"]
-texture = ExtResource("11_f52gy")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fo76c"]
-texture = ExtResource("12_rxuek")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 32)
-0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 32)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 32)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 32)
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, 32)
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, 32)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, 32)
+2:5/0 = 0
+2:5/0/texture_origin = Vector2i(0, 32)
+3:5/0 = 0
+3:5/0/texture_origin = Vector2i(0, 32)
+3:6/0 = 0
+3:6/0/texture_origin = Vector2i(0, 32)
+3:7/0 = 0
+3:7/0/texture_origin = Vector2i(0, 32)
+3:8/0 = 0
+3:8/0/texture_origin = Vector2i(0, 32)
+2:8/0 = 0
+2:8/0/texture_origin = Vector2i(0, 32)
+1:8/0 = 0
+1:8/0/texture_origin = Vector2i(0, 32)
+1:7/0 = 0
+1:7/0/texture_origin = Vector2i(0, 32)
+1:6/0 = 0
+1:6/0/texture_origin = Vector2i(0, 32)
+1:5/0 = 0
+1:5/0/texture_origin = Vector2i(0, 32)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, 32)
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(0, 32)
+0:7/0 = 0
+0:7/0/texture_origin = Vector2i(0, 32)
+0:8/0 = 0
+0:8/0/texture_origin = Vector2i(0, 32)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, 32)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 32)
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 32)
+2:7/0 = 0
+2:7/0/texture_origin = Vector2i(0, 32)
+2:6/0 = 0
+2:6/0/texture_origin = Vector2i(0, 32)
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, 32)
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, 32)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 32)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 32)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 32)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 32)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 32)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 32)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 32)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 32)
 
 [sub_resource type="TileSet" id="TileSet_p76rw"]
 tile_shape = 1
@@ -99,14 +113,7 @@ tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_gep0n")
-sources/1 = SubResource("TileSetAtlasSource_eso07")
-sources/2 = SubResource("TileSetAtlasSource_vkuku")
-sources/3 = SubResource("TileSetAtlasSource_nsbxw")
-sources/4 = SubResource("TileSetAtlasSource_af861")
-sources/5 = SubResource("TileSetAtlasSource_42w84")
-sources/6 = SubResource("TileSetAtlasSource_4cfqx")
-sources/7 = SubResource("TileSetAtlasSource_2i52v")
-sources/8 = SubResource("TileSetAtlasSource_fo76c")
+sources/1 = SubResource("TileSetAtlasSource_h1acj")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkuqp"]
 content_margin_left = 4.0
