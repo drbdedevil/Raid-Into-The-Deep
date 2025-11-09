@@ -11,7 +11,7 @@ public abstract class Weapon
 		AttackShapeInfo = GameDataManager.Instance.attackShapeDatabase.AttackShapes[attackShapeId];
 		weaponData = InWeaponData;
 
-		effect = CreateEffectByWeaponData();
+		CreateEffectByWeaponData();
 	}
 
 	public AttackShapeInfo AttackShapeInfo { get; private set; }
@@ -35,10 +35,10 @@ public abstract class Weapon
 	}
 	public abstract List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map);
 
-	protected Effect CreateEffectByWeaponData()
+	public void CreateEffectByWeaponData()
     {
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
-		return new EntityEffect(effectInfo.effectType, 0);
+		effect = new EntityEffect(effectInfo.effectType, effectInfo.duration);
     }
 
 	public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);

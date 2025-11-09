@@ -8,4 +8,5 @@ public partial class EffectInfo : Resource
     [Export] public Texture2D texture2D { get; set; } = new();
     [Export] public EEffectType effectType { get; set; } = new();
     [Export] public float Weight { get; set; } = 1.0f;
+    [Export] public int duration { get; set; } = 0;
 }

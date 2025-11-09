@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -26,8 +27,24 @@ public class AttackByWeaponCommand : Command
             
             if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder)
             {
+                _battleEntity.Weapon.CreateEffectByWeaponData();
                 EntityEffect effect = _battleEntity.Weapon.effect as EntityEffect;
-                tile.BattleEntity.rawEffects.Add(effect);
+                if (tile.BattleEntity.appliedEffects.Any(eff => eff.EffectType == EEffectType.Sleep))
+                {
+                    tile.BattleEntity.appliedEffects.RemoveAll(eff => eff.EffectType == EEffectType.Sleep);
+                }
+                else
+                {
+                    if (effect.EffectType == EEffectType.Freezing || effect.EffectType == EEffectType.Weakening)
+                    {
+                        effect.entityHolder = tile.BattleEntity;
+                        tile.BattleEntity.appliedEffects.Add(effect);
+                    }
+                    else
+                    {
+                        tile.BattleEntity.rawEffects.Add(effect);
+                    }
+                }
             }
         }
 

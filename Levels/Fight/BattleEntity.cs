@@ -1,4 +1,5 @@
 ﻿using Godot;
+using System.Linq;
 using System.Collections.Generic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using RaidIntoTheDeep.Levels.Fight.Weapons;
@@ -11,9 +12,9 @@ namespace RaidIntoTheDeep.Levels.Fight
         {
             Tile = tile;
             Id = id;
-            Speed = speed;
+            _speed = speed;
             Health = health;
-            Damage = damage;
+            _damage = damage;
             Weapon = weapon;
         }
 
@@ -28,12 +29,38 @@ namespace RaidIntoTheDeep.Levels.Fight
         public Tile Tile { get; set; }
         
         public string Id { get; }
-        
-        public int Speed { get; set; }
+
+        private int _speed;
+        public int Speed
+        {
+            get
+            {
+                if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.Freezing))
+                {
+                    return (int)Mathf.Floor(_speed / 2);
+                }
+
+                return _speed;
+            }
+            set { _speed = value; }
+        }
         
         public int Health { get; set; }
-        
-        public int Damage { get; set; }
+
+        private int _damage;
+        public int Damage
+        {
+            get
+            {
+                if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.Weakening))
+                {
+                    return (int)Mathf.Floor(_damage * 0.5);
+                }
+
+                return _damage;
+            }
+            set { _damage = value; } 
+        }
         
         public override int GetHashCode()
         {

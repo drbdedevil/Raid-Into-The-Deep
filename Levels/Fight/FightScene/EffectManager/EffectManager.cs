@@ -46,7 +46,11 @@ public class EffectManager
                     }
                 }
 
-                battleEntity.rawEffects = battleEntity.rawEffects.Except(battleEntity.appliedEffects).ToList();
+                battleEntity.appliedEffects.RemoveAll(ae => battleEntity.rawEffects.Any(re => re.EffectType == ae.EffectType));
+                if (battleEntity.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun))
+                {
+                    battleEntity.rawEffects.RemoveAll(ae => ae.EffectType == EEffectType.Stun);
+                }
                 foreach (EntityEffect effect in battleEntity.rawEffects)
                 {
                     effect.entityHolder = battleEntity;
@@ -54,9 +58,25 @@ public class EffectManager
                 battleEntity.appliedEffects.AddRange(battleEntity.rawEffects);
                 battleEntity.rawEffects.Clear();
 
+                List<Effect> effectsToDelete = new();
                 foreach (Effect effect in battleEntity.appliedEffects)
                 {
                     effect.ApplyForHolder();
+                    if (effect.bIsShouldRemoveFromEffectHolder)
+                    {
+                        effectsToDelete.Add(effect);
+                    }
+                }
+                foreach (Effect effect in effectsToDelete)
+                {
+                    if (effect.EffectType == EEffectType.Stun)
+                    {
+                        EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects.FirstOrDefault(effect => effect.effectType == EEffectType.ResistanceToStun);
+                        EntityEffect resitanceStunEffect = new EntityEffect(effectInfo.effectType, effectInfo.duration);
+                        resitanceStunEffect.entityHolder = battleEntity;
+                        battleEntity.appliedEffects.Add(resitanceStunEffect);
+                    }
+                    battleEntity.appliedEffects.Remove(effect);
                 }
             }
         }

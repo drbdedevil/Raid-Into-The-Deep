@@ -9,4 +9,5 @@ public abstract class Effect
     public EEffectType EffectType => effectType;
     protected int duration = 0;
     public abstract void ApplyForHolder();
+    public bool bIsShouldRemoveFromEffectHolder = false;
 }
