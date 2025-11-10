@@ -22,7 +22,8 @@ public partial class EntityEffect : Effect
 				entityHolder.Health = entityHolder.Health - randPoisonDamage;
 				break;
 			case EEffectType.Stun:
-				if (!entityHolder.appliedEffects.Any(ae => ae.EffectType == EEffectType.ResistanceToStun))
+				if (!entityHolder.appliedEffects.Any(ae => ae.EffectType == EEffectType.ResistanceToStun)
+				 && entityHolder.Weapon.effect.EffectType != EEffectType.ResistanceToStun)
 				{
 					GD.Print(entityHolder.Id + " принял эффект оглушение");
 				}

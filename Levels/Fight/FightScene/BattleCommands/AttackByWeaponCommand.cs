@@ -25,29 +25,36 @@ public class AttackByWeaponCommand : Command
         {
             GD.Print($"чувачок с Id-{_battleEntity.Id} ударил по тайлу {tile}");
 
-            if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder)
+            if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder && _battleEntity.Weapon.effect.EffectType != EEffectType.ResistanceToStun && _battleEntity.Weapon.effect.EffectType != EEffectType.Pushing)
             {
                 _battleEntity.Weapon.CreateEffectByWeaponData();
                 EntityEffect effect = _battleEntity.Weapon.effect as EntityEffect;
+
+                bool NoSleep = false;
                 if (tile.BattleEntity.appliedEffects.Any(eff => eff.EffectType == EEffectType.Sleep))
                 {
                     tile.BattleEntity.appliedEffects.RemoveAll(eff => eff.EffectType == EEffectType.Sleep);
+                    NoSleep = true;
+                }
+
+                if (effect.EffectType == EEffectType.Freezing || effect.EffectType == EEffectType.Weakening || effect.EffectType == EEffectType.Sleep && !NoSleep)
+                {
+                    effect.entityHolder = tile.BattleEntity;
+                    tile.BattleEntity.appliedEffects.RemoveAll(ae => ae.EffectType == effect.EffectType);
+                    tile.BattleEntity.appliedEffects.Add(effect);
                 }
                 else
                 {
-                    if (effect.EffectType == EEffectType.Freezing || effect.EffectType == EEffectType.Weakening)
-                    {
-                        effect.entityHolder = tile.BattleEntity;
-                        tile.BattleEntity.appliedEffects.Add(effect);
-                    }
-                    else
-                    {
-                        tile.BattleEntity.rawEffects.Add(effect);
-                    }
+                    tile.BattleEntity.rawEffects.Add(effect);
                 }
             }
+            else if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder && _battleEntity.Weapon.effect.EffectType == EEffectType.Pushing)
+            {
+                GD.Print(_battleEntity.Id + " ТОЛКНУЛ чувака " + tile.BattleEntity.Id + "!");
+            }
+
         }
-        
+
         WeaponRow row = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.weaponData.Name);
         if (row != null)
         {

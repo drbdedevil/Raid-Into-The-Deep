@@ -31,8 +31,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 		}
 		_currentEnemyWarrior = enemyEntities.First();
 		if (_currentEnemyWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Stun
-		 && !_currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun))
-		 || (_currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.Sleep)
+		 && !_currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun)
+		 && _currentEnemyWarrior.Weapon.effect.EffectType != EEffectType.ResistanceToStun)
+		 || _currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.Sleep
 		 || _currentEnemyWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Sleep)))
 		{
 			bShouldSkip = true;
@@ -57,7 +58,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 			if (_skippingMoveTime >= 1.0d)
 			{
 				FightSceneManager.EnemyWarriorsThatTurned.Add(_currentEnemyWarrior);
-				if (FightSceneManager.Enemies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)
+				if (FightSceneManager.Allies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)
 				{
 					FightSceneManager.EnemyWarriorsThatTurned.Clear();
 					FightSceneManager.PlayerWarriorsThatTurned.Clear();
