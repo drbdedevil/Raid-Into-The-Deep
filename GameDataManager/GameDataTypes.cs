@@ -29,7 +29,7 @@ public class CharacterData
     public int Speed { get; set; } = 0;
     public bool[] Upgrades { get; set; } = new bool[0]; // TODO: DELETE
     public WeaponData Weapon { get; set; } = new();
-    public int SkillPoints { get; set; } = 10;
+    public int SkillPoints { get; set; } = 1;
     public int Level { get; set; } = 1;
 
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
@@ -41,8 +41,8 @@ public class CharacterData
 public class StorageData
 {
     public int Level { get; set; } = 1;
-    public int Crystals { get; set; } = 120;
-    public int ChitinFragments { get; set; } = 150;
+    public int Crystals { get; set; } = 40;
+    public int ChitinFragments { get; set; } = 50;
     public List<WeaponData> Weapons { get; set; } = new();
 }
 

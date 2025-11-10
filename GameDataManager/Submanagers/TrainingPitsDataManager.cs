@@ -92,7 +92,7 @@ public partial class TrainingPitsDataManager : Node
             characterData.PortraitID = GetRandomPortraitID();
             characterData.Damage = gameDataManager.baseStatsDatabase.Damage;
             characterData.DamageByEffect = gameDataManager.baseStatsDatabase.DamageByEffect;
-            characterData.Health = 8;// gameDataManager.baseStatsDatabase.Health;
+            characterData.Health = gameDataManager.baseStatsDatabase.Health;// = 8;
             characterData.Heal = gameDataManager.baseStatsDatabase.Heal;
             characterData.Speed = gameDataManager.baseStatsDatabase.Speed;
             characterData.Level = LevelToCreate;

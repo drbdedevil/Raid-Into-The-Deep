@@ -79,7 +79,7 @@ public partial class GameDataManager : Node
 	{
 		currentData = new GameData();
 		forgeDataManager.GenerateWeaponsForShackle();
-		trainingPitsDataManager.GenerateCharactersForHiring(10);
+		trainingPitsDataManager.GenerateCharactersForHiring(6);
 	}
 
 	public void SetSavePath(string InSaveName)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qkur4duvfokj"]
+[gd_scene load_steps=18 format=3 uid="uid://qkur4duvfokj"]
 
 [ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="1_32mhb"]
 [ext_resource type="Script" uid="uid://bwgvxjm6hx44l" path="res://Levels/HubLocation/WarriorPanels/ChosenWarriorPanel.cs" id="1_tk6gk"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://coqnrinh6p17i" path="res://Textures/ChooseAttack/ChooseAttack_Pressed.png" id="8_jkquy"]
 [ext_resource type="Texture2D" uid="uid://0lfp5wm1gccn" path="res://Textures/ChooseAttack/ChooseAttack_Disabled.png" id="9_xdw37"]
 [ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="10_0wh75"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="11_jkquy"]
+[ext_resource type="Texture2D" uid="uid://bxfxakjpccggq" path="res://Textures/EffectsTextures/VoprosDlyaEffects.png" id="12_46alm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hve40"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -221,6 +223,38 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_84233")
 expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 16.0
+grow_horizontal = 0
+texture = ExtResource("11_jkquy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EffectTexture" type="TextureRect" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton/TextureRect2/MarginContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_46alm")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="SkillButton" type="TextureButton" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
 z_index = 1

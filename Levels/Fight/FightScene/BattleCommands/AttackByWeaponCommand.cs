@@ -85,7 +85,7 @@ public class AttackByWeaponCommand : Command
         WeaponRow row = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.weaponData.Name);
         if (row != null)
         {
-            float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.6f;
+            float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.5f;
             SoundManager.Instance.PlaySoundOnce(row.SoundPath, volum);
         }
         else
@@ -93,7 +93,7 @@ public class AttackByWeaponCommand : Command
             WeaponRow row2 = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.AttackShapeInfo.Name);
             if (row2 != null)
             {
-                float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.6f;
+                float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.5f;
                 SoundManager.Instance.PlaySoundOnce(row2.SoundPath, volum);
             }
         }

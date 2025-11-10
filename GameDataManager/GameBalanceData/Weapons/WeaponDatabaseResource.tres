@@ -61,7 +61,7 @@ CrystalCost = 5
 ChitinFragmentsCost = 10
 CrystalYield = 2
 ChitinFragmentsYield = 4
-SoundPath = "res://Sound/Weapon/Rapier.wav"
+SoundPath = "res://Sound/Weapon/Dagger2.wav"
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_ael6f"]

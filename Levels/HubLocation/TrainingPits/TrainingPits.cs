@@ -40,6 +40,7 @@ public partial class TrainingPits : Control, IStackPage
 		}
 		else
 		{
+			SoundManager.Instance.PlaySoundOnce("res://Sound/Denied.wav", 0.3f);
 			NotificationSystem.Instance.ShowMessage("Не хватает ресурсов!", EMessageType.Alert);
 			GD.Print(" -- Not enough funds to upgrade Training Pits! -- ");
 		}

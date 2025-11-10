@@ -98,10 +98,9 @@ public partial class Forge : Node, IStackPage
 				GameDataManager.Instance.storageDataManager.AdjustChitinFragments(ChitinPrice);
 
 				List<string> sounds = new List<string>() {
-					"res://Sound/Interface/Smelt.wav",
-					"res://Sound/Interface/Smelt2.wav" };
+					"res://Sound/Interface/Smelt3.wav" };
 				int randSound = GD.RandRange(0, sounds.Count - 1);
-				SoundManager.Instance.PlaySoundOnce(sounds[randSound], 0.5f);
+				SoundManager.Instance.PlaySoundOnce(sounds[randSound], 0.3f);
 				NotificationSystem.Instance.ShowMessage("Оружие \'" + chosenWeaponDataForMelt.Name + "\' успешно переплавлено.");
 			}
 
@@ -135,10 +134,7 @@ public partial class Forge : Node, IStackPage
 						GameDataManager.Instance.storageDataManager.AdjustChitinFragments(-ChitinPrice);
 
 						List<string> sounds = new List<string>() {
-							"res://Sound/Interface/CreateWeapon1.wav",
-							"res://Sound/Interface/CreateWeapon2.wav",
-							"res://Sound/Interface/CreateWeapon3.wav",
-							"res://Sound/Interface/CreateWeapon4.wav" };
+							"res://Sound/Interface/CreateWeapon3.wav" };
 						int randSound = GD.RandRange(0, sounds.Count - 1);
 						SoundManager.Instance.PlaySoundOnce(sounds[randSound]);
 						NotificationSystem.Instance.ShowMessage("Оружие \'" + existingWeapon.Name + "\' успешно сковано.");
@@ -146,12 +142,14 @@ public partial class Forge : Node, IStackPage
 					}
 					else
 					{
+						SoundManager.Instance.PlaySoundOnce("res://Sound/Denied.wav", 0.3f);
 						NotificationSystem.Instance.ShowMessage("Нет места на складе для: \'" + existingWeapon.Name + "\'.", EMessageType.Warning);
 						GD.Print(" -- Can't shackle weapon! -- ");
 					}
 				}
 				else
 				{
+					SoundManager.Instance.PlaySoundOnce("res://Sound/Denied.wav", 0.3f);
 					NotificationSystem.Instance.ShowMessage("Нечем платить оружейнику - денег нет, но вы держитесь!", EMessageType.Alert);
 					GD.Print(" -- Not enough funds for shackle! -- ");
 				}
@@ -185,6 +183,7 @@ public partial class Forge : Node, IStackPage
 		else
 		{
 			NotificationSystem.Instance.ShowMessage("Не хватает ресурсов!", EMessageType.Alert);
+			SoundManager.Instance.PlaySoundOnce("res://Sound/Denied.wav", 0.3f);
 			GD.Print(" -- Not enough funds to upgrade Forge! -- ");
 		}
 	}
