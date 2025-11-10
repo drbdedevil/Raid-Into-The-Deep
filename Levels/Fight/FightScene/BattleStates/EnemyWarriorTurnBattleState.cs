@@ -30,11 +30,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 			throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
 		}
 		_currentEnemyWarrior = enemyEntities.First();
-		if (_currentEnemyWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Stun
-		 && !_currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun)
-		 && _currentEnemyWarrior.Weapon.effect.EffectType != EEffectType.ResistanceToStun)
-		 || _currentEnemyWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.Sleep
-		 || _currentEnemyWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Sleep)))
+		if (!_currentEnemyWarrior.CanAct)
 		{
 			bShouldSkip = true;
 		}
@@ -58,7 +54,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 			if (_skippingMoveTime >= 1.0d)
 			{
 				FightSceneManager.EnemyWarriorsThatTurned.Add(_currentEnemyWarrior);
-				if (FightSceneManager.Allies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)
+				if (FightSceneManager.Enemies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)
 				{
 					FightSceneManager.EnemyWarriorsThatTurned.Clear();
 					FightSceneManager.PlayerWarriorsThatTurned.Clear();

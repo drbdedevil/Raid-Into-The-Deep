@@ -38,7 +38,36 @@ public abstract class Weapon
 	public void CreateEffectByWeaponData()
     {
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
-		effect = new EntityEffect(effectInfo.effectType, effectInfo.duration);
+		switch (effectInfo.effectType)
+        {
+			case EEffectType.Poison:
+				effect = new PoisonEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Fire:
+				effect = new FireEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Stun:
+				effect = new StunEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.ResistanceToStun:
+				effect = new ResistanceToStunEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Freezing:
+				effect = new FreezingEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Weakening:
+				effect = new WeakeningEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Pushing:
+				effect = new PushingEntityEffect(effectInfo.duration);
+				break;
+			case EEffectType.Sleep:
+				effect = new SleepEntityEffect(effectInfo.duration);
+				break;
+			default:
+				break;
+        }
+		
     }
 
 	public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);

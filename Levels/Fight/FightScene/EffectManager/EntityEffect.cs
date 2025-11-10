@@ -6,63 +6,148 @@ using System.Linq;
 public partial class EntityEffect : Effect
 {
 	public BattleEntity entityHolder;
-	public EntityEffect(EEffectType InEffectType, int InDuration = 0) : base(InEffectType, InDuration)
+}
+
+public class PoisonEntityEffect : EntityEffect
+{
+	public PoisonEntityEffect(int duration = 3)
 	{
-		
+		EffectType = EEffectType.Poison;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = true;
 	}
-	public override void ApplyForHolder()
+
+	public override void OnApply()
 	{
-		GD.Print("\n");
-		// GD.Print("\nHP " + entityHolder.Id + " =" + entityHolder.Health  + " до принятия эффекта");
-		switch (effectType)
-		{
-			case EEffectType.Poison:
-				GD.Print(entityHolder.Id + " принял эффект яд");
-				int randPoisonDamage = GD.RandRange(2, 5);
-				entityHolder.Health = entityHolder.Health - randPoisonDamage;
-				break;
-			case EEffectType.Stun:
-				if (!entityHolder.appliedEffects.Any(ae => ae.EffectType == EEffectType.ResistanceToStun)
-				 && entityHolder.Weapon.effect.EffectType != EEffectType.ResistanceToStun)
-				{
-					GD.Print(entityHolder.Id + " принял эффект оглушение");
-				}
-				else
-				{
-					GD.Print(entityHolder.Id + " не принял эффект оглушение, так как имеет к нему сопротивление");
-				}
-				break;
-			case EEffectType.Freezing:
-				GD.Print(entityHolder.Id + " принял эффект мороз");
+		entityHolder.Health = entityHolder.Health - 5;
+		GD.Print("Применился яд для " + entityHolder.Id);
+	}
+}
 
-				break;
-			case EEffectType.Weakening:
-				GD.Print(entityHolder.Id + " принял эффект ослабление");
+public class FireEntityEffect : EntityEffect
+{
+	public FireEntityEffect(int duration = 3)
+	{
+		EffectType = EEffectType.Fire;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = true;
+	}
+	
+	public override void OnApply()
+	{
+		entityHolder.Health = entityHolder.Health - 8;
+		GD.Print("Применился огонь для " + entityHolder.Id);
+	}
+}
 
-				break;
-			case EEffectType.ResistanceToStun:
-				GD.Print( entityHolder.Id + " принял эффект сопротивление к оглушению");
-				break;
-			// case EEffectType.Pushing:
-			// GD.Print( entityHolder.Id + " принял эффект толкание");
-			// break;
-			case EEffectType.Sleep:
-				GD.Print(entityHolder.Id + " принял эффект сон");
-				break;
-			case EEffectType.Fire:
-				GD.Print(entityHolder.Id + " принял эффект огонь");
-				int randFireDamage = GD.RandRange(1, 4);
-				entityHolder.Health = entityHolder.Health - randFireDamage;
-				break;
-			default:
-				break;
-		}
+public class StunEntityEffect : EntityEffect
+{
+	public StunEntityEffect(int duration = 1)
+	{
+		EffectType = EEffectType.Stun;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = false;
+	}
 
-		if (--duration == 0)
-		{
-			bIsShouldRemoveFromEffectHolder = true;
-		}
-		GD.Print("Осталось ходов для эффекта: " + duration);
-		// GD.Print("HP " + entityHolder.Id + " =" + entityHolder.Health  + " после принятия эффекта");
+	public override void OnApply()
+	{
+		entityHolder.CanAct = false;
+		GD.Print("Применилось оглушение для " + entityHolder.Id);
+	}
+	public override void OnRemove()
+	{
+		entityHolder.CanAct = true;
+		entityHolder.AddEffect(new ResistanceToStunEntityEffect(2));
+	}
+}
+
+public class ResistanceToStunEntityEffect : EntityEffect
+{
+	public ResistanceToStunEntityEffect(int duration = 0)
+	{
+		EffectType = EEffectType.ResistanceToStun;
+		TargetType = EEffectTarget.Self;
+		Duration = duration;
+		IsTemporary = duration > 0;
+		IsPending = false;
+	}
+	public override void OnApply()
+	{
+		GD.Print("Применилось сопротивление оглушению для " + entityHolder.Id);
+	}
+}
+
+public class PushingEntityEffect : EntityEffect
+{
+	public PushingEntityEffect(int duration = 0)
+	{
+		EffectType = EEffectType.Pushing;
+		TargetType = EEffectTarget.Self;
+		Duration = duration;
+		IsTemporary = duration > 0;
+		IsPending = false;
+	}
+	public override void OnApply()
+	{
+		GD.Print("Применилось толкание для " + entityHolder.Id);
+	}
+}
+
+public class SleepEntityEffect : EntityEffect
+{
+	public SleepEntityEffect(int duration = 3)
+	{
+		EffectType = EEffectType.Sleep;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = false;
+	}
+	public override void OnApply()
+	{
+		GD.Print("Применилось сон для " + entityHolder.Id);
+		entityHolder.CanAct = false;
+	}
+	public override void OnRemove()
+	{
+		entityHolder.CanAct = true;
+	}
+}
+
+public class FreezingEntityEffect : EntityEffect
+{
+	public FreezingEntityEffect(int duration = 3)
+	{
+		EffectType = EEffectType.Freezing;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = false;
+	}
+	public override void OnApply()
+	{
+		GD.Print("Применился мороз для " + entityHolder.Id);
+	}
+}
+
+public class WeakeningEntityEffect : EntityEffect
+{
+	public WeakeningEntityEffect(int duration = 3)
+	{
+		EffectType = EEffectType.Weakening;
+		TargetType = EEffectTarget.Enemy;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = false;
+	}
+	public override void OnApply()
+	{
+		GD.Print("Применилось ослабление для " + entityHolder.Id);
 	}
 }

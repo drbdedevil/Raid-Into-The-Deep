@@ -25,34 +25,61 @@ public class AttackByWeaponCommand : Command
         {
             GD.Print($"чувачок с Id-{_battleEntity.Id} ударил по тайлу {tile}");
 
-            if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder && _battleEntity.Weapon.effect.EffectType != EEffectType.ResistanceToStun && _battleEntity.Weapon.effect.EffectType != EEffectType.Pushing)
+            if (tile.BattleEntity == null)
+                continue;
+
+            _battleEntity.Weapon.CreateEffectByWeaponData();
+            var effect = _battleEntity.Weapon.effect as EntityEffect;
+            if (effect == null)
+                continue;
+
+            if (tile.BattleEntity.HasEffect(EEffectType.Sleep))
             {
-                _battleEntity.Weapon.CreateEffectByWeaponData();
-                EntityEffect effect = _battleEntity.Weapon.effect as EntityEffect;
-
-                bool NoSleep = false;
-                if (tile.BattleEntity.appliedEffects.Any(eff => eff.EffectType == EEffectType.Sleep))
+                tile.BattleEntity.RemoveEffect(tile.BattleEntity.GetEffect(EEffectType.Sleep));
+                GD.Print($"Сущность {tile.BattleEntity.Id} проснулась от удара!");
+                if (effect.EffectType is EEffectType.Sleep)
                 {
-                    tile.BattleEntity.appliedEffects.RemoveAll(eff => eff.EffectType == EEffectType.Sleep);
-                    NoSleep = true;
-                }
-
-                if (effect.EffectType == EEffectType.Freezing || effect.EffectType == EEffectType.Weakening || effect.EffectType == EEffectType.Sleep && !NoSleep)
-                {
-                    effect.entityHolder = tile.BattleEntity;
-                    tile.BattleEntity.appliedEffects.RemoveAll(ae => ae.EffectType == effect.EffectType);
-                    tile.BattleEntity.appliedEffects.Add(effect);
-                }
-                else
-                {
-                    tile.BattleEntity.rawEffects.Add(effect);
+                    continue;
                 }
             }
-            else if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder && _battleEntity.Weapon.effect.EffectType == EEffectType.Pushing)
+
+            if (effect.EffectType == EEffectType.Stun && 
+                (tile.BattleEntity.HasEffect(EEffectType.ResistanceToStun, true)
+              || tile.BattleEntity.HasEffect(EEffectType.ResistanceToStun)))
             {
-                GD.Print(_battleEntity.Id + " ТОЛКНУЛ чувака " + tile.BattleEntity.Id + "!");
+                GD.Print($"Цель {tile.BattleEntity.Id} иммунна к оглушению!");
+                continue;
             }
 
+            if (effect.EffectType is EEffectType.Freezing 
+                or EEffectType.Weakening 
+                or EEffectType.Sleep
+                or EEffectType.Stun)
+            {
+                if (effect.EffectType == EEffectType.Sleep && tile.BattleEntity.HasEffect(EEffectType.Sleep))
+                    continue;
+
+                effect.entityHolder = tile.BattleEntity;
+                tile.BattleEntity.AddEffect(effect);
+
+                effect.OnApply();
+                GD.Print($"Эффект {effect.EffectType} применён сразу к {tile.BattleEntity.Id}");
+            }
+
+            else if (effect.EffectType != EEffectType.ResistanceToStun && 
+                    effect.EffectType != EEffectType.Pushing)
+            {
+                effect.entityHolder = tile.BattleEntity;
+                tile.BattleEntity.appliedEffects.Add(effect);
+                GD.Print($"Эффект {effect.EffectType} добавлен в очередь");
+            }
+
+            else if (effect.EffectType == EEffectType.Pushing)
+            {
+                GD.Print($"{_battleEntity.Id} ТОЛКНУЛ {tile.BattleEntity.Id}!");
+                // Надо вызвать метод физического толчка
+                // например tile.BattleEntity.PushFrom(_battleEntity.Position);
+            }
         }
 
         WeaponRow row = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.weaponData.Name);

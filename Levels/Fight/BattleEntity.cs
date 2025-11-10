@@ -18,16 +18,18 @@ namespace RaidIntoTheDeep.Levels.Fight
             Weapon = weapon;
         }
 
+        public bool CanAct { get; set; } = true;
+
         public List<Effect> appliedEffects { get; set; } = new();
-        public List<Effect> rawEffects { get; set; } = new();
-        
+        // public List<Effect> rawEffects { get; set; } = new();
+
         public Weapon Weapon { get; set; }
-        
+
         /// <summary>
         /// Клетка на которой стоит персонаж
         /// </summary>
         public Tile Tile { get; set; }
-        
+
         public string Id { get; }
 
         private int _speed;
@@ -44,7 +46,7 @@ namespace RaidIntoTheDeep.Levels.Fight
             }
             set { _speed = value; }
         }
-        
+
         public int Health { get; set; }
 
         private int _damage;
@@ -59,9 +61,9 @@ namespace RaidIntoTheDeep.Levels.Fight
 
                 return _damage;
             }
-            set { _damage = value; } 
+            set { _damage = value; }
         }
-        
+
         public override int GetHashCode()
         {
             return Id.GetHashCode();
@@ -76,5 +78,36 @@ namespace RaidIntoTheDeep.Levels.Fight
             return false;
         }
 
+        public void AddEffect(Effect effect)
+        {
+            var existing = appliedEffects.FirstOrDefault(e => e.EffectType == effect.EffectType);
+            if (existing != null)
+            {
+                existing.OnRemove();
+                appliedEffects.Remove(existing);
+            }
+
+            appliedEffects.Add(effect);
+        }
+
+        public void RemoveEffect(Effect effect)
+        {
+            effect.OnRemove();
+            appliedEffects.Remove(effect);
+        }
+
+        public bool HasEffect(EEffectType type, bool IsOnWeapon = false)
+        {
+            if (IsOnWeapon)
+            {
+                return Weapon.effect.EffectType == type;
+            }
+
+            return appliedEffects.Any(e => e.EffectType == type);
+        } 
+        public Effect GetEffect(EEffectType type)
+        {
+            return appliedEffects.FirstOrDefault(e => e.EffectType == type);
+        }
     }
 }

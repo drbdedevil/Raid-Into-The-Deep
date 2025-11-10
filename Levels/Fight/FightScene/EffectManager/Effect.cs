@@ -1,13 +1,29 @@
+public enum EEffectTarget
+{
+    Self,
+    Enemy,
+    Tile
+}
+
 public abstract class Effect
 {
-    public Effect(EEffectType InEffectType, int InDuration = 0)
+    public EEffectType EffectType { get; protected set; }
+    public EEffectTarget TargetType { get; protected set; } 
+
+    public int Duration { get; protected set; }
+    public bool IsExpired => Duration == 0 && IsTemporary;
+
+    public bool IsTemporary { get; protected set; } 
+    public bool IsPending { get; set; } 
+
+    public virtual void OnApply() { }
+    public virtual void OnRemove() { }
+    public virtual void OnTurnEnd() 
     {
-        effectType = InEffectType;
-        duration = InDuration;
+        if (IsTemporary && Duration > 0)
+        {
+            Duration--;
+        }
     }
-    protected EEffectType effectType = EEffectType.Poison;
-    public EEffectType EffectType => effectType;
-    protected int duration = 0;
-    public abstract void ApplyForHolder();
-    public bool bIsShouldRemoveFromEffectHolder = false;
 }
+

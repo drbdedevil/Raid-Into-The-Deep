@@ -25,11 +25,7 @@ public class PlayerWarriorMovementBattleState : BattleState
         }
         _currentPlayerWarrior = playerEntities.First();
 
-        if (_currentPlayerWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Stun
-         && !_currentPlayerWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun)
-         && _currentPlayerWarrior.Weapon.effect.EffectType != EEffectType.ResistanceToStun)
-         || _currentPlayerWarrior.appliedEffects.Any(effect => effect.EffectType == EEffectType.Sleep
-         || _currentPlayerWarrior.rawEffects.Any(effect => effect.EffectType == EEffectType.Sleep)))
+        if (!_currentPlayerWarrior.CanAct)
         {
             bShouldSkip = true;
         }
@@ -72,7 +68,7 @@ public class PlayerWarriorMovementBattleState : BattleState
             if (_skippingMoveTime >= 1.0d)
             {
                 FightSceneManager.PlayerWarriorsThatTurned.Add(_currentPlayerWarrior);
-                if (FightSceneManager.Enemies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)
+                if (FightSceneManager.Allies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)
 				{
 					FightSceneManager.EnemyWarriorsThatTurned.Clear();
 					FightSceneManager.PlayerWarriorsThatTurned.Clear();

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Godot;
 using RaidIntoTheDeep.Levels.Fight;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -9,7 +10,7 @@ public interface IEffectHolder
     // применённые эффекты
     public List<Effect> appliedEffects { get; set; }
     // ещё не обработанные эффекты - именно отсюда они начнут применяться, если игрок закончит ход, а не отменит его
-    public List<Effect> rawEffects { get; set; }
+    // public List<Effect> rawEffects { get; set; }
 }
 
 public class EffectManager
@@ -33,50 +34,33 @@ public class EffectManager
     private void ApplyEffectsForEntity()
     {
         List<BattleEntity> battleEntities = _fightSceneManager.AllEntities.ToList();
-        foreach (BattleEntity battleEntity in battleEntities)
+        foreach (var entity in battleEntities)
         {
-            if (battleEntity is IEffectHolder)
+            foreach (var effect in entity.appliedEffects.ToList())
             {
-                var seenIds = new HashSet<EEffectType>();
-                for (int i = battleEntity.rawEffects.Count - 1; i >= 0; --i)
+                if (effect.IsPending)
                 {
-                    if (!seenIds.Add(battleEntity.rawEffects[i].EffectType))
+                    if (effect.EffectType == EEffectType.Stun &&
+                        entity.HasEffect(EEffectType.ResistanceToStun))
                     {
-                        battleEntity.rawEffects.RemoveAt(i);
+                        GD.Print($"Эффект {effect.EffectType} не применён к {entity.Id} — сопротивление!");
+                        continue;
                     }
-                }
 
-                battleEntity.appliedEffects.RemoveAll(ae => battleEntity.rawEffects.Any(re => re.EffectType == ae.EffectType));
-                if (battleEntity.appliedEffects.Any(effect => effect.EffectType == EEffectType.ResistanceToStun))
-                {
-                    battleEntity.rawEffects.RemoveAll(ae => ae.EffectType == EEffectType.Stun);
+                    effect.OnApply();
+                    effect.IsPending = false;
+                    GD.Print($"Эффект {effect.EffectType} применён к {entity.Id}");
                 }
-                foreach (EntityEffect effect in battleEntity.rawEffects)
+                else
                 {
-                    effect.entityHolder = battleEntity;
-                }
-                battleEntity.appliedEffects.AddRange(battleEntity.rawEffects);
-                battleEntity.rawEffects.Clear();
+                    effect.OnTurnEnd();
 
-                List<Effect> effectsToDelete = new();
-                foreach (Effect effect in battleEntity.appliedEffects)
-                {
-                    effect.ApplyForHolder();
-                    if (effect.bIsShouldRemoveFromEffectHolder)
+                    if (effect.IsExpired)
                     {
-                        effectsToDelete.Add(effect);
+                        GD.Print($"Эффект {effect.EffectType} истёк у {entity.Id}");
+                        effect.OnRemove();
+                        entity.RemoveEffect(effect);
                     }
-                }
-                foreach (Effect effect in effectsToDelete)
-                {
-                    if (effect.EffectType == EEffectType.Stun)
-                    {
-                        EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects.FirstOrDefault(effect => effect.effectType == EEffectType.ResistanceToStun);
-                        EntityEffect resitanceStunEffect = new EntityEffect(effectInfo.effectType, effectInfo.duration);
-                        resitanceStunEffect.entityHolder = battleEntity;
-                        battleEntity.appliedEffects.Add(resitanceStunEffect);
-                    }
-                    battleEntity.appliedEffects.Remove(effect);
                 }
             }
         }
