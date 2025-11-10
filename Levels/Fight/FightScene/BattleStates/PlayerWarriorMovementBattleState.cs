@@ -65,7 +65,7 @@ public class PlayerWarriorMovementBattleState : BattleState
         if (bShouldSkip)
         {
             _skippingMoveTime += delta;
-            if (_skippingMoveTime >= 1.0d)
+            if (_skippingMoveTime >= 0.25d)
             {
                 FightSceneManager.PlayerWarriorsThatTurned.Add(_currentPlayerWarrior);
                 if (FightSceneManager.Allies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)

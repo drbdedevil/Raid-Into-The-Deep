@@ -68,9 +68,10 @@ public partial class FightSceneManager : Node2D
         _allEntities.AddRange(_enemies);
         
         TitleLabel = GetNode<Label>("StateTitleText");
-        ConfirmTurnButton = GetNode<Button>("ConfirmTurnButton");
+        
+        ConfirmTurnButton = GetNode<Button>("Control/HBoxContainer/MarginContainer2/ConfirmTurnButton");
         ConfirmTurnButton.SetDisabled(true);
-        CancelTurnButton = GetNode<Button>("CancelTurnButton");
+        CancelTurnButton = GetNode<Button>("Control/HBoxContainer/MarginContainer/CancelTurnButton");
         CancelTurnButton.SetDisabled(true);
     
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);

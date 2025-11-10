@@ -34,7 +34,7 @@ public static class MapParser
                 BattleEntity? battleEntity = null;
                 if (mapElement != "e" && mapElement != "o" && mapElement != "c")
                 {
-                    battleEntity = new EnemyEntity(tile, Guid.NewGuid().ToString(), 2, 100, 10, (GameEnemyCode)mapElement.ToInt());
+                    battleEntity = new EnemyEntity(tile, Guid.NewGuid().ToString(), 2, 10, 10, (GameEnemyCode)mapElement.ToInt());
                 }
                 tile.BattleEntity = battleEntity;
 

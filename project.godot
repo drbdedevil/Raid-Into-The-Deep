@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 GameDataManager="*res://GameDataManager/GameDataManager.tscn"
 NotificationSystem="*res://NotificationSystem/NotificationSystem.tscn"
-SoundManager="*res://SoundManager/SoundManager.tscn"
 BattleMapInitStateManager="*res://Levels/Fight/BattleMapInitStateManager.tscn"
+SoundManager="*res://SoundManager/SoundManager.tscn"
 
 [display]
 

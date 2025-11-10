@@ -15,7 +15,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 	private List<Tile> _tilesToAttack;
 
 	private Task _drawingTilesToMoveTask;
+	private const int DrawingTilesToMoveTaskDuration = 250;
 	private Task _drawingTilesToAttackTask;
+	private const int drawingTilesToAttackTaskDuration = 250;
 	private double _skippingMoveTime = 0.0d;
 	private bool bShouldSkip = false;
 
@@ -38,7 +40,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 		{
 			_tilesToMove = PathFinder.FindTilesToMove(_currentEnemyWarrior.Tile, mapManager, _currentEnemyWarrior.Speed);
 			MapManager.DrawEnemyEntityTilesToMove(_tilesToMove);
-			_drawingTilesToMoveTask = Task.Delay(2000);
+			_drawingTilesToMoveTask = Task.Delay(DrawingTilesToMoveTaskDuration);
 		}
 	}
 
@@ -51,7 +53,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 		if (bShouldSkip)
 		{
 			_skippingMoveTime += delta;
-			if (_skippingMoveTime >= 1.0d)
+			if (_skippingMoveTime >= 0.25d)
 			{
 				FightSceneManager.EnemyWarriorsThatTurned.Add(_currentEnemyWarrior);
 				if (FightSceneManager.Enemies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)
@@ -119,7 +121,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 					var command = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, tileToMove);
 					command.Execute();
 					MapManager.DrawEnemyEntityTilesToAttack(_tilesToAttack);
-					_drawingTilesToAttackTask = Task.Delay(2000);
+					_drawingTilesToAttackTask = Task.Delay(drawingTilesToAttackTaskDuration);
 					return new (playerEntity, tileToMove);
 				}
 			}
