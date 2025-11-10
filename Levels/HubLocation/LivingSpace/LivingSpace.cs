@@ -31,6 +31,7 @@ public partial class LivingSpace : Control, IStackPage
                 GameDataManager.Instance.storageDataManager.AdjustCrystals(-CrystalPrice);
                 GameDataManager.Instance.storageDataManager.AdjustChitinFragments(-ChitinPrice);
 
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/Confirm.wav");
                 GD.Print(" -- Successful upgrade Living Space! -- ");
             }
             else

@@ -28,6 +28,8 @@ public partial class FiredWarriorPanel : Control
         GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(warrior.characterData.ID);
 
         NotificationSystem.Instance.ShowMessage("Воин \'" + warrior.characterData.Name + "\' уволен с позором.");
+
+        SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/FireAnWarrior.wav");
     }
     
     public void SetCharacterInfosToWarriorPanel(CharacterData InCharacterData)

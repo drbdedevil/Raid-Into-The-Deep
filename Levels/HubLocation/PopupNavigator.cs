@@ -30,7 +30,8 @@ public partial class PopupNavigator : PopupPanel
     }
 
     private void OnClosePopupPressed()
-	{
+    {
+        SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/CloseZdanie.wav");
 		ClearHistory(true);
 		Hide();
 	}

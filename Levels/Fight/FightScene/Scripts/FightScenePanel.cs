@@ -75,6 +75,8 @@ public partial class FightScenePanel : TextureRect
         GameDataManager.Instance.runMapDataManager.PassMapNode();
         SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
         sceneTree.ChangeSceneToPacked(runMapScene);
+
+        SoundManager.Instance.PlaySoundOnce("res://Sound/FleeFromBattle.wav", 0.7f);
     }
     private void OnCrystalsUpdate() 
 	{

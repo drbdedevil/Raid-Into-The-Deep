@@ -19,6 +19,7 @@ public partial class HireWarriorPanel : Node
 		{
 			if (GameDataManager.Instance.trainingPitsDataManager.TryDeleteCharacterForHiring(warrior.characterData.ID))
 			{
+				SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/HireAnWarrior.wav");
 				NotificationSystem.Instance.ShowMessage("Воин \'" + warrior.characterData.Name + "\' успешно нанят.");
 			}
 		}

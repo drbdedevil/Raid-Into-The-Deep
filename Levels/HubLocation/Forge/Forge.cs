@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
@@ -96,6 +97,11 @@ public partial class Forge : Node, IStackPage
 				GameDataManager.Instance.storageDataManager.AdjustCrystals(CrystalPrice);
 				GameDataManager.Instance.storageDataManager.AdjustChitinFragments(ChitinPrice);
 
+				List<string> sounds = new List<string>() {
+					"res://Sound/Interface/Smelt.wav",
+					"res://Sound/Interface/Smelt2.wav" };
+				int randSound = GD.RandRange(0, sounds.Count - 1);
+				SoundManager.Instance.PlaySoundOnce(sounds[randSound], 0.5f);
 				NotificationSystem.Instance.ShowMessage("Оружие \'" + chosenWeaponDataForMelt.Name + "\' успешно переплавлено.");
 			}
 
@@ -128,6 +134,13 @@ public partial class Forge : Node, IStackPage
 						GameDataManager.Instance.storageDataManager.AdjustCrystals(-CrystalPrice);
 						GameDataManager.Instance.storageDataManager.AdjustChitinFragments(-ChitinPrice);
 
+						List<string> sounds = new List<string>() {
+							"res://Sound/Interface/CreateWeapon1.wav",
+							"res://Sound/Interface/CreateWeapon2.wav",
+							"res://Sound/Interface/CreateWeapon3.wav",
+							"res://Sound/Interface/CreateWeapon4.wav" };
+						int randSound = GD.RandRange(0, sounds.Count - 1);
+						SoundManager.Instance.PlaySoundOnce(sounds[randSound]);
 						NotificationSystem.Instance.ShowMessage("Оружие \'" + existingWeapon.Name + "\' успешно сковано.");
 						GD.Print(" -- Successful shackle! -- ");
 					}
@@ -161,6 +174,7 @@ public partial class Forge : Node, IStackPage
 				GameDataManager.Instance.storageDataManager.AdjustCrystals(-CrystalPrice);
 				GameDataManager.Instance.storageDataManager.AdjustChitinFragments(-ChitinPrice);
 
+				SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/Confirm.wav");
 				GD.Print(" -- Successful upgrade Forge! -- ");
 			}
 			else

@@ -93,14 +93,20 @@ public partial class Warrior : Node, IStackPage
 		{
 			if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToReserved(characterData, 1))
 			{
-				GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromUsed(characterData.ID);
+				if (GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromUsed(characterData.ID))
+				{
+					SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/AddToTeamOrKick2.wav");
+				}
 			}
 		}
 		else if (GameDataManager.Instance.livingSpaceDataManager.IsCharacterInReservedList(characterData.ID))
 		{
 			if (GameDataManager.Instance.livingSpaceDataManager.TryAddCharacterToUsed(characterData))
 			{
-				GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(characterData.ID);
+				if (GameDataManager.Instance.livingSpaceDataManager.TryDeleteCharacterFromReserved(characterData.ID))
+				{
+					SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/AddToTeamOrKick.wav");
+				}
 			}
 			else
 			{

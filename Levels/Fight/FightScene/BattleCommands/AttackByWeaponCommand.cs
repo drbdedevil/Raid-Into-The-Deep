@@ -24,7 +24,7 @@ public class AttackByWeaponCommand : Command
         foreach (var tile in _tilesForAttack)
         {
             GD.Print($"чувачок с Id-{_battleEntity.Id} ударил по тайлу {tile}");
-            
+
             if (tile.BattleEntity != null && tile.BattleEntity is IEffectHolder)
             {
                 _battleEntity.Weapon.CreateEffectByWeaponData();
@@ -47,6 +47,22 @@ public class AttackByWeaponCommand : Command
                 }
             }
         }
+        
+        WeaponRow row = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.weaponData.Name);
+        if (row != null)
+        {
+            float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.6f;
+            SoundManager.Instance.PlaySoundOnce(row.SoundPath, volum);
+        }
+        else
+        {
+            WeaponRow row2 = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.AttackShapeInfo.Name);
+            if (row2 != null)
+            {
+                float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.6f;
+                SoundManager.Instance.PlaySoundOnce(row2.SoundPath, volum);
+            }
+        }
 
         var entitiesToAttack = _battleEntity.Weapon.CalculateDamageForEntities(_battleEntity, _tilesForAttack);
         foreach (var targetWeaponAttackDamage in entitiesToAttack)
@@ -57,6 +73,7 @@ public class AttackByWeaponCommand : Command
                 if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
                 {
                     _fightSceneManager.RemovePlayerWarrior(playerWarrior);
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
                 }
             }
             else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
@@ -65,6 +82,7 @@ public class AttackByWeaponCommand : Command
                 if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
                 {
                     _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
                 }
             }
         }

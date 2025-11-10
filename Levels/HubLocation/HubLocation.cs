@@ -77,6 +77,7 @@ public partial class HubLocation : Node
 	}
 	private void OnSettingsButtonPressed()
 	{
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/Confirm2.wav");
 		GameDataManager.Instance.Save();
 	}
 	private void OnRaceMapButtonPressed()
@@ -127,6 +128,8 @@ public partial class HubLocation : Node
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/OpenZdanie.wav");
 	}
 	private void OnStoragePressed()
 	{
@@ -142,6 +145,8 @@ public partial class HubLocation : Node
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/OpenZdanie.wav");
 	}
 	private void OnCommandBlockPressed()
 	{
@@ -157,6 +162,8 @@ public partial class HubLocation : Node
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/OpenZdanie.wav");
 	}
 	private void OnLivingSpacePressed()
 	{
@@ -172,6 +179,8 @@ public partial class HubLocation : Node
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/OpenZdanie.wav");
 	}
 	private void OnForgePressed()
 	{
@@ -187,6 +196,8 @@ public partial class HubLocation : Node
 
 		var popup = GetNode<PopupPanel>("PopupPanel");
 		popup.Popup();
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/OpenZdanie.wav");
 	}
 
 	private void OnClosePopupPressed()

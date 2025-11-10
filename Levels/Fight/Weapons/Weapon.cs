@@ -10,7 +10,7 @@ public abstract class Weapon
 	{
 		AttackShapeInfo = GameDataManager.Instance.attackShapeDatabase.AttackShapes[attackShapeId];
 		weaponData = InWeaponData;
-
+		
 		CreateEffectByWeaponData();
 	}
 

@@ -62,6 +62,7 @@ public partial class WeaponSelector : Node, IStackPage
 		{
 			if (weaponList == EWeaponList.Storage)
 			{
+				SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/EquipWeapon.wav");
 				characterList.ChooseWeaponData(InWeaponPanel);
 			}
 

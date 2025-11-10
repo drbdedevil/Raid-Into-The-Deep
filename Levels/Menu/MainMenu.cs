@@ -35,11 +35,13 @@ public partial class MainMenu : Node
     private void OnSettingsButtonPressed()
     {
         GD.Print(" -- SettingsButtonPressed --");
+        
     }
     private void OnEscapeButtonPressed()
     {
         GD.Print(" -- EscapeButtonPressed --");
 
+        // SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/ExitGame.wav");
         GetTree().Quit();
 	}
 }

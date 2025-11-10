@@ -13,4 +13,5 @@ public partial class WeaponRow : Resource
     [Export] public int ChitinFragmentsCost { get; set; } = new();
     [Export] public int CrystalYield { get; set; } = new();
     [Export] public int ChitinFragmentsYield { get; set; } = new();
+    [Export] public string SoundPath { get; set; } = "";
 }
