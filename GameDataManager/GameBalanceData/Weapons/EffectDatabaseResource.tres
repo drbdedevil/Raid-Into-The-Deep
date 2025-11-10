@@ -15,7 +15,6 @@
 script = ExtResource("1_6srn1")
 Name = "Яд"
 texture2D = ExtResource("2_l8ofp")
-duration = 3
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [sub_resource type="Resource" id="Resource_l8ofp"]
@@ -23,7 +22,6 @@ script = ExtResource("1_6srn1")
 Name = "Мороз"
 texture2D = ExtResource("3_l8ofp")
 effectType = 2
-duration = 3
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [sub_resource type="Resource" id="Resource_iupka"]
@@ -32,7 +30,6 @@ Name = "Ослабление"
 texture2D = ExtResource("4_2kh8b")
 effectType = 3
 Weight = 0.3
-duration = 3
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [sub_resource type="Resource" id="Resource_2kh8b"]
@@ -41,7 +38,6 @@ Name = "Оглушение"
 texture2D = ExtResource("5_mftc2")
 effectType = 1
 Weight = 0.01
-duration = 1
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [sub_resource type="Resource" id="Resource_mftc2"]
@@ -66,7 +62,6 @@ Name = "Сон"
 texture2D = ExtResource("8_uvb8r")
 effectType = 6
 Weight = 0.05
-duration = 3
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [sub_resource type="Resource" id="Resource_y0a6f"]
@@ -74,7 +69,6 @@ script = ExtResource("1_6srn1")
 Name = "Огонь"
 texture2D = ExtResource("9_y0a6f")
 effectType = 7
-duration = 3
 metadata/_custom_type_script = "uid://bl6nwtprqh342"
 
 [resource]
