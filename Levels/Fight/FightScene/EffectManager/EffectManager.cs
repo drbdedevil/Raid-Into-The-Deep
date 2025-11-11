@@ -48,7 +48,7 @@ public class EffectManager
                     }
 
                     effect.OnApply();
-                    effect.IsPending = false;
+                    effect.OnTurnEnd();
                     GD.Print($"Эффект {effect.EffectType} применён к {entity.Id}");
                 }
                 else
