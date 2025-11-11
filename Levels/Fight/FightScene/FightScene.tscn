@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://omgqup63apve"]
+[gd_scene load_steps=25 format=3 uid="uid://omgqup63apve"]
 
 [ext_resource type="Script" uid="uid://bea5jxtyrqhfw" path="res://Levels/Fight/FightScene/Scripts/FightSceneManager.cs" id="1_26lfq"]
 [ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_if2d1"]
 [ext_resource type="PackedScene" uid="uid://bhuo1shstknrt" path="res://Levels/Fight/FightScene/FightScenePanel.tscn" id="2_om0m0"]
+[ext_resource type="PackedScene" uid="uid://6jsccxsep656" path="res://Levels/Fight/FightScene/EnemyFightScenePanel.tscn" id="3_5uapy"]
 [ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="3_mkdg0"]
 [ext_resource type="Texture2D" uid="uid://hqt7k2bpme1r" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="4_ajt20"]
 [ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_ff54w"]
 [ext_resource type="Texture2D" uid="uid://dkyv8egijirlx" path="res://Textures/Fight/FightScene/Explosion-Sheet.png" id="7_ajt20"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
@@ -131,6 +133,91 @@ tile_shape = 1
 tile_size = Vector2i(64, 32)
 sources/0 = SubResource("TileSetAtlasSource_5uapy")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5uapy"]
+bg_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5294118, 0.16470589, 0.21960784, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foig6"]
+bg_color = Color(0.6901961, 0.26666668, 0.25882354, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5294118, 0.16470589, 0.21960784, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6kyl"]
+bg_color = Color(1, 0.25882354, 0.30980393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5294118, 0.16470589, 0.21960784, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2gx1"]
+bg_color = Color(0.4313402, 0.43134028, 0.43134007, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww3yd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.17041454, 0.5030287, 0.3358062, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.06666667, 0.21960784, 0.18039216, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om0m0"]
+bg_color = Color(0.08902108, 0.3013108, 0.19621697, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.06666667, 0.21960784, 0.18039216, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrefx"]
+bg_color = Color(0.27742082, 0.78813064, 0.53310764, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.06666667, 0.21960784, 0.18039216, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncbyg"]
+bg_color = Color(0.4313402, 0.43134028, 0.43134007, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
 [node name="FightScene" type="Node2D"]
 script = ExtResource("1_26lfq")
 
@@ -138,13 +225,17 @@ script = ExtResource("1_26lfq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 200.0
+offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FightScenePanel" parent="HBoxContainer" instance=ExtResource("2_om0m0")]
 layout_mode = 2
+
+[node name="EnemyFightScenePanel" parent="HBoxContainer" instance=ExtResource("3_5uapy")]
+layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("1_if2d1")
@@ -176,7 +267,7 @@ vertical_alignment = 1
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 200.0
+offset_left = 205.0
 offset_top = 591.0
 offset_right = 947.0
 offset_bottom = 647.0
@@ -188,30 +279,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="CancelTurnButton" type="Button" parent="Control/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+theme_override_fonts/font = ExtResource("9_ww3yd")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_5uapy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_foig6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m6kyl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_i2gx1")
 text = "Отменить ход"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
 
 [node name="ConfirmTurnButton" type="Button" parent="Control/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+theme_override_fonts/font = ExtResource("9_ww3yd")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ww3yd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_om0m0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wrefx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ncbyg")
 text = "Закончить ход"

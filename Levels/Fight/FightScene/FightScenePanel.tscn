@@ -300,7 +300,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(56, 3)
+custom_minimum_size = Vector2(45, 3)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -313,10 +313,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("6_mg3rq")
 theme_override_font_sizes/font_size = 14
-text = "Команда"
+text = "Рать
+Муравьиная"
+horizontal_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(56, 3)
+custom_minimum_size = Vector2(45, 3)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

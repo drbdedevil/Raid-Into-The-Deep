@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsgjgwnjho2nn"]
+
+[ext_resource type="Script" uid="uid://chqjjxghnkyks" path="res://Levels/HubLocation/WarriorPanels/WarriorEnemy.cs" id="1_leg3g"]
+[ext_resource type="Texture2D" uid="uid://8fl78wa8miql" path="res://Textures/Default/WarPanel_Mini.png" id="3_oe7ke"]
+[ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="4_11at3"]
+[ext_resource type="Texture2D" uid="uid://frdfvle2o7dl" path="res://Textures/Default/Info.png" id="5_xsdyw"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="6_cxqno"]
+[ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="7_xfmxu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7yq7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k5li"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykxy3"]
+bg_color = Color(0.25882354, 0.7372549, 0.49803922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="WarriorEnemyPanel" type="Control"]
+custom_minimum_size = Vector2(170, 54)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leg3g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 165.0
+offset_bottom = 52.0
+texture = ExtResource("3_oe7ke")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_11at3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect"]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_xsdyw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_b7yq7")
+disabled = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="TextureRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("6_cxqno")
+theme_override_font_sizes/font_size = 10
+text = "Жук жучок"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("7_xfmxu")
+theme_override_font_sizes/font_size = 10
+text = "lvl"
+
+[node name="LevelLabel" type="Label" parent="TextureRect/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("7_xfmxu")
+theme_override_font_sizes/font_size = 10
+text = "1"
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="TextureRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 5)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect/HBoxContainer/VBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_4k5li")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ykxy3")
+value = 65.0
+show_percentage = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2

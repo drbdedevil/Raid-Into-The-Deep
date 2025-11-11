@@ -82,6 +82,9 @@ public partial class HubLocation : Node
 	}
 	private void OnRaceMapButtonPressed()
 	{
+		GameDataManager.Instance.currentData.runMapData.bShouldRegenerate = true;
+		GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = false;
+
 		var livingSpace = GameDataManager.Instance.livingSpaceDataManager;
 		int teamCount = livingSpace.GetUsedCharactersCount();
 		if (teamCount <= 0)

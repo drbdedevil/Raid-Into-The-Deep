@@ -32,6 +32,10 @@ public partial class FightSceneManager : Node2D
 
     [Signal]
     public delegate void CurrentPlayerWarriorToTurnChangedEventHandler(string playerWarriorId);
+    [Signal]
+    public delegate void FightSceneManagerInitializedEventHandler();
+    [Signal]
+    public delegate void BattleEntityMadeMoveEventHandler();
     
     private PlayerEntity? _currentPlayerWarriorToTurn;
     public PlayerEntity? CurrentPlayerWarriorToTurn
@@ -44,7 +48,16 @@ public partial class FightSceneManager : Node2D
         }
     }
 
-    public BattleState  CurrentBattleState { get; set; }
+    private BattleState? _currentBattleState;
+    public BattleState CurrentBattleState
+    {
+        get  => _currentBattleState;
+        set
+        {
+            _currentBattleState = value;
+            if (_currentBattleState != null) EmitSignal(SignalName.BattleEntityMadeMove);
+        }
+    }
     
     
     public Button ConfirmTurnButton { get; set; }
@@ -77,6 +90,8 @@ public partial class FightSceneManager : Node2D
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
 
         _effectManager = new EffectManager(_mapManager, this);
+
+        EmitSignal(SignalName.FightSceneManagerInitialized);
     }
     
     public override void _Input(InputEvent @event)

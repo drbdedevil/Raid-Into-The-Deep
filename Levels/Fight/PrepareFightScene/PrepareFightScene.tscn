@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bieajibc18pln"]
+[gd_scene load_steps=33 format=3 uid="uid://bieajibc18pln"]
 
 [ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
 [ext_resource type="Script" uid="uid://r5yt8rcihyyi" path="res://Levels/Fight/PrepareFightScene/PrepareFightMapManager.cs" id="2_ed8kp"]
@@ -220,6 +220,38 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ts8f3")
 [sub_resource type="Theme" id="Theme_wgaum"]
 VBoxContainer/constants/separation = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbenw"]
+bg_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gep0n"]
+bg_color = Color(0.6433481, 0.4855671, 0.119217776, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrqxl"]
+bg_color = Color(0.90106136, 0.69314975, 0.22945842, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5cou"]
+bg_color = Color(0.4313402, 0.43134028, 0.43134007, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+
 [node name="PrepareFightScene" type="Node2D"]
 script = ExtResource("1_jxe02")
 _fightScene = ExtResource("2_jrqxl")
@@ -361,8 +393,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="GoFightButton" type="Button" parent="."]
-offset_left = 948.0
-offset_top = 603.0
-offset_right = 1151.0
-offset_bottom = 643.0
+offset_left = 941.0
+offset_top = 601.0
+offset_right = 1144.0
+offset_bottom = 641.0
+theme_override_colors/font_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+theme_override_colors/font_pressed_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+theme_override_colors/font_hover_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
+theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+theme_override_fonts/font = ExtResource("5_k51bs")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_kbenw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gep0n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jrqxl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_p5cou")
 text = "В бой"
