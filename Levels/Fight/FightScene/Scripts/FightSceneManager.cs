@@ -91,6 +91,9 @@ public partial class FightSceneManager : Node2D
 
         _effectManager = new EffectManager(_mapManager, this);
 
+        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        entityEffectsPanel.Visible = false;
+
         EmitSignal(SignalName.FightSceneManagerInitialized);
     }
     
@@ -116,5 +119,45 @@ public partial class FightSceneManager : Node2D
         _mapManager.RemoveBattleEntityFromTile(enemyWarrior.Tile, isDead: true);
         _enemies.Remove(enemyWarrior);
         _allEntities.Remove(enemyWarrior);
+    }
+
+    public void OnEnemyPanelMouseEnter(EnemyEntity enemyEntity)
+    {
+        EnemyFightScenePanel enemyFightScenePanel = GetNode<EnemyFightScenePanel>("HBoxContainer/EnemyFightScenePanel");
+
+        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        entityEffectsPanel.Visible = true;
+
+        entityEffectsPanel.SetEffectsInfos(enemyEntity.appliedEffects);
+        entityEffectsPanel.ChangeToFitAndReplace(enemyEntity.appliedEffects.Count);
+        entityEffectsPanel.SetPositionEnemyOffset(enemyFightScenePanel.GetEnemyPanelPositionByID(enemyEntity.Id));
+    }
+
+    public void OnEnemyPanelMouseExit(EnemyEntity enemyEntity)
+    {
+        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        entityEffectsPanel.Visible = false;
+    }
+    
+    public void OnCharacterPanelMouseEnter(string characterID)
+    {
+        FightScenePanel fightScenePanel = GetNode<FightScenePanel>("HBoxContainer/FightScenePanel");
+
+        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        entityEffectsPanel.Visible = true;
+
+        PlayerEntity playerEntity = Allies.FirstOrDefault(character => character.Id == characterID);
+        if (playerEntity != null)
+        {
+            entityEffectsPanel.SetEffectsInfos(playerEntity.appliedEffects);
+            entityEffectsPanel.ChangeToFitAndReplace(playerEntity.appliedEffects.Count);
+            entityEffectsPanel.SetPositionWarriorOffset(fightScenePanel.GetWarriorPanelPositionByID(characterID));
+        }
+    }
+
+    public void OnCharacterPanelMouseExit(string characterID)
+    {
+        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        entityEffectsPanel.Visible = false;
     }
 }

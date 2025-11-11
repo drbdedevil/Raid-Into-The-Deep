@@ -21,18 +21,8 @@ public class PoisonEntityEffect : EntityEffect
 
 	public override void OnApply()
 	{
-		entityHolder.Health = entityHolder.Health - 5;
+		entityHolder.ApplyDamage(5);
 		GD.Print("Применился яд для " + entityHolder.Id);
-	}
-	public override void OnTurnEnd() 
-	{
-		if (IsTemporary && Duration > 0)
-		{
-			if (--Duration == 0)
-			{
-				IsPending = false;
-			}
-		}
 	}
 }
 
@@ -49,18 +39,8 @@ public class FireEntityEffect : EntityEffect
 
 	public override void OnApply()
 	{
-		entityHolder.Health = entityHolder.Health - 8;
+		entityHolder.ApplyDamage(8);
 		GD.Print("Применился огонь для " + entityHolder.Id);
-	}
-	public override void OnTurnEnd() 
-	{
-		if (IsTemporary && Duration > 0)
-		{
-			if (--Duration == 0)
-			{
-				IsPending = false;
-			}
-		}
 	}
 }
 

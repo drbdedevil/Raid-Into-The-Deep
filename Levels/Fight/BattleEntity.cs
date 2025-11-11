@@ -104,10 +104,15 @@ namespace RaidIntoTheDeep.Levels.Fight
             }
 
             return appliedEffects.Any(e => e.EffectType == type);
-        } 
+        }
         public Effect GetEffect(EEffectType type)
         {
             return appliedEffects.FirstOrDefault(e => e.EffectType == type);
+        }
+        
+        public virtual void ApplyDamage(int damage)
+        {
+            Health = Health - damage;
         }
     }
 }

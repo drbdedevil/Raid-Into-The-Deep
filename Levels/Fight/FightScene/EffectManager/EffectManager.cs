@@ -49,7 +49,16 @@ public class EffectManager
 
                     effect.OnApply();
                     effect.OnTurnEnd();
-                    GD.Print($"Эффект {effect.EffectType} применён к {entity.Id}");
+                    if (effect.IsExpired)
+                    {
+                        GD.Print($"Эффект {effect.EffectType} истёк у {entity.Id}");
+                        effect.OnRemove();
+                        entity.RemoveEffect(effect);
+                    }
+                    else
+                    {
+                        GD.Print($"Эффект {effect.EffectType} применён к {entity.Id}");
+                    }
                 }
                 else
                 {

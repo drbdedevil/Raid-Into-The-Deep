@@ -5,7 +5,12 @@ using System.Collections.Generic;
 
 public partial class ChosenWarriorPanel : Control
 {
-	private Warrior warrior = new();
+	[Signal]
+	public delegate void WarriorPanelMouseEnterEventHandler(string characterDataId);
+	[Signal]
+	public delegate void WarriorPanelMouseExitEventHandler(string characterDataId);
+	public Warrior warrior = new();
+
 	[Export]
 	public PackedScene CharacterListScene;
 
@@ -35,6 +40,9 @@ public partial class ChosenWarriorPanel : Control
 
 		weaponTexture = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton/TextureRect");
 		skillTexture = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton/TextureRect");
+
+		MouseEntered += OnMouseEnter;
+		MouseExited += OnMouseExit;
 	}
 
 	public override void _Process(double delta)
@@ -176,5 +184,19 @@ public partial class ChosenWarriorPanel : Control
 
 		TextureButton skillButton = GetNode<TextureButton>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton");
 		skillButton.Disabled = false;
+	}
+
+	private void OnMouseEnter()
+	{
+		// Warrior warrior = GetNode<Warrior>("PanelContainer/MarginContainer/WarriorPanel");
+
+		EmitSignal(SignalName.WarriorPanelMouseEnter, warrior.characterData.ID);
+	}
+
+	private void OnMouseExit()
+	{
+		// Warrior warrior = GetNode<Warrior>("PanelContainer/MarginContainer/WarriorPanel");
+
+		EmitSignal(SignalName.WarriorPanelMouseExit, warrior.characterData.ID);
 	}
 }

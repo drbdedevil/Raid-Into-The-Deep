@@ -38,6 +38,8 @@ public partial class EnemyFightScenePanel : TextureRect
         {
             ViewEnemyWarriorPanel viewWarriorPanel = WarriorEnemyPanelScene.Instantiate() as ViewEnemyWarriorPanel;
             viewWarriorPanel.SetEnemyInfosToWarriorEnemyPanel(enemy);
+            viewWarriorPanel.EnemyPanelMouseEnter += fightSceneManager.OnEnemyPanelMouseEnter;
+            viewWarriorPanel.EnemyPanelMouseExit += fightSceneManager.OnEnemyPanelMouseExit;
             usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
         }
     }
@@ -45,11 +47,22 @@ public partial class EnemyFightScenePanel : TextureRect
     private void OnFightSceneManagerInitialized()
     {
         UpdateEnemyCharactersList();
+    }
 
-        // FightSceneManager fightSceneManager = GetTree().CurrentScene as FightSceneManager;
-        // if (fightSceneManager != null)
-        // {
-            // fightSceneManager.ConfirmTurnButton.Pressed += UpdateEnemyCharactersList;
-        // }
+    public Vector2 GetEnemyPanelPositionByID(string enemyID)
+    {
+        var usedCharactersVBoxContainer = GetNode<VBoxContainer>("VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer");
+        foreach (Node child in usedCharactersVBoxContainer.GetChildren())
+        {
+            if (child is ViewEnemyWarriorPanel viewEnemyWarriorPanel)
+            {
+                if (viewEnemyWarriorPanel.GetEnemyEntity().Id == enemyID)
+                {
+                    return viewEnemyWarriorPanel.GetGlobalRect().Position;
+                }
+            }
+        }
+
+        return new Vector2();
     }
 }

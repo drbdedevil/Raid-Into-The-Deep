@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://omgqup63apve"]
+[gd_scene load_steps=27 format=3 uid="uid://omgqup63apve"]
 
 [ext_resource type="Script" uid="uid://bea5jxtyrqhfw" path="res://Levels/Fight/FightScene/Scripts/FightSceneManager.cs" id="1_26lfq"]
 [ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_if2d1"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_ff54w"]
 [ext_resource type="Texture2D" uid="uid://dkyv8egijirlx" path="res://Textures/Fight/FightScene/Explosion-Sheet.png" id="7_ajt20"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
+[ext_resource type="PackedScene" uid="uid://b7ihs58oynnmg" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectsPanel.tscn" id="10_foig6"]
+[ext_resource type="PackedScene" uid="uid://cpopu50xtjs27" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectView.tscn" id="11_m6kyl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
@@ -320,3 +322,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_om0m0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wrefx")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ncbyg")
 text = "Закончить ход"
+
+[node name="EffectPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="EntityEffectsPanel" parent="EffectPanel" instance=ExtResource("10_foig6")]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 402.0
+mouse_filter = 2
+EntityEffectViewScene = ExtResource("11_m6kyl")

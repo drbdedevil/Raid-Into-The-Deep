@@ -84,6 +84,7 @@ public partial class Warrior : Node, IStackPage
 				maxHealthToSet += existingPassiveSkillType.increments[i];
 			}
 
+			GD.Print(maxHealthToSet + " = " + InCharacterData.Health);
 			progressBar.MaxValue = maxHealthToSet;
 		}
 	}

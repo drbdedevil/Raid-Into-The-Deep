@@ -34,3 +34,4 @@ theme_override_constants/margin_top = 2
 [node name="WarriorEnemyPanel" parent="PanelContainer/MarginContainer" instance=ExtResource("3_34tiq")]
 custom_minimum_size = Vector2(165, 52)
 layout_mode = 2
+mouse_filter = 1

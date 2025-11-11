@@ -75,8 +75,8 @@ public partial class SkillInfoPanel : Control
 
         colorRect.SetSize(new Vector2(colorRect.Size.X + 20, vBoxContainer.Size.Y + 20));
         // vBoxContainer.SetSize(new Vector2(colorRect.Size.X, colorRect.Size.Y));
-        GD.Print(colorRect.Position);
+        // GD.Print(colorRect.Position);
         colorRect.SetPosition(new Vector2(colorRect.Position.X, -colorRect.Size.Y));
-        GD.Print(colorRect.Position);
+        // GD.Print(colorRect.Position);
     }
 }

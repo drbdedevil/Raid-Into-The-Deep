@@ -20,14 +20,12 @@ public class CharacterData
 {
     public string ID { get; set; } = "NONE";
     public string Name { get; set; } = "NONE";
-    public string Portrait { get; set; } = ""; // TODO: DELETE
     public int PortraitID { get; set; } = 0;
     public int Damage { get; set; } = 0;
     public int DamageByEffect { get; set; } = 0;
     public int Health { get; set; } = 0;
     public int Heal { get; set; } = 0;
     public int Speed { get; set; } = 0;
-    public bool[] Upgrades { get; set; } = new bool[0]; // TODO: DELETE
     public WeaponData Weapon { get; set; } = new();
     public int SkillPoints { get; set; } = 1;
     public int Level { get; set; } = 1;

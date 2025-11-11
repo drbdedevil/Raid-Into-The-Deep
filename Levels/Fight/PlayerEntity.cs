@@ -1,6 +1,7 @@
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using System.Collections.Generic;
 using RaidIntoTheDeep.Levels.Fight.Weapons;
+using System.Linq;
 
 namespace RaidIntoTheDeep.Levels.Fight;
 
@@ -16,5 +17,15 @@ public partial class PlayerEntity : BattleEntity
         PortraitID = characterData.PortraitID;
         CharacterName = characterData.Name;
         PassiveSkillLevels = characterData.PassiveSkillLevels;
+    }
+
+    public override void ApplyDamage(int damage)
+    {
+        CharacterData characterData = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.FirstOrDefault(character => character.ID == Id);
+        if (characterData != null)
+        {
+            characterData.Health = characterData.Health - damage;
+            Health = characterData.Health;
+        }
     }
 }

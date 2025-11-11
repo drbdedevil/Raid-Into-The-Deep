@@ -111,6 +111,8 @@ public partial class FightScenePanel : TextureRect
                 chosenWarriorPanel = ChosenWarriorPanelScene.Instantiate() as ChosenWarriorPanel;
                 chosenWarriorPanel.SetCharacterInfos(team[i]);
                 chosenWarriorPanel.DisableButtonsForSelectingSubjectAttack();
+                chosenWarriorPanel.WarriorPanelMouseEnter += fightSceneManager.OnCharacterPanelMouseEnter;
+                chosenWarriorPanel.WarriorPanelMouseExit += fightSceneManager.OnCharacterPanelMouseExit;
                 usedCharactersVBoxContainer.AddChild(chosenWarriorPanel);
             }
             else
@@ -118,6 +120,8 @@ public partial class FightScenePanel : TextureRect
                 ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
                 viewWarriorPanel.bShouldChangeCharacterList = false;
                 viewWarriorPanel.SetCharacterInfosToWarriorPanel(team[i], true);
+                viewWarriorPanel.WarriorPanelMouseEnter += fightSceneManager.OnCharacterPanelMouseEnter;
+                viewWarriorPanel.WarriorPanelMouseExit += fightSceneManager.OnCharacterPanelMouseExit;
                 usedCharactersVBoxContainer.AddChild(viewWarriorPanel);
             }
         }
@@ -128,5 +132,29 @@ public partial class FightScenePanel : TextureRect
     {
         currentCharacterID = playerWarriorId;
         UpdateUsedCharactersList();
+    }
+
+    public Vector2 GetWarriorPanelPositionByID(string warriorID)
+    {
+        var usedCharactersVBoxContainer = GetNode<VBoxContainer>("VBoxContainer/ScrollContainer/VBoxContainer/TeamVBoxContainer");
+        foreach (Node child in usedCharactersVBoxContainer.GetChildren())
+        {
+            if (child is ViewWarriorPanel viewWarriorPanel)
+            {
+                if (viewWarriorPanel.GetCharacterID() == warriorID)
+                {
+                    return viewWarriorPanel.GetGlobalRect().Position;
+                }
+            }
+            else if (child is ChosenWarriorPanel chosenWarriorPanel)
+            {
+                if (chosenWarriorPanel.warrior.characterData.ID == warriorID)
+                {
+                    return chosenWarriorPanel.GetGlobalRect().Position;
+                }
+            }
+        }
+
+        return new Vector2();
     }
 }
