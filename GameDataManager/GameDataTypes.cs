@@ -3,10 +3,27 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Godot;
 
 [Serializable]
 public class WeaponData
 {
+    public WeaponData()
+    {
+        
+    }
+
+    public WeaponData(WeaponRow weaponRow)
+    {
+        
+        ID = Guid.NewGuid().ToString();
+        Name = weaponRow.Name;
+        Damage = GD.RandRange(weaponRow.DamageRange.X, weaponRow.DamageRange.Y);
+        AttackShapeID = weaponRow.AttackShapeID;
+        EffectID = GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+        TextureName = weaponRow.WeaponTexture.ResourceName;
+    }    
+    
     public string ID { get; set; } = "NONE";
     public string Name { get; set; } = "NONE";
     public int Damage { get; set; } = 0;

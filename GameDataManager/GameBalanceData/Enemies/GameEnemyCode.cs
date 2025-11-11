@@ -1,5 +1,3 @@
-namespace RaidIntoTheDeep.Levels.Fight;
-
 public enum GameEnemyCode
 {
     Spider,

@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="EnemyBaseStatsDatabase" load_steps=12 format=3 uid="uid://bkna3riolbsmr"]
+
+[ext_resource type="Script" uid="uid://fjuciunc2jyv" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatsDatabase.cs" id="1_6pjjy"]
+[ext_resource type="Script" uid="uid://mcrty1t54tnc" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatRow.cs" id="1_cbrah"]
+
+[sub_resource type="Resource" id="Resource_u3cq3"]
+script = ExtResource("1_cbrah")
+Damage = 5
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_nvsm3"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 1
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_cbrah"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 5
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_nobvf"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 2
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_ak67h"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 4
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_1qe6v"]
+script = ExtResource("1_cbrah")
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_keupc"]
+script = ExtResource("1_cbrah")
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_4e8kc"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 2
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_x00wh"]
+script = ExtResource("1_cbrah")
+AttackShapeType = 4
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[resource]
+script = ExtResource("1_6pjjy")
+EnemyBaseStatRows = Dictionary[int, Object]({
+0: SubResource("Resource_u3cq3"),
+1: SubResource("Resource_nvsm3"),
+2: SubResource("Resource_cbrah"),
+3: SubResource("Resource_nobvf"),
+4: SubResource("Resource_ak67h"),
+5: SubResource("Resource_1qe6v"),
+6: SubResource("Resource_keupc"),
+7: SubResource("Resource_4e8kc"),
+8: SubResource("Resource_x00wh")
+})

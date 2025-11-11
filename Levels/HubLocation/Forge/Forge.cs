@@ -114,8 +114,6 @@ public partial class Forge : Node, IStackPage
 			var existingWeapon = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == chosenWeaponDataForShackle.Name);
 			if (existingWeapon != null)
 			{
-				Guid.NewGuid().ToString();
-
 				chosenWeaponDataForShackle.ID = Guid.NewGuid().ToString();
 				GD.Print(chosenWeaponDataForShackle.ID);
 				chosenWeaponDataForShackle.Damage = GD.RandRange(existingWeapon.DamageRange.X, existingWeapon.DamageRange.Y);

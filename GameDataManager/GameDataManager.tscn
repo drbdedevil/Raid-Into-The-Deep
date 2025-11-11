@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://t5wswiq72t4i"]
+[gd_scene load_steps=17 format=3 uid="uid://t5wswiq72t4i"]
 
 [ext_resource type="Script" uid="uid://v7dmuhb0frce" path="res://GameDataManager/GameDataManager.cs" id="1_adx02"]
 [ext_resource type="Resource" uid="uid://bte7ql486k3d1" path="res://GameDataManager/GameBalanceData/Storage/StorageDatabaseResource.tres" id="2_6ehcg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dcdm8m8d5nfqg" path="res://GameDataManager/GameBalanceData/Weapons/WeaponDatabaseResource.tres" id="7_37ghu"]
 [ext_resource type="Resource" uid="uid://cho4yxgix0ujh" path="res://GameDataManager/GameBalanceData/Weapons/EffectDatabaseResource.tres" id="7_cxsex"]
 [ext_resource type="Resource" uid="uid://b25jmpnykg3u8" path="res://GameDataManager/GameBalanceData/Characters/BaseStatsDatabaseResource.tres" id="9_cxsex"]
+[ext_resource type="Resource" uid="uid://bkna3riolbsmr" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatsDatabaseResource.tres" id="10_383re"]
 [ext_resource type="Resource" uid="uid://d2w3hhifrxtwa" path="res://GameDataManager/GameBalanceData/Characters/PassiveSkillsProgressionDatabaseResource.tres" id="10_qnaf8"]
 [ext_resource type="Resource" uid="uid://dm5fps0pmjadi" path="res://GameDataManager/GameData/CharactersSprites/CharacterSpritesDatabaseResource.tres" id="11_06qny"]
 [ext_resource type="Resource" uid="uid://c1aiyoooftg1" path="res://GameDataManager/GameData/Skills/PassiveSkillsDatabaseResource.tres" id="12_seoh4"]
@@ -26,6 +27,7 @@ attackShapeDatabase = ExtResource("6_nijcr")
 effectDatabase = ExtResource("7_cxsex")
 weaponDatabase = ExtResource("7_37ghu")
 baseStatsDatabase = ExtResource("9_cxsex")
+EnemyBaseStatsDatabase = ExtResource("10_383re")
 passiveSkillsProgressionDatabase = ExtResource("10_qnaf8")
 charactersSpritesDatabase = ExtResource("11_06qny")
 passiveSkillsDatabase = ExtResource("12_seoh4")

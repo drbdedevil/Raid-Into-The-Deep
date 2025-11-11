@@ -43,6 +43,9 @@ public partial class GameDataManager : Node
 
 	[Export]
 	public BaseStatsDatabase baseStatsDatabase { get; private set; }
+	
+	[Export]
+	public EnemyBaseStatsDatabase EnemyBaseStatsDatabase { get; private set; }
 	[Export]
 	public PassiveSkillsProgressionDatabase passiveSkillsProgressionDatabase { get; private set; }
 	[Export]

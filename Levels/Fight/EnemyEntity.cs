@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using RaidIntoTheDeep.Levels.Fight.Weapons;
@@ -7,11 +8,11 @@ namespace RaidIntoTheDeep.Levels.Fight;
 public partial class EnemyEntity : BattleEntity
 {
     // надо будет написать метод для спавна рандомного оружия врагам
-    public EnemyEntity(Tile tile, string id, int speed, int health, int damage, GameEnemyCode enemyId)
-        : base(tile, WeaponFactory.CreateWeaponByAttackShapeType(AttackShapeType.ScatterShot, new WeaponData()), id, speed, health, damage)
+    public EnemyEntity(Tile tile, GameEnemyCode enemyCode, EnemyBaseStatRow enemyBaseStat)
+        : base(tile, WeaponFactory.CreateWeaponByAttackShapeType(enemyBaseStat.AttackShapeType), Guid.NewGuid().ToString(), enemyBaseStat.Speed, enemyBaseStat.Health, enemyBaseStat.Damage)
     {
-        EnemyId = enemyId;
-        MaxHealth = health;
+        EnemyId = enemyCode;
+        MaxHealth = enemyBaseStat.Health;
 
         InitFieldsByEnemyId();
     }
