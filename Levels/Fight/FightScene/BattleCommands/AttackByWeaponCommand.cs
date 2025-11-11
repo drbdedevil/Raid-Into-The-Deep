@@ -70,7 +70,7 @@ public class AttackByWeaponCommand : Command
                     effect.EffectType != EEffectType.Pushing)
             {
                 effect.entityHolder = tile.BattleEntity;
-                tile.BattleEntity.appliedEffects.Add(effect);
+                tile.BattleEntity.AddEffect(effect); // tile.BattleEntity.appliedEffects.Add(effect); - если захотим, чтобы эффекты стакались
                 GD.Print($"Эффект {effect.EffectType} добавлен в очередь");
             }
 
@@ -103,8 +103,8 @@ public class AttackByWeaponCommand : Command
         {
             if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.Health -= targetWeaponAttackDamage.Damage;
-                if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(targetWeaponAttackDamage.Damage);
+                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemovePlayerWarrior(playerWarrior);
                     SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
@@ -112,8 +112,8 @@ public class AttackByWeaponCommand : Command
             }
             else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.Health -= targetWeaponAttackDamage.Damage;
-                if (targetWeaponAttackDamage.EntityToAttack.Health <= 0)
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(targetWeaponAttackDamage.Damage);
+                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
                     SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);

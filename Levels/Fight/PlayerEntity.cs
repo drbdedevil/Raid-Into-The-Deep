@@ -26,6 +26,11 @@ public partial class PlayerEntity : BattleEntity
         {
             characterData.Health = characterData.Health - damage;
             Health = characterData.Health;
+
+            if (IsDead())
+            {
+                GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Remove(characterData);
+            }
         }
     }
 }

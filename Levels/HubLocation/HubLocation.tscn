@@ -556,3 +556,21 @@ text = "Вход в забег
 "
 icon_alignment = 1
 script = ExtResource("14_twrgc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 686.0
+offset_top = 147.0
+offset_right = 688.0
+offset_bottom = 151.0
+mouse_filter = 2
+color = Color(0.07058824, 0.007843138, 0.007843138, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 147.0
+offset_right = 422.0
+offset_bottom = 152.0
+mouse_filter = 2
+color = Color(0.14117648, 0.043137256, 0.011764706, 1)

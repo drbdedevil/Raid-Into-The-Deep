@@ -117,13 +117,14 @@ theme_override_constants/separation = 0
 [node name="NameLabel" type="Label" parent="TextureRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 10
+size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 theme_override_fonts/font = ExtResource("6_cxqno")
 theme_override_font_sizes/font_size = 10
 text = "Жук жучок"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 
