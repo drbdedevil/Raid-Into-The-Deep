@@ -11,6 +11,7 @@ public partial class BattleMapInitStateManager : Node
     public List<Tile> Tiles { get; private set; } = [];
     public List<PlayerEntity> PlayerEntities { get; private set; } = [];
     public List<EnemyEntity> EnemyEntities { get; private set; } = [];
+    public List<ObstacleEntity> ObstacleEntities { get; private set; } = [];
     
     public override void _Ready()
     {
@@ -36,6 +37,7 @@ public partial class BattleMapInitStateManager : Node
                 if (tile.BattleEntity is PlayerEntity playerEntity) PlayerEntities.Add(playerEntity);
                 else if (tile.BattleEntity is EnemyEntity enemyEntity) EnemyEntities.Add(enemyEntity);
             }
+            if (tile.ObstacleEntity is not null) ObstacleEntities.Add(tile.ObstacleEntity);
         }
     }
 }

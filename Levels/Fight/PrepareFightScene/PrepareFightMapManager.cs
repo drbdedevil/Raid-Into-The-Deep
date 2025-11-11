@@ -18,6 +18,7 @@ public partial class PrepareFightMapManager : Node2D
 	
 	private TileMapLayer _floorLayer;
 	private TileMapLayer _entityLayer;
+	private TileMapLayer _obstacleLayer;
 	
 	/// <summary>
 	/// Ассоциативный массив для получения изометрической координаты по декартовой
@@ -83,6 +84,7 @@ public partial class PrepareFightMapManager : Node2D
 	{
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
+		_obstacleLayer = GetNode<TileMapLayer>("Obstacles");
 		
 		var mapText = FileAccess.Open($"res://Maps/{MapName}", FileAccess.ModeFlags.Read).GetAsText();
 		(_mapTiles, var mapSize) = MapParser.LoadFromText(mapText);
@@ -100,6 +102,7 @@ public partial class PrepareFightMapManager : Node2D
 				_tilesByIsometric.Add(tile.IsometricPosition, tile);
 				SetAtlasOriginalTextureForTile(tile);
 				if (tile.BattleEntity != null) SetBattleEntityOnTile(tile, tile.BattleEntity);
+				if (tile.ObstacleEntity != null) SetObstacleOnTile(tile, tile.ObstacleEntity);
 			}
 			_isometricCoords.Add(isometricCoords);
 			_cartesianCoords.Add(cartesianCoords);
@@ -133,6 +136,14 @@ public partial class PrepareFightMapManager : Node2D
 		}
 		entity.Tile = tile;
 		tile.BattleEntity = entity;
+	}
+
+	public void SetObstacleOnTile(Tile tile, ObstacleEntity obstacle)
+	{
+		if (tile.ObstacleEntity is not null) _obstacleLayer.EraseCell(tile.IsometricPosition);
+		_obstacleLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, (int)obstacle.ObstacleCode));
+		obstacle.Tile = tile;
+		tile.ObstacleEntity = obstacle;
 	}
 	
 	public void RemoveEnemyOnTile(Tile tile)

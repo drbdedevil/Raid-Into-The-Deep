@@ -15,7 +15,7 @@ public partial class MapManager : Node2D
 	
 	private TileMapLayer _floorLayer;
 	private TileMapLayer _entityLayer;
-	
+	private TileMapLayer _obstacleLayer;
 	/// <summary>
 	/// Слой отвечающий за отрисовку анимаций уничтожения сущности с слоя "Сущностей"
 	/// </summary>
@@ -64,6 +64,7 @@ public partial class MapManager : Node2D
 	{
 		_floorLayer = GetNode<TileMapLayer>("Floor");
 		_entityLayer = GetNode<TileMapLayer>("Entities");
+		_obstacleLayer = GetNode<TileMapLayer>("Obstacles");
 		_removeEntitiesEffectLayer = GetNode<TileMapLayer>("RemoveEntitiesEffect");
 		foreach (var instanceTile in BattleMapInitStateManager.Instance.Tiles)
 		{
@@ -71,7 +72,7 @@ public partial class MapManager : Node2D
 			_tilesByCartesian.Add(instanceTile.CartesianPosition, instanceTile);
 			_tilesByIsometric.Add(instanceTile.IsometricPosition, instanceTile);
 			DeselectTile(instanceTile);
-			if (instanceTile.BattleEntity is not null) InitBattleEntityOnTile(instanceTile);
+			if (instanceTile.BattleEntity is not null || instanceTile.ObstacleEntity is not null) InitBattleEntityOnTile(instanceTile);
 		}
 	}
 	
@@ -94,7 +95,7 @@ public partial class MapManager : Node2D
 
 	private void InitBattleEntityOnTile(Tile tile)
 	{
-		if (tile.BattleEntity is null) return;
+		if (tile.BattleEntity is null && tile.ObstacleEntity is null) return;
 		if (tile.BattleEntity is PlayerEntity playerEntity)
 		{
 			_entityLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, 0));
@@ -102,6 +103,11 @@ public partial class MapManager : Node2D
 		else if (tile.BattleEntity is EnemyEntity enemyEntity)
 		{
 			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId));
+		}
+
+		if (tile.ObstacleEntity is not null)
+		{
+			_obstacleLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, (int)tile.ObstacleEntity.ObstacleCode));
 		}
 	}
 
@@ -128,6 +134,23 @@ public partial class MapManager : Node2D
 		}
 		
 		return true;
+	}
+	
+	public void SetObstacleOnTile(Tile tile, ObstacleEntity obstacle)
+	{
+		if (obstacle.Tile is not null) RemoveObstacleFromTile(tile);
+		obstacle.Tile = tile;
+		tile.ObstacleEntity = obstacle;
+	}
+	
+	public void RemoveObstacleFromTile(Tile tile)
+	{
+		_obstacleLayer.EraseCell(tile.IsometricPosition);
+		if (tile.ObstacleEntity is not null)
+		{
+			tile.ObstacleEntity.Tile = null;
+			tile.ObstacleEntity = null;
+		}
 	}
 	
 	/// <summary>

@@ -31,13 +31,25 @@ public static class MapParser
                 tiles.Add(tile);
                 
                 
-                BattleEntity? battleEntity = null;
                 if (mapElement != "e" && mapElement != "o" && mapElement != "c")
                 {
-                    var gameEnemyCode = (GameEnemyCode)mapElement.ToInt();
-                    battleEntity = new EnemyEntity(tile, gameEnemyCode, GameDataManager.Instance.EnemyBaseStatsDatabase.EnemyBaseStatRows[gameEnemyCode]);
+                    
+                    bool battleEntityIsEnemy = int.TryParse(mapElement, out int entityCode);
+                    if (battleEntityIsEnemy)
+                    {
+                        EnemyEntity battleEntity;
+                        var gameEnemyCode = (GameEnemyCode)entityCode;
+                        battleEntity = new EnemyEntity(tile, gameEnemyCode, GameDataManager.Instance.EnemyBaseStatsDatabase.EnemyBaseStatRows[gameEnemyCode]);
+                        tile.BattleEntity = battleEntity;
+                    }
+                    else
+                    {
+                        var obstacleCode = ObstacleCode.Wall; // Знаю, что это бред
+                        obstacleCode =  obstacleCode.GetByMapCode(mapElement);
+                        var battleEntity = new ObstacleEntity(tile, obstacleCode);
+                        tile.ObstacleEntity = battleEntity;
+                    }
                 }
-                tile.BattleEntity = battleEntity;
 
             }
         }

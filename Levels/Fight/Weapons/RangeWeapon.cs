@@ -68,7 +68,7 @@ public class RangeWeapon : Weapon
 					position += horizontal.DirectionVector() + vertical.DirectionVector();
 					tile = map.GetTileByCartesianCoord(position);
 					middleLine.Add(position);
-				} while (tile != null && tile.BattleEntity == null);
+				} while (tile != null && tile.BattleEntity == null && (tile.ObstacleEntity is not null && !tile.ObstacleEntity.IsImpassable));
 			
 				return middleLine;
 			}
@@ -108,7 +108,7 @@ public class RangeWeapon : Weapon
 				position += attackDirection.DirectionVector();
 				tile = map.GetTileByCartesianCoord(position);
 				middleLine.Add(position);
-			} while (tile != null && tile.BattleEntity == null);
+			} while (tile != null && tile.BattleEntity == null && tile.ObstacleEntity is not null && !tile.ObstacleEntity.IsImpassable);
 			
 			return middleLine;
 		}

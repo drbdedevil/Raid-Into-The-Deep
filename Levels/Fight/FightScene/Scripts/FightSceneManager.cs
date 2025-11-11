@@ -21,6 +21,10 @@ public partial class FightSceneManager : Node2D
     private List<EnemyEntity> _enemies = [];
     public IReadOnlyCollection<EnemyEntity> Enemies => _enemies.ToList();
     
+    private List<ObstacleEntity> _obstacles = [];
+    
+    public IReadOnlyCollection<ObstacleEntity> Obstacles => _obstacles.ToList();
+    
     public Label TitleLabel { get; private set; }
     
     /// <summary>
@@ -76,9 +80,11 @@ public partial class FightSceneManager : Node2D
         _mapManager = GetNode<MapManager>("Map");
         _allies = BattleMapInitStateManager.Instance.PlayerEntities.ToList();
         _enemies = BattleMapInitStateManager.Instance.EnemyEntities.ToList();
+        _obstacles = BattleMapInitStateManager.Instance.ObstacleEntities.ToList();
         
         _allEntities.AddRange(_allies);
         _allEntities.AddRange(_enemies);
+        _allEntities.AddRange(_obstacles);
         
         TitleLabel = GetNode<Label>("StateTitleText");
         
