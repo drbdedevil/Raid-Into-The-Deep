@@ -137,12 +137,15 @@ public partial class FightSceneManager : Node2D
         entityEffectsPanel.SetEffectsInfos(enemyEntity.appliedEffects, enemyEntity.Weapon.effect);
         entityEffectsPanel.ChangeToFitAndReplace(enemyEntity.appliedEffects.Count, enemyEntity.Weapon.effect);
         entityEffectsPanel.SetPositionEnemyOffset(enemyFightScenePanel.GetEnemyPanelPositionByID(enemyEntity.Id));
+        
+        _mapManager.SelectTileForCurrentEnemyEntityTurn(enemyEntity.Tile);
     }
 
     public void OnEnemyPanelMouseExit(EnemyEntity enemyEntity)
     {
         EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;
+        _mapManager.DeselectTile(enemyEntity.Tile);
     }
     
     public void OnCharacterPanelMouseEnter(string characterID)

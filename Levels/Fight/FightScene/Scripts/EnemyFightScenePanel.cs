@@ -9,6 +9,10 @@ public partial class EnemyFightScenePanel : TextureRect
 {
     [Export]
     public PackedScene WarriorEnemyPanelScene;
+    
+    [Export] 
+    private MapManager _mapManager;
+    
     public override void _Ready()
     {
         FightSceneManager fightSceneManager = GetTree().CurrentScene as FightSceneManager;

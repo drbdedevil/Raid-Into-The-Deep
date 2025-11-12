@@ -5,5 +5,6 @@ public enum TileTextureTypes
     Opened,
     SelectedToMove,
     Closed,
-    CurrentTurnEntity
+    CurrentTurnEntity,
+    CurrentEnemyTurnEntity
 }
