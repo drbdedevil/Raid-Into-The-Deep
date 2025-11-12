@@ -8,16 +8,16 @@ public partial class WarriorEnemy : Node, IStackPage
 {
 	private EnemyEntity _enemyEntity = null;
 	public EnemyEntity EnemyEntity
-    {
+	{
 		get
 		{
 			return _enemyEntity;
 		}
 		set
-        {
+		{
 			_enemyEntity = value;
-        }
-    }
+		}
+	}
 	public override void _Ready()
 	{
 		

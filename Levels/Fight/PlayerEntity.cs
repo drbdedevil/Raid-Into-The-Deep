@@ -13,7 +13,7 @@ public partial class PlayerEntity : BattleEntity
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
 
     public PlayerEntity(Tile tile, CharacterData characterData) : base(tile,
-        WeaponFactory.CreateWeaponByAttackShapeType((AttackShapeType)characterData.Weapon.AttackShapeID), characterData.ID, 
+        WeaponFactory.CreateWeaponForPlayerEntity((AttackShapeType)characterData.Weapon.AttackShapeID, characterData.Weapon), characterData.ID, 
         characterData.Speed, characterData.Health, characterData.Damage)
     {
         Level = characterData.Level;

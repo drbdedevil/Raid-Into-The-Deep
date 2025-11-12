@@ -9,11 +9,24 @@ public static class WeaponFactory
         switch (shapeType)
         {
             case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));
-            case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));;
+            case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType])); ;
             case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));
             case AttackShapeType.ScatterShot: return new RangeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));
             case AttackShapeType.Ranged: return new RangeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));
             case AttackShapeType.Artillery: return new ArtilleryWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons[(int)shapeType]));
+            default: return null;
+        }
+    }
+    public static Weapon CreateWeaponForPlayerEntity(AttackShapeType shapeType, WeaponData InWeaponData)
+    {
+        switch (shapeType)
+        {
+            case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.ScatterShot: return new RangeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Ranged: return new RangeWeapon((int)shapeType, InWeaponData);
+            case AttackShapeType.Artillery: return new ArtilleryWeapon((int)shapeType, InWeaponData);
             default: return null;
         }
     }

@@ -58,7 +58,7 @@ skillTextureHover = ExtResource("5_nghwh")
 skillTextureUpgraded = ExtResource("6_qt08b")
 skillTextureActive = ExtResource("3_kbptl")
 skillName = "Обратная волна"
-skillDescription = "Персонаж получает эффект \"Обратный урон\". Тот кто его атакует получит обратно половину урона"
+skillDescription = "Персонаж получает эффект \"Обратный урон\". Тот, кто его атакует, получит обратно половину урона"
 skillType = 5
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -69,7 +69,7 @@ skillTextureHover = ExtResource("9_a4tn5")
 skillTextureUpgraded = ExtResource("10_kiv1r")
 skillTextureActive = ExtResource("7_73rii")
 skillName = "Тяжёлая рана"
-skillDescription = "Игрок выбирает врага в радиусе 1 клетки. Враг на этой клетке получает эффект \"Тяжелая рана\", который уменьшает его скорость в половину с округлением вниз."
+skillDescription = "Игрок выбирает врага в радиусе 1 клетки. Враг на этой клетке получает эффект \"Тяжёлая рана\", который уменьшает его скорость в половину с округлением вниз."
 skillType = 8
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -80,7 +80,7 @@ skillTextureHover = ExtResource("13_h3esq")
 skillTextureUpgraded = ExtResource("14_qujly")
 skillTextureActive = ExtResource("11_b4rl1")
 skillName = "Ядовитое облако"
-skillDescription = "На выбранной области (выбрать можно любую область на арене) появляется 2 на 2 клетки препятствия (то есть 4 препятствия а не 1 на целых 4 клетки). Все кто стоят в этом облаке получают урон от эффекта равный характеристике \"Урон от эффекта\"/2. Облако держится 4 раунда"
+skillDescription = "На выбранной области в 1 клетку. Все, кто стоит в этом облаке, получают урон, равный \"Урон от эффекта\"/2. Облако держится 4 раунда."
 skillType = 11
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -91,7 +91,7 @@ skillTextureHover = ExtResource("17_22of0")
 skillTextureUpgraded = ExtResource("18_xinfg")
 skillTextureActive = ExtResource("15_rwn7n")
 skillName = "Тихая медитация"
-skillDescription = "Восстанавливает всем союзникам в радиусе 2 клеток здоровье в размере характеристики \"Хил\"/2"
+skillDescription = "Восстанавливает выбранному союзнику в радиусе 2 клеток здоровье в размере характеристики \"Лечение\"."
 skillType = 13
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -102,7 +102,7 @@ skillTextureHover = ExtResource("21_ae4l5")
 skillTextureUpgraded = ExtResource("22_5x1ux")
 skillTextureActive = ExtResource("19_2tvq7")
 skillName = "Железная стена"
-skillDescription = "Игрок выбирает клетку в радиусе 4 клеток от себя и может установить там ломающееся препятствие, препятствие пропадет само через 3 раунда."
+skillDescription = "Игрок выбирает клетку в радиусе 4 клеток от себя и может установить там ломающееся препятствие, препятствие пропадет само через 3 раунда.да."
 skillType = 6
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -124,7 +124,7 @@ skillTextureHover = ExtResource("29_ow8dc")
 skillTextureUpgraded = ExtResource("30_idhrc")
 skillTextureActive = ExtResource("27_kvs4f")
 skillName = "Кровавая метка"
-skillDescription = "На врага в радиусе 3 клеток накладывается эффект \"Кровавая метка\", этот враг получает \"Урон от эффектов\" х2 3 раунда"
+skillDescription = "На врага в радиусе 3 клеток накладывается эффект \"Кровавая метка\", этот враг получает \"Урон от эффектов х2\", длится 3 раунда."
 skillType = 12
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -135,7 +135,7 @@ skillTextureHover = ExtResource("33_wynke")
 skillTextureUpgraded = ExtResource("34_u8nf1")
 skillTextureActive = ExtResource("31_8tguh")
 skillName = "Снять эффекты"
-skillDescription = "Игрок выбирает одного из своих персонажей в радиусе 4 клеток. С этого персонажа снимаются все негативные эффекты"
+skillDescription = "Игрок выбирает одного из своих персонажей в радиусе 4 клеток. С этого персонажа снимаются все негативные эффекты."
 skillType = 14
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -146,7 +146,7 @@ skillTextureHover = ExtResource("37_xdtca")
 skillTextureUpgraded = ExtResource("38_d36si")
 skillTextureActive = ExtResource("35_pmnnl")
 skillName = "Защита"
-skillDescription = "Накладывает на себя эффект \"Защитник\". При атаке союзника в радиусе скорости персонаж получит урон вместо союзника. Эффект длится 3 раунда"
+skillDescription = "Накладывает на себя либо на союзник эффект \"Защитник\". При атаке получает половину урона. Эффект длится 3 раунда."
 skillType = 7
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -167,8 +167,8 @@ skillTextureBase = ExtResource("44_omx76")
 skillTextureHover = ExtResource("45_xsbad")
 skillTextureUpgraded = ExtResource("46_2x343")
 skillTextureActive = ExtResource("43_78gnh")
-skillName = "Горящий след"
-skillDescription = "Все клетки, по которым пройдет персонаж получают препятствие \"Огонь\" на 3 хода"
+skillName = "Поджог"
+skillDescription = "На выбранную клетку в радиусе 2 клеток накладывается эффект \"Огонь\""
 skillType = 16
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -178,8 +178,8 @@ skillTextureBase = ExtResource("48_684po")
 skillTextureHover = ExtResource("49_aovfm")
 skillTextureUpgraded = ExtResource("50_m7cr2")
 skillTextureActive = ExtResource("47_txa3q")
-skillName = "Поле восстановления"
-skillDescription = "В выбранной клетке создается препятствие, восстанавливающее здоровье персонажам игрока, равное навыку \"Хила\" 2 хода."
+skillName = "Тотем восстановления"
+skillDescription = "В выбранной клетке создается препятствие, восстанавливающее здоровье персонажам игрока в радиусе 1 клеток, равное навыку \"Лечение\"/2 2 хода."
 skillType = 15
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 

@@ -134,8 +134,8 @@ public partial class FightSceneManager : Node2D
         EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = true;
 
-        entityEffectsPanel.SetEffectsInfos(enemyEntity.appliedEffects);
-        entityEffectsPanel.ChangeToFitAndReplace(enemyEntity.appliedEffects.Count);
+        entityEffectsPanel.SetEffectsInfos(enemyEntity.appliedEffects, enemyEntity.Weapon.effect);
+        entityEffectsPanel.ChangeToFitAndReplace(enemyEntity.appliedEffects.Count, enemyEntity.Weapon.effect);
         entityEffectsPanel.SetPositionEnemyOffset(enemyFightScenePanel.GetEnemyPanelPositionByID(enemyEntity.Id));
     }
 
@@ -155,8 +155,8 @@ public partial class FightSceneManager : Node2D
         PlayerEntity playerEntity = Allies.FirstOrDefault(character => character.Id == characterID);
         if (playerEntity != null)
         {
-            entityEffectsPanel.SetEffectsInfos(playerEntity.appliedEffects);
-            entityEffectsPanel.ChangeToFitAndReplace(playerEntity.appliedEffects.Count);
+            entityEffectsPanel.SetEffectsInfos(playerEntity.appliedEffects, playerEntity.Weapon.effect);
+            entityEffectsPanel.ChangeToFitAndReplace(playerEntity.appliedEffects.Count, playerEntity.Weapon.effect);
             entityEffectsPanel.SetPositionWarriorOffset(fightScenePanel.GetWarriorPanelPositionByID(characterID));
         }
     }

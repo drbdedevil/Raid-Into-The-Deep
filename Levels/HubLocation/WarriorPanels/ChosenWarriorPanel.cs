@@ -25,6 +25,8 @@ public partial class ChosenWarriorPanel : Control
 	private TextureRect weaponTexture;
 	private TextureRect skillTexture;
 
+	private bool NoSkill = false;
+
 	public override void _Ready()
 	{
 		// warrior = GetNode<Warrior>("WarriorPanel");
@@ -54,7 +56,10 @@ public partial class ChosenWarriorPanel : Control
 			float alpha = (Mathf.Sin(_time * _speed) + 1f) / 2f;
 
 			weaponTexture.SelfModulate = new Color(SelfModulate.R, SelfModulate.G, SelfModulate.B, alpha);
-			skillTexture.SelfModulate = new Color(SelfModulate.R, SelfModulate.G, SelfModulate.B, alpha);
+			if (!NoSkill)
+			{
+				skillTexture.SelfModulate = new Color(SelfModulate.R, SelfModulate.G, SelfModulate.B, alpha);
+			}
 		}
 	}
 
@@ -127,22 +132,31 @@ public partial class ChosenWarriorPanel : Control
 		if (existingWeapon != null)
 		{
 			weaponRect.Texture = existingWeapon.WeaponTexture;
+
+			TextureRect effectRect = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton/TextureRect2/MarginContainer/EffectTexture");
+			var existingEffect = GameDataManager.Instance.effectDatabase.Effects[warrior.characterData.Weapon.EffectID];
+			if (existingEffect != null)
+			{
+				effectRect.Texture = existingEffect.texture2D;
+			}
 		}
-		TextureRect effectRect = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton/TextureRect2/MarginContainer/EffectTexture");
-		var existingEffect = GameDataManager.Instance.effectDatabase.Effects[warrior.characterData.Weapon.EffectID];
-		if (existingEffect != null)
+		else
 		{
-			effectRect.Texture = existingEffect.texture2D;
+			Texture2D texture2D = GD.Load<Texture2D>("res://Textures/ChooseAttack/ChooseAttack_No.png");
+			weaponRect.Texture = texture2D;
 		}
 
-			
-
+		TextureRect skillRect = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton/TextureRect");
 		SkillRow skillRow = GameDataManager.Instance.activeSkillsDatabase.skillsRows.FirstOrDefault(skillRow => skillRow.skillName == warrior.characterData.ChoosenSkills);
 		if (skillRow != null)
 		{
-			TextureRect skillRect = GetNode<TextureRect>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton/TextureRect");
-
 			skillRect.Texture = skillRow.skillTextureActive;
+		}
+		else
+		{
+			Texture2D texture2D = GD.Load<Texture2D>("res://Textures/ChooseAttack/ChooseAttack_No.png");
+			skillRect.Texture = texture2D;
+			NoSkill = true;
 		}
 	}
 
@@ -182,8 +196,11 @@ public partial class ChosenWarriorPanel : Control
 		TextureButton weaponButton = GetNode<TextureButton>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/WeaponButton");
 		weaponButton.Disabled = false;
 
-		TextureButton skillButton = GetNode<TextureButton>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton");
-		skillButton.Disabled = false;
+		if (!NoSkill)
+		{
+			TextureButton skillButton = GetNode<TextureButton>("ColorRect/ColorRect/ColorRect/VBoxContainer/HBoxContainer/SkillButton");
+			skillButton.Disabled = false;
+		}
 	}
 
 	private void OnMouseEnter()

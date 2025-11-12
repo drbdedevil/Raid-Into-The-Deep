@@ -6,7 +6,7 @@ public partial class EntityEffectsPanel : ColorRect
 {
     [Export]
     public PackedScene EntityEffectViewScene;
-    public void SetEffectsInfos(List<Effect> InAppliedEffects)
+    public void SetEffectsInfos(List<Effect> InAppliedEffects, Effect InWeaponEffect = null)
     {
         HBoxContainer effectsHBoxContainer = GetNode<HBoxContainer>("MarginContainer/ColorRect/MarginContainer/HBoxContainer");
         foreach (Node child in effectsHBoxContainer.GetChildren())
@@ -20,9 +20,21 @@ public partial class EntityEffectsPanel : ColorRect
             entityEffectView.SetEffectTexture(effect.EffectType);
             effectsHBoxContainer.AddChild(entityEffectView);
         }
+        if (InWeaponEffect != null && (InWeaponEffect.EffectType == EEffectType.ResistanceToStun || InWeaponEffect.EffectType == EEffectType.Pushing))
+        {
+            EntityEffectView entityEffectView = EntityEffectViewScene.Instantiate() as EntityEffectView;
+            entityEffectView.SetEffectTexture(InWeaponEffect.EffectType);
+            effectsHBoxContainer.AddChild(entityEffectView);
+        }
     }
-    public void ChangeToFitAndReplace(int count)
+    public void ChangeToFitAndReplace(int count, Effect InWeaponEffect = null)
     {
+        bool EntityHasSelfEffect = false;
+        if (InWeaponEffect.EffectType == EEffectType.ResistanceToStun || InWeaponEffect.EffectType == EEffectType.Pushing)
+        {
+            EntityHasSelfEffect = true;
+        }
+
         ColorRect colorRect = GetNode<ColorRect>(".");
 
         float resultWidth = 0;
@@ -33,6 +45,10 @@ public partial class EntityEffectsPanel : ColorRect
         else
         {
             resultWidth = count * 22f + 4f;
+        }
+        if (EntityHasSelfEffect && count >= 1)
+        {
+            resultWidth += 22f;
         }
 
         colorRect.SetSize(new Vector2(resultWidth, colorRect.Size.Y));
