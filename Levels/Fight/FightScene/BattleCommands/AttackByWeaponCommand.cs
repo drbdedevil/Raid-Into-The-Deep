@@ -118,7 +118,7 @@ public class AttackByWeaponCommand : Command
                     _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
                     SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
 
-                    Effect battleFrenzyEffect = _battleEntity.appliedEffects.First(effect => effect.EffectType == EEffectType.BattleFrenzy);
+                    Effect battleFrenzyEffect = _battleEntity.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.BattleFrenzy);
                     if (battleFrenzyEffect is BattleFrenzyEntityEffect battleFrenzyEntityEffect)
                     {
                         battleFrenzyEntityEffect.PlayerKilledSomeone = true;

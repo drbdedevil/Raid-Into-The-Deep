@@ -312,7 +312,8 @@ public enum EEffectType
     [EffectCategory(EffectKind.Negative)]
     BloodMark = 11,
     [EffectCategory(EffectKind.Positive)]
-    ReserveDamage = 12
+    ReserveDamage = 12,
+    NONE = 13
 }
 
 public static class EffectExtensions

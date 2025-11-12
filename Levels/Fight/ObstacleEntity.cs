@@ -10,7 +10,7 @@ namespace RaidIntoTheDeep.Levels.Fight;
 /// </summary>
 public partial class ObstacleEntity : BattleEntity
 {
-    public ObstacleEntity(Tile tile, ObstacleCode obstacleCode) : base(tile, null, Guid.NewGuid().ToString(), 0, Int32.MaxValue, 0, 0)
+    public ObstacleEntity(Tile tile, ObstacleCode obstacleCode) : base(tile, null, Guid.NewGuid().ToString(), 0, 0, Int32.MaxValue, 0, 0)
     {
         ObstacleCode = obstacleCode;
         switch (ObstacleCode)

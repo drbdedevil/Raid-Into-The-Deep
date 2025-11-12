@@ -43,7 +43,7 @@ public class ApplySkillCommand : Command
             if (_battleEntity is PlayerEntity playerEntity)
             {
                 if (playerEntity.activeSkill == null) continue;
-                
+
                 if (playerEntity.activeSkill.IsHasEffect())
                 {
                     if (tile.BattleEntity != null && playerEntity.activeSkill.effect.TargetType == EEffectTarget.Enemy)
@@ -54,9 +54,37 @@ public class ApplySkillCommand : Command
                             {
                                 severeWoundEntityEffect.DamageFromInstigator = playerEntity.Damage / 4;
                             }
+                            else if (playerEntity.activeSkill.effect is BloodMarkEntityEffect bloodMarkEntityEffect)
+                            {
+                                bloodMarkEntityEffect.DamageFromInstigator = playerEntity.DamageByEffect * 2;
+                            }
                             entityEffect.entityHolder = tile.BattleEntity;
                             tile.BattleEntity.AddEffect(playerEntity.activeSkill.effect);
                             GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
+                        }
+                    }
+                }
+                else
+                {
+                    if (tile.BattleEntity == null) continue;
+
+                    if (playerEntity.activeSkill is SilentMeditationsActiveSkill silentMeditationsActiveSkill)
+                    {
+                        tile.BattleEntity.ApplyHeal(playerEntity, tile.BattleEntity.Heal);
+                    }
+                    else if (playerEntity.activeSkill is RemoveEffectsActiveSkill removeEffectsActiveSkill)
+                    {
+                        List<Effect> effectsToDelete = new List<Effect>();
+                        foreach (Effect effect in tile.BattleEntity.appliedEffects)
+                        {
+                            if (EffectExtensions.IsNegative(effect.EffectType))
+                            {
+                                effectsToDelete.Add(effect);
+                            }
+                        }
+                        foreach (Effect effect in effectsToDelete)
+                        {
+                            tile.BattleEntity.RemoveEffect(effect);
                         }
                     }
                 }

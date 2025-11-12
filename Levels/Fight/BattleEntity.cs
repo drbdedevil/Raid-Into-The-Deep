@@ -8,12 +8,13 @@ namespace RaidIntoTheDeep.Levels.Fight
 {
     public partial class BattleEntity : Node2D, IEffectHolder
     {
-        public BattleEntity(Tile tile, Weapon weapon, string id, int speed, int health, int damage, int damageByEffect)
+        public BattleEntity(Tile tile, Weapon weapon, string id, int speed, int health, int heal, int damage, int damageByEffect)
         {
             Tile = tile;
             Id = id;
             _speed = speed;
             Health = health;
+            Heal = heal;
             _damage = damage;
             _damageByEffect = damageByEffect;
             Weapon = weapon;
@@ -53,7 +54,9 @@ namespace RaidIntoTheDeep.Levels.Fight
             set { _speed = value; }
         }
 
+        public int MaxHealth { get; set; }
         public int Health { get; set; }
+        public int Heal { get; set; }
 
         private int _damageByEffect;
         public int DamageByEffect
@@ -139,6 +142,16 @@ namespace RaidIntoTheDeep.Levels.Fight
             }
 
             Health = Health - damage;
+        }
+        public virtual void ApplyHeal(BattleEntity instigator, int heal)
+        {
+            int result = Health + heal;
+            if (result > MaxHealth)
+            {
+                Health = MaxHealth;
+                return;
+            }
+            Health = result;
         }
         public virtual bool IsDead()
         {

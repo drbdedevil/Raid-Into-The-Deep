@@ -69,7 +69,7 @@ skillTextureHover = ExtResource("9_a4tn5")
 skillTextureUpgraded = ExtResource("10_kiv1r")
 skillTextureActive = ExtResource("7_73rii")
 skillName = "Тяжёлая рана"
-skillDescription = "Игрок выбирает врага в радиусе 1 клетки. Враг на этой клетке получает эффект \"Тяжёлая рана\", который уменьшает его скорость в половину с округлением вниз."
+skillDescription = "Игрок выбирает врага в радиусе 1 клетки. Враг на этой клетке получает эффект \"Тяжёлая рана\", который уменьшает его скорость в половину с округлением вниз, а также наносит четверть характеристики \"Урон\"."
 skillType = 8
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
