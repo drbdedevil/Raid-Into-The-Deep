@@ -8,13 +8,14 @@ namespace RaidIntoTheDeep.Levels.Fight
 {
     public partial class BattleEntity : Node2D, IEffectHolder
     {
-        public BattleEntity(Tile tile, Weapon weapon, string id, int speed, int health, int damage)
+        public BattleEntity(Tile tile, Weapon weapon, string id, int speed, int health, int damage, int damageByEffect)
         {
             Tile = tile;
             Id = id;
             _speed = speed;
             Health = health;
             _damage = damage;
+            _damageByEffect = damageByEffect;
             Weapon = weapon;
         }
 
@@ -37,17 +38,29 @@ namespace RaidIntoTheDeep.Levels.Fight
         {
             get
             {
+                int result = _speed;
                 if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.Freezing))
                 {
-                    return (int)Mathf.Floor(_speed / 2);
+                    result = (int)Mathf.Floor(result / 2);
+                }
+                if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.SevereWound))
+                {
+                    result = (int)Mathf.Floor(result / 2);
                 }
 
-                return _speed;
+                return result;
             }
             set { _speed = value; }
         }
 
         public int Health { get; set; }
+
+        private int _damageByEffect;
+        public int DamageByEffect
+        {
+            get { return _damageByEffect; }
+            set { _damage = value; }
+        }
 
         private int _damage;
         public int Damage
@@ -110,8 +123,21 @@ namespace RaidIntoTheDeep.Levels.Fight
             return appliedEffects.FirstOrDefault(e => e.EffectType == type);
         }
 
-        public virtual void ApplyDamage(int damage)
+        public virtual void ApplyDamage(BattleEntity instigator, int damage)
         {
+            if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.Defense))
+            {
+                damage /= 2;
+            }
+
+            if (instigator != null)
+            {
+                if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.ReserveDamage))
+                {
+                    instigator.ApplyDamage(null, damage / 2);
+                }
+            }
+
             Health = Health - damage;
         }
         public virtual bool IsDead()

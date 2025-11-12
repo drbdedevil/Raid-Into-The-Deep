@@ -12,23 +12,28 @@ public partial class PlayerEntity : BattleEntity
     public string CharacterName { get; set; } = "NONE";
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
 
+    public ActiveSkill activeSkill { get; private set; }
+
     public PlayerEntity(Tile tile, CharacterData characterData) : base(tile,
-        WeaponFactory.CreateWeaponForPlayerEntity((AttackShapeType)characterData.Weapon.AttackShapeID, characterData.Weapon), characterData.ID, 
-        characterData.Speed, characterData.Health, characterData.Damage)
+        WeaponFactory.CreateWeaponForPlayerEntity((AttackShapeType)characterData.Weapon.AttackShapeID, characterData.Weapon), characterData.ID,
+        characterData.Speed, characterData.Health, characterData.Damage, characterData.DamageByEffect)
     {
         Level = characterData.Level;
         PortraitID = characterData.PortraitID;
         CharacterName = characterData.Name;
         PassiveSkillLevels = characterData.PassiveSkillLevels;
+
+        activeSkill = ActiveSkillFactory.CreateActiveSkillByName(characterData.ChoosenSkills);
     }
 
-    public override void ApplyDamage(int damage)
+    public override void ApplyDamage(BattleEntity instigator, int damage)
     {
+        base.ApplyDamage(instigator, damage);
+        
         CharacterData characterData = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.FirstOrDefault(character => character.ID == Id);
         if (characterData != null)
         {
             characterData.Health -= damage;
-            Health = characterData.Health;
 
             if (IsDead())
             {

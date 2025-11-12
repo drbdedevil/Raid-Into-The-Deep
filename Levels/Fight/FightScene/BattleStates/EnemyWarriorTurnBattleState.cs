@@ -15,9 +15,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 	private List<Tile> _tilesToAttack;
 
 	private Task _drawingTilesToMoveTask;
-	private const int DrawingTilesToMoveTaskDuration = 250;
+	private const int DrawingTilesToMoveTaskDuration = 1000; // = 250;
 	private Task _drawingTilesToAttackTask;
-	private const int drawingTilesToAttackTaskDuration = 250;
+	private const int drawingTilesToAttackTaskDuration = 1000; // = 250;
 	private double _skippingMoveTime = 0.0d;
 	private bool bShouldSkip = false;
 
@@ -77,6 +77,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 		
 		if (_targetResult.PlayerEntityToAttack is not null)
 		{
+			var attackCommand = new AttackByWeaponCommand(_currentEnemyWarrior, _tilesToAttack.ToList(), FightSceneManager);
+			attackCommand.Execute();
+
 			MapManager.ClearDrawEnemyEntityTilesToAttack(_tilesToAttack);
 			FightSceneManager.EnemyWarriorsThatTurned.Add(_currentEnemyWarrior);
 			if (FightSceneManager.Enemies.Count == FightSceneManager.EnemyWarriorsThatTurned.Count)

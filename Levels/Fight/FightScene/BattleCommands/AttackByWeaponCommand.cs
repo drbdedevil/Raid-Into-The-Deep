@@ -81,7 +81,7 @@ public class AttackByWeaponCommand : Command
                 // например tile.BattleEntity.PushFrom(_battleEntity.Position);
             }
         }
-
+        
         WeaponRow row = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == _battleEntity.Weapon.weaponData.Name);
         if (row != null)
         {
@@ -103,7 +103,7 @@ public class AttackByWeaponCommand : Command
         {
             if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(targetWeaponAttackDamage.Damage);
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
                 if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemovePlayerWarrior(playerWarrior);
@@ -112,11 +112,17 @@ public class AttackByWeaponCommand : Command
             }
             else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(targetWeaponAttackDamage.Damage);
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
                 if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
                     SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
+
+                    Effect battleFrenzyEffect = _battleEntity.appliedEffects.First(effect => effect.EffectType == EEffectType.BattleFrenzy);
+                    if (battleFrenzyEffect is BattleFrenzyEntityEffect battleFrenzyEntityEffect)
+                    {
+                        battleFrenzyEntityEffect.PlayerKilledSomeone = true;
+                    }
                 }
             }
         }

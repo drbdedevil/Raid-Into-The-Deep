@@ -19,7 +19,19 @@ public class ApplySkillCommand : Command
     {
         foreach (var tile in _tilesForAttack)
         {
-            GD.Print($"чувачок с Id-{ _battleEntity.Id} применил скилл по тайлу {tile}");
+            if (_battleEntity is PlayerEntity playerEntity)
+            {
+                if (playerEntity.activeSkill == null) continue;
+                GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
+                
+                if (playerEntity.activeSkill.IsHasEffect())
+                {
+                    if (playerEntity.activeSkill.effect.TargetType == EEffectTarget.Self)
+                    {
+                        playerEntity.AddEffect(playerEntity.activeSkill.effect);
+                    }
+                }
+            }
         }
     }
 
@@ -27,7 +39,7 @@ public class ApplySkillCommand : Command
     {
         foreach (var tile in _tilesForAttack)
         {
-            GD.Print($"чувачок с Id-{ _battleEntity.Id} применил скилл по тайлу {tile}");
+            GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
         }
     }
 }

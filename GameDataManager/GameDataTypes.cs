@@ -44,7 +44,7 @@ public class CharacterData
     public int Heal { get; set; } = 0;
     public int Speed { get; set; } = 0;
     public WeaponData Weapon { get; set; } = new();
-    public int SkillPoints { get; set; } = 1;
+    public int SkillPoints { get; set; } = 10;
     public int Level { get; set; } = 1;
 
     public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
@@ -56,8 +56,8 @@ public class CharacterData
 public class StorageData
 {
     public int Level { get; set; } = 1;
-    public int Crystals { get; set; } = 40;
-    public int ChitinFragments { get; set; } = 50;
+    public int Crystals { get; set; } = 400;
+    public int ChitinFragments { get; set; } = 500;
     public List<WeaponData> Weapons { get; set; } = new();
 }
 
@@ -113,6 +113,16 @@ public class GameData
     public RunMapData runMapData = new();
 }
 
+public enum EWeaponType
+{
+    Sword = 0,
+    Spear = 1,
+    Rapier = 2,
+    Dagger = 3,
+    Shotgun = 4,
+    Artillery = 5,
+    Crossbow = 6
+}
 
 public enum AttackShapeType
 {

@@ -27,6 +27,7 @@ public class PlayerWarriorConfirmationBattleState : BattleState
 
     private void ConfirmTurn()
     {
+    
         MapManager.ClearAllSelectedTiles();
         foreach (var notExecutedCommand in FightSceneManager.NotExecutedCommands)
         {
@@ -34,6 +35,22 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         }
         FightSceneManager.NotExecutedCommands.Clear();
         FightSceneManager.ExecutedCommands.Clear();
+
+        Effect battleFrenzyEffect = FightSceneManager.CurrentPlayerWarriorToTurn.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.BattleFrenzy);
+        if (battleFrenzyEffect is BattleFrenzyEntityEffect battleFrenzyEntityEffect)
+        {
+            if (battleFrenzyEntityEffect.PlayerKilledSomeone)
+            {
+                battleFrenzyEntityEffect.PlayerKilledSomeone = false;
+                if (FightSceneManager.PlayerWarriorsThatTurned.Count == FightSceneManager.Allies.Count)
+                    FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
+                else 
+                    FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+                DisableButtons();
+                return;
+            }
+        }
+
         FightSceneManager.PlayerWarriorsThatTurned.Add(FightSceneManager.CurrentPlayerWarriorToTurn);
         
         if (FightSceneManager.PlayerWarriorsThatTurned.Count == FightSceneManager.Allies.Count)
@@ -63,5 +80,18 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.ConfirmTurnButton.SetDisabled(true);
         FightSceneManager.CancelTurnButton.ButtonUp -= CancelTurn;
         FightSceneManager.CancelTurnButton.SetDisabled(true);
+    }
+
+    private void SecondTurn()
+    {
+        MapManager.ClearAllSelectedTiles();
+        foreach (var executedCommand in FightSceneManager.ExecutedCommands)
+        {
+            executedCommand.Execute();
+        }
+        FightSceneManager.NotExecutedCommands.Clear();
+        FightSceneManager.ExecutedCommands.Clear();
+        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
+        DisableButtons();
     }
 }

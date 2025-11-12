@@ -14,6 +14,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
     public PlayerWarriorSkillChoosingBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
         _currentPlayerWarrior = fightSceneManager.CurrentPlayerWarriorToTurn;
+        StateTitleText = "Вы атакуете навыком! Выбирайте кого атаковать! Выберите клетку из предложенных!";
     }
 
     public override void InputUpdate(InputEvent @event)
@@ -28,7 +29,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
         }
         
         
-        StateTitleText = "Вы атакуете навыком! Выбирайте кого атаковать! Выберите клетку из предложенных!";
+        
     }
 
     public override void ProcessUpdate(double delta)

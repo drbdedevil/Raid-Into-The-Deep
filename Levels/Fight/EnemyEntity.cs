@@ -9,7 +9,7 @@ public partial class EnemyEntity : BattleEntity
 {
     // надо будет написать метод для спавна рандомного оружия врагам
     public EnemyEntity(Tile tile, GameEnemyCode enemyCode, EnemyBaseStatRow enemyBaseStat)
-        : base(tile, WeaponFactory.CreateWeaponByAttackShapeType(enemyBaseStat.AttackShapeType), Guid.NewGuid().ToString(), enemyBaseStat.Speed, enemyBaseStat.Health, enemyBaseStat.Damage)
+        : base(tile, WeaponFactory.CreateWeaponByAttackShapeType(enemyBaseStat.AttackShapeType), Guid.NewGuid().ToString(), enemyBaseStat.Speed, enemyBaseStat.Health, enemyBaseStat.Damage, enemyBaseStat.DamageByEffect)
     {
         EnemyId = enemyCode;
         MaxHealth = enemyBaseStat.Health;

@@ -5,6 +5,5 @@ using System;
 public partial class TileEffect : Effect
 {
     public Tile tileHolder;
-    
-    
 }
+

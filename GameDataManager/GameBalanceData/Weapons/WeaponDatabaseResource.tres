@@ -36,6 +36,7 @@ ChitinFragmentsCost = 10
 CrystalYield = 2
 ChitinFragmentsYield = 5
 SoundPath = "res://Sound/Weapon/Spear.wav"
+weaponType = 1
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_8y10g"]
@@ -49,6 +50,7 @@ ChitinFragmentsCost = 16
 CrystalYield = 4
 ChitinFragmentsYield = 10
 SoundPath = "res://Sound/Weapon/Rapier.wav"
+weaponType = 2
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_mxcif"]
@@ -62,6 +64,7 @@ ChitinFragmentsCost = 10
 CrystalYield = 2
 ChitinFragmentsYield = 4
 SoundPath = "res://Sound/Weapon/Dagger2.wav"
+weaponType = 3
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_ael6f"]
@@ -76,6 +79,7 @@ ChitinFragmentsCost = 20
 CrystalYield = 8
 ChitinFragmentsYield = 15
 SoundPath = "res://Sound/Weapon/Shotgun.wav"
+weaponType = 4
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_im85c"]
@@ -90,6 +94,7 @@ ChitinFragmentsCost = 40
 CrystalYield = 10
 ChitinFragmentsYield = 12
 SoundPath = "res://Sound/Weapon/Artillery.wav"
+weaponType = 5
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [sub_resource type="Resource" id="Resource_w857q"]
@@ -104,6 +109,7 @@ ChitinFragmentsCost = 20
 CrystalYield = 9
 ChitinFragmentsYield = 14
 SoundPath = "res://Sound/Weapon/Crossbow.wav"
+weaponType = 6
 metadata/_custom_type_script = "uid://dqqpa1khhctag"
 
 [resource]

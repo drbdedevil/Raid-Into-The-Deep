@@ -10,13 +10,15 @@ public abstract class Weapon
 	{
 		AttackShapeInfo = GameDataManager.Instance.attackShapeDatabase.AttackShapes[attackShapeId];
 		weaponData = InWeaponData;
-		
+
+		DefineWeaponTypeByName();
 		CreateEffectByWeaponData();
 	}
 
 	public AttackShapeInfo AttackShapeInfo { get; private set; }
 	public WeaponData weaponData { get; private set; }
 	public Effect effect { get; private set; }
+	public EWeaponType weaponType { get; private set; }
 	
 	protected AttackDirection CalculateDirection( Vector2 startPosition, Vector2 targetPosition)
 	{
@@ -36,10 +38,10 @@ public abstract class Weapon
 	public abstract List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map);
 
 	public void CreateEffectByWeaponData()
-    {
+	{
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
 		switch (effectInfo.effectType)
-        {
+		{
 			case EEffectType.Poison:
 				effect = new PoisonEntityEffect(effectInfo.duration);
 				break;
@@ -66,8 +68,12 @@ public abstract class Weapon
 				break;
 			default:
 				break;
-        }
-		
+		}
+
+	}
+	private void DefineWeaponTypeByName()
+    {
+        
     }
 
 	public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
