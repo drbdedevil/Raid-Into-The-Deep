@@ -54,8 +54,6 @@ public static class PathFinder
             result.Add(tile);
         }
         
-        result.Remove(startTile);
-        
         return result;
     }
 

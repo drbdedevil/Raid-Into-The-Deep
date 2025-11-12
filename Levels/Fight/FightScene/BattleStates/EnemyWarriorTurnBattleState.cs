@@ -39,7 +39,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 		else
 		{
 			_tilesToMove = PathFinder.FindTilesToMove(_currentEnemyWarrior.Tile, mapManager, _currentEnemyWarrior.Speed);
-			MapManager.DrawEnemyEntityTilesToMove(_tilesToMove);
+			MapManager.DrawEnemyEntityTilesToMove(_tilesToMove, _currentEnemyWarrior);
 			_drawingTilesToMoveTask = Task.Delay(DrawingTilesToMoveTaskDuration);
 		}
 	}

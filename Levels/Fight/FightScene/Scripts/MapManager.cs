@@ -213,11 +213,12 @@ public partial class MapManager : Node2D
 		}
 	}
 
-	public void DrawEnemyEntityTilesToMove(List<Tile> tilesToMove)
+	public void DrawEnemyEntityTilesToMove(List<Tile> tilesToMove, EnemyEntity enemyEntity)
 	{
 		foreach (var tile in tilesToMove)
 		{
-			SelectTileForMovement(tile);
+			if (tile == enemyEntity.Tile) SelectTileForCurrentEntityTurn(tile);
+			else SelectTileForMovement(tile);
 		}
 	}
 

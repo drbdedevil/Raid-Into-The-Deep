@@ -22,8 +22,7 @@ public class MoveBattleEntityCommand : Command
     public override void Execute()
     {
         if (_tileTarget is null) throw new ApplicationException("Target tile is null");
-        if (_previousTile == _tileTarget) throw new ApplicationException("Нельзя так перемещаться");
-        if (_tileTarget.BattleEntity is not null) throw new ApplicationException("Tile уже занят");
+        if (_tileTarget.BattleEntity is not null && !Equals(_tileTarget.BattleEntity, _battleEntityToMove)) throw new ApplicationException("Tile уже занят");
         
         _mapManager.SetBattleEntityOnTile(_tileTarget, _battleEntityToMove);
     }
