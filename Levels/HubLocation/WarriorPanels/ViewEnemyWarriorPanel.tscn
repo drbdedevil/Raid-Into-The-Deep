@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyhkhemfaxwiy"]
+[gd_scene load_steps=7 format=3 uid="uid://dyhkhemfaxwiy"]
 
 [ext_resource type="Script" uid="uid://b5fbuattdpkgm" path="res://Levels/HubLocation/WarriorPanels/ViewEnemyWarriorPanel.cs" id="1_34tiq"]
 [ext_resource type="Texture2D" uid="uid://ltam438mr53u" path="res://Textures/Default/ViewWarriorPanel.png" id="2_xvtb3"]
 [ext_resource type="PackedScene" uid="uid://bsgjgwnjho2nn" path="res://Levels/HubLocation/WarriorPanels/WarriorEnemyPanel_Mini.tscn" id="3_34tiq"]
+[ext_resource type="Texture2D" uid="uid://dupvjlb80i0a2" path="res://Textures/WeaponsTexture/mech.png" id="4_bpfl8"]
+[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="5_6q1ss"]
+[ext_resource type="Texture2D" uid="uid://bxfxakjpccggq" path="res://Textures/EffectsTextures/VoprosDlyaEffects.png" id="6_pgp2o"]
 
 [node name="ViewWarriorPanel" type="Control"]
 custom_minimum_size = Vector2(169, 56)
@@ -34,4 +37,62 @@ theme_override_constants/margin_top = 2
 [node name="WarriorEnemyPanel" parent="PanelContainer/MarginContainer" instance=ExtResource("3_34tiq")]
 custom_minimum_size = Vector2(165, 52)
 layout_mode = 2
+
+[node name="WeaponINfs" type="MarginContainer" parent="PanelContainer"]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/WeaponINfs"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 1
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/WeaponINfs/ColorRect"]
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_bpfl8")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/WeaponINfs/ColorRect"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 0
+offset_left = 30.0
+offset_right = 48.0
+offset_bottom = 18.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("5_6q1ss")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/WeaponINfs/ColorRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EffectTexture" type="TextureRect" parent="PanelContainer/WeaponINfs/ColorRect/TextureRect2/MarginContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_pgp2o")
+expand_mode = 1
+stretch_mode = 4
