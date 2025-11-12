@@ -17,18 +17,47 @@ public class ApplySkillCommand : Command
     
     public override void Execute()
     {
+        if (_battleEntity is PlayerEntity playerEntityActive)
+        {
+            if (playerEntityActive.activeSkill != null)
+            {
+                GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл");
+                
+                if (playerEntityActive.activeSkill.IsHasEffect())
+                {
+                    if (playerEntityActive.activeSkill.effect.TargetType == EEffectTarget.Self)
+                    {
+                        if (playerEntityActive.activeSkill.effect is EntityEffect entityEffect)
+                        {
+                            entityEffect.entityHolder = playerEntityActive;
+                            playerEntityActive.AddEffect(playerEntityActive.activeSkill.effect);
+                            return;
+                        }
+                    }
+                }
+            } 
+        }
+
         foreach (var tile in _tilesForAttack)
         {
             if (_battleEntity is PlayerEntity playerEntity)
             {
                 if (playerEntity.activeSkill == null) continue;
-                GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
                 
                 if (playerEntity.activeSkill.IsHasEffect())
                 {
-                    if (playerEntity.activeSkill.effect.TargetType == EEffectTarget.Self)
+                    if (tile.BattleEntity != null && playerEntity.activeSkill.effect.TargetType == EEffectTarget.Enemy)
                     {
-                        playerEntity.AddEffect(playerEntity.activeSkill.effect);
+                        if (playerEntity.activeSkill.effect is EntityEffect entityEffect)
+                        {
+                            if (playerEntity.activeSkill.effect is SevereWoundEntityEffect severeWoundEntityEffect)
+                            {
+                                severeWoundEntityEffect.DamageFromInstigator = playerEntity.Damage / 4;
+                            }
+                            entityEffect.entityHolder = tile.BattleEntity;
+                            tile.BattleEntity.AddEffect(playerEntity.activeSkill.effect);
+                            GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
+                        }
                     }
                 }
             }

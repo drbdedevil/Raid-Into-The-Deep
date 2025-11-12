@@ -177,10 +177,12 @@ public class SevereWoundEntityEffect : EntityEffect
 		TargetType = EEffectTarget.Enemy;
 		Duration = duration;
 		IsTemporary = true;
-		IsPending = false;
+		IsPending = true;
 	}
+	public int DamageFromInstigator = 1;
 	public override void OnApply()
 	{
+		entityHolder.ApplyDamage(null, DamageFromInstigator);
 		GD.Print("Применилась тяжёлая рана для " + entityHolder.Id);
 	}
 }

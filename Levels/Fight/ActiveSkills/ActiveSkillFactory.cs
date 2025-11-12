@@ -9,7 +9,7 @@ public static class ActiveSkillFactory
         switch (activeSkillName)
         {
             case "Обратная волна": return new ReserveDamageActiveSkill(EEffectType.ReserveDamage);
-            case "Тяжёлая рана": return null;
+            case "Тяжёлая рана": return new SevereWoundActiveSkill(EEffectType.SevereWound);
             case "Ядовитое облако": return null;
             case "Тихая медитация": return null;
             case "Железная стена": return null;
