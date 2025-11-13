@@ -83,8 +83,11 @@ public abstract class ActiveSkill
 			case EEffectType.Fire:
 				return new FireObstacleEffect(null, 3);
 			case EEffectType.Poison:
-				// создать tile effect
-				return null;
+				return new PoisonObstacleEffect(null, 3);
+			case EEffectType.ObstacleHeal:
+				return new HealObstacleEffect(null, 3);
+			case EEffectType.Wall:
+				return new WallObstacleEffect(null, 3);
 			default:
 				break;
 		}

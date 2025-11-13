@@ -2,6 +2,7 @@ using Godot;
 using RaidIntoTheDeep.Levels.Fight;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using System;
+using System.Collections.Generic;
 
 public partial class ObstacleEffect : Effect
 {
@@ -35,7 +36,96 @@ public class FireObstacleEffect : ObstacleEffect
 			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
 			GD.Print("Применился огонь на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
 		}
-		GD.Print(obstacleHolder.Tile.CartesianPosition);
+		// GD.Print(obstacleHolder.Tile.CartesianPosition);
+	}
+	public override void OnRemove()
+	{
+		mapManager.RemoveObstacleFromTile(obstacleHolder.Tile);
+	}
+}
+
+public class PoisonObstacleEffect : ObstacleEffect
+{
+	public PoisonObstacleEffect(MapManager mapManager, int duration = 3) : base(mapManager)
+	{
+		EffectType = EEffectType.Poison;
+		TargetType = EEffectTarget.Obstacle;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = true;
+	}
+
+	public override void OnApply()
+	{
+		if (obstacleHolder.Tile.BattleEntity != null)
+		{
+			EntityEffect entityEffect = new PoisonEntityEffect(2);
+			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
+			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
+			GD.Print("Применилось ядовитое облако на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
+		}
+		// GD.Print(obstacleHolder.Tile.CartesianPosition);
+	}
+	public override void OnRemove()
+	{
+		mapManager.RemoveObstacleFromTile(obstacleHolder.Tile);
+	}
+}
+
+public class HealObstacleEffect : ObstacleEffect
+{
+	public HealObstacleEffect(MapManager mapManager, int duration = 3) : base(mapManager)
+	{
+		EffectType = EEffectType.ObstacleHeal;
+		TargetType = EEffectTarget.Obstacle;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = true;
+	}
+
+	public int Heal = 0;
+	public override void OnApply()
+	{
+		// List<Tile> tilesForHealing = new();
+		List<Vector2I> coordsForHealing = new();
+		Vector2I tileCoord = obstacleHolder.Tile.CartesianPosition;
+		coordsForHealing.Add(tileCoord + new Vector2I(0, 1));
+		coordsForHealing.Add(tileCoord + new Vector2I(0, -1));
+		coordsForHealing.Add(tileCoord + new Vector2I(1, 0));
+		coordsForHealing.Add(tileCoord + new Vector2I(-1, 0));
+
+		foreach (Vector2I coordForHealing in coordsForHealing)
+		{
+			Tile tileForHealing = mapManager.GetTileByCartesianCoord(coordForHealing);
+			if (tileForHealing != null && tileForHealing.BattleEntity != null)
+			{
+				tileForHealing.BattleEntity.ApplyHeal(obstacleHolder, Heal);
+				GD.Print("Применилось лечение для " + tileForHealing.BattleEntity.Id);
+			}
+		}
+	}
+	public override void OnRemove()
+	{
+		mapManager.RemoveObstacleFromTile(obstacleHolder.Tile);
+	}
+}
+
+// Этот эффект нужен лишь для того, чтобы стенка уничтожалась через какое-то время
+// Создал отдельный эффект, чтобы не переписывать логику "таймера" для удаления в другом месте
+public class WallObstacleEffect : ObstacleEffect
+{
+	public WallObstacleEffect(MapManager mapManager, int duration = 3) : base(mapManager)
+	{
+		EffectType = EEffectType.Wall;
+		TargetType = EEffectTarget.Obstacle;
+		Duration = duration;
+		IsTemporary = true;
+		IsPending = true;
+	}
+
+	public override void OnApply()
+	{
+
 	}
 	public override void OnRemove()
 	{

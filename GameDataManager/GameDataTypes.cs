@@ -186,7 +186,7 @@ public enum ESkillType
     [SkillCategory(SkillKind.Active)]
     RemoveEffects,
     [SkillCategory(SkillKind.Active)]
-    RestorationField,
+    RestorationTotem,
     [SkillCategory(SkillKind.Active)]
     Arson
 }
@@ -313,7 +313,9 @@ public enum EEffectType
     BloodMark = 11,
     [EffectCategory(EffectKind.Positive)]
     ReserveDamage = 12,
-    NONE = 13
+    ObstacleHeal = 13,
+    Wall = 14,
+    NONE = 15
 }
 
 public static class EffectExtensions

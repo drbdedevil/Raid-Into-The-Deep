@@ -7,7 +7,8 @@ public enum ObstacleCode
     Wall,
     Rock,
     Poison,
-    Fire
+    Fire,
+    Totem
 }
 
 public static class ObstacleCodeExtensions

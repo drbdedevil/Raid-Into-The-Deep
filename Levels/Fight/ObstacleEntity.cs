@@ -16,7 +16,12 @@ public partial class ObstacleEntity : BattleEntity
         switch (ObstacleCode)
         {
             case ObstacleCode.Wall:
+                IsImpassable = true;
+                break;
             case ObstacleCode.Rock:
+                IsImpassable = true;
+                break;
+            case ObstacleCode.Totem:
                 IsImpassable = true;
                 break;
             default:
