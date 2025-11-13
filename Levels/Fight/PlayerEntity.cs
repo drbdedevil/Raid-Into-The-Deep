@@ -38,7 +38,7 @@ public partial class PlayerEntity : BattleEntity
 			MaxHealth = maxHealthToSet;
 		}
 
-        activeSkill = ActiveSkillFactory.CreateActiveSkillByName(characterData.ChoosenSkills);
+        activeSkill = ActiveSkillFactory.CreateActiveSkillByName(characterData.ChoosenSkills, this);
     }
 
     public override void ApplyDamage(BattleEntity instigator, int damage)

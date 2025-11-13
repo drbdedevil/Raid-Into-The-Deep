@@ -1,22 +1,26 @@
 using System.Collections.Generic;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 
 public abstract class ActiveSkill
 {
-	public ActiveSkill(EEffectType InEffectType)
+	public ActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity)
 	{
 		// CreateEffect(InEffectType);
 		effectType = InEffectType;
+		playerEntityOwner = playerEntity;
 	}
 
 	// public Effect effect { get; private set; }
 	public EEffectType effectType { get; private set; }
 	public bool IsHasEffect()
-    {
+	{
 		return effectType != EEffectType.NONE;
-    }
+	}
+
+	public PlayerEntity playerEntityOwner;
 	
 	protected AttackDirection CalculateDirection( Vector2 startPosition, Vector2 targetPosition)
 	{

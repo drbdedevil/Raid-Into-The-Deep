@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 
 public class BattleFrenzyActiveSkill : ActiveSkill
 {
-	public BattleFrenzyActiveSkill(EEffectType InEffectType) : base(InEffectType)
+	public BattleFrenzyActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity) : base(InEffectType, playerEntity)
 	{
 		// CreateEffect(InEffectType);
 	}

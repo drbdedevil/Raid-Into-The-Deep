@@ -216,7 +216,7 @@ public partial class MapManager : Node2D
 			else SelectTileForMovement(tile);
 		}
 	}
-	
+
 	/// <summary>
 	/// Метод для просчёта и отрисовки возможных тайлов к атаке воином игрока
 	/// </summary>
@@ -229,6 +229,18 @@ public partial class MapManager : Node2D
 			SelectTileForAttack(tile);
 		}
 	}
+	/// <summary>
+	/// Метод для просчёта и отрисовки возможных тайлов для применения скилла
+	/// </summary>
+	public void CalculateAndDrawPlayerEntitySkillZone(PlayerEntity playerEntity, Tile targetTile)
+    {
+		var tileBySkill = PathFinder.FindTilesBySkill(playerEntity, targetTile, this);
+		_selectedTilesForPlayerAction = tileBySkill;
+		foreach (var tile in _selectedTilesForPlayerAction)
+        {
+			SelectTileForAttack(tile);
+        }
+    }
 
 	public void DrawEnemyEntityTilesToMove(List<Tile> tilesToMove, EnemyEntity enemyEntity)
 	{

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
-
+using RaidIntoTheDeep.Levels.Fight;
 
 public class SilentMeditationsActiveSkill : ActiveSkill
 {
-	public SilentMeditationsActiveSkill(EEffectType InEffectType) : base(InEffectType)
+	public SilentMeditationsActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity) : base(InEffectType, playerEntity)
 	{
 		// CreateEffect(InEffectType);
 	}
