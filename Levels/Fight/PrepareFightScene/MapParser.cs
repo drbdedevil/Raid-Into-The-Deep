@@ -9,7 +9,7 @@ public static class MapParser
 {
     public static (List<Tile> Tiles, Vector2I Size) LoadFromText(string mapText)
     {
-        string[] lines = mapText.Split('\n');
+        string[] lines = mapText.Replace("\r\n", "\n").Split('\n');
         string[] sizeLine = lines[0].Split(" ");
         int width = int.Parse(sizeLine[0]);
         int height = int.Parse(sizeLine[1]);
@@ -33,7 +33,6 @@ public static class MapParser
                 
                 if (mapElement != "e" && mapElement != "o" && mapElement != "c")
                 {
-                    
                     bool battleEntityIsEnemy = int.TryParse(mapElement, out int entityCode);
                     if (battleEntityIsEnemy)
                     {

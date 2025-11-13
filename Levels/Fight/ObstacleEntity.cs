@@ -54,6 +54,6 @@ public partial class ObstacleEntity : BattleEntity
     /// </summary>
     public int TurnCount { get; set; }
     
-    public Effect ImposedEffect { get; set; }
+    public EntityEffect ImposedEffect { get; set; }
     
 }

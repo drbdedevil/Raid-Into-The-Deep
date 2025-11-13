@@ -86,7 +86,8 @@ public partial class PrepareFightMapManager : Node2D
 		_entityLayer = GetNode<TileMapLayer>("Entities");
 		_obstacleLayer = GetNode<TileMapLayer>("Obstacles");
 		
-		var mapText = FileAccess.Open($"res://Maps/{MapName}", FileAccess.ModeFlags.Read).GetAsText();
+		int randMap = new Random().Next(1, 10);
+		var mapText = FileAccess.Open($"res://Maps/Обычные/map{randMap}.txt", FileAccess.ModeFlags.Read).GetAsText();
 		(_mapTiles, var mapSize) = MapParser.LoadFromText(mapText);
 
 		for (int y = 0; y < mapSize.Y; y++)

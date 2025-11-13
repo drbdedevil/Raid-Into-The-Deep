@@ -1,0 +1,9 @@
+8 8
+1 c c 1 2 p p p
+c 2 c c 4 c p p
+f c r c c r c p
+f c c c c c c c
+f c c c c c c c
+f c r c c r c c
+c o o o o o o c
+c o o o o o o c

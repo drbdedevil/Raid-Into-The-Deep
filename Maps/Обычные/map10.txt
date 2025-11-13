@@ -1,0 +1,9 @@
+8 8
+4 c c c c c c 4
+c c c r c c c c
+c c r c c r c c
+c c c o o c r c
+c r c o o c c c
+c c r c c r c c
+c c c c r c c c
+4 c c c c c c 4

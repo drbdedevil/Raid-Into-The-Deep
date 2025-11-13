@@ -121,7 +121,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 				{
 					_tilesToAttack = tilesToAttack;
 					MapManager.ClearDrawEnemyEntityTilesToMove(_tilesToMove);
-					var command = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, tileToMove);
+					var command = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, FightSceneManager, tileToMove);
 					command.Execute();
 					MapManager.DrawEnemyEntityTilesToAttack(_tilesToAttack);
 					_drawingTilesToAttackTask = Task.Delay(drawingTilesToAttackTaskDuration);
@@ -132,7 +132,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 
 		var nearestTile = tileDistances.OrderBy(x => x.DistanceToPlayerEntity).FirstOrDefault()?.Tile;
 		MapManager.ClearDrawEnemyEntityTilesToMove(_tilesToMove);
-		var moveBattleEntityCommand = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, nearestTile);
+		var moveBattleEntityCommand = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, FightSceneManager, nearestTile);
 		moveBattleEntityCommand.Execute();
 		return new TargetResult(null, null);
 	}

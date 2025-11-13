@@ -88,8 +88,10 @@ public static class PathFinder
         var pathsResult = results.OrderByDescending(x => x.CalculateScore())
             .GroupBy(x => x.CalculateScore()).ToDictionary(x => x.Key, x => x.ToList());
 
-        
-        return pathsResult.FirstOrDefault().Value.OrderBy(x => x.Count).Select(x => x.Path).FirstOrDefault();
+        if (!pathsResult.Any()) return [];
+        var shortestPath = pathsResult.FirstOrDefault();
+        if (shortestPath.Value.OrderBy(x => x.Count).Select(x => x.Path).FirstOrDefault() is null) return [];
+        return shortestPath.Value.OrderBy(x => x.Count).Select(x => x.Path).FirstOrDefault();
         
         void CollectPathsRecursive(
             Tile current,

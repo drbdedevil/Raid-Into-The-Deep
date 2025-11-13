@@ -55,7 +55,7 @@ public class PlayerWarriorMovementBattleState : BattleState
             }
             if (tile is not null && tile.IsAllowedToSetBattleEntity)
             {
-                var moveCommand = new MoveBattleEntityCommand(_currentPlayerWarrior, MapManager, tile);
+                var moveCommand = new MoveBattleEntityCommand(_currentPlayerWarrior, MapManager, FightSceneManager, tile);
                 moveCommand.Execute();
                 FightSceneManager.ExecutedCommands.Add(moveCommand);
                 FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
@@ -65,7 +65,8 @@ public class PlayerWarriorMovementBattleState : BattleState
 
     public override void ProcessUpdate(double delta)
     {
-        if (_tileUnderMouse != MapManager.GetTileInSelectedUnderMousePosition())
+        
+        if (!bShouldSkip && _tileUnderMouse != MapManager.GetTileInSelectedUnderMousePosition())
         {
             _tileUnderMouse = MapManager.GetTileInSelectedUnderMousePosition();
             if (_tileUnderMouse is not null)

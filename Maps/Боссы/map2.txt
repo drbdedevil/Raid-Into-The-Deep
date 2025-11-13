@@ -1,0 +1,9 @@
+8 8
+r r r r r r r r
+r o c c c c 8 r
+r c r c r r c r
+r c r c r r c r
+r c c o c c c r
+r c r c r r c r
+r o c c c c o r
+r r r r r r r r

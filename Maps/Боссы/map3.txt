@@ -1,0 +1,9 @@
+8 8
+3 c c c 9 f c 3
+f c f c c c c c
+c c f c c c c c
+c c f c f f c c
+c c c c c c c c
+c f c c c c f c
+c f c o o c f c
+3 f c o o c f 3
