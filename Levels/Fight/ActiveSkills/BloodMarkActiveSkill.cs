@@ -7,7 +7,7 @@ public class BloodMarkActiveSkill : ActiveSkill
 {
 	public BloodMarkActiveSkill(EEffectType InEffectType) : base(InEffectType)
 	{
-		CreateEffect(InEffectType);
+		// CreateEffect(InEffectType);
 	}
 
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)

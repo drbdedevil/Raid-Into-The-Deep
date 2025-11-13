@@ -12,7 +12,14 @@ public partial class MapManager : Node2D
 	private List<List<Vector2I>> _cartesianCoords = [];
 	private List<List<Vector2I>> _isometricCoords = [];
 	private readonly List<Tile> _mapTiles = [];
-	
+	public List<Tile> MapTiles
+    {
+		get
+		{
+			return _mapTiles;
+		}
+    }
+
 	private TileMapLayer _floorLayer;
 	private TileMapLayer _entityLayer;
 	private TileMapLayer _obstacleLayer;
@@ -141,6 +148,10 @@ public partial class MapManager : Node2D
 		if (obstacle.Tile is not null) RemoveObstacleFromTile(tile);
 		obstacle.Tile = tile;
 		tile.ObstacleEntity = obstacle;
+		if (tile.ObstacleEntity is ObstacleEntity)
+		{
+			_obstacleLayer.SetCell(tile.IsometricPosition, 0, new Vector2I(0, (int)tile.ObstacleEntity.ObstacleCode));
+		}
 	}
 	
 	public void RemoveObstacleFromTile(Tile tile)

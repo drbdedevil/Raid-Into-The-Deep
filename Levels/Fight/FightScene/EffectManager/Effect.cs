@@ -2,7 +2,7 @@ public enum EEffectTarget
 {
     Self,
     Enemy,
-    Tile
+    Obstacle
 }
 
 public abstract class Effect

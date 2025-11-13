@@ -7,7 +7,7 @@ public class BattleFrenzyActiveSkill : ActiveSkill
 {
 	public BattleFrenzyActiveSkill(EEffectType InEffectType) : base(InEffectType)
 	{
-		CreateEffect(InEffectType);
+		// CreateEffect(InEffectType);
 	}
 
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)

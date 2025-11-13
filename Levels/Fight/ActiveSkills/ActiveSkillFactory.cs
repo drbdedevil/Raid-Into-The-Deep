@@ -18,7 +18,7 @@ public static class ActiveSkillFactory
             case "Снять эффекты": return new RemoveEffectsActiveSkill(EEffectType.NONE);
             case "Защита": return new DefenseActiveSkill(EEffectType.Defense);
             case "Скачок": return null;
-            case "Поджог": return null;
+            case "Поджог": return new ArsonActiveSkill(EEffectType.Fire);
             case "Тотем восстановления": return null;
             default: return null;
         }

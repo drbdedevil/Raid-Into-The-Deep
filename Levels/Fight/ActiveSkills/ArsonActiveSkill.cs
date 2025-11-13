@@ -3,17 +3,17 @@ using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 
-public class DefenseActiveSkill : ActiveSkill
+public class ArsonActiveSkill : ActiveSkill
 {
-	public DefenseActiveSkill(EEffectType InEffectType) : base(InEffectType)
+	public ArsonActiveSkill(EEffectType InEffectType) : base(InEffectType)
 	{
 		// CreateEffect(InEffectType);
 	}
 
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
-    {
-        return new List<Vector2I>();
-    }
+	{
+		return new List<Vector2I>();
+	}
 
 	// public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
 }

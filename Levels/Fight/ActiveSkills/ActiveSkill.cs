@@ -7,13 +7,15 @@ public abstract class ActiveSkill
 {
 	public ActiveSkill(EEffectType InEffectType)
 	{
-		CreateEffect(InEffectType);
+		// CreateEffect(InEffectType);
+		effectType = InEffectType;
 	}
 
-	public Effect effect { get; private set; }
+	// public Effect effect { get; private set; }
+	public EEffectType effectType { get; private set; }
 	public bool IsHasEffect()
     {
-		return effect != null;
+		return effectType != EEffectType.NONE;
     }
 	
 	protected AttackDirection CalculateDirection( Vector2 startPosition, Vector2 targetPosition)
@@ -33,10 +35,10 @@ public abstract class ActiveSkill
 	}
 	public abstract List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map);
 
-	public void CreateEffect(EEffectType InEffectType)
-    {
+	/*public void CreateEffect(EEffectType InEffectType)
+	{
 		switch (InEffectType)
-        {
+		{
 			case EEffectType.BattleFrenzy:
 				effect = new BattleFrenzyEntityEffect(3);
 				return;
@@ -53,16 +55,41 @@ public abstract class ActiveSkill
 				effect = new ReserveDamageEntityEffect(3);
 				return;
 			case EEffectType.Fire:
-				// создать tile effect
+				effect = new FireObstacleEffect(null, 3);
 				return;
 			case EEffectType.Poison:
 				// создать tile effect
 				return;
 			default:
 				break;
-        }
+		}
 		effect = null;
-    }
+	}*/
+	
+	public Effect GenerateEffect()
+	{
+		switch (effectType)
+		{
+			case EEffectType.BattleFrenzy:
+				return new BattleFrenzyEntityEffect(3);
+			case EEffectType.SevereWound:
+				return new SevereWoundEntityEffect(3);
+			case EEffectType.Defense:
+				return new DefenseEntityEffect(3);
+			case EEffectType.BloodMark:
+				return new BloodMarkEntityEffect(3);
+			case EEffectType.ReserveDamage:
+				return new ReserveDamageEntityEffect(3);
+			case EEffectType.Fire:
+				return new FireObstacleEffect(null, 3);
+			case EEffectType.Poison:
+				// создать tile effect
+				return null;
+			default:
+				break;
+		}
+		return null;
+	}
 
 	// public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
 }

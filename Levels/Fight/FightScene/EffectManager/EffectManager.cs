@@ -27,8 +27,8 @@ public class EffectManager
 
     public void ApplyEffects()
     {
-        ApplyEffectsForEntity();
         ApplyEffectsForTiles();
+        ApplyEffectsForEntity();
     }
 
     private void ApplyEffectsForEntity()
@@ -76,6 +76,36 @@ public class EffectManager
     }
     private void ApplyEffectsForTiles()
     {
+        List<Tile> tiles = _mapManager.MapTiles;
+        foreach (var tile in tiles)
+        {
+            if (tile.ObstacleEntity == null) continue;
+            foreach (var effect in tile.ObstacleEntity.appliedEffects.ToList())
+            {
+                if (effect.IsPending)
+                {
+                    effect.OnApply();
+                    effect.OnTurnEnd();
+                    if (effect.IsExpired)
+                    {
+                        effect.OnRemove();
+                    }
+                    else
+                    {
+                        GD.Print($"Эффект {effect.EffectType} применён к тайлу");
+                    }
+                }
+                else
+                {
+                    effect.OnTurnEnd();
 
+                    if (effect.IsExpired)
+                    {
+                        effect.OnRemove();
+                        tile.ObstacleEntity.RemoveEffect(effect);
+                    }
+                }
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
         {
             var tilesForAttack = MapManager.SelectedTilesForPlayerAction;
             var attackCommand =
-                new ApplySkillCommand(FightSceneManager.CurrentPlayerWarriorToTurn, tilesForAttack.ToList());
+                new ApplySkillCommand(FightSceneManager.CurrentPlayerWarriorToTurn, tilesForAttack.ToList(), MapManager);
             FightSceneManager.NotExecutedCommands.Add(attackCommand);
             FightSceneManager.CurrentBattleState = new PlayerWarriorConfirmationBattleState(FightSceneManager, MapManager);
         }

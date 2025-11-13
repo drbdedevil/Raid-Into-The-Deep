@@ -188,7 +188,7 @@ public enum ESkillType
     [SkillCategory(SkillKind.Active)]
     RestorationField,
     [SkillCategory(SkillKind.Active)]
-    BurningTrail
+    Arson
 }
 
 public static class SkillExtensions

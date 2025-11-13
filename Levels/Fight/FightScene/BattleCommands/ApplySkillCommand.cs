@@ -7,12 +7,14 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleCommands;
 public class ApplySkillCommand : Command
 {
     private BattleEntity _battleEntity { get; set; }
-    private List<Tile>  _tilesForAttack { get; set; }
+    private List<Tile> _tilesForAttack { get; set; }
+    private MapManager _mapManager { get; set; }
     
-    public ApplySkillCommand(BattleEntity battleEntity, List<Tile> tilesForAttack)
+    public ApplySkillCommand(BattleEntity battleEntity, List<Tile> tilesForAttack, MapManager mapManager)
     {
         _battleEntity = battleEntity;
         _tilesForAttack = tilesForAttack;
+        _mapManager = mapManager;
     }
     
     public override void Execute()
@@ -25,12 +27,13 @@ public class ApplySkillCommand : Command
                 
                 if (playerEntityActive.activeSkill.IsHasEffect())
                 {
-                    if (playerEntityActive.activeSkill.effect.TargetType == EEffectTarget.Self)
+                    Effect generatedEffect = playerEntityActive.activeSkill.GenerateEffect();
+                    if (generatedEffect.TargetType == EEffectTarget.Self)
                     {
-                        if (playerEntityActive.activeSkill.effect is EntityEffect entityEffect)
+                        if (generatedEffect is EntityEffect entityEffect)
                         {
                             entityEffect.entityHolder = playerEntityActive;
-                            playerEntityActive.AddEffect(playerEntityActive.activeSkill.effect);
+                            playerEntityActive.AddEffect(generatedEffect);
                             return;
                         }
                     }
@@ -46,21 +49,37 @@ public class ApplySkillCommand : Command
 
                 if (playerEntity.activeSkill.IsHasEffect())
                 {
-                    if (tile.BattleEntity != null && playerEntity.activeSkill.effect.TargetType == EEffectTarget.Enemy)
+                    Effect generatedEffect = playerEntity.activeSkill.GenerateEffect();
+                    if (tile.BattleEntity != null && generatedEffect.TargetType == EEffectTarget.Enemy)
                     {
-                        if (playerEntity.activeSkill.effect is EntityEffect entityEffect)
+                        if (generatedEffect is EntityEffect entityEffect)
                         {
-                            if (playerEntity.activeSkill.effect is SevereWoundEntityEffect severeWoundEntityEffect)
+                            if (generatedEffect is SevereWoundEntityEffect severeWoundEntityEffect)
                             {
                                 severeWoundEntityEffect.DamageFromInstigator = playerEntity.Damage / 4;
                             }
-                            else if (playerEntity.activeSkill.effect is BloodMarkEntityEffect bloodMarkEntityEffect)
+                            else if (generatedEffect is BloodMarkEntityEffect bloodMarkEntityEffect)
                             {
                                 bloodMarkEntityEffect.DamageFromInstigator = playerEntity.DamageByEffect * 2;
                             }
                             entityEffect.entityHolder = tile.BattleEntity;
-                            tile.BattleEntity.AddEffect(playerEntity.activeSkill.effect);
+                            tile.BattleEntity.AddEffect(generatedEffect);
                             GD.Print($"чувачок с Id-{_battleEntity.Id} применил скилл по тайлу {tile}");
+                        }
+                    }
+                    else if (generatedEffect.TargetType == EEffectTarget.Obstacle)
+                    {
+                        if (generatedEffect is ObstacleEffect obstacleEffect)
+                        {
+                            obstacleEffect.mapManager = _mapManager;
+                            if (obstacleEffect.EffectType == EEffectType.Fire)
+                            {
+                                _mapManager.SetObstacleOnTile(tile, new ObstacleEntity(tile, ObstacleCode.Fire));
+                            }
+
+                            obstacleEffect.obstacleHolder = tile.ObstacleEntity;
+                            tile.ObstacleEntity.AddEffect(obstacleEffect);
+                            obstacleEffect.OnApply();
                         }
                     }
                 }
