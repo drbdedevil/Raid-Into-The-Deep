@@ -20,8 +20,18 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts
         public Fight.BattleEntity? BattleEntity { get; set; }
         
         public Fight.ObstacleEntity? ObstacleEntity { get; set; }
-
-
+        
         public bool IsAllowedToSetBattleEntity => BattleEntity is null && (ObstacleEntity is not null && !ObstacleEntity.IsImpassable || ObstacleEntity is null);
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Tile tile) return tile.CartesianPosition == CartesianPosition;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return CartesianPosition.GetHashCode();
+        }
     }
 }

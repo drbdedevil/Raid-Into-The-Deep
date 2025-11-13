@@ -208,6 +208,7 @@ public partial class MapManager : Node2D
 	public void CalculateAndDrawPlayerEntitySpeedZone(PlayerEntity playerEntity)
 	{
 		var tilesToMove = PathFinder.FindTilesToMove(playerEntity.Tile, this, playerEntity.Speed);
+		//PathFinder.CalculatePathToTarget(playerEntity.Tile, GetTileByCartesianCoord(playerEntity.Tile.CartesianPosition), this, playerEntity);
 		_selectedTilesForPlayerAction = tilesToMove;
 		_selectedTilesForPlayerAction.Add(playerEntity.Tile);
 		foreach (var tile in _selectedTilesForPlayerAction)
