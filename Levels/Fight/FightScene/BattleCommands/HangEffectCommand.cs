@@ -7,27 +7,21 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleCommands;
 public class HangEffectCommand : Command
 {
     private BattleEntity _battleEntity { get; set; }
-    private List<Tile>  _tilesForAttack { get; set; }
+    private EntityEffect _effectToHang { get; set; }
     
-    public HangEffectCommand(BattleEntity battleEntity, List<Tile> tilesForAttack)
+    public HangEffectCommand(BattleEntity battleEntity, EntityEffect effectToHang)
     {
         _battleEntity = battleEntity;
-        _tilesForAttack = tilesForAttack;
+        _effectToHang = effectToHang;
     }
     
     public override void Execute()
     {
-        foreach (var tile in _tilesForAttack)
-        {
-            GD.Print($"чувачок с Id-{ _battleEntity.Id} применил скилл по тайлу {tile}");
-        }
+        _battleEntity.AddEffect(new EntityEffect());
     }
 
     public override void UnExecute()
     {
-        foreach (var tile in _tilesForAttack)
-        {
-            GD.Print($"чувачок с Id-{ _battleEntity.Id} применил скилл по тайлу {tile}");
-        }
+        _battleEntity.RemoveEffect(new EntityEffect());
     }
 }

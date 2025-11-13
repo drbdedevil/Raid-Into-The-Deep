@@ -84,8 +84,12 @@ public static class PathFinder
         
         Stopwatch stopwatch = new Stopwatch();
         CollectPathsRecursive(startTile, targetTile, [], 0, results, []);
+
+        var pathsResult = results.OrderByDescending(x => x.CalculateScore())
+            .GroupBy(x => x.CalculateScore()).ToDictionary(x => x.Key, x => x.ToList());
+
         
-        
+        return pathsResult.FirstOrDefault().Value.OrderBy(x => x.Count).Select(x => x.Path).FirstOrDefault();
         
         void CollectPathsRecursive(
             Tile current,
@@ -192,11 +196,17 @@ class TilePath
         int score = 0;
         foreach (var tile in Path)
         {
-            score += 0;
+            if (tile.ObstacleEntity is not null && tile.ObstacleEntity.ImposedEffect is not null)
+            {
+                if (tile.ObstacleEntity.ImposedEffect.EffectType.GetCategory() == EffectKind.Positive) score++;
+                else score--;
+            }
         }
         
         return score;
     }
+    public int Count => Path.Count;
+    
     public override bool Equals(object obj)
     {
         if (obj is TilePath other) return other.Path.SequenceEqual(Path);

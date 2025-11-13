@@ -23,10 +23,21 @@ public partial class ObstacleEntity : BattleEntity
                 break;
             case ObstacleCode.Totem:
                 IsImpassable = true;
+                HasLifetime = false;
                 break;
-            default:
+            case ObstacleCode.Poison:
                 IsImpassable = false;
+                ImposedEffect = new PoisonEntityEffect();
+                HasLifetime = true;
+                TurnCount = 3;
                 break;
+            case ObstacleCode.Fire: 
+                IsImpassable = false;
+                ImposedEffect = new FireEntityEffect();
+                HasLifetime = true;
+                TurnCount = 3;
+                break;
+            default: throw new NotImplementedException($"Не существует препятствия с кодом {obstacleCode}");
         }
     }
     
@@ -36,4 +47,13 @@ public partial class ObstacleEntity : BattleEntity
     /// Непроходимое ли препятствие? 
     /// </summary>
     public bool IsImpassable { get; set; }
+    
+    public bool HasLifetime { get; set; }
+    /// <summary>
+    /// Параметр определяющий сколько ещё в ходах будет жить препятствие
+    /// </summary>
+    public int TurnCount { get; set; }
+    
+    public Effect ImposedEffect { get; set; }
+    
 }

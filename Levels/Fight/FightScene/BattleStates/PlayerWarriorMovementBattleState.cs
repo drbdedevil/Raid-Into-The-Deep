@@ -11,6 +11,9 @@ public class PlayerWarriorMovementBattleState : BattleState
 {
     private PlayerEntity _currentPlayerWarrior;
 
+    private Tile _tileUnderMouse;
+    private List<Tile> _selectedPath = []; 
+    
     private double _skippingMoveTime = 0.0d;
     private bool bShouldSkip = false;
     
@@ -62,6 +65,22 @@ public class PlayerWarriorMovementBattleState : BattleState
 
     public override void ProcessUpdate(double delta)
     {
+        if (_tileUnderMouse != MapManager.GetTileInSelectedUnderMousePosition())
+        {
+            _tileUnderMouse = MapManager.GetTileInSelectedUnderMousePosition();
+            if (_tileUnderMouse is not null)
+            {
+                foreach (var tile in _selectedPath)
+                {
+                    MapManager.DeselectTile(tile);
+                    MapManager.SelectTileForMovement(tile);
+                }
+
+                _selectedPath = PathFinder.CalculatePathToTarget(_currentPlayerWarrior.Tile, _tileUnderMouse, MapManager, _currentPlayerWarrior);
+                
+                _selectedPath.ForEach(tile => MapManager.SelectTileForCurrentPlayerEntityTurn(tile));
+            }
+        }
         if (bShouldSkip)
         {
             _skippingMoveTime += delta;
