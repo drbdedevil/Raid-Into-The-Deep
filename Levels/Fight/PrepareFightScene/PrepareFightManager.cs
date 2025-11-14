@@ -7,7 +7,7 @@ using BattleEntity = RaidIntoTheDeep.Levels.Fight.BattleEntity;
 
 namespace RaidIntoTheDeep.Levels.Fight.PrepareFightScene;
 
-public partial class PrepareFightManager : Node2D
+public partial class PrepareFightManager : Control
 {
 	private static NotificationSystem _notificationSystem = NotificationSystem.Instance;
 	

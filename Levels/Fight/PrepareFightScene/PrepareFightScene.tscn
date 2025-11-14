@@ -269,7 +269,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
 
-[node name="PrepareFightScene" type="Node2D"]
+[node name="PrepareFightScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_jxe02")
 _fightScene = ExtResource("2_jrqxl")
 
@@ -295,6 +301,7 @@ position = Vector2(500, 150)
 tile_set = SubResource("TileSet_r3a8q")
 
 [node name="PlayerWarriorsMenu" type="HBoxContainer" parent="." node_paths=PackedStringArray("_teamWarriorsContainer", "_currentSelectedWarriorContainer")]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("5_gkuqp")
@@ -414,10 +421,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="GoFightButton" type="Button" parent="."]
-offset_left = 941.0
-offset_top = 601.0
-offset_right = 1144.0
-offset_bottom = 641.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -50.0
+offset_right = -9.999878
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
 theme_override_colors/font_pressed_color = Color(0.57016784, 0.30898625, 0.08588847, 1)
 theme_override_colors/font_hover_color = Color(0.57016784, 0.30898625, 0.08588847, 1)

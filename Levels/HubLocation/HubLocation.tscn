@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://buvori4ne2kdg" path="res://Levels/HubLocation/HubLocation.cs" id="1_jthpg"]
 [ext_resource type="PackedScene" uid="uid://clrxyetfap3vs" path="res://Levels/HubLocation/PopupNavigator.tscn" id="2_fn680"]
-[ext_resource type="Texture2D" uid="uid://batlwvv7k4u00" path="res://Textures/HubLocation/allpicture.png" id="3_4h0hg"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="3_b23rm"]
 [ext_resource type="PackedScene" uid="uid://cpr8w1fhvtvii" path="res://Levels/RaceMap/RaceMap.tscn" id="4_fn680"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_l5qfr"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="14_ogxw3"]
 [ext_resource type="Script" uid="uid://66hihla48n3u" path="res://Levels/HubLocation/BaseInterest.cs" id="14_twrgc"]
 [ext_resource type="PackedScene" uid="uid://bimh3oq4chxe5" path="res://Levels/HubLocation/TrainingPits/TrainingPits.tscn" id="15_yj33t"]
+[ext_resource type="Texture2D" uid="uid://cuqgp2le6vv6n" path="res://Textures/HubLocation/allpicture_cut.png" id="16_wk2cf"]
 [ext_resource type="PackedScene" uid="uid://tiga6w74ljhd" path="res://Levels/HubLocation/Forge/Forge.tscn" id="17_ks1w7"]
 [ext_resource type="PackedScene" uid="uid://d2jyto1fabcvx" path="res://Levels/HubLocation/Storage/Storage.tscn" id="18_ljn6y"]
 [ext_resource type="PackedScene" uid="uid://lqex6adq1njd" path="res://Levels/HubLocation/CommandBlock/CommandBlock.tscn" id="19_3d8pl"]
@@ -153,20 +153,6 @@ PopupNavigatorScene = ExtResource("2_fn680")
 WarriorPanelScene = ExtResource("14_ogxw3")
 RaceMapScene = ExtResource("4_fn680")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
-texture = ExtResource("3_4h0hg")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="MainPanel" type="HBoxContainer" parent="."]
 clip_contents = true
 layout_mode = 1
@@ -175,6 +161,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Panel" type="TextureRect" parent="MainPanel"]
 custom_minimum_size = Vector2(200, 0)
@@ -459,14 +446,29 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("16_wk2cf")
+expand_mode = 1
+
 [node name="ForgeButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
 layout_mode = 1
-offset_left = 10.0
-offset_top = 51.0
-offset_right = 342.0
-offset_bottom = 231.0
+offset_left = 18.0
+offset_top = 60.0
+offset_right = 350.0
+offset_bottom = 233.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Кузница"
 icon_alignment = 1
 script = ExtResource("14_twrgc")
@@ -475,11 +477,17 @@ SceneToOpen = ExtResource("17_ks1w7")
 [node name="TrainingPitsButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
 layout_mode = 1
-offset_left = 741.0
-offset_top = 244.0
-offset_right = 937.0
-offset_bottom = 428.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -217.0
+offset_top = 245.0
+offset_right = -19.0
+offset_bottom = 429.0
+grow_horizontal = 0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Тренировочные ямы
 
 
@@ -493,12 +501,21 @@ SceneToOpen = ExtResource("15_yj33t")
 
 [node name="StorageButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
-offset_left = 145.0
-offset_top = 446.0
-offset_right = 385.0
-offset_bottom = 589.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -200.0
+offset_right = -107.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Склад"
 icon_alignment = 1
 script = ExtResource("14_twrgc")
@@ -506,12 +523,18 @@ SceneToOpen = ExtResource("18_ljn6y")
 
 [node name="CommandBlockButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
-offset_left = 656.0
-offset_top = 66.0
-offset_right = 922.0
-offset_bottom = 237.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -278.0
+offset_top = 55.0
+offset_right = -10.0
+offset_bottom = 234.0
+grow_horizontal = 0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Коммандный блок
 
 
@@ -526,12 +549,14 @@ SceneToOpen = ExtResource("19_3d8pl")
 
 [node name="LivingSpaceButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
+layout_mode = 1
 offset_left = 22.0
-offset_top = 237.0
+offset_top = 247.0
 offset_right = 296.0
 offset_bottom = 441.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Жилое помещение
 
 
@@ -542,12 +567,21 @@ SceneToOpen = ExtResource("20_wk2cf")
 
 [node name="RaceMapButton" type="Button" parent="MainPanel/Control"]
 modulate = Color(1, 1, 1, 0.16470589)
-layout_mode = 0
-offset_left = 438.0
-offset_top = 275.0
-offset_right = 659.0
-offset_bottom = 432.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -41.0
+offset_right = 186.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_l5qfr")
+theme_override_font_sizes/font_size = 20
 text = "Вход в забег
 
 
@@ -556,21 +590,3 @@ text = "Вход в забег
 "
 icon_alignment = 1
 script = ExtResource("14_twrgc")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 686.0
-offset_top = 147.0
-offset_right = 688.0
-offset_bottom = 151.0
-mouse_filter = 2
-color = Color(0.07058824, 0.007843138, 0.007843138, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 418.0
-offset_top = 147.0
-offset_right = 422.0
-offset_bottom = 152.0
-mouse_filter = 2
-color = Color(0.14117648, 0.043137256, 0.011764706, 1)

@@ -7,7 +7,7 @@ using RaidIntoTheDeep.Levels.Fight.FightScene.BattleStates;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
-public partial class FightSceneManager : Node2D
+public partial class FightSceneManager : Control
 {
     private readonly RayCast2D _rayCast = new ();
     private MapManager _mapManager;
