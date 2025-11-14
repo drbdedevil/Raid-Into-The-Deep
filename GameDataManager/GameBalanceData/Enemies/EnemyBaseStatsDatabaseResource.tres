@@ -1,14 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyBaseStatsDatabase" load_steps=12 format=3 uid="uid://bkna3riolbsmr"]
+[gd_resource type="Resource" script_class="EnemyBaseStatsDatabase" load_steps=11 format=3 uid="uid://bkna3riolbsmr"]
 
 [ext_resource type="Script" uid="uid://fjuciunc2jyv" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatsDatabase.cs" id="1_6pjjy"]
 [ext_resource type="Script" uid="uid://mcrty1t54tnc" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatRow.cs" id="1_cbrah"]
-
-[sub_resource type="Resource" id="Resource_u3cq3"]
-script = ExtResource("1_cbrah")
-DamageByEffect = 2
-Health = 5
-Speed = 5
-metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_nvsm3"]
 script = ExtResource("1_cbrah")
@@ -72,7 +65,6 @@ metadata/_custom_type_script = "uid://mcrty1t54tnc"
 [resource]
 script = ExtResource("1_6pjjy")
 EnemyBaseStatRows = Dictionary[int, Object]({
-0: SubResource("Resource_u3cq3"),
 1: SubResource("Resource_nvsm3"),
 2: SubResource("Resource_cbrah"),
 3: SubResource("Resource_nobvf"),
