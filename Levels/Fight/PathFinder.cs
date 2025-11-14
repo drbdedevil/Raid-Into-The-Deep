@@ -217,7 +217,7 @@ public static class PathFinder
                     
                     if (upLeftTile is not null && upLeftTile.IsAllowedToSetBattleEntity) CollectPathsRecursive(upLeftTile, target, currentPath.ToList(), currentSpeed + 2, results, visited.ToHashSet());
                     if (upRightTile is not null && upRightTile.IsAllowedToSetBattleEntity) CollectPathsRecursive(upRightTile, target, currentPath.ToList(), currentSpeed + 2, results, visited.ToHashSet());
-                    if (downLeftTile is not null && downLeftTile.IsAllowedToSetBattleEntity) CollectPathsRecursive(downRightTile, target, currentPath.ToList(), currentSpeed + 2, results, visited.ToHashSet());
+                    if (downLeftTile is not null && downLeftTile.IsAllowedToSetBattleEntity) CollectPathsRecursive(downLeftTile, target, currentPath.ToList(), currentSpeed + 2, results, visited.ToHashSet());
                     if (downRightTile is not null && downRightTile.IsAllowedToSetBattleEntity) CollectPathsRecursive(downRightTile, target, currentPath.ToList(), currentSpeed + 2, results, visited.ToHashSet());
                 }
             }
