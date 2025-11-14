@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qkur4duvfokj"]
+[gd_scene load_steps=19 format=3 uid="uid://qkur4duvfokj"]
 
 [ext_resource type="Texture2D" uid="uid://wxxbokrcy2nm" path="res://Textures/Characters/MainCharacter.png" id="1_32mhb"]
 [ext_resource type="Script" uid="uid://bwgvxjm6hx44l" path="res://Levels/HubLocation/WarriorPanels/ChosenWarriorPanel.cs" id="1_tk6gk"]
@@ -17,6 +17,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hve40"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkquy"]
+bg_color = Color(0.14695507, 0.4074013, 0.15023816, 0.5568628)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4649942, 0.93343395, 1.1551381e-06, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84233"]
 bg_color = Color(1, 1, 1, 1)
@@ -152,8 +163,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -12.0
+offset_left = -14.0
+offset_top = -14.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_bn3xa")
@@ -162,21 +175,20 @@ stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -12.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 21.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="ColorRect/ColorRect/ColorRect/VBoxContainer/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_hve40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jkquy")
 icon_alignment = 1
 expand_icon = true
 

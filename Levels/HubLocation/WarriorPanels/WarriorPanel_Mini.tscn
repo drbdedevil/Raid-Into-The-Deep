@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4p3knfn65321"]
+[gd_scene load_steps=12 format=3 uid="uid://c4p3knfn65321"]
 
 [ext_resource type="Texture2D" uid="uid://8fl78wa8miql" path="res://Textures/Default/WarPanel_Mini.png" id="1_khhap"]
 [ext_resource type="Script" uid="uid://g5bdxhghddo7" path="res://Levels/HubLocation/WarriorPanels/Warrior.cs" id="1_nqti8"]
@@ -10,6 +10,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7yq7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbwns"]
+bg_color = Color(0.14695507, 0.4074013, 0.15023816, 0.5568628)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4649942, 0.93343395, 1.1551381e-06, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k5li"]
 bg_color = Color(1, 1, 1, 1)
@@ -75,8 +86,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -12.0
+offset_left = -14.0
+offset_top = -14.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_lbwns")
@@ -85,21 +98,19 @@ stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -12.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="TextureRect/HBoxContainer/MarginContainer/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_b7yq7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lbwns")
 icon_alignment = 1
 expand_icon = true
 
