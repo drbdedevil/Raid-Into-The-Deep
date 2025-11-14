@@ -109,7 +109,7 @@ public partial class MapManager : Node2D
 		}
 		else if (tile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId));
+			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId - 1));
 		}
 
 		if (tile.ObstacleEntity is not null)
