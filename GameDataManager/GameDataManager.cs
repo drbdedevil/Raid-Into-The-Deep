@@ -22,6 +22,7 @@ public partial class GameDataManager : Node
 	public LivingSpaceDataManager livingSpaceDataManager { get; private set; }
 	public TrainingPitsDataManager trainingPitsDataManager { get; private set; }
 	public ForgeDataManager forgeDataManager { get; private set; }
+	public CommandBlockDataManager commandBlockDataManager { get; private set; }
 	public RunMapDataManager runMapDataManager { get; private set; }
 
 	// Databases
@@ -74,6 +75,7 @@ public partial class GameDataManager : Node
 		livingSpaceDataManager = new LivingSpaceDataManager(this);
 		trainingPitsDataManager = new TrainingPitsDataManager(this);
 		forgeDataManager = new ForgeDataManager(this);
+		commandBlockDataManager = new CommandBlockDataManager(this);
 		runMapDataManager = new RunMapDataManager(this);
 
 		GD.Print(" -- GameDataManager init -- ");

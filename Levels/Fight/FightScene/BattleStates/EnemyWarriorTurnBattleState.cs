@@ -11,8 +11,8 @@ namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleStates;
 public class EnemyWarriorTurnBattleState : BattleState
 {
 	private EnemyEntity _currentEnemyWarrior;
-	private List<Tile> _tilesToMove;
-	private List<Tile> _tilesToAttack;
+	private List<Tile> _tilesToMove = new();
+	private List<Tile> _tilesToAttack = new();
 
 	private Task _drawingTilesToMoveTask;
 	private const int DrawingTilesToMoveTaskDuration = 1000; // = 250;
@@ -20,6 +20,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 	private const int drawingTilesToAttackTaskDuration = 1000; // = 250;
 	private double _skippingMoveTime = 0.0d;
 	private bool bShouldSkip = false;
+	private bool bGameEnd = false;
 
 	private TargetResult _targetResult = null;
 	
@@ -29,7 +30,13 @@ public class EnemyWarriorTurnBattleState : BattleState
 		var enemyEntities = FightSceneManager.Enemies.Except(fightSceneManager.EnemyWarriorsThatTurned).OrderByDescending(x => x.Speed).ToList();
 		if (!enemyEntities.Any())
 		{
-			throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
+			StateTitleText = "";
+			ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
+			resultsScene.SetVictoryInfo();
+			resultsScene.ShowPopup();
+			bGameEnd = true;
+			return;
+			// throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
 		}
 		_currentEnemyWarrior = enemyEntities.First();
 		if (!_currentEnemyWarrior.CanAct)
@@ -50,6 +57,11 @@ public class EnemyWarriorTurnBattleState : BattleState
 
 	public override void ProcessUpdate(double delta)
 	{
+		if (bGameEnd)
+		{
+			return;
+		}
+
 		if (bShouldSkip)
 		{
 			_skippingMoveTime += delta;
@@ -69,7 +81,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 			return;
 		}
 
-		if (!_drawingTilesToMoveTask.IsCompleted) return;
+		if (_drawingTilesToMoveTask != null && !_drawingTilesToMoveTask.IsCompleted) return;
 		
 		_targetResult ??= FindTargetToAttack();
 		

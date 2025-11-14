@@ -122,6 +122,8 @@ public partial class RunMapDataManager : Node
 		pressedMapNode.PassMapNode();
 		pressedMapNode = new MapNode();
 
+		GameDataManager.Instance.commandBlockDataManager.RestoreHealthToTheReservists();
+
 		GameDataManager.Instance.runMapDataManager.EmitSignal(RunMapDataManager.SignalName.OnRunMapListUpdate); // TODO: По идее, это временно
 	}
 

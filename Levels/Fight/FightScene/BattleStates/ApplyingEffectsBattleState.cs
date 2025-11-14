@@ -46,6 +46,10 @@ public class ApplyingEffectsBattleState : BattleState
         time += delta;
         if (time >= 0.2d)
         {
+            if (FightSceneManager.Enemies.Count == 0)
+            {
+                FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
+            }
             FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
         }
     }

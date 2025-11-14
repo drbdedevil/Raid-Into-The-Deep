@@ -21,6 +21,7 @@ public static class ActiveSkillFactory
             case "Скачок": return new LeapActiveSkill(EEffectType.NONE, playerEntity);
             case "Поджог": return new ArsonActiveSkill(EEffectType.Fire, playerEntity);
             case "Тотем восстановления": return new RestorationTotemActiveSkill(EEffectType.ObstacleHeal, playerEntity);
+            case "NONE": return null;
             default:
                 GD.PrintErr("НЕТ ТАКОГО ИМЕНИ НАВЫКА");
                 return null;

@@ -16,6 +16,7 @@ public class PlayerWarriorMovementBattleState : BattleState
     
     private double _skippingMoveTime = 0.0d;
     private bool bShouldSkip = false;
+    private bool bGameEnd = false;
     
     private bool _isInitialized;
     
@@ -24,7 +25,13 @@ public class PlayerWarriorMovementBattleState : BattleState
         var playerEntities = FightSceneManager.Allies.Except(fightSceneManager.PlayerWarriorsThatTurned).OrderByDescending(x => x.Speed).ToList();
         if (!playerEntities.Any())
         {
-            throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
+            StateTitleText = "";
+            ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
+            resultsScene.SetDefeatInfo();
+            resultsScene.ShowPopup();
+            bGameEnd = true;
+            return;
+            // throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
         }
         _currentPlayerWarrior = playerEntities.First();
 
@@ -65,6 +72,10 @@ public class PlayerWarriorMovementBattleState : BattleState
 
     public override void ProcessUpdate(double delta)
     {
+        if (bGameEnd)
+        {
+            return;
+        }
         
         if (!bShouldSkip && _tileUnderMouse != MapManager.GetTileInSelectedUnderMousePosition())
         {

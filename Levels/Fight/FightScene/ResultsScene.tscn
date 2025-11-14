@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://8rpxbu6wrfw3"]
+
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_dv6c6"]
+[ext_resource type="Script" uid="uid://bmamxhqhwte25" path="res://Levels/Fight/FightScene/Scripts/ResultsScene.cs" id="1_ulh11"]
+[ext_resource type="PackedScene" uid="uid://cpr8w1fhvtvii" path="res://Levels/RaceMap/RaceMap.tscn" id="2_pele7"]
+[ext_resource type="PackedScene" uid="uid://dqakekx24s2dj" path="res://Levels/HubLocation/HubLocation.tscn" id="3_ced47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulh11"]
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pele7"]
+bg_color = Color(0.54212487, 0.25420818, 0.090822615, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ced47"]
+bg_color = Color(0.30968162, 0.13335145, 0.03324037, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+
+[node name="ResultsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ulh11")
+runMapScene = ExtResource("2_pele7")
+hubLocationScene = ExtResource("3_ced47")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8235294)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -148.0
+offset_right = 248.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -146.0
+offset_right = 246.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.45217162, 0.33356592, 0, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 50
+text = "Бубу"
+
+[node name="Button" type="Button" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_pressed_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_hover_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ulh11")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pele7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ced47")
+text = "Продолжить"

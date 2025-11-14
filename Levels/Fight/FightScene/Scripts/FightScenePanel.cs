@@ -72,7 +72,8 @@ public partial class FightScenePanel : TextureRect
 
     private void OnEscapeButtonPressed()
     {
-        GameDataManager.Instance.runMapDataManager.PassMapNode();
+        GameDataManager.Instance.commandBlockDataManager.ApplyPunishmentForEscape();
+
         SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
         sceneTree.ChangeSceneToPacked(runMapScene);
 

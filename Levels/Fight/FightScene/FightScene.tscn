@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://omgqup63apve"]
+[gd_scene load_steps=31 format=3 uid="uid://omgqup63apve"]
 
 [ext_resource type="Script" uid="uid://bea5jxtyrqhfw" path="res://Levels/Fight/FightScene/Scripts/FightSceneManager.cs" id="1_26lfq"]
 [ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_if2d1"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
 [ext_resource type="PackedScene" uid="uid://b7ihs58oynnmg" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectsPanel.tscn" id="10_foig6"]
 [ext_resource type="PackedScene" uid="uid://cpopu50xtjs27" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectView.tscn" id="11_m6kyl"]
+[ext_resource type="PackedScene" uid="uid://8rpxbu6wrfw3" path="res://Levels/Fight/FightScene/ResultsScene.tscn" id="13_om0m0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
@@ -379,3 +380,8 @@ offset_left = 200.0
 offset_right = 402.0
 mouse_filter = 2
 EntityEffectViewScene = ExtResource("11_m6kyl")
+
+[node name="ResultsScene" parent="." instance=ExtResource("13_om0m0")]
+visible = false
+z_index = 4096
+layout_mode = 1
