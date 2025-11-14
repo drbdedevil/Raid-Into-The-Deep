@@ -131,7 +131,8 @@ public enum AttackShapeType
 	Sweep = 2,
 	ScatterShot = 3,
 	Ranged = 4,
-	Artillery = 5
+	Artillery = 5,
+	Dagger = 6
 }
 
 // --------------------------------------- Skills ---------------------------------------

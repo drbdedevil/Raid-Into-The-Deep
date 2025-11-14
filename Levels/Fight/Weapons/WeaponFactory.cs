@@ -8,6 +8,7 @@ public static class WeaponFactory
     {
         switch (shapeType)
         {
+            case AttackShapeType.Dagger: return new MeleeWeapon((int)shapeType, new WeaponData( GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.AttackShapeID == (int)shapeType)));
             case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.AttackShapeID == (int)shapeType)));
             case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.AttackShapeID == (int)shapeType))); ;
             case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType, new WeaponData(GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.AttackShapeID == (int)shapeType)));
@@ -21,6 +22,7 @@ public static class WeaponFactory
     {
         switch (shapeType)
         {
+            case AttackShapeType.Dagger: return new MeleeWeapon((int)shapeType, InWeaponData);
             case AttackShapeType.Melee: return new MeleeWeapon((int)shapeType, InWeaponData);
             case AttackShapeType.LongMelee: return new MeleeWeapon((int)shapeType, InWeaponData);
             case AttackShapeType.Sweep: return new MeleeWeapon((int)shapeType, InWeaponData);
