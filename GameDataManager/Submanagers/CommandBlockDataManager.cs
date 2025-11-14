@@ -40,10 +40,10 @@ public partial class CommandBlockDataManager : Node
     }
 	public void ApplyPunishmentForEscape()
     {
-        int CrystalsForSeizure = gameDataManager.currentData.storageData.Crystals / 4;
-		int ChitinsForSeizure = gameDataManager.currentData.storageData.ChitinFragments / 4;
-		gameDataManager.storageDataManager.AdjustCrystals(-CrystalsForSeizure);
-		gameDataManager.storageDataManager.AdjustChitinFragments(-ChitinsForSeizure);
+        // int CrystalsForSeizure = gameDataManager.currentData.storageData.Crystals / 4;
+		// int ChitinsForSeizure = gameDataManager.currentData.storageData.ChitinFragments / 4;
+		// gameDataManager.storageDataManager.AdjustCrystals(-CrystalsForSeizure);
+		// gameDataManager.storageDataManager.AdjustChitinFragments(-ChitinsForSeizure);
 
 		NotificationSystem.Instance.ShowMessage("Итоги твоего трусливого, жалкого, никчёмного побега, сударь:", EMessageType.Alert);
 		foreach (CharacterData characterData in gameDataManager.currentData.livingSpaceData.UsedCharacters.ToList())
@@ -57,8 +57,20 @@ public partial class CommandBlockDataManager : Node
             }
 			else if (rand == 1)
             {
-				int randDamage = GD.RandRange(10, 60);
-				characterData.Health -= randDamage;
+				PassiveSkillProgressionRow existingPassiveSkillType = GameDataManager.Instance.passiveSkillsProgressionDatabase.Progressions.FirstOrDefault(progression => progression.skillType == ESkillType.Health);
+				int currentHealth = characterData.Health;
+
+				Dictionary<string, int> passiveSkillLevels = characterData.PassiveSkillLevels;
+				int healthSkillLevel = passiveSkillLevels["Здоровье"];
+				int maxHealthToSet = GameDataManager.Instance.baseStatsDatabase.Health;
+
+				for (int i = 0; i < healthSkillLevel; ++i)
+				{
+					maxHealthToSet += existingPassiveSkillType.increments[i];
+				}
+				int damage = maxHealthToSet / 4;
+
+				characterData.Health -= damage;
 				if (characterData.Health <= 0)
                 {
                     gameDataManager.livingSpaceDataManager.TryDeleteCharacterFromUsed(characterData.ID);

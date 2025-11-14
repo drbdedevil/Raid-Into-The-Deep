@@ -14,6 +14,12 @@ public partial class MapNodeButton : TextureButton
 
     private void OnMapNodeButtonPressed()
     {
+        if (GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Count == 0)
+        {
+            NotificationSystem.Instance.ShowMessage("Возьми с собой кого-нибудь!", EMessageType.Alert);
+            return;
+        }
+
         GD.Print("Pressed on: " + mapNode.Type);
 
         RunMapDataManager runMapDataManager = GameDataManager.Instance.runMapDataManager;

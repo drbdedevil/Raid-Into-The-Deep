@@ -124,6 +124,10 @@ public partial class RunMapDataManager : Node
 
 		GameDataManager.Instance.commandBlockDataManager.RestoreHealthToTheReservists();
 
+		int currentLevel = gameDataManager.currentData.trainingPitsData.Level;
+        TrainingPitsLevelData currentTrainingPitsLevelData = gameDataManager.trainingPitsDatabase.Levels[currentLevel - 1];
+		GameDataManager.Instance.trainingPitsDataManager.GenerateCharactersForHiring(currentTrainingPitsLevelData.Capacity / 4);
+
 		GameDataManager.Instance.runMapDataManager.EmitSignal(RunMapDataManager.SignalName.OnRunMapListUpdate); // TODO: По идее, это временно
 	}
 
