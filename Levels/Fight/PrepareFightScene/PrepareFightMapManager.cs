@@ -133,7 +133,7 @@ public partial class PrepareFightMapManager : Node2D
 		}
 		else if (entity is EnemyEntity enemy)
 		{
-			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemy.EnemyId));
+			_entityLayer.SetCell(tile.IsometricPosition, 1, new Vector2I(0, (int)enemy.EnemyId - 1));
 		}
 		entity.Tile = tile;
 		tile.BattleEntity = entity;

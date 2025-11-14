@@ -137,7 +137,7 @@ public partial class MapManager : Node2D
 		}
 		else if (targetTile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(targetTile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId));
+			_entityLayer.SetCell(targetTile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId - 1));
 		}
 		
 		return true;
