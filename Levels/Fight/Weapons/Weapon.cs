@@ -56,6 +56,9 @@ public abstract class Weapon
 						return;
 					case EWeaponType.Artillery:
 						effect = new FireEntityEffect(3);
+						return;
+					case EWeaponType.Rapier:
+						effect = new StunEntityEffect(3);
 						return;	
                     default:
 						break;

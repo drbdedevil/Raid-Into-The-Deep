@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://bieajibc18pln"]
+[gd_scene load_steps=37 format=3 uid="uid://bieajibc18pln"]
 
 [ext_resource type="Script" uid="uid://bvef4xl3aqqe7" path="res://Levels/Fight/PrepareFightScene/PrepareFightManager.cs" id="1_jxe02"]
 [ext_resource type="Script" uid="uid://r5yt8rcihyyi" path="res://Levels/Fight/PrepareFightScene/PrepareFightMapManager.cs" id="2_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://omgqup63apve" path="res://Levels/Fight/FightScene/FightScene.tscn" id="2_jrqxl"]
 [ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="2_jxe02"]
+[ext_resource type="Texture2D" uid="uid://dpdwthu1y1oap" path="res://Textures/Fight/Theme.png" id="3_h1acj"]
 [ext_resource type="Texture2D" uid="uid://bimrlxqc0hox" path="res://Textures/HubLocation/Panel.png" id="5_ed8kp"]
 [ext_resource type="Script" uid="uid://b3jcpgo6dnlyh" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PlayerWarriorsMenu.cs" id="5_gkuqp"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="5_k51bs"]
@@ -280,6 +281,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jxe02")
 _fightScene = ExtResource("2_jrqxl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1acj")
+expand_mode = 1
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("2_ed8kp")

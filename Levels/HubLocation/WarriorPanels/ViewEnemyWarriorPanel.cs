@@ -53,6 +53,9 @@ public partial class ViewEnemyWarriorPanel : Control
 		{
 			TextureRect weaponRect = GetNode<TextureRect>("PanelContainer/WeaponINfs/ColorRect/TextureRect");
 			weaponRect.Texture = weaponRow.WeaponTexture;
+
+			Label damageLabel = GetNode<Label>("PanelContainer/WeaponINfs/ColorRect/HBoxContainer/TextureRect2/MarginContainer/Label");
+			damageLabel.Text = warrior.EnemyEntity.Weapon.weaponData.Damage.ToString();
 		}
 	}
 

@@ -57,7 +57,7 @@ public class PlayerWarriorMovementBattleState : BattleState
 
     public override void InputUpdate(InputEvent @event)
     {
-        if (bShouldSkip)
+        if (bShouldSkip || bGameEnd)
         {
             return;
         }
