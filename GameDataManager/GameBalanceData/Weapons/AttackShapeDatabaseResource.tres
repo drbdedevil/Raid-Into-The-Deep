@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttackShapeDatabase" load_steps=15 format=3 uid="uid://bpx6mapf7rklo"]
+[gd_resource type="Resource" script_class="AttackShapeDatabase" load_steps=16 format=3 uid="uid://bpx6mapf7rklo"]
 
 [ext_resource type="Script" uid="uid://jo0f2uk4f2tt" path="res://GameDataManager/GameBalanceData/Weapons/AttackShapeInfo.cs" id="1_gbnkh"]
 [ext_resource type="Texture2D" uid="uid://5hjon108syvn" path="res://Textures/AttackShapesTextures/CloseRangeAttack.png" id="2_6ugmn"]
@@ -54,7 +54,14 @@ texture2D = ExtResource("8_4k8yc")
 shapeType = 5
 metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
 
+[sub_resource type="Resource" id="Resource_fvhnv"]
+script = ExtResource("1_gbnkh")
+Name = "Удар кинжалом"
+texture2D = ExtResource("2_6ugmn")
+shapeType = 6
+metadata/_custom_type_script = "uid://jo0f2uk4f2tt"
+
 [resource]
 script = ExtResource("2_gigjl")
-AttackShapes = Array[ExtResource("1_gbnkh")]([SubResource("Resource_gigjl"), SubResource("Resource_4xuwf"), SubResource("Resource_dafkj"), SubResource("Resource_v86ru"), SubResource("Resource_6v1qd"), SubResource("Resource_5a3dr")])
+AttackShapes = Array[ExtResource("1_gbnkh")]([SubResource("Resource_gigjl"), SubResource("Resource_4xuwf"), SubResource("Resource_dafkj"), SubResource("Resource_v86ru"), SubResource("Resource_6v1qd"), SubResource("Resource_5a3dr"), SubResource("Resource_fvhnv")])
 metadata/_custom_type_script = "uid://di2v4lkheifld"

@@ -8,13 +8,13 @@ namespace RaidIntoTheDeep.Levels.Fight.Weapons;
 
 public class MeleeWeapon : Weapon
 {
-    public MeleeWeapon(int attackShapeId, WeaponData InWeaponData) : base(attackShapeId, InWeaponData)
-    {
-    }
+	public MeleeWeapon(int attackShapeId, WeaponData InWeaponData) : base(attackShapeId, InWeaponData)
+	{
+	}
 
-    public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
-    {
-        var direction = CalculateDirection(startPosition, playerTargetPosition);
+	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
+	{
+		var direction = CalculateDirection(startPosition, playerTargetPosition);
 
 		switch (AttackShapeInfo.shapeType)
 		{
@@ -62,63 +62,63 @@ public class MeleeWeapon : Weapon
 				default: throw new ArgumentOutOfRangeException();
 			}
 		}
-    }
+	}
 
-    public override List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles)
-    {
-	    switch (AttackShapeInfo.shapeType)
-	    {
-		    case AttackShapeType.Dagger:
-		    case AttackShapeType.Melee: 
-			    return CalculateMelee();
-		    case AttackShapeType.LongMelee: return CalculateLongMelee();
-		    case AttackShapeType.Sweep: return CalculateSweep();
-		    default: throw new ArgumentOutOfRangeException();
-	    }
-	    
-	    List<TargetWeaponAttackDamage> CalculateMelee()
-	    {
+	public override List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles)
+	{
+		switch (AttackShapeInfo.shapeType)
+		{
+			case AttackShapeType.Dagger:
+			case AttackShapeType.Melee: 
+				return CalculateMelee();
+			case AttackShapeType.LongMelee: return CalculateLongMelee();
+			case AttackShapeType.Sweep: return CalculateSweep();
+			default: throw new ArgumentOutOfRangeException();
+		}
+		
+		List<TargetWeaponAttackDamage> CalculateMelee()
+		{
 			var attackedTile = attackedTiles.First();
 			var battleEntityOnTile = attackedTile.BattleEntity;
 			if (battleEntityOnTile == null) return [];
 			if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
-			    || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+				|| battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
 			{
 				return [new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage)];
 			}
 
 			return [];
-	    }
+		}
 		
-	    List<TargetWeaponAttackDamage> CalculateLongMelee()
-	    {
-		    var attackedTile = attackedTiles.First();
-		    var battleEntityOnTile = attackedTile.BattleEntity;
-		    if (battleEntityOnTile == null) return [];
-		    if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
-		        || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
-		    {
-			    return [new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage)];
-		    }
+		List<TargetWeaponAttackDamage> CalculateLongMelee()
+		{
+			var attackedTile = attackedTiles.First();
+			var battleEntityOnTile = attackedTile.BattleEntity;
+			if (battleEntityOnTile == null) return [];
+			if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
+				|| battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+			{
+				return [new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage)];
+			}
 
-		    return [];
-	    }
+			return [];
+		}
 		
-	    List<TargetWeaponAttackDamage> CalculateSweep()
-	    {
-		    List<TargetWeaponAttackDamage> result = [];
-		    foreach (var attackedTile in attackedTiles)
-		    {
-			    var battleEntityOnTile = attackedTile.BattleEntity;
-			    if (battleEntityOnTile == null) continue;
-			    if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
-			        || battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
-			    {
-				    result.Add(new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage));
-			    }
-		    }
-		    
-		    return result;
-	    }
-    }
+		List<TargetWeaponAttackDamage> CalculateSweep()
+		{
+			List<TargetWeaponAttackDamage> result = [];
+			foreach (var attackedTile in attackedTiles)
+			{
+				var battleEntityOnTile = attackedTile.BattleEntity;
+				if (battleEntityOnTile == null) continue;
+				if (battleEntityOnTile is PlayerEntity && attacker is EnemyEntity
+					|| battleEntityOnTile is EnemyEntity && attacker is PlayerEntity)
+				{
+					result.Add(new TargetWeaponAttackDamage(battleEntityOnTile, weaponData.Damage));
+				}
+			}
+			
+			return result;
+		}
+	}
 }

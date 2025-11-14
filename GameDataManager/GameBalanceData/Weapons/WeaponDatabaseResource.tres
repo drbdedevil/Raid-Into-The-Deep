@@ -58,6 +58,7 @@ script = ExtResource("1_oi5sk")
 Name = "Кинжал"
 Description = "Рукоять это маленький паучок-плетун, закреплённый янтарным ободком: он обхватывает лапками пальцы, подтягивает хват и смачивает рукоять тонкой паутиной, чтобы не скользила."
 DamageRange = Vector2i(1, 4)
+AttackShapeID = 6
 WeaponTexture = ExtResource("5_smskd")
 CrystalCost = 10
 ChitinFragmentsCost = 14
