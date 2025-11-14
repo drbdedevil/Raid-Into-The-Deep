@@ -119,6 +119,61 @@ public partial class MapManager : Node2D
 	}
 
 	/// <summary>
+    ///  Пытается толкнуть перснажа от instigator'а
+    /// </summary>
+	public bool TryPushEntity(BattleEntity instigator, BattleEntity victim)
+    {
+		Vector2I direction = new Vector2I(
+			victim.Tile.CartesianPosition.X - instigator.Tile.CartesianPosition.X,
+			victim.Tile.CartesianPosition.Y - instigator.Tile.CartesianPosition.Y
+    	);
+		int dirX = Math.Sign(direction.X);
+    	int dirY = Math.Sign(direction.Y);
+
+        Vector2I coordToPushing = new Vector2I(
+			victim.Tile.CartesianPosition.X + dirX,
+			victim.Tile.CartesianPosition.Y + dirY
+		);
+
+		Tile? tileAfterPushing = GetTileByCartesianCoord(coordToPushing);
+		if (tileAfterPushing != null && tileAfterPushing.BattleEntity == null && tileAfterPushing.ObstacleEntity?.IsImpassable != true)
+        {
+            if (SetBattleEntityOnTile(tileAfterPushing, victim))
+            {
+				Effect? feffect = tileAfterPushing.ObstacleEntity?.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.Fire);
+				if (feffect is FireObstacleEffect fireObstacleEffect)
+                {
+					FireEntityEffect fireEntityEffect = new();
+					fireEntityEffect.entityHolder = victim;
+					victim.AddEffect(fireEntityEffect);
+                }
+				Effect? peffect = tileAfterPushing.ObstacleEntity?.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.Poison);
+				if (peffect is PoisonObstacleEffect poisonObstacleEffect)
+                {
+					FireEntityEffect poisonEntityEffect = new();
+					poisonEntityEffect.entityHolder = victim;
+					victim.AddEffect(poisonEntityEffect);
+                }
+
+				if (tileAfterPushing.ObstacleEntity?.ImposedEffect is FireEntityEffect fireEntityEffect1)
+                {
+                    FireEntityEffect fireEntityEffect = new();
+					fireEntityEffect.entityHolder = victim;
+					victim.AddEffect(fireEntityEffect);
+                }
+				if (tileAfterPushing.ObstacleEntity?.ImposedEffect is PoisonEntityEffect poisonEntityEffect1)
+                {
+                    PoisonEntityEffect poisonEntityEffect = new();
+					poisonEntityEffect.entityHolder = victim;
+					victim.AddEffect(poisonEntityEffect);
+                }
+                return true;
+            }
+        }
+		return false;
+    }
+
+	/// <summary>
 	/// Перемещает сущность на тайл
 	/// Если сущность стоит на тайле, то "стирает" её с предыдущего тайла
 	/// </summary>

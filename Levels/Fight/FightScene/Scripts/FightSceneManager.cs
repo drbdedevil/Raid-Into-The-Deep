@@ -11,6 +11,11 @@ public partial class FightSceneManager : Control
 {
     private readonly RayCast2D _rayCast = new ();
     private MapManager _mapManager;
+    public MapManager MapManager
+    {
+        get { return _mapManager; }
+        set { _mapManager = value; }
+    }
     
     private List<BattleEntity> _allEntities = [];
     public IReadOnlyCollection<BattleEntity> AllEntities => _allEntities.ToList();

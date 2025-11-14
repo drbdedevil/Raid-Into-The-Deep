@@ -21,6 +21,35 @@ public class AttackByWeaponCommand : Command
     
     public override void Execute()
     {
+        var entitiesToAttack = _battleEntity.Weapon.CalculateDamageForEntities(_battleEntity, _tilesForAttack);
+        foreach (var targetWeaponAttackDamage in entitiesToAttack)
+        {
+            if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
+            {
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
+                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
+                {
+                    _fightSceneManager.RemovePlayerWarrior(playerWarrior);
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
+                }
+            }
+            else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
+            {
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
+                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
+                {
+                    _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
+
+                    Effect battleFrenzyEffect = _battleEntity.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.BattleFrenzy);
+                    if (battleFrenzyEffect is BattleFrenzyEntityEffect battleFrenzyEntityEffect)
+                    {
+                        battleFrenzyEntityEffect.PlayerKilledSomeone = true;
+                    }
+                }
+            }
+        }
+        
         foreach (var tile in _tilesForAttack)
         {
             GD.Print($"чувачок с Id-{_battleEntity.Id} ударил по тайлу {tile}");
@@ -89,8 +118,7 @@ public class AttackByWeaponCommand : Command
             else if (effect.EffectType == EEffectType.Pushing)
             {
                 GD.Print($"{_battleEntity.Id} ТОЛКНУЛ {tile.BattleEntity.Id}!");
-                // Надо вызвать метод физического толчка
-                // например tile.BattleEntity.PushFrom(_battleEntity.Position);
+                _fightSceneManager.MapManager.TryPushEntity(_battleEntity, tile.BattleEntity);
             }
         }
         
@@ -107,35 +135,6 @@ public class AttackByWeaponCommand : Command
             {
                 float volum = _battleEntity.Weapon.weaponData.Name == "Мортира" ? 0.2f : 0.5f;
                 SoundManager.Instance.PlaySoundOnce(row2.SoundPath, volum);
-            }
-        }
-
-        var entitiesToAttack = _battleEntity.Weapon.CalculateDamageForEntities(_battleEntity, _tilesForAttack);
-        foreach (var targetWeaponAttackDamage in entitiesToAttack)
-        {
-            if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
-            {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
-                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
-                {
-                    _fightSceneManager.RemovePlayerWarrior(playerWarrior);
-                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
-                }
-            }
-            else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
-            {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
-                if (targetWeaponAttackDamage.EntityToAttack.IsDead())
-                {
-                    _fightSceneManager.RemoveEnemyWarrior(enemyEntity);
-                    SoundManager.Instance.PlaySoundOnce("res://Sound/Death.wav", 0.6f);
-
-                    Effect battleFrenzyEffect = _battleEntity.appliedEffects.FirstOrDefault(effect => effect.EffectType == EEffectType.BattleFrenzy);
-                    if (battleFrenzyEffect is BattleFrenzyEntityEffect battleFrenzyEntityEffect)
-                    {
-                        battleFrenzyEntityEffect.PlayerKilledSomeone = true;
-                    }
-                }
             }
         }
     }
