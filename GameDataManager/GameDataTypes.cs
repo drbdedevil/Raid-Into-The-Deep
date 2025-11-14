@@ -13,32 +13,13 @@ public class WeaponData
 		
 	}
 
-<<<<<<< Updated upstream
-    public WeaponData(WeaponRow weaponRow)
-    {
-        ID = Guid.NewGuid().ToString();
-        Name = weaponRow.Name;
-        Damage = GD.RandRange(weaponRow.DamageRange.X, weaponRow.DamageRange.Y);
-        AttackShapeID = weaponRow.AttackShapeID;
-        EffectID = -1;// GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
-        TextureName = weaponRow.WeaponTexture.ResourceName;
-    }    
-    
-    public string ID { get; set; } = "NONE";
-    public string Name { get; set; } = "NONE";
-    public int Damage { get; set; } = 0;
-    public int AttackShapeID { get; set; } = 0;
-    public int EffectID { get; set; } = 0;
-    public string TextureName { get; set; } = "NONE";
-=======
 	public WeaponData(WeaponRow weaponRow)
 	{
-		
 		ID = Guid.NewGuid().ToString();
 		Name = weaponRow.Name;
 		Damage = GD.RandRange(weaponRow.DamageRange.X, weaponRow.DamageRange.Y);
 		AttackShapeID = weaponRow.AttackShapeID;
-		EffectID = GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+		EffectID = -1;// GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
 		TextureName = weaponRow.WeaponTexture.ResourceName;
 	}    
 	
@@ -48,7 +29,7 @@ public class WeaponData
 	public int AttackShapeID { get; set; } = 0;
 	public int EffectID { get; set; } = 0;
 	public string TextureName { get; set; } = "NONE";
->>>>>>> Stashed changes
+
 }
 
 [Serializable]
