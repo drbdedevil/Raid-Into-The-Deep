@@ -29,6 +29,9 @@ public partial class BattleMapInitStateManager : Node
     /// </summary>
     public void SetMapData(List<Tile> tiles)
     {
+        PlayerEntities.Clear();
+        EnemyEntities.Clear();
+        ObstacleEntities.Clear();
         Tiles = tiles;
         foreach (var tile in Tiles)
         {
