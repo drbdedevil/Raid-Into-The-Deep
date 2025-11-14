@@ -1,6 +1,6 @@
 public enum GameEnemyCode
 {
-    Spider,
+    Spider = 1,
     Wasp,
     Root,
     Bug,
