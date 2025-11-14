@@ -5,31 +5,31 @@
 
 [sub_resource type="Resource" id="Resource_oeknq"]
 script = ExtResource("1_oeknq")
-CrystalUpgradeCost = 27
-ChitinFragmentsUpgradeCost = 80
+CrystalUpgradeCost = 13
+ChitinFragmentsUpgradeCost = 64
 metadata/_custom_type_script = "uid://cmna8i648rdiq"
 
 [sub_resource type="Resource" id="Resource_0hxps"]
 script = ExtResource("1_oeknq")
 Level = 2
-CrystalUpgradeCost = 40
-ChitinFragmentsUpgradeCost = 112
+CrystalUpgradeCost = 27
+ChitinFragmentsUpgradeCost = 80
 Capacity = 12
 metadata/_custom_type_script = "uid://cmna8i648rdiq"
 
 [sub_resource type="Resource" id="Resource_7wroa"]
 script = ExtResource("1_oeknq")
 Level = 3
-CrystalUpgradeCost = 67
-ChitinFragmentsUpgradeCost = 128
+CrystalUpgradeCost = 40
+ChitinFragmentsUpgradeCost = 112
 Capacity = 16
 metadata/_custom_type_script = "uid://cmna8i648rdiq"
 
 [sub_resource type="Resource" id="Resource_rr2pg"]
 script = ExtResource("1_oeknq")
 Level = 4
-CrystalUpgradeCost = 93
-ChitinFragmentsUpgradeCost = 160
+CrystalUpgradeCost = 67
+ChitinFragmentsUpgradeCost = 128
 Capacity = 20
 metadata/_custom_type_script = "uid://cmna8i648rdiq"
 
