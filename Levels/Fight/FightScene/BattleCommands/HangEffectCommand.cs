@@ -13,15 +13,18 @@ public class HangEffectCommand : Command
     {
         _battleEntity = battleEntity;
         _effectToHang = effectToHang;
+        _effectToHang.entityHolder = _battleEntity;
     }
     
     public override void Execute()
     {
-        _battleEntity.AddEffect(new EntityEffect());
+        GD.Print($"Получил эффект - {_effectToHang.EffectType}");
+        _battleEntity.AddEffect(_effectToHang);
     }
 
     public override void UnExecute()
     {
-        _battleEntity.RemoveEffect(new EntityEffect());
+        GD.Print($"Убрал эффект - {_effectToHang.EffectType}");
+        _battleEntity.RemoveEffect(_effectToHang);
     }
 }
