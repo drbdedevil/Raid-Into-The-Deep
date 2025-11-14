@@ -1,46 +1,54 @@
-[gd_resource type="Resource" script_class="EnemyBaseStatsDatabase" load_steps=11 format=3 uid="uid://bkna3riolbsmr"]
+[gd_resource type="Resource" script_class="EnemyBaseStatsDatabase" load_steps=12 format=3 uid="uid://bkna3riolbsmr"]
 
 [ext_resource type="Script" uid="uid://fjuciunc2jyv" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatsDatabase.cs" id="1_6pjjy"]
 [ext_resource type="Script" uid="uid://mcrty1t54tnc" path="res://GameDataManager/GameBalanceData/Enemies/EnemyBaseStatRow.cs" id="1_cbrah"]
 
 [sub_resource type="Resource" id="Resource_nvsm3"]
 script = ExtResource("1_cbrah")
-Damage = 2
-Health = 7
+DamageByEffect = 2
+Health = 5
 Speed = 4
 AttackShapeType = 6
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_cbrah"]
 script = ExtResource("1_cbrah")
-Health = 4
-Speed = 2
+Damage = 2
+Health = 7
+Speed = 4
 AttackShapeType = 1
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_nobvf"]
 script = ExtResource("1_cbrah")
-Damage = 3
-Health = 10
+Health = 4
 Speed = 2
 AttackShapeType = 5
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_ak67h"]
 script = ExtResource("1_cbrah")
-Health = 15
-Speed = 4
+Damage = 3
+Health = 10
+Speed = 2
 AttackShapeType = 2
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_1qe6v"]
 script = ExtResource("1_cbrah")
-DamageByEffect = 5
-Health = 30
+Health = 15
+Speed = 4
 AttackShapeType = 4
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
 [sub_resource type="Resource" id="Resource_keupc"]
+script = ExtResource("1_cbrah")
+DamageByEffect = 5
+Health = 30
+AttackShapeType = 6
+metadata/_custom_type_script = "uid://mcrty1t54tnc"
+
+[sub_resource type="Resource" id="Resource_4e8kc"]
 script = ExtResource("1_cbrah")
 DamageByEffect = 7
 Health = 80
@@ -48,15 +56,14 @@ Speed = 5
 AttackShapeType = 6
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
-[sub_resource type="Resource" id="Resource_4e8kc"]
+[sub_resource type="Resource" id="Resource_x00wh"]
 script = ExtResource("1_cbrah")
 Damage = 10
 Health = 120
 Speed = 2
-AttackShapeType = 6
 metadata/_custom_type_script = "uid://mcrty1t54tnc"
 
-[sub_resource type="Resource" id="Resource_x00wh"]
+[sub_resource type="Resource" id="Resource_u3cq3"]
 script = ExtResource("1_cbrah")
 Damage = 15
 Health = 80
@@ -73,5 +80,6 @@ EnemyBaseStatRows = Dictionary[int, Object]({
 5: SubResource("Resource_1qe6v"),
 6: SubResource("Resource_keupc"),
 7: SubResource("Resource_4e8kc"),
-8: SubResource("Resource_x00wh")
+8: SubResource("Resource_x00wh"),
+9: SubResource("Resource_u3cq3")
 })
