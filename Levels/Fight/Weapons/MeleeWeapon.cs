@@ -68,7 +68,9 @@ public class MeleeWeapon : Weapon
     {
 	    switch (AttackShapeInfo.shapeType)
 	    {
-		    case AttackShapeType.Melee: return CalculateMelee();
+		    case AttackShapeType.Dagger:
+		    case AttackShapeType.Melee: 
+			    return CalculateMelee();
 		    case AttackShapeType.LongMelee: return CalculateLongMelee();
 		    case AttackShapeType.Sweep: return CalculateSweep();
 		    default: throw new ArgumentOutOfRangeException();
