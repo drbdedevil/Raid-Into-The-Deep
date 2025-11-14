@@ -15,12 +15,11 @@ public class WeaponData
 
     public WeaponData(WeaponRow weaponRow)
     {
-        
         ID = Guid.NewGuid().ToString();
         Name = weaponRow.Name;
         Damage = GD.RandRange(weaponRow.DamageRange.X, weaponRow.DamageRange.Y);
         AttackShapeID = weaponRow.AttackShapeID;
-        EffectID = GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+        EffectID = -1;// GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
         TextureName = weaponRow.WeaponTexture.ResourceName;
     }    
     

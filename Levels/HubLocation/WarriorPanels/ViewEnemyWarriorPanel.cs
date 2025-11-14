@@ -38,12 +38,16 @@ public partial class ViewEnemyWarriorPanel : Control
 		MarginContainer marginContainer = GetNode<MarginContainer>("PanelContainer/WeaponINfs");
 		marginContainer.Visible = true;
 
-		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects.FirstOrDefault(effect => effect.effectType == warrior.EnemyEntity.Weapon.effect.EffectType);
-		if (effectInfo != null)
+		if (warrior.EnemyEntity.Weapon.effect != null)
 		{
-			TextureRect effectRect = GetNode<TextureRect>("PanelContainer/WeaponINfs/ColorRect/TextureRect2/MarginContainer/EffectTexture");
-			effectRect.Texture = effectInfo.texture2D;
+			EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects.FirstOrDefault(effect => effect.effectType == warrior.EnemyEntity.Weapon.effect.EffectType);
+			if (effectInfo != null)
+			{
+				TextureRect effectRect = GetNode<TextureRect>("PanelContainer/WeaponINfs/ColorRect/TextureRect2/MarginContainer/EffectTexture");
+				effectRect.Texture = effectInfo.texture2D;
+			}
 		}
+		
 		WeaponRow weaponRow = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == warrior.EnemyEntity.Weapon.weaponData.Name);
 		if (weaponRow != null)
 		{

@@ -29,6 +29,8 @@ public partial class EntityEffectsPanel : ColorRect
     }
     public void ChangeToFitAndReplace(int count, Effect InWeaponEffect = null)
     {
+        if (InWeaponEffect == null) return;
+
         bool EntityHasSelfEffect = false;
         if (InWeaponEffect.EffectType == EEffectType.ResistanceToStun || InWeaponEffect.EffectType == EEffectType.Pushing)
         {

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyhkhemfaxwiy"]
+[gd_scene load_steps=6 format=3 uid="uid://dyhkhemfaxwiy"]
 
 [ext_resource type="Script" uid="uid://b5fbuattdpkgm" path="res://Levels/HubLocation/WarriorPanels/ViewEnemyWarriorPanel.cs" id="1_34tiq"]
 [ext_resource type="Texture2D" uid="uid://ltam438mr53u" path="res://Textures/Default/ViewWarriorPanel.png" id="2_xvtb3"]
 [ext_resource type="PackedScene" uid="uid://bsgjgwnjho2nn" path="res://Levels/HubLocation/WarriorPanels/WarriorEnemyPanel_Mini.tscn" id="3_34tiq"]
 [ext_resource type="Texture2D" uid="uid://dupvjlb80i0a2" path="res://Textures/WeaponsTexture/mech.png" id="4_bpfl8"]
 [ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="5_6q1ss"]
-[ext_resource type="Texture2D" uid="uid://bxfxakjpccggq" path="res://Textures/EffectsTextures/VoprosDlyaEffects.png" id="6_pgp2o"]
 
 [node name="ViewWarriorPanel" type="Control"]
 custom_minimum_size = Vector2(169, 56)
@@ -93,6 +92,5 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("6_pgp2o")
 expand_mode = 1
 stretch_mode = 4

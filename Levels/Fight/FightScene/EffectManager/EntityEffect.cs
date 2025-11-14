@@ -18,10 +18,11 @@ public class PoisonEntityEffect : EntityEffect
 		IsTemporary = true;
 		IsPending = true;
 	}
+	public int DamageByEffect = 5;
 
 	public override void OnApply()
 	{
-		entityHolder.ApplyDamage(null, 5);
+		entityHolder.ApplyDamage(null, DamageByEffect);
 		GD.Print("Применился яд для " + entityHolder.Id);
 	}
 }
@@ -36,10 +37,11 @@ public class FireEntityEffect : EntityEffect
 		IsTemporary = true;
 		IsPending = true;
 	}
+	public int DamageByEffect = 8;
 
 	public override void OnApply()
 	{
-		entityHolder.ApplyDamage(null, 8);
+		entityHolder.ApplyDamage(null, DamageByEffect);
 		GD.Print("Применился огонь для " + entityHolder.Id);
 	}
 }

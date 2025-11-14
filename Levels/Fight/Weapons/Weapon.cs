@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -39,6 +40,31 @@ public abstract class Weapon
 
 	public void CreateEffectByWeaponData()
 	{
+		// навешивание эффектов на оружие врагов
+		if (weaponData.EffectID == -1)
+        {
+			WeaponRow weaponRow = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == weaponData.Name);
+			if (weaponRow != null)
+            {
+                switch (weaponRow.weaponType)
+                {
+					case EWeaponType.Sword:
+						effect = new FreezingEntityEffect(3);
+						return;
+					case EWeaponType.Dagger:
+						effect = new PoisonEntityEffect(3);
+						return;
+					case EWeaponType.Artillery:
+						effect = new FireEntityEffect(3);
+						return;	
+                    default:
+						break;
+                }
+            }
+            effect = null;
+			return;
+        }
+
 		EffectInfo effectInfo = GameDataManager.Instance.effectDatabase.Effects[weaponData.EffectID];
 		switch (effectInfo.effectType)
 		{

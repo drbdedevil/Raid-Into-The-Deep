@@ -70,6 +70,18 @@ public class AttackByWeaponCommand : Command
                     effect.EffectType != EEffectType.Pushing)
             {
                 effect.entityHolder = tile.BattleEntity;
+                if (_battleEntity is PlayerEntity playerEntity)
+                {
+                    if (effect is FireEntityEffect fireEntityEffect)
+                    {
+                        fireEntityEffect.DamageByEffect = playerEntity.DamageByEffect;
+                    }
+                    else if (effect is PoisonEntityEffect poisonEntityEffect)
+                    {
+                        poisonEntityEffect.DamageByEffect = playerEntity.DamageByEffect;
+                    }
+                }
+                
                 tile.BattleEntity.AddEffect(effect); // tile.BattleEntity.appliedEffects.Add(effect); - если захотим, чтобы эффекты стакались
                 GD.Print($"Эффект {effect.EffectType} добавлен в очередь");
             }
