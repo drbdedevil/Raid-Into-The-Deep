@@ -33,6 +33,15 @@ public class PlayerWarriorMovementBattleState : BattleState
             return;
             // throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
         }
+        if (FightSceneManager.Enemies.Count == 0)
+        {
+            StateTitleText = "";
+            ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
+            resultsScene.SetVictoryInfo();
+            resultsScene.ShowPopup();
+            bGameEnd = true;
+            return;
+        }
         _currentPlayerWarrior = playerEntities.First();
 
         if (!_currentPlayerWarrior.CanAct)

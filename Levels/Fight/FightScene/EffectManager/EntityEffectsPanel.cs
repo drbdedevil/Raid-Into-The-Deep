@@ -29,12 +29,13 @@ public partial class EntityEffectsPanel : ColorRect
     }
     public void ChangeToFitAndReplace(int count, Effect InWeaponEffect = null)
     {
-        if (InWeaponEffect == null) return;
-
         bool EntityHasSelfEffect = false;
-        if (InWeaponEffect.EffectType == EEffectType.ResistanceToStun || InWeaponEffect.EffectType == EEffectType.Pushing)
+        if (InWeaponEffect != null)
         {
-            EntityHasSelfEffect = true;
+            if (InWeaponEffect.EffectType == EEffectType.ResistanceToStun || InWeaponEffect.EffectType == EEffectType.Pushing)
+            {
+                EntityHasSelfEffect = true;
+            }
         }
 
         ColorRect colorRect = GetNode<ColorRect>(".");
