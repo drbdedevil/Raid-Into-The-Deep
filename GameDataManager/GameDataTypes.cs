@@ -111,7 +111,7 @@ public class RunMapData
 public class SettingsData
 {
 	public int EnemyTurnSpeed { get; set; } = 1000;
-	public double AudioVolume { get; set; } = 1;
+	public float AudioVolume { get; set; } = 1.0f;
 }
 
 [Serializable]

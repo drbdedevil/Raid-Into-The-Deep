@@ -83,7 +83,8 @@ public partial class GameDataManager : Node
 		commandBlockDataManager = new CommandBlockDataManager(this);
 		runMapDataManager = new RunMapDataManager(this);
 		SettingsData = LoadSettings();
-		AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb((float)SettingsData.AudioVolume));
+		
+		AudioServer.SetBusVolumeDb(0, SettingsData.AudioVolume);
 
 	}
 	public void CreateNewGame()
@@ -161,6 +162,7 @@ public partial class GameDataManager : Node
 			SaveSettings();
 		}
 		var fileText = File.ReadAllText(ProjectSettings.GlobalizePath(SettingPath));
+		var settings = JsonSerializer.Deserialize<SettingsData>(fileText);
 		return JsonSerializer.Deserialize<SettingsData>(fileText);
 		
 	}
@@ -174,6 +176,7 @@ public partial class GameDataManager : Node
 				IncludeFields = true,
 			};
 
+			if (SettingsData.AudioVolume < -80) SettingsData.AudioVolume = -80;
 			string json = JsonSerializer.Serialize(SettingsData, options);
 			File.WriteAllText(ProjectSettings.GlobalizePath(SettingPath), json);
 			GD.Print($"Настройки сохранены: {SettingsData}");

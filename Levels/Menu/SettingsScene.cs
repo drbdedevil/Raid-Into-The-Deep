@@ -27,6 +27,11 @@ public partial class SettingsScene : Node
 		_enemyTurnSpeedSlider =  GetNode<HSlider>("VBoxContainer/EnemyTurnSpeedContainer/HSlider");
 		_enemyTurnSpeedSlider.Value = GameDataManager.Instance.SettingsData.EnemyTurnSpeed;
 		_enemyTurnSpeedSlider.ValueChanged += OnEnemyTurnSpeedChanged;
+		
+		for (int i = 0; i < 10; i++)
+		{
+			GD.Print(Mathf.LinearToDb(i));
+		} 
 	}
 
 	public override void _Process(double delta)
@@ -48,6 +53,8 @@ public partial class SettingsScene : Node
 	private void OnAudioVolumeChanged(double value)
 	{
 		float volumeDb = Mathf.LinearToDb((float)value);
+		GD.Print(volumeDb);
+	
 		AudioServer.SetBusVolumeDb(0, volumeDb);
 		GameDataManager.Instance.SettingsData.AudioVolume = volumeDb;
 	}
