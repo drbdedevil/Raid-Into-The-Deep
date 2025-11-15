@@ -166,6 +166,7 @@ public partial class FightSceneManager : Control
             entityEffectsPanel.SetEffectsInfos(playerEntity.appliedEffects, playerEntity.Weapon.effect);
             entityEffectsPanel.ChangeToFitAndReplace(playerEntity.appliedEffects.Count, playerEntity.Weapon.effect);
             entityEffectsPanel.SetPositionWarriorOffset(fightScenePanel.GetWarriorPanelPositionByID(characterID));
+            _mapManager.SelectTileForCurrentPlayerEntityTurn(playerEntity.Tile);
         }
     }
 
@@ -173,5 +174,10 @@ public partial class FightSceneManager : Control
     {
         EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;
+        PlayerEntity playerEntity = Allies.FirstOrDefault(character => character.Id == characterID);
+        if (playerEntity != null)
+        {
+            _mapManager.DeselectTile(playerEntity.Tile);
+        }
     }
 }
