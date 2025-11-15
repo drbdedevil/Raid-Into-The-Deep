@@ -86,7 +86,8 @@ public class AttackByWeaponCommand : Command
 
             if (effect.EffectType == EEffectType.Stun && 
                 (tile.BattleEntity.HasEffect(EEffectType.ResistanceToStun, true)
-              || tile.BattleEntity.HasEffect(EEffectType.ResistanceToStun)))
+              || tile.BattleEntity.HasEffect(EEffectType.ResistanceToStun)
+              || tile.BattleEntity.HasEffect(EEffectType.Stun)))
             {
                 GD.Print($"Цель {tile.BattleEntity.Id} иммунна к оглушению!");
                 continue;
