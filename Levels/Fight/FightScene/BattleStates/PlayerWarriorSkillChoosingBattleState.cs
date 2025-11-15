@@ -22,7 +22,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
 
     public override void InputUpdate(InputEvent @event)
     {
-        if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left)
+        if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed && mouseButton.ButtonIndex == MouseButton.Left && MapManager.GetTileUnderMousePosition() != null)
         {
             var tilesForAttack = MapManager.SelectedTilesForPlayerAction;
             var attackCommand =
