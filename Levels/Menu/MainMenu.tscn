@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dda3q28m2xroq"]
+[gd_scene load_steps=7 format=3 uid="uid://dda3q28m2xroq"]
 
 [ext_resource type="Texture2D" uid="uid://2rrfl5qd7hwo" path="res://Textures/GameTitle.png" id="1_b0w40"]
 [ext_resource type="Script" uid="uid://dkn1r1vlxn2ff" path="res://Levels/Menu/MainMenu.cs" id="1_riryq"]
 [ext_resource type="PackedScene" uid="uid://cfjmak03e832k" path="res://Levels/Menu/MenuButton.tscn" id="2_2maog"]
 [ext_resource type="Texture2D" uid="uid://cqfvsqy4f72pl" path="res://Textures/Menu/MainMenu.png" id="2_2tbab"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="4_riryq"]
+[ext_resource type="Script" uid="uid://cxtqo0iuwrbnr" path="res://Levels/Menu/HelperLink.cs" id="6_53rl4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -129,3 +130,15 @@ theme_override_font_sizes/font_size = 37
 text = "Выход"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -399.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("4_riryq")
+text = "ава"
+script = ExtResource("6_53rl4")
