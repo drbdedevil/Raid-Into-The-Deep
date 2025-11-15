@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dej04w0o3q20l"
 [sub_resource type="Resource" id="Resource_ivxld"]
 script = ExtResource("1_sfwh0")
 skillType = 4
-increments = Array[int]([1, 2, 3, 4, 5])
+increments = Array[int]([1, 2, 3, 3, 3])
 metadata/_custom_type_script = "uid://dej04w0o3q20l"
 
 [resource]
