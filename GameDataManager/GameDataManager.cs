@@ -16,7 +16,8 @@ public partial class GameDataManager : Node
 
 	[Export]
 	public bool IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
-	
+
+	public int EnemyTurnSpeed = 1000;
 	// Submanagers
 	public StorageDataManager storageDataManager { get; private set; }
 	public LivingSpaceDataManager livingSpaceDataManager { get; private set; }

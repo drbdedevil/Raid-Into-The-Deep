@@ -15,9 +15,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 	private List<Tile> _tilesToAttack = new();
 
 	private Task _drawingTilesToMoveTask;
-	private const int DrawingTilesToMoveTaskDuration = 1000; // = 250;
+	private static readonly int DrawingTilesToMoveTaskDuration = GameDataManager.Instance.EnemyTurnSpeed;
 	private Task _drawingTilesToAttackTask;
-	private const int drawingTilesToAttackTaskDuration = 1000; // = 250;
+	private static readonly int DrawingTilesToAttackTaskDuration = GameDataManager.Instance.EnemyTurnSpeed;
 	private double _skippingMoveTime = 0.0d;
 	private bool bShouldSkip = false;
 	private bool bGameEnd = false;
@@ -149,7 +149,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 					var command = new MoveBattleEntityCommand(_currentEnemyWarrior, MapManager, FightSceneManager, tileToMove);
 					command.Execute();
 					MapManager.DrawEnemyEntityTilesToAttack(_tilesToAttack);
-					_drawingTilesToAttackTask = Task.Delay(drawingTilesToAttackTaskDuration);
+					_drawingTilesToAttackTask = Task.Delay(DrawingTilesToAttackTaskDuration);
 					return new (playerEntity, tileToMove);
 				}
 			}

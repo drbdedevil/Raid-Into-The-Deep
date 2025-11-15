@@ -7,6 +7,7 @@ public partial class SettingsScene : Node
 	private CheckButton _fullscreenCheckButton;
 	private Button _returnButton;
 	private HSlider _audioVolumeSlider;
+	private HSlider _enemyTurnSpeedSlider;
 	
 	
 	
@@ -21,8 +22,11 @@ public partial class SettingsScene : Node
 		
 		_audioVolumeSlider = GetNode<HSlider>("VBoxContainer/MusicContainer/HSlider");
 		_audioVolumeSlider.ValueChanged += OnAudioVolumeChanged;
-		
 		_audioVolumeSlider.Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb(0));
+		
+		_enemyTurnSpeedSlider =  GetNode<HSlider>("VBoxContainer/EnemyTurnSpeedContainer/HSlider");
+		_enemyTurnSpeedSlider.ValueChanged += OnEnemyTurnSpeedChanged;
+
 	}
 
 	public override void _Process(double delta)
@@ -45,5 +49,10 @@ public partial class SettingsScene : Node
 		float volumeDb = Mathf.LinearToDb((float)value);
         
 		AudioServer.SetBusVolumeDb(0, volumeDb);
+	}
+
+	private void OnEnemyTurnSpeedChanged(double value)
+	{
+		GameDataManager.Instance.EnemyTurnSpeed = (int)value;
 	}
 }
