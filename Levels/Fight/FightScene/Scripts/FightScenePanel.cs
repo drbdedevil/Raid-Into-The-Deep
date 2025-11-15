@@ -34,7 +34,7 @@ public partial class FightScenePanel : TextureRect
         if (fightSceneManager != null)
         {
             fightSceneManager.CurrentPlayerWarriorToTurnChanged += OnCurrentPlayerWarriorToTurnChanged;
-            // WarriorPanelsUpdate += fightSceneManager.OnWarriorPanelsUpdate;
+            fightSceneManager.EnemyWarriorToTurnChanged += UpdateUsedCharactersList;
         }
 
         // ----------- View Realization -----------

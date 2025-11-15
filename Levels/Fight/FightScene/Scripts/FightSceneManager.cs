@@ -42,6 +42,8 @@ public partial class FightSceneManager : Control
 	[Signal]
 	public delegate void CurrentPlayerWarriorToTurnChangedEventHandler(string playerWarriorId);
 	[Signal]
+	public delegate void EnemyWarriorToTurnChangedEventHandler();
+	[Signal]
 	public delegate void FightSceneManagerInitializedEventHandler();
 	[Signal]
 	public delegate void BattleEntityMadeMoveEventHandler();
@@ -65,7 +67,7 @@ public partial class FightSceneManager : Control
 		set
 		{
 			_currentEnemyWarriorToTurn = value;
-			if (_currentEnemyWarriorToTurn is not null) EmitSignalBattleEntityMadeMove();
+			if (_currentEnemyWarriorToTurn is not null) EmitSignalEnemyWarriorToTurnChanged();
 		}
 	}
 
