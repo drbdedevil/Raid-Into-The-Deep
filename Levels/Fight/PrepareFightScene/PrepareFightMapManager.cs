@@ -90,7 +90,7 @@ public partial class PrepareFightMapManager : Node2D
 		// var mapText = FileAccess.Open("res://Maps/Боссы/map3.txt", FileAccess.ModeFlags.Read).GetAsText();
 		
 		string mapText = "";
-		if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.TankBoss)
+		if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.Battle)
 		{
 			mapText = FileAccess.Open($"res://Maps/Обычные/map{randMap}.txt", FileAccess.ModeFlags.Read).GetAsText();
 		}
@@ -103,7 +103,7 @@ public partial class PrepareFightMapManager : Node2D
 		{
 			mapText = FileAccess.Open("res://Maps/Боссы/map1.txt", FileAccess.ModeFlags.Read).GetAsText();
 		}
-		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.Battle)
+		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.TankBoss)
 		{
 			mapText = FileAccess.Open("res://Maps/Боссы/map2.txt", FileAccess.ModeFlags.Read).GetAsText();
 		}
