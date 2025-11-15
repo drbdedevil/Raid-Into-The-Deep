@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxyf676c8q5vs"]
+
+[ext_resource type="Texture2D" uid="uid://cqfvsqy4f72pl" path="res://Textures/Menu/MainMenu.png" id="1_j5flr"]
+[ext_resource type="Script" uid="uid://bh2leylfwqorp" path="res://Levels/Menu/SettingsScene.cs" id="1_ou0v8"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="2_ieqj8"]
+[ext_resource type="PackedScene" uid="uid://cfjmak03e832k" path="res://Levels/Menu/MenuButton.tscn" id="4_keayu"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ou0v8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j5flr")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 157.0
+offset_right = 830.0
+offset_bottom = 307.0
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ieqj8")
+theme_override_font_sizes/font_size = 37
+text = "Полноэкранный режим"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/FullscreenContainer/MarginContainer"]
+layout_mode = 2
+expand_icon = true
+
+[node name="MusicContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ieqj8")
+theme_override_font_sizes/font_size = 37
+text = "Громкость"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="EscapeButton" parent="." instance=ExtResource("4_keayu")]
+layout_mode = 0
+offset_top = 575.0
+offset_right = 448.0
+offset_bottom = 689.0
+
+[node name="MarginContainer" type="MarginContainer" parent="EscapeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.666664
+offset_bottom = -8.000061
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="EscapeButton/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("2_ieqj8")
+theme_override_font_sizes/font_size = 37
+text = "Вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1

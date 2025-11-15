@@ -43,6 +43,7 @@ public partial class MainMenu : Node
 	{
 		GD.Print(" -- SettingsButtonPressed --");
 		
+		GetTree().ChangeSceneToFile("res://Levels/Menu/Settings.tscn");
 	}
 	private void OnEscapeButtonPressed()
 	{
