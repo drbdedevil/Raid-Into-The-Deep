@@ -36,6 +36,19 @@ public partial class ResultsScene : Control
         CrystalsLabel.Text = GameDataManager.Instance.currentData.commandBlockData.CrystalsByOneBattle.ToString();
         Label ChitinsLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3/ChitinsLabel");
         ChitinsLabel.Text = GameDataManager.Instance.currentData.commandBlockData.ChitinFragmentsByOneBattle.ToString();
+
+        HBoxContainer hBoxContainer1 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer");
+        hBoxContainer1.Visible = true;
+        HBoxContainer hBoxContainer2 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2");
+        hBoxContainer2.Visible = true;
+        HBoxContainer hBoxContainer3 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3");
+        hBoxContainer3.Visible = true;
+
+        TextureRect textureRect = GetNode<TextureRect>("ColorRect2/ColorRect/ColorRect/TextureRect");
+        textureRect.Visible = false;
+
+        ColorRect colorRect = GetNode<ColorRect>("ColorRect2/ColorRect/ColorRect");
+        colorRect.Color = new Color(0.988f, 0.776f, 0.537f);
     }
     public void SetDefeatInfo()
     {
@@ -44,6 +57,19 @@ public partial class ResultsScene : Control
         Label InfoLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/Label");
         InfoLabel.Text = "ПОРАЖЕНИЕ";
         InfoLabel.AddThemeColorOverride("font_color", new Color(0.751f, 0f, 0.09f));
+
+        HBoxContainer hBoxContainer1 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer");
+        hBoxContainer1.Visible = false;
+        HBoxContainer hBoxContainer2 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2");
+        hBoxContainer2.Visible = false;
+        HBoxContainer hBoxContainer3 = GetNode<HBoxContainer>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3");
+        hBoxContainer3.Visible = false;
+
+        TextureRect textureRect = GetNode<TextureRect>("ColorRect2/ColorRect/ColorRect/TextureRect");
+        textureRect.Visible = true;
+
+        ColorRect colorRect = GetNode<ColorRect>("ColorRect2/ColorRect/ColorRect");
+        colorRect.Color = new Color(0.322f, 0.008f, 0.035f);
     }
     public void ShowPopup()
     {

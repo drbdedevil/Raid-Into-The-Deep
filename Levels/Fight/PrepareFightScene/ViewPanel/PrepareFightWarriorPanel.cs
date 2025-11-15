@@ -40,6 +40,44 @@ public partial class PrepareFightWarriorPanel : Node
 
 			progressBar.MaxValue = maxHealthToSet;
 		}
+
+		TextureRect weaponRect = GetNode<TextureRect>("TextureRect/HBoxContainer2/WeaponButton/TextureRect");
+		var existingWeapon = GameDataManager.Instance.weaponDatabase.Weapons.FirstOrDefault(weapon => weapon.Name == playerEntity.Weapon.weaponData.Name);
+		if (existingWeapon != null)
+		{
+			weaponRect.Texture = existingWeapon.WeaponTexture;
+
+			TextureRect effectRect = GetNode<TextureRect>("TextureRect/HBoxContainer2/WeaponButton/TextureRect2/MarginContainer/EffectTexture");
+			var existingEffect = GameDataManager.Instance.effectDatabase.Effects[playerEntity.Weapon.weaponData.EffectID];
+			if (existingEffect != null)
+			{
+				effectRect.Texture = existingEffect.texture2D;
+			}
+		}
+		else
+		{
+			Texture2D texture2D = GD.Load<Texture2D>("res://Textures/ChooseAttack/ChooseAttack_No.png");
+			weaponRect.Texture = texture2D;
+		}
+
+		TextureRect skillRect = GetNode<TextureRect>("TextureRect/HBoxContainer2/SkillButton/TextureRect");
+		if (playerEntity.activeSkill == null || playerEntity.activeSkill != null && playerEntity.activeSkill.skillType == ESkillType.NONE)
+        {
+            Texture2D texture2D = GD.Load<Texture2D>("res://Textures/ChooseAttack/ChooseAttack_No.png");
+			skillRect.Texture = texture2D;
+			return;
+        }
+
+		SkillRow skillRow = GameDataManager.Instance.activeSkillsDatabase.skillsRows.FirstOrDefault(skillRow => skillRow.skillType == playerEntity.activeSkill.skillType);
+		if (skillRow != null)
+		{
+			skillRect.Texture = skillRow.skillTextureActive;
+		}
+		else
+		{
+			Texture2D texture2D = GD.Load<Texture2D>("res://Textures/ChooseAttack/ChooseAttack_No.png");
+			skillRect.Texture = texture2D;
+		}
 	}
 	public override void _Ready()
 	{

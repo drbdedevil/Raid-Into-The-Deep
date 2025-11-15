@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://8rpxbu6wrfw3"]
+[gd_scene load_steps=9 format=3 uid="uid://8rpxbu6wrfw3"]
 
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_dv6c6"]
 [ext_resource type="Script" uid="uid://bmamxhqhwte25" path="res://Levels/Fight/FightScene/Scripts/ResultsScene.cs" id="1_ulh11"]
 [ext_resource type="PackedScene" uid="uid://cpr8w1fhvtvii" path="res://Levels/RaceMap/RaceMap.tscn" id="2_pele7"]
 [ext_resource type="PackedScene" uid="uid://dqakekx24s2dj" path="res://Levels/HubLocation/HubLocation.tscn" id="3_ced47"]
+[ext_resource type="Texture2D" uid="uid://duaiyrq810w6e" path="res://Textures/Fight/AllDead.png" id="5_33r7h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulh11"]
 bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
@@ -96,7 +97,7 @@ offset_right = 246.0
 offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9882353, 0.7764706, 0.5372549, 1)
+color = Color(0.988, 0.776, 0.537, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ColorRect/ColorRect"]
 layout_mode = 1
@@ -169,7 +170,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 theme_override_fonts/font = ExtResource("1_dv6c6")
 theme_override_font_sizes/font_size = 20
-text = "Хитина заработано:"
+text = "Фрагментов хитина заработано:"
 
 [node name="ChitinsLabel" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -193,3 +194,20 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ulh11")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pele7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ced47")
 text = "Продолжить"
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect2/ColorRect/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -146.0
+offset_right = 128.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_33r7h")
+stretch_mode = 4
