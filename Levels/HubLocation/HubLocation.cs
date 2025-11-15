@@ -76,6 +76,8 @@ public partial class HubLocation : Node
 	{
 		GD.Print(" -- MenuButtonButtonPressed --");
 
+		GameDataManager.Instance.Save();
+
 		GetTree().ChangeSceneToFile("res://Levels/Menu/MainMenu.tscn");
 	}
 	private void OnSettingsButtonPressed()
@@ -117,6 +119,7 @@ public partial class HubLocation : Node
 			}
 		}
 
+		GameDataManager.Instance.Save();
 		GetTree().ChangeSceneToPacked(RaceMapScene);
 	}
 

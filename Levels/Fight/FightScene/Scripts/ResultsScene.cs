@@ -105,5 +105,7 @@ public partial class ResultsScene : Control
             SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
             sceneTree.ChangeSceneToPacked(hubLocationScene);
         }
+
+        GameDataManager.Instance.Save();
     }
 }

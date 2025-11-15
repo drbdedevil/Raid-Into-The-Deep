@@ -64,16 +64,19 @@ public partial class MapNodeButton : TextureButton
                     SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/CreateWeapon4.wav", 0.4f);
                     mapNode.Type = MapNodeType.Treasure;
                 }
+                GameDataManager.Instance.Save();
                 SuccesfulAction();
                 break;
             case MapNodeType.Rest:
                 runMapDataManager.HealTeam();
                 SoundManager.Instance.PlaySoundOnce("res://Sound/Music/RaceMap/Otdych.wav", 0.4f);
+                GameDataManager.Instance.Save();
                 SuccesfulAction();
                 break;
             case MapNodeType.Treasure:
                 runMapDataManager.GiveAwardToPlayer();
                 SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/CreateWeapon4.wav", 0.4f);
+                GameDataManager.Instance.Save();
                 SuccesfulAction();
                 break;
             default:
