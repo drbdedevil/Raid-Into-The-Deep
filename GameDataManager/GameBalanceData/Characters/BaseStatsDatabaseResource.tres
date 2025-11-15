@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_tadtg")
+Heal = 1
 metadata/_custom_type_script = "uid://c58gg5nwd7bn7"
