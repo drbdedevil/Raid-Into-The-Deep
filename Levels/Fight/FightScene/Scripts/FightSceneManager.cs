@@ -142,6 +142,7 @@ public partial class FightSceneManager : Control
 	public void RemoveEnemyWarrior(EnemyEntity enemyWarrior)
 	{
 		ApplyExperienceByEnemy(enemyWarrior);
+		GameDataManager.Instance.currentData.commandBlockData.EnemyDefeated += 1;
 
 		_mapManager.RemoveBattleEntityFromTile(enemyWarrior.Tile, isDead: true);
 		_enemies.Remove(enemyWarrior);
