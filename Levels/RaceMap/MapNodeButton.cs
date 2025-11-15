@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class MapNodeButton : TextureButton
 {
@@ -14,6 +15,13 @@ public partial class MapNodeButton : TextureButton
 
     private void OnMapNodeButtonPressed()
     {
+        if (!GameDataManager.Instance.currentData.livingSpaceData.ReservedCharacters.Any() && 
+            !GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Any())
+        {
+            NotificationSystem.Instance.ShowMessage("У тебя никого нет, найми и возьми в свою команду!", EMessageType.Alert);
+            return;
+        }
+        
         if (GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Count == 0)
         {
             NotificationSystem.Instance.ShowMessage("Возьми с собой кого-нибудь!", EMessageType.Alert);
