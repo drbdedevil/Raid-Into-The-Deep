@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ca21dn2dh6rl0" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="4_ajt20"]
 [ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_ff54w"]
 [ext_resource type="Texture2D" uid="uid://dkyv8egijirlx" path="res://Textures/Fight/FightScene/Explosion-Sheet.png" id="7_ajt20"]
-[ext_resource type="Texture2D" uid="uid://jtm2rtc4qjyw" path="res://Textures/Fight/FightScene/AllBlocks.png" id="9_i2gx1"]
+[ext_resource type="Texture2D" uid="uid://cotc617wbocow" path="res://Textures/Fight/FightScene/AllBlocks.png" id="9_i2gx1"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
 [ext_resource type="PackedScene" uid="uid://b7ihs58oynnmg" path="res://Levels/Fight/FightScene/EffectManagerLogic/EntityEffectsPanel.tscn" id="10_foig6"]
 [ext_resource type="PackedScene" uid="uid://cpopu50xtjs27" path="res://Levels/Fight/FightScene/EffectManagerLogic/EntityEffectView.tscn" id="11_m6kyl"]
@@ -156,6 +156,8 @@ texture_region_size = Vector2i(64, 64)
 0:2/0/texture_origin = Vector2i(0, 32)
 0:3/0 = 0
 0:3/0/texture_origin = Vector2i(0, 32)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 32)
 
 [sub_resource type="TileSet" id="TileSet_wrefx"]
 tile_shape = 1
