@@ -15,9 +15,9 @@ public class EnemyWarriorTurnBattleState : BattleState
 	private List<Tile> _tilesToAttack = new();
 
 	private Task _drawingTilesToMoveTask;
-	private static readonly int DrawingTilesToMoveTaskDuration = GameDataManager.Instance.EnemyTurnSpeed;
+	private static readonly int DrawingTilesToMoveTaskDuration = GameDataManager.Instance.SettingsData.EnemyTurnSpeed;
 	private Task _drawingTilesToAttackTask;
-	private static readonly int DrawingTilesToAttackTaskDuration = GameDataManager.Instance.EnemyTurnSpeed;
+	private static readonly int DrawingTilesToAttackTaskDuration = GameDataManager.Instance.SettingsData.EnemyTurnSpeed;
 	private double _skippingMoveTime = 0.0d;
 	private bool bShouldSkip = false;
 	private bool bGameEnd = false;

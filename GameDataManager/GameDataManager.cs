@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using FileAccess = Godot.FileAccess;
 
 public partial class GameDataManager : Node
 {
@@ -12,12 +13,13 @@ public partial class GameDataManager : Node
 	[Export]
 	private string saveName = "";
 
+	public SettingsData SettingsData { get; set; } = new();
+	
 	public GameData currentData { get; set; } = new();
 
 	[Export]
 	public bool IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
 
-	public int EnemyTurnSpeed = 1000;
 	// Submanagers
 	public StorageDataManager storageDataManager { get; private set; }
 	public LivingSpaceDataManager livingSpaceDataManager { get; private set; }
@@ -80,8 +82,9 @@ public partial class GameDataManager : Node
 		forgeDataManager = new ForgeDataManager(this);
 		commandBlockDataManager = new CommandBlockDataManager(this);
 		runMapDataManager = new RunMapDataManager(this);
+		SettingsData = LoadSettings();
+		AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb((float)SettingsData.AudioVolume));
 
-		GD.Print(" -- GameDataManager init -- ");
 	}
 	public void CreateNewGame()
 	{
@@ -98,6 +101,8 @@ public partial class GameDataManager : Node
 	{
 		return "user://saves/" + saveName + ".json";
 	}
+	
+	private const string SettingPath = "user://settings.json";
 	public void Save()
 	{
 		try
@@ -149,6 +154,36 @@ public partial class GameDataManager : Node
 		}
 	}
 
+	public SettingsData LoadSettings()
+	{
+		if (!File.Exists(ProjectSettings.GlobalizePath(SettingPath)))
+		{
+			SaveSettings();
+		}
+		var fileText = File.ReadAllText(ProjectSettings.GlobalizePath(SettingPath));
+		return JsonSerializer.Deserialize<SettingsData>(fileText);
+		
+	}
+	public void SaveSettings()
+	{
+		try
+		{
+			var options = new JsonSerializerOptions
+			{
+				WriteIndented = true,
+				IncludeFields = true,
+			};
+
+			string json = JsonSerializer.Serialize(SettingsData, options);
+			File.WriteAllText(ProjectSettings.GlobalizePath(SettingPath), json);
+			GD.Print($"Настройки сохранены: {SettingsData}");
+		}
+		catch (Exception e)
+		{
+			GD.PrintErr($"Ошибка при сохранении: {e.Message}");
+		}
+	}
+	
 	public void DeleteSave(string saveName)
 	{
 		string saveToDelete = "user://saves/" + saveName + ".json";

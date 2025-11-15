@@ -108,6 +108,13 @@ public class RunMapData
 }
 
 [Serializable]
+public class SettingsData
+{
+	public int EnemyTurnSpeed = 1000;
+	public double AudioVolume = 1;
+}
+
+[Serializable]
 public class GameData
 {
 	public StorageData storageData = new();

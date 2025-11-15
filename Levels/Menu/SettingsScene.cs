@@ -21,12 +21,12 @@ public partial class SettingsScene : Node
 		_returnButton.ButtonUp += OnReturnToMainMenu;
 		
 		_audioVolumeSlider = GetNode<HSlider>("VBoxContainer/MusicContainer/HSlider");
+		_audioVolumeSlider.Value = Mathf.DbToLinear(GameDataManager.Instance.SettingsData.AudioVolume);
 		_audioVolumeSlider.ValueChanged += OnAudioVolumeChanged;
-		_audioVolumeSlider.Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb(0));
 		
 		_enemyTurnSpeedSlider =  GetNode<HSlider>("VBoxContainer/EnemyTurnSpeedContainer/HSlider");
+		_enemyTurnSpeedSlider.Value = GameDataManager.Instance.SettingsData.EnemyTurnSpeed;
 		_enemyTurnSpeedSlider.ValueChanged += OnEnemyTurnSpeedChanged;
-
 	}
 
 	public override void _Process(double delta)
@@ -42,17 +42,18 @@ public partial class SettingsScene : Node
 	private void OnReturnToMainMenu()
 	{
 		GetTree().ChangeSceneToFile("res://Levels/Menu/MainMenu.tscn");
+		GameDataManager.Instance.SaveSettings();
 	}
 	
 	private void OnAudioVolumeChanged(double value)
 	{
 		float volumeDb = Mathf.LinearToDb((float)value);
-        
 		AudioServer.SetBusVolumeDb(0, volumeDb);
+		GameDataManager.Instance.SettingsData.AudioVolume = volumeDb;
 	}
 
 	private void OnEnemyTurnSpeedChanged(double value)
 	{
-		GameDataManager.Instance.EnemyTurnSpeed = (int)value;
+		GameDataManager.Instance.SettingsData.EnemyTurnSpeed = (int)value;
 	}
 }

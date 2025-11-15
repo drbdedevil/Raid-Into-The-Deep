@@ -19,6 +19,7 @@ public partial class MainMenu : Node
 
 		SoundManager.Instance.RemoveAllSounds();
 		SoundManager.Instance.PlaySoundLoop("res://Sound/Music/FantasyMainMenu.mp3", 0.1f);
+		
 	}
 	public override void _ExitTree()
 	{
