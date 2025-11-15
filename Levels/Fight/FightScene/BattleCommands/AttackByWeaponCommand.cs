@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleCommands;

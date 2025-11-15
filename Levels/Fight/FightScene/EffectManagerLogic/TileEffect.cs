@@ -1,8 +1,8 @@
-using Godot;
-using RaidIntoTheDeep.Levels.Fight;
-using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
-using System;
 using System.Collections.Generic;
+using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 
 public partial class ObstacleEffect : Effect
 {

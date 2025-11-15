@@ -1,4 +1,4 @@
-using Godot;
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 
 public enum EEffectTarget
 {
@@ -28,4 +28,3 @@ public abstract class Effect
         }
     }
 }
-

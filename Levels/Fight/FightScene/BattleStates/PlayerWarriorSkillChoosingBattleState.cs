@@ -2,6 +2,7 @@ using System.Linq;
 using Godot;
 using System.Collections.Generic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.BattleCommands;
+using RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleStates;

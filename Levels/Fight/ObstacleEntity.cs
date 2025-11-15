@@ -1,4 +1,5 @@
 using System;
+using RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 using RaidIntoTheDeep.Levels.Fight.Weapons;
 

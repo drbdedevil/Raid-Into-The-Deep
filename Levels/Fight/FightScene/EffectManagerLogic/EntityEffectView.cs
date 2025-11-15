@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using System.Linq;
+using Godot;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 
 public partial class EntityEffectView : Control
 {

@@ -102,7 +102,7 @@ public partial class FightSceneManager : Control
 
         _effectManager = new(_mapManager, this);
 
-        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;
 
         EmitSignal(SignalName.FightSceneManagerInitialized);
@@ -136,7 +136,7 @@ public partial class FightSceneManager : Control
     {
         EnemyFightScenePanel enemyFightScenePanel = GetNode<EnemyFightScenePanel>("HBoxContainer/EnemyFightScenePanel");
 
-        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = true;
 
         entityEffectsPanel.SetEffectsInfos(enemyEntity.appliedEffects, enemyEntity.Weapon.effect);
@@ -148,7 +148,7 @@ public partial class FightSceneManager : Control
 
     public void OnEnemyPanelMouseExit(EnemyEntity enemyEntity)
     {
-        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;
         _mapManager.DeselectTile(enemyEntity.Tile);
     }
@@ -157,7 +157,7 @@ public partial class FightSceneManager : Control
     {
         FightScenePanel fightScenePanel = GetNode<FightScenePanel>("HBoxContainer/FightScenePanel");
 
-        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = true;
 
         PlayerEntity playerEntity = Allies.FirstOrDefault(character => character.Id == characterID);
@@ -171,7 +171,7 @@ public partial class FightSceneManager : Control
 
     public void OnCharacterPanelMouseExit(string characterID)
     {
-        EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
+        EffectManagerLogic.EntityEffectsPanel entityEffectsPanel = GetNode<EffectManagerLogic.EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;
     }
 }

@@ -1,6 +1,7 @@
-using Godot;
-using System;
 using System.Collections.Generic;
+using Godot;
+
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 
 public partial class EntityEffectsPanel : ColorRect
 {
