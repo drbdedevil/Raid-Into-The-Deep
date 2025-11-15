@@ -156,6 +156,8 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
                         }
                         characterData.SkillPoints -= 1;
                         characterData.Level += 1;
+
+                        SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/Prokachka.wav", 0.2f);
                     }
                 }
                 else
@@ -185,6 +187,8 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
                     activeSkills.Add(skillRow.skillName);
                     characterData.SkillPoints -= 1;
                     characterData.Level += 1;
+
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/Prokachka.wav", 0.2f);
                 }
             }
         }

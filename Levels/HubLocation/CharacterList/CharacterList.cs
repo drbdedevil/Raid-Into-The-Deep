@@ -42,6 +42,8 @@ public partial class CharacterList : ColorRect, IStackPage
 
 		TextureButton removeSkillButton = GetNode<TextureButton>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/TextureButton2");
 		removeSkillButton.ButtonDown += OnRemoveSkillButtonPressed;
+
+		SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/EnterCharacterList.wav", 0.2f);
 	}
 
 	private void OnChooseWeaponButtonPressed()
