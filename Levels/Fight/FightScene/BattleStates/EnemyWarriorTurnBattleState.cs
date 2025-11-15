@@ -60,6 +60,8 @@ public class EnemyWarriorTurnBattleState : BattleState
 			MapManager.DrawEnemyEntityTilesToMove(_tilesToMove, _currentEnemyWarrior);
 			_drawingTilesToMoveTask = Task.Delay(DrawingTilesToMoveTaskDuration);
 		}
+		
+		FightSceneManager.CurrentEnemyWarriorToTurn = _currentEnemyWarrior;
 	}
 
 	public override void InputUpdate(InputEvent @event)

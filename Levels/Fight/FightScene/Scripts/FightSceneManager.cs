@@ -57,6 +57,18 @@ public partial class FightSceneManager : Control
         }
     }
 
+    private EnemyEntity? _currentEnemyWarriorToTurn;
+
+    public EnemyEntity CurrentEnemyWarriorToTurn
+    {
+        get => _currentEnemyWarriorToTurn;
+        set
+        {
+            _currentEnemyWarriorToTurn = value;
+            if (_currentEnemyWarriorToTurn is not null) EmitSignalBattleEntityMadeMove();
+        }
+    }
+
     private BattleState? _currentBattleState;
     public BattleState CurrentBattleState
     {
