@@ -72,7 +72,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 				{
 					FightSceneManager.EnemyWarriorsThatTurned.Clear();
 					FightSceneManager.PlayerWarriorsThatTurned.Clear();
-					FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
+					FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
 					return;
 				}
 				FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
@@ -98,7 +98,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 			{
 				FightSceneManager.EnemyWarriorsThatTurned.Clear();
 				FightSceneManager.PlayerWarriorsThatTurned.Clear();
-				FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
+				FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
 				return;
 			}
 			FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);

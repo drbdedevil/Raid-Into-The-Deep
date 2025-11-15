@@ -43,7 +43,7 @@ public class PlayerWarriorConfirmationBattleState : BattleState
             {
                 battleFrenzyEntityEffect.PlayerKilledSomeone = false;
                 if (FightSceneManager.PlayerWarriorsThatTurned.Count == FightSceneManager.Allies.Count)
-                    FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
+                    FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
                 else 
                     FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
                 DisableButtons();
@@ -54,7 +54,7 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.PlayerWarriorsThatTurned.Add(FightSceneManager.CurrentPlayerWarriorToTurn);
         
         if (FightSceneManager.PlayerWarriorsThatTurned.Count == FightSceneManager.Allies.Count)
-            FightSceneManager.CurrentBattleState = new EnemyWarriorTurnBattleState(FightSceneManager, MapManager);
+            FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
         else 
             FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
         
