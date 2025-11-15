@@ -103,10 +103,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
 offset_top = 5.0
+offset_right = -10.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -115,6 +118,66 @@ theme_override_colors/font_color = Color(0.45217162, 0.33356592, 0, 1)
 theme_override_fonts/font = ExtResource("1_dv6c6")
 theme_override_font_sizes/font_size = 50
 text = "Бубу"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "Очков опыта заработано:"
+
+[node name="ExperienceLabel" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "-100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "Кристаллов заработано:"
+
+[node name="CrystalsLabel" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "-100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "Хитина заработано:"
+
+[node name="ChitinsLabel" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_dv6c6")
+theme_override_font_sizes/font_size = 20
+text = "-100"
 
 [node name="Button" type="Button" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(250, 30)

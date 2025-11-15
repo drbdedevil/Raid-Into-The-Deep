@@ -96,6 +96,7 @@ public partial class CharacterList : ColorRect, IStackPage
 			Label DamageLabel = GetNode<Label>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer4/TextureRect/NumberLabel");
 			Label DamageByEffectLabel = GetNode<Label>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer5/TextureRect/NumberLabel");
 			Label HealLabel = GetNode<Label>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect2/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer6/TextureRect/NumberLabel");
+			Label ExperienceLabel = GetNode<Label>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/HBoxContainer/ExperienceLabel");
 
 			LevelLabel.Text = warriorOwner.characterData.Level.ToString();
 			HealthLabel.Text = warriorOwner.characterData.Health.ToString();
@@ -108,6 +109,17 @@ public partial class CharacterList : ColorRect, IStackPage
 			characterTexture.Texture = GameDataManager.Instance.charactersSpritesDatabase.CharactersSpritesArray[warriorOwner.characterData.PortraitID];
 			Label NameLabel = GetNode<Label>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/VBoxContainer/NameLabel");
 			NameLabel.Text = warriorOwner.characterData.Name;
+
+			// расчёт опыта
+			int currentLevel = warriorOwner.characterData.Level;
+			int resultExperience = 0;
+			var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+			for (int i = 0; i < currentLevel - 1; ++i)
+            {
+                resultExperience += experienceDatas[i].NeedableExperinceForNextLevel;
+            }
+			resultExperience += warriorOwner.characterData.ExperiencePoints;
+			ExperienceLabel.Text = resultExperience.ToString();
 
 			CheckWeaponInfos();
 			CheckSkillInfos();

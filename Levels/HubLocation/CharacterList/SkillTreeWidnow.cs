@@ -107,7 +107,7 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
         CharacterList characterList = Parent as CharacterList;
         CharacterData characterData = characterList.warriorOwner.characterData;
 
-        bool isMaxCharacterLevel = characterData.Level > 15;
+        bool isMaxCharacterLevel = characterData.Level == 15;
         bool isNoSkillPoints = characterData.SkillPoints <= 0;
 
         if (isMaxCharacterLevel)
@@ -154,6 +154,7 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
                             default:
                                 break;
                         }
+                        GameDataManager.Instance.commandBlockDataManager.Promotion(characterData);
                         characterData.SkillPoints -= 1;
                         characterData.Level += 1;
 
@@ -185,6 +186,7 @@ public partial class SkillTreeWidnow : ColorRect, IStackPage
                 {
                     skillButton.TextureNormal = skillRow.skillTextureUpgraded;
                     activeSkills.Add(skillRow.skillName);
+                    GameDataManager.Instance.commandBlockDataManager.Promotion(characterData);
                     characterData.SkillPoints -= 1;
                     characterData.Level += 1;
 

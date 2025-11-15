@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="CharactersExperienceLevelsDatabase" load_steps=18 format=3 uid="uid://cju6a07nruqom"]
+
+[ext_resource type="Script" uid="uid://mqnmrhy0k2w0" path="res://GameDataManager/GameBalanceData/CharactersExperience/CharactersExperienceLevelsDatabase.cs" id="1_qxqxp"]
+[ext_resource type="Script" uid="uid://paimvoiu2js5" path="res://GameDataManager/GameBalanceData/CharactersExperience/CharacterExprerienceLevelRow.cs" id="1_valpf"]
+
+[sub_resource type="Resource" id="Resource_valpf"]
+script = ExtResource("1_valpf")
+NeedableExperinceForNextLevel = 0
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_gmpg7"]
+script = ExtResource("1_valpf")
+Level = 2
+NeedableExperinceForNextLevel = 25
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_c2s8r"]
+script = ExtResource("1_valpf")
+Level = 3
+NeedableExperinceForNextLevel = 32
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_wbw64"]
+script = ExtResource("1_valpf")
+Level = 4
+NeedableExperinceForNextLevel = 40
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_a5a1p"]
+script = ExtResource("1_valpf")
+Level = 5
+NeedableExperinceForNextLevel = 50
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_xkcye"]
+script = ExtResource("1_valpf")
+Level = 6
+NeedableExperinceForNextLevel = 63
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_17ihh"]
+script = ExtResource("1_valpf")
+Level = 7
+NeedableExperinceForNextLevel = 79
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_0vt2d"]
+script = ExtResource("1_valpf")
+Level = 8
+NeedableExperinceForNextLevel = 99
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_61xtt"]
+script = ExtResource("1_valpf")
+Level = 9
+NeedableExperinceForNextLevel = 124
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_hxf2x"]
+script = ExtResource("1_valpf")
+Level = 10
+NeedableExperinceForNextLevel = 155
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_0b7oo"]
+script = ExtResource("1_valpf")
+Level = 11
+NeedableExperinceForNextLevel = 194
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_wuip2"]
+script = ExtResource("1_valpf")
+Level = 12
+NeedableExperinceForNextLevel = 243
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_komx3"]
+script = ExtResource("1_valpf")
+Level = 13
+NeedableExperinceForNextLevel = 304
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_l51eu"]
+script = ExtResource("1_valpf")
+Level = 14
+NeedableExperinceForNextLevel = 380
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[sub_resource type="Resource" id="Resource_o5852"]
+script = ExtResource("1_valpf")
+Level = 15
+NeedableExperinceForNextLevel = 475
+metadata/_custom_type_script = "uid://paimvoiu2js5"
+
+[resource]
+script = ExtResource("1_qxqxp")
+Levels = Array[ExtResource("1_valpf")]([SubResource("Resource_valpf"), SubResource("Resource_gmpg7"), SubResource("Resource_c2s8r"), SubResource("Resource_wbw64"), SubResource("Resource_a5a1p"), SubResource("Resource_xkcye"), SubResource("Resource_17ihh"), SubResource("Resource_0vt2d"), SubResource("Resource_61xtt"), SubResource("Resource_hxf2x"), SubResource("Resource_0b7oo"), SubResource("Resource_wuip2"), SubResource("Resource_komx3"), SubResource("Resource_l51eu"), SubResource("Resource_o5852")])
+metadata/_custom_type_script = "uid://mqnmrhy0k2w0"

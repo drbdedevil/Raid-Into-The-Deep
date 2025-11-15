@@ -29,6 +29,13 @@ public partial class ResultsScene : Control
         Label InfoLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/Label");
         InfoLabel.Text = "ПОБЕДА";
         InfoLabel.AddThemeColorOverride("font_color", new Color(0.118f, 0.427f, 0.027f));
+
+        Label ExperienceLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer/ExperienceLabel");
+        ExperienceLabel.Text = GameDataManager.Instance.currentData.commandBlockData.ExperienceByOneBattle.ToString();
+        Label CrystalsLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2/CrystalsLabel");
+        CrystalsLabel.Text = GameDataManager.Instance.currentData.commandBlockData.CrystalsByOneBattle.ToString();
+        Label ChitinsLabel = GetNode<Label>("ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer3/ChitinsLabel");
+        ChitinsLabel.Text = GameDataManager.Instance.currentData.commandBlockData.ChitinFragmentsByOneBattle.ToString();
     }
     public void SetDefeatInfo()
     {
@@ -95,6 +102,8 @@ public partial class ResultsScene : Control
                 GameDataManager.Instance.currentData.commandBlockData.VegetableDefeated = true;
                 GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = true;
             }
+
+            GameDataManager.Instance.commandBlockDataManager.ApplyRewardForVictory();
 
             GameDataManager.Instance.runMapDataManager.PassMapNode();
             SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;

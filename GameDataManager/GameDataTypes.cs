@@ -44,8 +44,9 @@ public class CharacterData
 	public int Heal { get; set; } = 0;
 	public int Speed { get; set; } = 0;
 	public WeaponData Weapon { get; set; } = new();
-	public int SkillPoints { get; set; } = 10;
+	public int SkillPoints { get; set; } = 0;
 	public int Level { get; set; } = 1;
+	public int ExperiencePoints = 0;
 
 	public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
 	public HashSet<string> ActiveSkills { get; set; } = new();
@@ -92,6 +93,10 @@ public class CommandBlockData
 	public bool VegetableDefeated { get; set; } = false;
 	public bool TankDefeated { get; set; } = false;
 	public bool SpiderBossDefeated { get; set; } = false;
+
+	public int ExperienceByOneBattle = 0;
+	public int CrystalsByOneBattle = 0;
+	public int ChitinFragmentsByOneBattle = 0;
 }
 
 [Serializable]

@@ -170,6 +170,32 @@ theme_override_font_sizes/font_size = 14
 text = "Жук Жучок"
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -12.0
+offset_right = 105.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "Очков опыта:"
+
+[node name="ExperienceLabel" type="Label" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect/MarginContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_g6ton")
+theme_override_font_sizes/font_size = 12
+text = "-100"
+
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(340, 202)
 layout_mode = 2

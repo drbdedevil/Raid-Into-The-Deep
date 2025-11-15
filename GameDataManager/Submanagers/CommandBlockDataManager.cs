@@ -13,6 +13,62 @@ public partial class CommandBlockDataManager : Node
 		gameDataManager = InGameDataManager;
 	}
 
+	public void ApplyRewardForVictory()
+    {
+		gameDataManager.storageDataManager.AdjustCrystals(GameDataManager.Instance.currentData.commandBlockData.CrystalsByOneBattle);
+		gameDataManager.storageDataManager.AdjustChitinFragments(GameDataManager.Instance.currentData.commandBlockData.ChitinFragmentsByOneBattle);
+
+		List<CharacterData> team = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters;
+		if (team.Count == 0)
+        {
+            return;
+        }
+		int experienceForAll = GameDataManager.Instance.currentData.commandBlockData.ExperienceByOneBattle / team.Count;
+		foreach (CharacterData characterData in team)
+        {
+            characterData.ExperiencePoints += experienceForAll;
+			if (characterData.ExperiencePoints >= 1000f)
+            {
+                characterData.ExperiencePoints = 1000;
+            }
+			TryPromotion(characterData);
+        }
+    }
+	public bool CheckPromotion(CharacterData characterData)
+    {
+        int currentLevel = characterData.Level;
+		int currentExperience = characterData.ExperiencePoints;
+		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+        {
+			// characterData.ExperiencePoints -= experienceDatas[currentLevel].NeedableExperinceForNextLevel;
+			characterData.SkillPoints += 1;
+            return true;
+        }
+
+		return false;
+    }
+	public void TryPromotion(CharacterData characterData)
+    {
+        int currentLevel = characterData.Level;
+		int currentExperience = characterData.ExperiencePoints;
+		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+        {
+			CheckPromotion(characterData);
+        }
+    }
+	public void Promotion(CharacterData characterData)
+    {
+        int currentLevel = characterData.Level;
+		int currentExperience = characterData.ExperiencePoints;
+		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+        {
+			characterData.ExperiencePoints -= experienceDatas[currentLevel].NeedableExperinceForNextLevel;
+        }
+    }
+
 	public void RestoreHealthToTheReservists()
     {
 		PassiveSkillProgressionRow existingPassiveSkillType = GameDataManager.Instance.passiveSkillsProgressionDatabase.Progressions.FirstOrDefault(progression => progression.skillType == ESkillType.Health);

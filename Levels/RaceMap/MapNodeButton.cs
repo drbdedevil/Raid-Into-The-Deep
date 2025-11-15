@@ -90,6 +90,10 @@ public partial class MapNodeButton : TextureButton
             default:
                 break;
         }
+
+        GameDataManager.Instance.currentData.commandBlockData.ExperienceByOneBattle = 0;
+        GameDataManager.Instance.currentData.commandBlockData.CrystalsByOneBattle = 0;
+        GameDataManager.Instance.currentData.commandBlockData.ChitinFragmentsByOneBattle = 0;
     }
     public void SuccesfulAction()
     {

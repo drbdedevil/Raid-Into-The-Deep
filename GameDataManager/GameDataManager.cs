@@ -60,6 +60,8 @@ public partial class GameDataManager : Node
 	public RaceMapDatabase raceMapDatabase { get; private set; }
 	[Export]
 	public RaceMapValuesDatabase raceMapValuesDatabase  { get; private set; }
+	[Export]
+	public CharactersExperienceLevelsDatabase charactersExperienceLevelsDatabase  { get; private set; }
 
 	// Scripts
 	public override void _Ready()
