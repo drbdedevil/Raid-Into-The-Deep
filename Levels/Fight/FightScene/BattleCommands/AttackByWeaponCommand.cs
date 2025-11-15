@@ -24,9 +24,20 @@ public class AttackByWeaponCommand : Command
         var entitiesToAttack = _battleEntity.Weapon.CalculateDamageForEntities(_battleEntity, _tilesForAttack);
         foreach (var targetWeaponAttackDamage in entitiesToAttack)
         {
+            int additionalDamage = 0;
+            if (_battleEntity.Weapon.weaponType == EWeaponType.Sword || _battleEntity.Weapon.weaponType == EWeaponType.Spear || 
+                _battleEntity.Weapon.weaponType == EWeaponType.Rapier)
+            {
+                additionalDamage += _battleEntity.Damage;
+            }
+            else if (_battleEntity.Weapon.weaponType == EWeaponType.Dagger)
+            {
+                additionalDamage += _battleEntity.DamageByEffect;
+            }
+
             if (targetWeaponAttackDamage.EntityToAttack is PlayerEntity playerWarrior && _battleEntity is EnemyEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage + additionalDamage);
                 if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemovePlayerWarrior(playerWarrior);
@@ -35,7 +46,7 @@ public class AttackByWeaponCommand : Command
             }
             else if (targetWeaponAttackDamage.EntityToAttack is EnemyEntity enemyEntity && _battleEntity is PlayerEntity)
             {
-                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage);
+                targetWeaponAttackDamage.EntityToAttack.ApplyDamage(_battleEntity, targetWeaponAttackDamage.Damage + additionalDamage);
                 if (targetWeaponAttackDamage.EntityToAttack.IsDead())
                 {
                     _fightSceneManager.RemoveEnemyWarrior(enemyEntity);

@@ -41,20 +41,21 @@ public partial class PlayerEntity : BattleEntity
         activeSkill = ActiveSkillFactory.CreateActiveSkillByName(characterData.ChoosenSkills, this);
     }
 
-    public override void ApplyDamage(BattleEntity instigator, int damage)
+    public override int ApplyDamage(BattleEntity instigator, int damage)
     {
-        base.ApplyDamage(instigator, damage);
+        int result = base.ApplyDamage(instigator, damage);
 
         CharacterData characterData = GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.FirstOrDefault(character => character.ID == Id);
         if (characterData != null)
         {
-            characterData.Health -= damage;
+            characterData.Health -= result;
 
             if (IsDead())
             {
                 GameDataManager.Instance.currentData.livingSpaceData.UsedCharacters.Remove(characterData);
             }
         }
+        return result;
     }
     public override void ApplyHeal(BattleEntity instigator, int heal)
     {

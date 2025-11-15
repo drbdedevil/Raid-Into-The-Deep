@@ -85,10 +85,18 @@ public class ApplySkillCommand : Command
 							if (obstacleEffect.EffectType == EEffectType.Fire)
 							{
 								_mapManager.SetObstacleOnTile(tile, new ObstacleEntity(tile, ObstacleCode.Fire));
+								if (obstacleEffect is FireObstacleEffect fireObstacleEffect)
+								{
+									fireObstacleEffect.DamageByEffect = playerEntity.DamageByEffect;
+								}
 							}
 							else if (obstacleEffect.EffectType == EEffectType.Poison)
 							{
 								_mapManager.SetObstacleOnTile(tile, new ObstacleEntity(tile, ObstacleCode.Poison));
+								if (obstacleEffect is PoisonObstacleEffect poisonObstacleEffect)
+								{
+									poisonObstacleEffect.DamageByEffect = playerEntity.DamageByEffect;
+								}
 							}
 							else if (obstacleEffect.EffectType == EEffectType.ObstacleHeal)
 							{

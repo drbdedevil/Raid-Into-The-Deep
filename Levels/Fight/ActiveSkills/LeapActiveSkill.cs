@@ -16,7 +16,7 @@ public class LeapActiveSkill : ActiveSkill
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
 	{
 		List<Vector2I> result = new();
-		List<Tile> tiles = PathFinder.FindTilesToMove(map.GetTileByCartesianCoord(startPosition), map, playerEntityOwner.Speed);
+		List<Tile> tiles = PathFinder.FindTilesToChoose(map.GetTileByCartesianCoord(startPosition), map, playerEntityOwner.Speed);
 
 		Tile tile = tiles.FirstOrDefault(tile => tile.CartesianPosition == playerTargetPosition);
 		if (tile != null)

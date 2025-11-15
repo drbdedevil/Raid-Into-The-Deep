@@ -24,6 +24,7 @@ public class FireObstacleEffect : ObstacleEffect
 		IsTemporary = true;
 		IsPending = true;
 	}
+	public int DamageByEffect = 5;
 
 	// Метод примет эффект в конце хода, также его можно и вызывать, если персонаж пройдёт по пути, на котором есть
 	// этот obstacle с таким эффектом
@@ -31,7 +32,8 @@ public class FireObstacleEffect : ObstacleEffect
 	{
 		if (obstacleHolder.Tile.BattleEntity != null)
 		{
-			EntityEffect entityEffect = new FireEntityEffect(2);
+			FireEntityEffect entityEffect = new FireEntityEffect(2);
+			entityEffect.DamageByEffect = DamageByEffect;
 			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
 			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
 			GD.Print("Применился огонь на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
@@ -54,12 +56,13 @@ public class PoisonObstacleEffect : ObstacleEffect
 		IsTemporary = true;
 		IsPending = true;
 	}
-
+	public int DamageByEffect = 5;
 	public override void OnApply()
 	{
 		if (obstacleHolder.Tile.BattleEntity != null)
 		{
-			EntityEffect entityEffect = new PoisonEntityEffect(2);
+			PoisonEntityEffect entityEffect = new PoisonEntityEffect(2);
+			entityEffect.DamageByEffect = DamageByEffect;
 			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
 			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
 			GD.Print("Применилось ядовитое облако на клетке для " + obstacleHolder.Tile.BattleEntity.Id);

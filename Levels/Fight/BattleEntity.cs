@@ -126,7 +126,7 @@ namespace RaidIntoTheDeep.Levels.Fight
             return appliedEffects.FirstOrDefault(e => e.EffectType == type);
         }
 
-        public virtual void ApplyDamage(BattleEntity instigator, int damage)
+        public virtual int ApplyDamage(BattleEntity instigator, int damage)
         {
             if (appliedEffects.Any(appliedEffect => appliedEffect.EffectType == EEffectType.Defense))
             {
@@ -142,6 +142,7 @@ namespace RaidIntoTheDeep.Levels.Fight
             }
 
             Health = Health - damage;
+            return damage;
         }
         public virtual void ApplyHeal(BattleEntity instigator, int heal)
         {

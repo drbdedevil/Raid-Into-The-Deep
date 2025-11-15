@@ -102,7 +102,32 @@ public abstract class Weapon
 	}
 	private void DefineWeaponTypeByName()
     {
-        
+        switch (weaponData.Name)
+        {
+            case "Меч":
+				weaponType = EWeaponType.Sword;
+				break;
+			case "Копьё":
+				weaponType = EWeaponType.Spear;
+				break;
+			case "Рапира":
+				weaponType = EWeaponType.Rapier;
+				break;
+			case "Кинжал":
+				weaponType = EWeaponType.Dagger;
+				break;
+			case "Дробовик":
+				weaponType = EWeaponType.Shotgun;
+				break;
+			case "Мортира":
+				weaponType = EWeaponType.Artillery;
+				break;
+			case "Арбалет":
+				weaponType = EWeaponType.Crossbow;
+				break;
+			default:
+				break;	
+        }
     }
 
 	public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
