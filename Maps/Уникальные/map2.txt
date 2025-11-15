@@ -1,9 +1,9 @@
 8 8
 f r c c 5 c c 5
-c с c r c 5 c c
+c c c r c 5 c c
 r c f c c c 5 r
 c c r f c c c 5
 c c r c f c r c
 c c c c c f c c
-o o c c r c с c
+o o c c r c c c
 o o c c c c r f
