@@ -10,6 +10,7 @@ public class ApplySkillCommand : Command
 	private List<Tile> _tilesForAttack { get; set; }
 	private MapManager _mapManager { get; set; }
 
+	private ESkillType AppliedEffect = ESkillType.NONE;
 	public ApplySkillCommand(BattleEntity battleEntity, List<Tile> tilesForAttack, MapManager mapManager)
 	{
 		_battleEntity = battleEntity;
@@ -35,6 +36,13 @@ public class ApplySkillCommand : Command
 						{
 							entityEffect.entityHolder = playerEntityActive;
 							playerEntityActive.AddEffect(generatedEffect);
+
+							ActiveSkill activeSkill = playerEntityActive.activeSkill;
+							if (activeSkill != null)
+							{
+								activeSkill.PlaySkillSound();
+							}
+
 							return;
 						}
 					}
@@ -143,6 +151,15 @@ public class ApplySkillCommand : Command
 						}
 					}
 				}
+			}
+		}
+
+		if (_battleEntity is PlayerEntity playerEntity1)
+		{
+			ActiveSkill activeSkill = playerEntity1.activeSkill;
+			if (activeSkill != null)
+			{
+				activeSkill.PlaySkillSound();
 			}
 		}
 	}

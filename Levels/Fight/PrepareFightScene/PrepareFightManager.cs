@@ -29,10 +29,10 @@ public partial class PrepareFightManager : Control
 		_mapManager.OnTileLeftButtonClicked += _playerTeamWarriorsMenu.SetPlayerEntityOnMap;
 		_playerTeamWarriorsMenu.MapManager = _mapManager;
 		
-		
 		_goFightButton = GetNode<Button>("GoFightButton");
 		_goFightButton.ButtonDown += GoToFightScene;
 
+		SoundManager.Instance.StopSoundLoop("res://Sound/Music/RaceMap/KartaAllInOne.wav");
 	}
 
 	private void GoToFightScene()

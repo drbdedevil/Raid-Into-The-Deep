@@ -6,9 +6,10 @@ using RaidIntoTheDeep.Levels.Fight;
 
 public class RemoveEffectsActiveSkill : ActiveSkill
 {
-	public RemoveEffectsActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity) : base(InEffectType, playerEntity)
+	public RemoveEffectsActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity, ESkillType SkillType) : base(InEffectType, playerEntity)
 	{
 		// CreateEffect(InEffectType);
+		skillType = SkillType;
 	}
 
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
@@ -23,6 +24,11 @@ public class RemoveEffectsActiveSkill : ActiveSkill
         }
 
 		return result;
+    }
+
+	public override void PlaySkillSound()
+    {
+        SoundManager.Instance.PlaySoundOnce("res://Sound/Skills/SnyatEffecti.wav", 0.2f);
     }
 
 	// public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);

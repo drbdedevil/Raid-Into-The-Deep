@@ -36,6 +36,9 @@ public partial class RaceMap : Control
 		UpdateUsedCharactersList();
 
 		CheckBossWasDefeated();
+
+		SoundManager.Instance.RemoveAllSounds();
+		SoundManager.Instance.PlaySoundLoop("res://Sound/Music/RaceMap/KartaAllInOne.wav", 0.1f);
     }
 	public override void _ExitTree()
 	{

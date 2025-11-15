@@ -189,7 +189,8 @@ public enum ESkillType
 	[SkillCategory(SkillKind.Active)]
 	RestorationTotem,
 	[SkillCategory(SkillKind.Active)]
-	Arson
+	Arson,
+	NONE
 }
 
 public static class SkillExtensions

@@ -86,8 +86,31 @@ public partial class PrepareFightMapManager : Node2D
 		_entityLayer = GetNode<TileMapLayer>("Entities");
 		_obstacleLayer = GetNode<TileMapLayer>("Obstacles");
 		
-		int randMap = new Random().Next(1, 10);
-		var mapText = FileAccess.Open($"res://Maps/Обычные/map{randMap}.txt", FileAccess.ModeFlags.Read).GetAsText();
+		int randMap = GD.RandRange(1, 15);
+		// var mapText = FileAccess.Open("res://Maps/Боссы/map3.txt", FileAccess.ModeFlags.Read).GetAsText();
+		
+		string mapText = "";
+		if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.Battle)
+		{
+			mapText = FileAccess.Open($"res://Maps/Обычные/map{randMap}.txt", FileAccess.ModeFlags.Read).GetAsText();
+		}
+		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.EliteBattle)
+		{
+			int randEliteBattle = GD.RandRange(1, 5);
+			mapText = FileAccess.Open($"res://Maps/Уникальные/map{randEliteBattle}.txt", FileAccess.ModeFlags.Read).GetAsText();
+		}
+		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.SpiderBoss)
+		{
+			mapText = FileAccess.Open("res://Maps/Боссы/map1.txt", FileAccess.ModeFlags.Read).GetAsText();
+		}
+		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.TankBoss)
+		{
+			mapText = FileAccess.Open("res://Maps/Боссы/map2.txt", FileAccess.ModeFlags.Read).GetAsText();
+		}
+		else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.VegetableBoss)
+		{
+			mapText = FileAccess.Open("res://Maps/Боссы/map3.txt", FileAccess.ModeFlags.Read).GetAsText();
+		}
 		(_mapTiles, var mapSize) = MapParser.LoadFromText(mapText);
 
 		for (int y = 0; y < mapSize.Y; y++)

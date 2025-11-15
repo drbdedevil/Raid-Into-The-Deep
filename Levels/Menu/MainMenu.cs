@@ -16,6 +16,13 @@ public partial class MainMenu : Node
 
 		var button4 = GetNode<Button>("VBoxContainer/EscapeButton");
 		button4.ButtonDown += OnEscapeButtonPressed;
+
+		SoundManager.Instance.RemoveAllSounds();
+		SoundManager.Instance.PlaySoundLoop("res://Sound/Music/FantasyMainMenu.mp3", 0.1f);
+	}
+	public override void _ExitTree()
+	{
+		
 	}
 
 	private void OnContinueButtonPressed()

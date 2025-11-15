@@ -58,7 +58,7 @@ skillTextureHover = ExtResource("5_nghwh")
 skillTextureUpgraded = ExtResource("6_qt08b")
 skillTextureActive = ExtResource("3_kbptl")
 skillName = "Обратная волна"
-skillDescription = "Персонаж получает эффект \"Обратный урон\". Тот, кто его атакует, получит обратно половину урона"
+skillDescription = "Персонаж получает эффект \"Обратный урон\". Тот, кто его атакует, получит обратно половину урона."
 skillType = 5
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -80,7 +80,7 @@ skillTextureHover = ExtResource("13_h3esq")
 skillTextureUpgraded = ExtResource("14_qujly")
 skillTextureActive = ExtResource("11_b4rl1")
 skillName = "Ядовитое облако"
-skillDescription = "На выбранной области в 1 клетку. Все, кто стоит в этом облаке, получают урон, равный \"Урон от эффекта\"/2. Облако держится 4 раунда."
+skillDescription = "Создаётся ядовитое облако 2 на 2. Все, кто стоит в этом облаке, получают урон, равный \"Урон от эффекта\"/2. Облако держится 4 раунда."
 skillType = 11
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -124,7 +124,7 @@ skillTextureHover = ExtResource("29_ow8dc")
 skillTextureUpgraded = ExtResource("30_idhrc")
 skillTextureActive = ExtResource("27_kvs4f")
 skillName = "Кровавая метка"
-skillDescription = "На врага в радиусе 3 клеток накладывается эффект \"Кровавая метка\", этот враг получает \"Урон от эффектов х2\", длится 3 раунда."
+skillDescription = "На врага в радиусе 3 клеток накладывается эффект \"Кровавая метка\", этот враг получает \"Урон от эффектов\" х2, длится 3 раунда."
 skillType = 12
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -157,7 +157,7 @@ skillTextureHover = ExtResource("41_bphmu")
 skillTextureUpgraded = ExtResource("42_nvy60")
 skillTextureActive = ExtResource("39_tacjl")
 skillName = "Скачок"
-skillDescription = "Игрок выбирает клетку в радиусе скорости персонажа, персонаж переходит на эту клетку даже если между персонажем и целевой клеткой стоит препятствие или враг"
+skillDescription = "Игрок выбирает клетку в радиусе скорости персонажа, персонаж переходит на эту клетку даже если между персонажем и целевой клеткой стоит препятствие или враг."
 skillType = 10
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -168,7 +168,7 @@ skillTextureHover = ExtResource("45_xsbad")
 skillTextureUpgraded = ExtResource("46_2x343")
 skillTextureActive = ExtResource("43_78gnh")
 skillName = "Поджог"
-skillDescription = "На выбранную клетку в радиусе 2 клеток накладывается эффект \"Огонь\""
+skillDescription = "На выбранную клетку в радиусе 3 клеток накладывается эффект \"Огонь\"."
 skillType = 16
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
@@ -179,7 +179,7 @@ skillTextureHover = ExtResource("49_aovfm")
 skillTextureUpgraded = ExtResource("50_m7cr2")
 skillTextureActive = ExtResource("47_txa3q")
 skillName = "Тотем восстановления"
-skillDescription = "В выбранной клетке создается препятствие, восстанавливающее здоровье персонажам игрока в радиусе 1 клеток, равное навыку \"Лечение\"/2 2 хода."
+skillDescription = "В выбранной клетке создаётся препятствие, восстанавливающее здоровье персонажам игрока в радиусе 1 клеток, равное навыку \"Лечение\"/2 на 2 хода."
 skillType = 15
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 

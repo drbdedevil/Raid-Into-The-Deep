@@ -456,4 +456,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kbenw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gep0n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jrqxl")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_p5cou")
-text = "В бой"
+text = "В бой!"

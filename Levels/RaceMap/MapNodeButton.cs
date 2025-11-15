@@ -28,48 +28,52 @@ public partial class MapNodeButton : TextureButton
             case MapNodeType.Battle:
                 runMapDataManager.RunBattle(mapNode);
                 GameDataManager.Instance.currentData.commandBlockData.RaidCount += 1;
-                SoundManager.Instance.PlaySoundOnce("res://Sound/ClickOnBattle.wav", 0.5f);
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/EnterTheBattle.mp3", 0.4f);
                 break;
             case MapNodeType.SpiderBoss:
                 runMapDataManager.RunBossBattle(mapNode, MapNodeType.SpiderBoss);
                 GameDataManager.Instance.currentData.commandBlockData.RaidCount += 1;
-                SoundManager.Instance.PlaySoundOnce("res://Sound/ClickOnBattle.wav", 0.5f);
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/EnterTheBattle.mp3", 0.4f);
                 break;
             case MapNodeType.TankBoss:
                 runMapDataManager.RunBossBattle(mapNode, MapNodeType.TankBoss);
                 GameDataManager.Instance.currentData.commandBlockData.RaidCount += 1;
-                SoundManager.Instance.PlaySoundOnce("res://Sound/ClickOnBattle.wav", 0.5f);
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/EnterTheBattle.mp3", 0.4f);
                 break;
             case MapNodeType.VegetableBoss:
                 runMapDataManager.RunBossBattle(mapNode, MapNodeType.VegetableBoss);
                 GameDataManager.Instance.currentData.commandBlockData.RaidCount += 1;
-                SoundManager.Instance.PlaySoundOnce("res://Sound/ClickOnBattle.wav", 0.5f);
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/EnterTheBattle.mp3", 0.4f);
                 break;
             case MapNodeType.EliteBattle:
                 runMapDataManager.RunEliteBattle(mapNode);
                 GameDataManager.Instance.currentData.commandBlockData.RaidCount += 1;
-                SoundManager.Instance.PlaySoundOnce("res://Sound/ClickOnBattle.wav", 0.5f);
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/EnterTheBattle.mp3", 0.4f);
                 break;
             case MapNodeType.RandomEvent:
                 int randValue = GD.RandRange(0, 100);
                 if (randValue >= 50)
                 {
                     runMapDataManager.HealTeam();
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Music/RaceMap/Otdych.wav", 0.4f);
                     mapNode.Type = MapNodeType.Rest;
                 }
                 else
                 {
                     runMapDataManager.GiveAwardToPlayer();
+                    SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/CreateWeapon4.wav", 0.4f);
                     mapNode.Type = MapNodeType.Treasure;
                 }
                 SuccesfulAction();
                 break;
             case MapNodeType.Rest:
                 runMapDataManager.HealTeam();
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Music/RaceMap/Otdych.wav", 0.4f);
                 SuccesfulAction();
                 break;
             case MapNodeType.Treasure:
                 runMapDataManager.GiveAwardToPlayer();
+                SoundManager.Instance.PlaySoundOnce("res://Sound/Interface/CreateWeapon4.wav", 0.4f);
                 SuccesfulAction();
                 break;
             default:

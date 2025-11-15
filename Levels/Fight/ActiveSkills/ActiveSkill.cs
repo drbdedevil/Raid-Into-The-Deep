@@ -19,6 +19,7 @@ public abstract class ActiveSkill
 	{
 		return effectType != EEffectType.NONE;
 	}
+	public ESkillType skillType = ESkillType.NONE;
 
 	public PlayerEntity playerEntityOwner;
 	
@@ -97,6 +98,8 @@ public abstract class ActiveSkill
 		}
 		return null;
 	}
+
+	public abstract void PlaySkillSound();
 
 	// public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
 }

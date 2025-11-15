@@ -36,8 +36,21 @@ public partial class SoundManager : Node
         AudioStreamPlayer player = new AudioStreamPlayer();
         AddChild(player);
 
-        player.Stream = GD.Load<AudioStream>(Path);
+        AudioStream stream = GD.Load<AudioStream>(Path);
+
+        if (stream  is AudioStreamWav wav)
+        {
+            wav.LoopMode = AudioStreamWav.LoopModeEnum.Forward;
+            wav.LoopBegin = 0;
+            wav.LoopEnd = wav.Data.Length;
+        }
+        else if (stream  is AudioStreamOggVorbis ogg)
+            ogg.Loop = true;
+        else if (stream  is AudioStreamMP3 mp3)
+            mp3.Loop = true;
         player.VolumeDb = LinearToDb(Volum * SoundK);
+
+        player.Stream = stream;
 
         audioStreamPool.Add(new KeyValuePair<string, AudioStreamPlayer>(Path, player));
 
@@ -51,6 +64,14 @@ public partial class SoundManager : Node
             audioStreamPool[index].Value.QueueFree();
             audioStreamPool.RemoveAt(index);
         }
+    }
+    public void RemoveAllSounds()
+    {
+        foreach (var audio in audioStreamPool)
+        {
+            audio.Value.QueueFree();
+        }
+        audioStreamPool.Clear();
     }
     private float LinearToDb(float linear)
     {

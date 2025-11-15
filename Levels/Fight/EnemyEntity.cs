@@ -52,7 +52,7 @@ public partial class EnemyEntity : BattleEntity
                 EnemyTexture = GD.Load<Texture2D>("res://Textures/Fight/FightScene/SpiderBoss.png");
                 EnemyName = "Паук, пожиратель племён";
                 break;
-            case GameEnemyCode.Vegetable:
+            case GameEnemyCode.Tank:
                 EnemyTexture = GD.Load<Texture2D>("res://Textures/Fight/FightScene/Tank.png");
                 EnemyName = "Прогрызатель туннелей";
                 break;
@@ -60,7 +60,7 @@ public partial class EnemyEntity : BattleEntity
                 EnemyTexture = GD.Load<Texture2D>("res://Textures/Fight/FightScene/Wasp.png");
                 EnemyName = "Вредная оса";
                 break;
-            case GameEnemyCode.Tank:
+            case GameEnemyCode.Vegetable:
                 EnemyTexture = GD.Load<Texture2D>("res://Textures/Fight/FightScene/Vegetable.png"); 
                 EnemyName = "Гигантская жуколовка";
                 break;

@@ -59,6 +59,9 @@ public partial class HubLocation : Node
 		OnChitinFragmentsUpdate();
 		UpdateUsedCharactersList();
 		UpdateReservedCharactersList();
+
+		SoundManager.Instance.RemoveAllSounds();
+		SoundManager.Instance.PlaySoundLoop("res://Sound/Music/Hub/HubAllInOne.wav", 0.05f);
 	}
 	public override void _ExitTree()
 	{

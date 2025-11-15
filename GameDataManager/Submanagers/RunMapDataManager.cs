@@ -82,7 +82,12 @@ public partial class RunMapDataManager : Node
 	public void RunBattle(MapNode mapNode)
 	{
 		pressedMapNode = mapNode;
-		// PassMapNode(); // TODO: запустить уровень с боем и при победе сделать PassMapNode для pressedMapNode
+
+		var tree = Engine.GetMainLoop() as SceneTree;
+		tree.CreateTimer(0.7f).Timeout += () =>
+		{
+			StartPlayRandomBattleSoundLoop();
+		};
 		
 		var scene = ResourceLoader.Load<PackedScene>("res://Levels/Fight/PrepareFightScene/PrepareFightScene.tscn");
 		SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
@@ -91,22 +96,43 @@ public partial class RunMapDataManager : Node
 	public void RunEliteBattle(MapNode mapNode)
 	{
 		pressedMapNode = mapNode;
+		
+		var tree = Engine.GetMainLoop() as SceneTree;
+		tree.CreateTimer(0.7f).Timeout += () =>
+		{
+			StartPlayRandomBattleSoundLoop();
+		};
+
 		PassMapNode(); // TODO: запустить уровень с элитным боем и при победе сделать PassMapNode для pressedMapNode
 	}
 	public void RunBossBattle(MapNode mapNode, MapNodeType bossType)
 	{
+		var tree = Engine.GetMainLoop() as SceneTree;
+
 		pressedMapNode = mapNode;
 		switch (bossType)
 		{
 			case MapNodeType.SpiderBoss:
+				tree.CreateTimer(0.7f).Timeout += () =>
+				{
+					StartPlaySoundLoopForSpiderBoss();
+				};
 				PassMapNode();
 				gameDataManager.currentData.commandBlockData.SpiderBossDefeated = true;
 				break;
 			case MapNodeType.TankBoss:
+				tree.CreateTimer(0.7f).Timeout += () =>
+				{
+					StartPlaySoundLoopForTankBoss();
+				};
 				PassMapNode();
 				gameDataManager.currentData.commandBlockData.TankDefeated = true;
 				break;
 			case MapNodeType.VegetableBoss:
+				tree.CreateTimer(0.7f).Timeout += () =>
+				{
+					StartPlaySoundLoopForVegetableBoss();
+				};
 				PassMapNode();
 				gameDataManager.currentData.commandBlockData.VegetableDefeated = true;
 				break;
@@ -181,4 +207,27 @@ public partial class RunMapDataManager : Node
 			}
 		}
 	}
+
+	private void StartPlayRandomBattleSoundLoop()
+    {
+        List<string> sounds = new List<string>() {
+			"res://Sound/Music/Battle/Fight1_1.wav",
+			"res://Sound/Music/Battle/Fight2_1.wav",
+			"res://Sound/Music/Battle/Fight3_1.wav" };
+		int randSound = GD.RandRange(0, sounds.Count - 1);
+		// SoundManager.Instance.RemoveAllSounds();
+		SoundManager.Instance.PlaySoundLoop(sounds[randSound], 0.2f);
+    }
+	private void StartPlaySoundLoopForSpiderBoss()
+    {
+        SoundManager.Instance.PlaySoundLoop("res://Sound/Music/BossBattle/SpiderBoss.wav", 0.2f);
+    }
+	private void StartPlaySoundLoopForTankBoss()
+    {
+        SoundManager.Instance.PlaySoundLoop("res://Sound/Music/BossBattle/Tank.wav", 0.2f);
+    }
+	private void StartPlaySoundLoopForVegetableBoss()
+    {
+        SoundManager.Instance.PlaySoundLoop("res://Sound/Music/BossBattle/Vegetable.wav", 0.2f);
+    }
 }

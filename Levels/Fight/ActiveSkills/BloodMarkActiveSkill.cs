@@ -6,9 +6,10 @@ using RaidIntoTheDeep.Levels.Fight;
 
 public class BloodMarkActiveSkill : ActiveSkill
 {
-	public BloodMarkActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity) : base(InEffectType, playerEntity)
+	public BloodMarkActiveSkill(EEffectType InEffectType, PlayerEntity playerEntity, ESkillType SkillType) : base(InEffectType, playerEntity)
 	{
 		// CreateEffect(InEffectType);
+		skillType = SkillType;
 	}
 
 	public override List<Vector2I> CalculateShapeAttackPositions(Vector2I startPosition, Vector2I playerTargetPosition, MapManager map)
@@ -23,6 +24,11 @@ public class BloodMarkActiveSkill : ActiveSkill
         }
 
 		return result;
+    }
+
+	public override void PlaySkillSound()
+    {
+        SoundManager.Instance.PlaySoundOnce("res://Sound/Skills/BloodMark.wav", 0.2f);
     }
 
 	// public abstract List<TargetWeaponAttackDamage> CalculateDamageForEntities(BattleEntity attacker, List<Tile> attackedTiles);
