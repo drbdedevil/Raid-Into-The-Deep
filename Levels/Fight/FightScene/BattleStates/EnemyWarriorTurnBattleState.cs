@@ -28,6 +28,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 	{
 		StateTitleText = "Теперь ходит враг. Какая досада!";
 		var enemyEntities = FightSceneManager.Enemies.Except(fightSceneManager.EnemyWarriorsThatTurned).OrderByDescending(x => x.Speed).ToList();
+		var playerEntities = FightSceneManager.Allies;
 		if (!enemyEntities.Any())
 		{
 			StateTitleText = "";
@@ -36,8 +37,18 @@ public class EnemyWarriorTurnBattleState : BattleState
 			resultsScene.ShowPopup();
 			bGameEnd = true;
 			return;
-			// throw new ApplicationException("Нельзя перейти в это состояние с 0 воинов готовых к передвижению");
 		}
+
+		if (!playerEntities.Any())
+		{
+			StateTitleText = "";
+			ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
+			resultsScene.SetVictoryInfo();
+			resultsScene.ShowPopup();
+			bGameEnd = true;
+			return;
+		}
+		
 		_currentEnemyWarrior = enemyEntities.First();
 		if (!_currentEnemyWarrior.CanAct)
 		{

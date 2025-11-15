@@ -9,6 +9,7 @@ public interface IEffectHolder
 {
     // применённые эффекты
     public List<Effect> appliedEffects { get; set; }
+    
     // ещё не обработанные эффекты - именно отсюда они начнут применяться, если игрок закончит ход, а не отменит его
     // public List<Effect> rawEffects { get; set; }
 }
@@ -19,6 +20,9 @@ public class EffectManager
     private MapManager _mapManager;
     private FightSceneManager _fightSceneManager;
 
+    private readonly List<EntityWithEffectToDraw> _entityWithEffectToDraws = [];
+    
+    public IReadOnlyCollection<EntityWithEffectToDraw> EntityWithEffectToDraws => _entityWithEffectToDraws.ToList();
     public EffectManager(MapManager InMapManager, FightSceneManager InFightSceneManager)
     {
         _mapManager = InMapManager;
@@ -27,15 +31,22 @@ public class EffectManager
 
     public void ApplyEffects()
     {
+        _entityWithEffectToDraws.Clear();
         ApplyEffectsForTiles();
         ApplyEffectsForEntity();
     }
 
+    public void GetEntitiesWithEffectsToDraw()
+    {
+        
+    }
+    
     private void ApplyEffectsForEntity()
     {
         List<BattleEntity> battleEntities = _fightSceneManager.AllEntities.ToList();
         foreach (var entity in battleEntities)
         {
+            List<Effect> effectsToDraw = [];
             foreach (var effect in entity.appliedEffects.ToList())
             {
                 if (effect.IsPending)
@@ -47,6 +58,11 @@ public class EffectManager
                         continue;
                     }
 
+                    if (effect.EffectType == EEffectType.Fire || effect.EffectType == EEffectType.Poison ||
+                        effect.EffectType == EEffectType.Freezing)
+                    {
+                        effectsToDraw.Add(effect);
+                    }
                     effect.OnApply();
                     effect.OnTurnEnd();
                     if (effect.IsExpired)
@@ -72,6 +88,8 @@ public class EffectManager
                     }
                 }
             }
+            
+            _entityWithEffectToDraws.Add(new EntityWithEffectToDraw(entity, effectsToDraw));
         }
     }
     private void ApplyEffectsForTiles()
@@ -108,4 +126,16 @@ public class EffectManager
             }
         }
     }
+}
+
+public class EntityWithEffectToDraw
+{
+    public EntityWithEffectToDraw(BattleEntity battleEntity, List<Effect> effectsToDraw)
+    {
+        BattleEntity = battleEntity;
+        EffectsToDraw = effectsToDraw;
+    }
+
+    public BattleEntity BattleEntity { get; set; }
+    public List<Effect> EffectsToDraw { get; set; }
 }

@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dpdwthu1y1oap" path="res://Textures/Fight/Theme.png" id="2_wrefx"]
 [ext_resource type="PackedScene" uid="uid://6jsccxsep656" path="res://Levels/Fight/FightScene/EnemyFightScenePanel.tscn" id="3_5uapy"]
 [ext_resource type="Texture2D" uid="uid://dureg3fn1jl61" path="res://Textures/Fight/FightScene/FloorTileSet.png" id="3_mkdg0"]
-[ext_resource type="Texture2D" uid="uid://hqt7k2bpme1r" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="4_ajt20"]
+[ext_resource type="Texture2D" uid="uid://ca21dn2dh6rl0" path="res://Textures/Fight/FightScene/MainCharacterIsometric.png" id="4_ajt20"]
 [ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_ff54w"]
 [ext_resource type="Texture2D" uid="uid://dkyv8egijirlx" path="res://Textures/Fight/FightScene/Explosion-Sheet.png" id="7_ajt20"]
 [ext_resource type="Texture2D" uid="uid://jtm2rtc4qjyw" path="res://Textures/Fight/FightScene/AllBlocks.png" id="9_i2gx1"]
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
 [ext_resource type="PackedScene" uid="uid://b7ihs58oynnmg" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectsPanel.tscn" id="10_foig6"]
 [ext_resource type="PackedScene" uid="uid://cpopu50xtjs27" path="res://Levels/Fight/FightScene/EffectManager/EntityEffectView.tscn" id="11_m6kyl"]
-[ext_resource type="PackedScene" uid="uid://8rpxbu6wrfw3" path="res://Levels/Fight/FightScene/ResultsScene.tscn" id="13_om0m0"]
+[ext_resource type="PackedScene" path="res://Levels/Fight/FightScene/ResultsScene.tscn" id="13_om0m0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
@@ -32,11 +32,21 @@ custom_data_layer_0/name = ""
 custom_data_layer_0/type = 0
 sources/0 = SubResource("TileSetAtlasSource_qj2qt")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_foig6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrefx"]
 texture = ExtResource("4_ajt20")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 32)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 32)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 32)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ajt20"]
 texture = ExtResource("6_ff54w")
@@ -119,8 +129,8 @@ tile_shape = 1
 tile_size = Vector2i(64, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_foig6")
 sources/1 = SubResource("TileSetAtlasSource_ajt20")
+sources/0 = SubResource("TileSetAtlasSource_wrefx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5uapy"]
 texture = ExtResource("7_ajt20")

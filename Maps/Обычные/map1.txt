@@ -6,4 +6,4 @@ r c o c c r r c
 c r r c c o c r
 c c c c c c c c
 c o c c c c c 1
-c c c c c c 1 c
+c c c c c c 1 c 

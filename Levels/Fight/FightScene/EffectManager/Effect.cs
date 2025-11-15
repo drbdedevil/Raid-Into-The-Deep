@@ -1,3 +1,5 @@
+using Godot;
+
 public enum EEffectTarget
 {
     Self,
@@ -14,9 +16,9 @@ public abstract class Effect
     public bool IsExpired => Duration == 0 && IsTemporary;
 
     public bool IsTemporary { get; protected set; } 
-    public bool IsPending { get; set; } 
+    public bool IsPending { get; set; }
 
-    public virtual void OnApply() { }
+    public virtual void OnApply() {}
     public virtual void OnRemove() { }
     public virtual void OnTurnEnd() 
     {

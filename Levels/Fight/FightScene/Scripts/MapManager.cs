@@ -180,19 +180,19 @@ public partial class MapManager : Node2D
 	/// <param name="targetTile">Тайл на который будет совершено перемещение</param>
 	/// <param name="battleEntity">Сущность которая будет перемещаться</param>
 	/// <returns></returns>
-	public bool SetBattleEntityOnTile(Tile targetTile, BattleEntity battleEntity)
+	public bool SetBattleEntityOnTile(Tile targetTile, BattleEntity battleEntity, int effectDrawId = 0)
 	{
-		if (targetTile.BattleEntity is not null) return false;
+		if (targetTile.BattleEntity is not null && !Equals(targetTile.BattleEntity, battleEntity)) return false;
 		RemoveBattleEntityFromTile(battleEntity.Tile);
 		targetTile.BattleEntity = battleEntity;
 		battleEntity.Tile = targetTile;
 		if (targetTile.BattleEntity is PlayerEntity)
 		{
-			_entityLayer.SetCell(targetTile.IsometricPosition, 0, new Vector2I(0, 0));
+			_entityLayer.SetCell(targetTile.IsometricPosition, 0, new Vector2I(effectDrawId, 0));
 		}
 		else if (targetTile.BattleEntity is EnemyEntity enemyEntity)
 		{
-			_entityLayer.SetCell(targetTile.IsometricPosition, 1, new Vector2I(0, (int)enemyEntity.EnemyId - 1));
+			_entityLayer.SetCell(targetTile.IsometricPosition, 1, new Vector2I(effectDrawId, (int)enemyEntity.EnemyId - 1));
 		}
 		
 		return true;
