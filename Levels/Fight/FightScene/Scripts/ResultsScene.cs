@@ -80,6 +80,22 @@ public partial class ResultsScene : Control
     {
         if (bIsVictory)
         {
+            if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.SpiderBoss)
+            {
+                GameDataManager.Instance.currentData.commandBlockData.SpiderBossDefeated = true;
+                GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = true;
+            }
+            else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.TankBoss)
+            {
+                GameDataManager.Instance.currentData.commandBlockData.TankDefeated = true;
+                GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = true;
+            }
+            else if (GameDataManager.Instance.runMapDataManager.pressedMapNode.Type == MapNodeType.VegetableBoss)
+            {
+                GameDataManager.Instance.currentData.commandBlockData.VegetableDefeated = true;
+                GameDataManager.Instance.currentData.runMapData.bShouldShowRegenerateButton = true;
+            }
+
             GameDataManager.Instance.runMapDataManager.PassMapNode();
             SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
             sceneTree.ChangeSceneToPacked(runMapScene);

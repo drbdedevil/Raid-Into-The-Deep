@@ -103,7 +103,9 @@ public partial class RunMapDataManager : Node
 			StartPlayRandomBattleSoundLoop();
 		};
 
-		PassMapNode(); // TODO: запустить уровень с элитным боем и при победе сделать PassMapNode для pressedMapNode
+		var scene = ResourceLoader.Load<PackedScene>("res://Levels/Fight/PrepareFightScene/PrepareFightScene.tscn");
+		SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
+		sceneTree.ChangeSceneToPacked(scene);
 	}
 	public void RunBossBattle(MapNode mapNode, MapNodeType bossType)
 	{
@@ -117,30 +119,34 @@ public partial class RunMapDataManager : Node
 				{
 					StartPlaySoundLoopForSpiderBoss();
 				};
-				PassMapNode();
-				gameDataManager.currentData.commandBlockData.SpiderBossDefeated = true;
+				// PassMapNode();
+				// gameDataManager.currentData.commandBlockData.SpiderBossDefeated = true;
 				break;
 			case MapNodeType.TankBoss:
 				tree.CreateTimer(0.7f).Timeout += () =>
 				{
 					StartPlaySoundLoopForTankBoss();
 				};
-				PassMapNode();
-				gameDataManager.currentData.commandBlockData.TankDefeated = true;
+				// PassMapNode();
+				// gameDataManager.currentData.commandBlockData.TankDefeated = true;
 				break;
 			case MapNodeType.VegetableBoss:
 				tree.CreateTimer(0.7f).Timeout += () =>
 				{
 					StartPlaySoundLoopForVegetableBoss();
 				};
-				PassMapNode();
-				gameDataManager.currentData.commandBlockData.VegetableDefeated = true;
+				// PassMapNode();
+				// gameDataManager.currentData.commandBlockData.VegetableDefeated = true;
 				break;
 			default:
 				break;
 		} // TODO: запустить уровень с нужным боссом и при победе сделать PassMapNode для pressedMapNode
-		gameDataManager.currentData.runMapData.bShouldShowRegenerateButton = true;
-		EmitSignal(SignalName.OnBossWasDefeated);
+		// gameDataManager.currentData.runMapData.bShouldShowRegenerateButton = true;
+		// EmitSignal(SignalName.OnBossWasDefeated);
+
+		var scene = ResourceLoader.Load<PackedScene>("res://Levels/Fight/PrepareFightScene/PrepareFightScene.tscn");
+		SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
+		sceneTree.ChangeSceneToPacked(scene);
 	}
 
 	public void PassMapNode()
