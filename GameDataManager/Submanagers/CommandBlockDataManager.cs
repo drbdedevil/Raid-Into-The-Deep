@@ -3,6 +3,7 @@ using RaidIntoTheDeep.Levels.Fight.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class CommandBlockDataManager : Node
 {
@@ -48,15 +49,16 @@ public partial class CommandBlockDataManager : Node
 
 		return false;
     }
-	public void TryPromotion(CharacterData characterData)
+	public bool TryPromotion(CharacterData characterData)
     {
         int currentLevel = characterData.Level;
 		int currentExperience = characterData.ExperiencePoints;
 		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
 		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
         {
-			CheckPromotion(characterData);
+			return CheckPromotion(characterData);
         }
+		return false;
     }
 	public void Promotion(CharacterData characterData)
     {

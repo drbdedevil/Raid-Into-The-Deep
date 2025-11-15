@@ -43,7 +43,7 @@ public class EnemyWarriorTurnBattleState : BattleState
 		{
 			StateTitleText = "";
 			ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
-			resultsScene.SetVictoryInfo();
+			resultsScene.SetDefeatInfo();
 			resultsScene.ShowPopup();
 			bGameEnd = true;
 			return;

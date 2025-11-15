@@ -104,6 +104,10 @@ public partial class TrainingPitsDataManager : Node
 
             characterData.PassiveSkillLevels = GetRandomPassiveSkills(pointsForPassive);
             characterData.ActiveSkills = GetRandomActiveSkills(pointsForActive);
+            if (pointsForActive == 1)
+            {
+                characterData.ChoosenSkills = characterData.ActiveSkills.First();
+            }
 
             if (pointsForPassive > 0)
             {

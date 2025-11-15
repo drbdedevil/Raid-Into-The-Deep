@@ -46,7 +46,7 @@ public class CharacterData
 	public WeaponData Weapon { get; set; } = new();
 	public int SkillPoints { get; set; } = 0;
 	public int Level { get; set; } = 1;
-	public int ExperiencePoints = 0;
+	public int ExperiencePoints { get; set; } = 0;
 
 	public Dictionary<string, int> PassiveSkillLevels { get; set; } = new();
 	public HashSet<string> ActiveSkills { get; set; } = new();

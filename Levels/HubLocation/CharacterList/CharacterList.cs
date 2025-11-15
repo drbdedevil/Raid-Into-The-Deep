@@ -119,7 +119,7 @@ public partial class CharacterList : ColorRect, IStackPage
                 resultExperience += experienceDatas[i].NeedableExperinceForNextLevel;
             }
 			resultExperience += warriorOwner.characterData.ExperiencePoints;
-			ExperienceLabel.Text = resultExperience.ToString();
+			ExperienceLabel.Text = warriorOwner.characterData.ExperiencePoints.ToString();
 
 			CheckWeaponInfos();
 			CheckSkillInfos();
