@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using Godot;
-using RaidIntoTheDeep.Levels.Fight;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
+namespace RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 public interface IEffectHolder
 {
     // применённые эффекты

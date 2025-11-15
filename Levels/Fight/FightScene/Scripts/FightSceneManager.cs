@@ -77,8 +77,8 @@ public partial class FightSceneManager : Control
 
     public List<Command> NotExecutedCommands { get; set; } = [];
 
-    private EffectManager _effectManager;
-    public EffectManager EffectManager => _effectManager;
+    private EffectManagerLogic.EffectManager _effectManager;
+    public EffectManagerLogic.EffectManager EffectManager => _effectManager;
     
     public override void _Ready()
     {
@@ -100,7 +100,7 @@ public partial class FightSceneManager : Control
     
         CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
 
-        _effectManager = new EffectManager(_mapManager, this);
+        _effectManager = new(_mapManager, this);
 
         EntityEffectsPanel entityEffectsPanel = GetNode<EntityEffectsPanel>("EffectPanel/EntityEffectsPanel");
         entityEffectsPanel.Visible = false;

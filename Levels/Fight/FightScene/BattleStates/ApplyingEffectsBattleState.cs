@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Godot;
+using RaidIntoTheDeep.Levels.Fight.FightScene.EffectManagerLogic;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
 namespace RaidIntoTheDeep.Levels.Fight.FightScene.BattleStates;
@@ -77,15 +78,15 @@ public class ApplyingEffectsBattleState : BattleState
         if (task is not null) await task;
         if (effect.EffectType == EEffectType.Poison)
         {
-            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, 2);
+            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, (int)EffectDrawTypes.Poison);
         }
         else if (effect.EffectType == EEffectType.Fire)
         {
-            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, 1);
+            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, (int)EffectDrawTypes.Fire);
         }
         else if (effect.EffectType == EEffectType.Freezing)
         {
-            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, 3);
+            MapManager.SetBattleEntityOnTile(battleEntity.Tile, battleEntity, (int)EffectDrawTypes.Freezing);
         }
 
         await Task.Delay(500);
