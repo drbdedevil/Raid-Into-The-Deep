@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="6_ed8kp"]
 [ext_resource type="PackedScene" uid="uid://ccaqrv4jj4wg3" path="res://Levels/Fight/PrepareFightScene/ViewPanel/PrepareFightWarriorPanel.tscn" id="6_gkuqp"]
 [ext_resource type="Texture2D" uid="uid://bdkob7603gdcm" path="res://Textures/Fight/FightScene/AllEnemiesAtlas.png" id="6_kbenw"]
-[ext_resource type="Texture2D" uid="uid://jtm2rtc4qjyw" path="res://Textures/Fight/FightScene/AllBlocks.png" id="7_gep0n"]
+[ext_resource type="Texture2D" uid="uid://cotc617wbocow" path="res://Textures/Fight/FightScene/AllBlocks.png" id="7_gep0n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xf8pm"]
 texture = ExtResource("2_jxe02")
@@ -135,6 +135,8 @@ texture_region_size = Vector2i(64, 64)
 0:2/0/texture_origin = Vector2i(0, 32)
 0:3/0 = 0
 0:3/0/texture_origin = Vector2i(0, 32)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 32)
 
 [sub_resource type="TileSet" id="TileSet_r3a8q"]
 tile_shape = 1

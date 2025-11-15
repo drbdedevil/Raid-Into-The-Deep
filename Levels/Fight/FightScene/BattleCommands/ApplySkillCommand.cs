@@ -101,7 +101,7 @@ public class ApplySkillCommand : Command
 							}
 							else if (obstacleEffect.EffectType == EEffectType.ObstacleHeal)
 							{
-								_mapManager.SetObstacleOnTile(tile, new ObstacleEntity(tile, ObstacleCode.Totem - 3));
+								_mapManager.SetObstacleOnTile(tile, new ObstacleEntity(tile, ObstacleCode.Totem));
 								if (obstacleEffect is HealObstacleEffect healObstacleEffect)
 								{
 									healObstacleEffect.Heal = playerEntity.Heal / 2;
