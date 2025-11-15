@@ -82,7 +82,7 @@ hoverNodeIcon = ExtResource("10_p6et5")
 pressedNodeIcon = ExtResource("12_y8cu1")
 disabledNodeIcon = ExtResource("9_mtaje")
 mapNodeType = 2
-Weight = 0.07
+Weight = 0.1
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_otrvv"]
@@ -93,7 +93,7 @@ hoverNodeIcon = ExtResource("15_7mpu7")
 pressedNodeIcon = ExtResource("17_oxht1")
 disabledNodeIcon = ExtResource("14_yw1cw")
 mapNodeType = 4
-Weight = 0.07
+Weight = 0.1
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_yqhjc"]
@@ -115,7 +115,7 @@ hoverNodeIcon = ExtResource("25_yddre")
 pressedNodeIcon = ExtResource("27_qe8aa")
 disabledNodeIcon = ExtResource("24_m7651")
 mapNodeType = 8
-Weight = 0.1
+Weight = 0.3
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_drbut"]
@@ -126,7 +126,7 @@ hoverNodeIcon = ExtResource("30_0wn8h")
 pressedNodeIcon = ExtResource("32_su14k")
 disabledNodeIcon = ExtResource("29_vv6oq")
 mapNodeType = 3
-Weight = 0.3
+Weight = 0.7
 metadata/_custom_type_script = "uid://7oocrq3yarrs"
 
 [sub_resource type="Resource" id="Resource_jvmo1"]
