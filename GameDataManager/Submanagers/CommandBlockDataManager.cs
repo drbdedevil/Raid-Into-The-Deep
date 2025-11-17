@@ -40,7 +40,7 @@ public partial class CommandBlockDataManager : Node
         int currentLevel = characterData.Level;
 		int currentExperience = characterData.ExperiencePoints;
 		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
-		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+		if (experienceDatas.Count > currentLevel && currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
         {
 			// characterData.ExperiencePoints -= experienceDatas[currentLevel].NeedableExperinceForNextLevel;
 			characterData.SkillPoints += 1;
@@ -54,7 +54,7 @@ public partial class CommandBlockDataManager : Node
         int currentLevel = characterData.Level;
 		int currentExperience = characterData.ExperiencePoints;
 		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
-		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+		if (experienceDatas.Count > currentLevel && currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
         {
 			return CheckPromotion(characterData);
         }
@@ -65,7 +65,7 @@ public partial class CommandBlockDataManager : Node
         int currentLevel = characterData.Level;
 		int currentExperience = characterData.ExperiencePoints;
 		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
-		if (currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+		if (experienceDatas.Count > currentLevel && currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
         {
 			characterData.ExperiencePoints -= experienceDatas[currentLevel].NeedableExperinceForNextLevel;
         }
