@@ -19,8 +19,8 @@ public partial class ViewWarriorPanel : Control
 		SkillStar skillStar = GetNode<SkillStar>("PanelContainer/MarginContainer2/SkillStar");
 		if (bShouldShowThatCharacterHasSkillPoints)
 		{
-
-			if (warrior.characterData.SkillPoints > 0)
+			var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+			if (warrior.characterData.SkillPoints > 0 && warrior.characterData.Level < experienceDatas.Count)
 			{
 				skillStar.Start();
 			}

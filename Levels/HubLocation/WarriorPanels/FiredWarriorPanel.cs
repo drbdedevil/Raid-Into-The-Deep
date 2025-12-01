@@ -10,7 +10,8 @@ public partial class FiredWarriorPanel : Control
 
         Warrior warrior = GetNode<Warrior>("PanelContainer/TextureRect/HBoxContainer/MarginContainer/WarriorPanel");
 		SkillStar skillStar = GetNode<SkillStar>("PanelContainer/TextureRect/HBoxContainer/MarginContainer/MarginContainer2/SkillStar");
-		if (warrior.characterData.SkillPoints > 0)
+        var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+		if (warrior.characterData.SkillPoints > 0 && warrior.characterData.Level < experienceDatas.Count)
 		{
 			skillStar.Start();
 		}

@@ -224,7 +224,8 @@ public partial class CharacterList : ColorRect, IStackPage
 	private void CheckPointsInfos()
 	{
 		SkillStar skillStar = GetNode<SkillStar>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/SkillStar");
-		if (warriorOwner.characterData.SkillPoints > 0)
+		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
+		if (warriorOwner.characterData.SkillPoints > 0 && warriorOwner.characterData.Level < experienceDatas.Count)
 		{
 			skillStar.Start();
 		}
