@@ -7,6 +7,17 @@ public partial class FiredWarriorPanel : Control
     {
         var FiredButton = GetNode<Button>("PanelContainer/TextureRect/HBoxContainer/MarginContainer2/FiredWarriorButton");
         FiredButton.ButtonDown += OnFiredButtonPressed;
+
+        Warrior warrior = GetNode<Warrior>("PanelContainer/TextureRect/HBoxContainer/MarginContainer/WarriorPanel");
+		SkillStar skillStar = GetNode<SkillStar>("PanelContainer/TextureRect/HBoxContainer/MarginContainer/MarginContainer2/SkillStar");
+		if (warrior.characterData.SkillPoints > 0)
+		{
+			skillStar.Start();
+		}
+		else
+		{
+			skillStar.Stop();
+		}
     }
 
     public override void _GuiInput(InputEvent @event)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba7ptlegyigi"]
+[gd_scene load_steps=5 format=3 uid="uid://ba7ptlegyigi"]
 
 [ext_resource type="Texture2D" uid="uid://ltam438mr53u" path="res://Textures/Default/ViewWarriorPanel.png" id="1_0m0sx"]
 [ext_resource type="Script" uid="uid://bmoayrd8eh1fx" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.cs" id="1_hv8q1"]
 [ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="2_0m0sx"]
+[ext_resource type="PackedScene" uid="uid://ia8ght50ah7d" path="res://Levels/HubLocation/CharacterList/SkillStar.tscn" id="4_jktkl"]
 
 [node name="ViewWarriorPanel" type="Control"]
 custom_minimum_size = Vector2(169, 56)
@@ -35,3 +36,16 @@ theme_override_constants/margin_top = 2
 custom_minimum_size = Vector2(165, 52)
 layout_mode = 2
 mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="SkillStar" parent="PanelContainer/MarginContainer2" instance=ExtResource("4_jktkl")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0

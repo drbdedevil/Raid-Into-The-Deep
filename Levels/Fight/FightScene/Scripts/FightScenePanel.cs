@@ -122,6 +122,7 @@ public partial class FightScenePanel : TextureRect
             {
                 ViewWarriorPanel viewWarriorPanel = WarriorPanelScene.Instantiate() as ViewWarriorPanel;
                 viewWarriorPanel.bShouldChangeCharacterList = false;
+                viewWarriorPanel.bShouldShowThatCharacterHasSkillPoints = false;
                 viewWarriorPanel.SetCharacterInfosToWarriorPanel(team[i], true);
                 viewWarriorPanel.WarriorPanelMouseEnter += fightSceneManager.OnCharacterPanelMouseEnter;
                 viewWarriorPanel.WarriorPanelMouseExit += fightSceneManager.OnCharacterPanelMouseExit;

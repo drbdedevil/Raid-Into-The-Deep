@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ia8ght50ah7d"]
+
+[ext_resource type="Script" uid="uid://b2sgl76tc4rap" path="res://Levels/HubLocation/CharacterList/SkillStar.cs" id="1_ehc0b"]
+
+[node name="SkillStar" type="Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_ehc0b")
+_color = Color(0.93254477, 0.7821642, 0, 1)
+_color2 = Color(0, 0, 0, 1)

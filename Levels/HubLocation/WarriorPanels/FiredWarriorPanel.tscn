@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4ecegriurk3t"]
+[gd_scene load_steps=8 format=3 uid="uid://c4ecegriurk3t"]
 
 [ext_resource type="Script" uid="uid://cwmj6vbbqvbfr" path="res://Levels/HubLocation/WarriorPanels/FiredWarriorPanel.cs" id="1_4v0db"]
 [ext_resource type="Texture2D" uid="uid://d7jww46tetp4" path="res://Textures/Default/FiredPanel.png" id="1_6m6im"]
 [ext_resource type="PackedScene" uid="uid://c4p3knfn65321" path="res://Levels/HubLocation/WarriorPanels/WarriorPanel_Mini.tscn" id="2_6m6im"]
 [ext_resource type="Texture2D" uid="uid://3owv5sde7f3k" path="res://Textures/HubLocation/Vector.png" id="3_4v0db"]
+[ext_resource type="PackedScene" uid="uid://ia8ght50ah7d" path="res://Levels/HubLocation/CharacterList/SkillStar.tscn" id="4_emuf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emuf1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -49,6 +50,19 @@ theme_override_constants/margin_top = 2
 custom_minimum_size = Vector2(165, 52)
 layout_mode = 2
 mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="SkillStar" parent="PanelContainer/TextureRect/HBoxContainer/MarginContainer/MarginContainer2" instance=ExtResource("4_emuf1")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/TextureRect/HBoxContainer"]
 layout_mode = 2

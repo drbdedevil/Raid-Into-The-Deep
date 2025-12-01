@@ -115,9 +115,9 @@ public partial class CharacterList : ColorRect, IStackPage
 			int resultExperience = 0;
 			var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
 			for (int i = 0; i < currentLevel - 1; ++i)
-            {
-                resultExperience += experienceDatas[i].NeedableExperinceForNextLevel;
-            }
+			{
+				resultExperience += experienceDatas[i].NeedableExperinceForNextLevel;
+			}
 			resultExperience += warriorOwner.characterData.ExperiencePoints;
 			ExperienceLabel.Text = warriorOwner.characterData.ExperiencePoints.ToString();
 
@@ -207,7 +207,7 @@ public partial class CharacterList : ColorRect, IStackPage
 			}
 		}
 	}
-	
+
 	public void ChooseWeaponData(WeaponPanel InWeaponPanel)
 	{
 		if (GameDataManager.Instance.storageDataManager.TryDeleteWeapon(InWeaponPanel.weaponData.ID))
@@ -220,14 +220,31 @@ public partial class CharacterList : ColorRect, IStackPage
 		}
 		CheckWeaponInfos();
 	}
+	
+	private void CheckPointsInfos()
+	{
+		SkillStar skillStar = GetNode<SkillStar>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/SkillStar");
+		if (warriorOwner.characterData.SkillPoints > 0)
+		{
+			skillStar.Start();
+		}
+		else
+		{
+			skillStar.Stop();
+		}
+	}
 
 	public void OnShow()
 	{
 		ShowCharacterInfos();
+		CheckPointsInfos();
 		GD.Print("CharacterList Popup shown");
 	}
 	public void OnHide()
 	{
+		SkillStar skillStar = GetNode<SkillStar>("VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect4/VBoxContainer/MarginContainer/HBoxContainer/SkillStar");
+		skillStar.Stop();
+		
 		GD.Print("CharacterList Popup hidden");
 	}
 }

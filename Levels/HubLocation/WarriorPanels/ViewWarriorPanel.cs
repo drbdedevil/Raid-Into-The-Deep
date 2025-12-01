@@ -9,10 +9,30 @@ public partial class ViewWarriorPanel : Control
 	public delegate void WarriorPanelMouseExitEventHandler(string characterDataId);
 
 	public bool bShouldChangeCharacterList = true;
+	public bool bShouldShowThatCharacterHasSkillPoints = true;
 	public override void _Ready()
 	{
 		MouseEntered += OnMouseEnter;
 		MouseExited += OnMouseExit;
+
+		Warrior warrior = GetNode<Warrior>("PanelContainer/MarginContainer/WarriorPanel");
+		SkillStar skillStar = GetNode<SkillStar>("PanelContainer/MarginContainer2/SkillStar");
+		if (bShouldShowThatCharacterHasSkillPoints)
+		{
+
+			if (warrior.characterData.SkillPoints > 0)
+			{
+				skillStar.Start();
+			}
+			else
+			{
+				skillStar.Stop();
+			}
+		}
+		else
+		{
+			skillStar.Stop();
+		}
 	}
 
 	public override void _GuiInput(InputEvent @event)
