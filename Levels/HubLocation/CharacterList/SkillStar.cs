@@ -23,6 +23,20 @@ public partial class SkillStar : Control
         AnimatePulse();
     }
 
+    public override void _GuiInput(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.Pressed)
+            {
+                if (mouseEvent.ButtonIndex == MouseButton.Left)
+                {
+                    NotificationSystem.Instance.ShowMessage("Доступно нераспределённое очко навыков!", EMessageType.Warning);
+                }
+            }
+        }
+    }
+
     public override void _Draw()
     {
         Vector2 center = Size / 2;

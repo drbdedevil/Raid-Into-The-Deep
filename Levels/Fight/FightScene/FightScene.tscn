@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://omgqup63apve"]
+[gd_scene load_steps=35 format=3 uid="uid://omgqup63apve"]
 
 [ext_resource type="Script" uid="uid://bea5jxtyrqhfw" path="res://Levels/Fight/FightScene/Scripts/FightSceneManager.cs" id="1_26lfq"]
 [ext_resource type="Script" uid="uid://bmae3uu6rt1ei" path="res://Levels/Fight/FightScene/Scripts/MapManager.cs" id="1_if2d1"]
@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="9_ww3yd"]
 [ext_resource type="PackedScene" uid="uid://b7ihs58oynnmg" path="res://Levels/Fight/FightScene/EffectManagerLogic/EntityEffectsPanel.tscn" id="10_foig6"]
 [ext_resource type="PackedScene" uid="uid://cpopu50xtjs27" path="res://Levels/Fight/FightScene/EffectManagerLogic/EntityEffectView.tscn" id="11_m6kyl"]
-[ext_resource type="PackedScene" path="res://Levels/Fight/FightScene/ResultsScene.tscn" id="13_om0m0"]
+[ext_resource type="PackedScene" uid="uid://8rpxbu6wrfw3" path="res://Levels/Fight/FightScene/ResultsScene.tscn" id="13_om0m0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj2qt"]
 texture = ExtResource("3_mkdg0")
@@ -249,6 +249,44 @@ border_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utvpk"]
+bg_color = Color(0.16508043, 0.5062003, 0.8844592, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.030118635, 0.23662296, 0.4491852, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3lh1"]
+bg_color = Color(0.05887209, 0.3234947, 0.60214853, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.030118635, 0.23662296, 0.4491852, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvt2t"]
+bg_color = Color(0.26348075, 0.57844365, 0.9485138, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.030118635, 0.23662296, 0.4491852, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
 [node name="FightScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -343,7 +381,7 @@ theme_override_constants/separation = 0
 [node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 100
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
@@ -351,6 +389,7 @@ theme_override_constants/margin_bottom = 10
 [node name="CancelTurnButton" type="Button" parent="Control/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
 theme_override_fonts/font = ExtResource("9_ww3yd")
 theme_override_font_sizes/font_size = 20
@@ -365,12 +404,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="ConfirmTurnButton" type="Button" parent="Control/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
 theme_override_fonts/font = ExtResource("9_ww3yd")
 theme_override_font_sizes/font_size = 20
@@ -380,13 +420,31 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wrefx")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ncbyg")
 text = "Закончить ход"
 
+[node name="MarginContainer3" type="MarginContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SkipButton" type="Button" parent="Control/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0.26293266, 0.2629324, 0.26293254, 1)
+theme_override_fonts/font = ExtResource("9_ww3yd")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_utvpk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d3lh1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jvt2t")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ncbyg")
+text = ">>"
+
 [node name="EffectPanel" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -395,8 +453,7 @@ mouse_filter = 2
 
 [node name="EntityEffectsPanel" parent="EffectPanel" instance=ExtResource("10_foig6")]
 layout_mode = 0
-offset_left = 200.0
-offset_right = 402.0
+offset_bottom = 24.0
 mouse_filter = 2
 EntityEffectViewScene = ExtResource("11_m6kyl")
 
