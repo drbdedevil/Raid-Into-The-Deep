@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://lqex6adq1njd"]
+[gd_scene load_steps=8 format=3 uid="uid://lqex6adq1njd"]
 
 [ext_resource type="Script" uid="uid://f70ljhs23ieg" path="res://Levels/HubLocation/CommandBlock/CommandBlock.cs" id="1_2kwty"]
 [ext_resource type="Texture2D" uid="uid://bbkfwubs6ujpx" path="res://Textures/HubLocation/MainTextures/Command.png" id="2_2kwty"]
@@ -6,6 +6,18 @@
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="3_uwnrh"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="4_huh1y"]
 [ext_resource type="PackedScene" uid="uid://1x5mag1qnrit" path="res://Levels/HubLocation/CommandBlock/InfoBoss.tscn" id="5_vsd8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d8pl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 
 [node name="CommandBlock" type="Control"]
 layout_mode = 3
@@ -100,6 +112,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/TextureRect/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -119,6 +132,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/TextureRect/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -138,6 +152,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/TextureRect/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -157,6 +172,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/TextureRect/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -176,6 +192,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/TextureRect/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -195,6 +212,7 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_uwnrh")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "4"
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
