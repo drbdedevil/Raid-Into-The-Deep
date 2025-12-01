@@ -23,8 +23,10 @@ public class PlayerWarriorMovementBattleState : BattleState
     
     public PlayerWarriorMovementBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
+        FightSceneManager.SkipButton.SetDisabled(false);
+
         var playerEntities = FightSceneManager.Allies.Except(fightSceneManager.PlayerWarriorsThatTurned).OrderByDescending(x => x.Speed).ToList();
-        if (!playerEntities.Any())
+        if (!playerEntities.Any() && FightSceneManager.Allies.Count == 0)
         {
             StateTitleText = "";
             ResultsScene resultsScene = FightSceneManager.GetNode<ResultsScene>("ResultsScene");
@@ -53,6 +55,8 @@ public class PlayerWarriorMovementBattleState : BattleState
         {
             fightSceneManager.CurrentPlayerWarriorToTurn = _currentPlayerWarrior;
             StateTitleText = "Вы перемещаетесь! Выберите клетку из предложенных!";
+
+            FightSceneManager.SkipButton.ButtonUp += SkipButtonPressed;
         }
     }
 
@@ -68,6 +72,7 @@ public class PlayerWarriorMovementBattleState : BattleState
             var tile = MapManager.GetTileInSelectedUnderMousePosition();
             if (tile == _currentPlayerWarrior.Tile)
             {
+                FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
                 FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
             }
             if (tile is not null && tile.IsAllowedToSetBattleEntity)
@@ -75,6 +80,7 @@ public class PlayerWarriorMovementBattleState : BattleState
                 var moveCommand = new MoveBattleEntityCommand(_currentPlayerWarrior, MapManager, FightSceneManager, tile);
                 moveCommand.Execute();
                 FightSceneManager.ExecutedCommands.Add(moveCommand);
+                FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
                 FightSceneManager.CurrentBattleState = new PlayerWarriorSelectSubjectAttack(FightSceneManager, MapManager);
             } 
         }
@@ -109,6 +115,7 @@ public class PlayerWarriorMovementBattleState : BattleState
             if (_skippingMoveTime >= 0.25d)
             {
                 FightSceneManager.PlayerWarriorsThatTurned.Add(_currentPlayerWarrior);
+                FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
                 if (FightSceneManager.Allies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)
 				{
 					FightSceneManager.EnemyWarriorsThatTurned.Clear();
@@ -132,5 +139,26 @@ public class PlayerWarriorMovementBattleState : BattleState
             MapManager.CalculateAndDrawPlayerEntitySpeedZone(_currentPlayerWarrior);
             _isInitialized = true;
         }
+    }
+
+    private void SkipButtonPressed()
+    {
+        MapManager.ClearAllSelectedTiles();
+        foreach (var executedCommand in FightSceneManager.ExecutedCommands)
+        {
+            executedCommand.UnExecute();
+        }
+        FightSceneManager.NotExecutedCommands.Clear();
+        FightSceneManager.ExecutedCommands.Clear();
+        FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
+        FightSceneManager.PlayerWarriorsThatTurned.Add(_currentPlayerWarrior);
+        if (FightSceneManager.Allies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)
+		{
+			FightSceneManager.EnemyWarriorsThatTurned.Clear();
+			FightSceneManager.PlayerWarriorsThatTurned.Clear();
+			FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
+			return;
+		}
+        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
     }
 }

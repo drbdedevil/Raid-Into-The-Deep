@@ -18,6 +18,8 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
     {
         _currentPlayerWarrior = fightSceneManager.CurrentPlayerWarriorToTurn;
         StateTitleText = "Вы атакуете навыком! Выберите клетки из предложенных или примените навык!";
+
+        FightSceneManager.SkipButton.ButtonUp += SkipButtonPressed;
     }
 
     public override void InputUpdate(InputEvent @event)
@@ -28,6 +30,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
             var attackCommand =
                 new ApplySkillCommand(FightSceneManager.CurrentPlayerWarriorToTurn, tilesForAttack.ToList(), MapManager);
             FightSceneManager.NotExecutedCommands.Add(attackCommand);
+            FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
             FightSceneManager.CurrentBattleState = new PlayerWarriorConfirmationBattleState(FightSceneManager, MapManager);
         }
         
@@ -46,6 +49,7 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
                 var attackCommand =
                     new ApplySkillCommand(FightSceneManager.CurrentPlayerWarriorToTurn, new List<Tile>(), MapManager);
                 FightSceneManager.NotExecutedCommands.Add(attackCommand);
+                FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
                 FightSceneManager.CurrentBattleState = new PlayerWarriorConfirmationBattleState(FightSceneManager, MapManager);
             }
             bCheckFinished = true;
@@ -58,5 +62,26 @@ public class PlayerWarriorSkillChoosingBattleState : BattleState
             MapManager.CalculateAndDrawPlayerEntitySkillZone(_currentPlayerWarrior, tile);
             // MapManager.CalculateAndDrawPlayerEntitySkillArea ? 
         }
+    }
+
+    private void SkipButtonPressed()
+    {
+        MapManager.ClearAllSelectedTiles();
+        foreach (var executedCommand in FightSceneManager.ExecutedCommands)
+        {
+            executedCommand.Execute();
+        }
+        FightSceneManager.NotExecutedCommands.Clear();
+        FightSceneManager.ExecutedCommands.Clear();
+        FightSceneManager.SkipButton.ButtonUp -= SkipButtonPressed;
+        FightSceneManager.PlayerWarriorsThatTurned.Add(_currentPlayerWarrior);
+        if (FightSceneManager.Allies.Count == FightSceneManager.PlayerWarriorsThatTurned.Count)
+		{
+			FightSceneManager.EnemyWarriorsThatTurned.Clear();
+			FightSceneManager.PlayerWarriorsThatTurned.Clear();
+			FightSceneManager.CurrentBattleState = new ApplyingEffectsBattleState(FightSceneManager, MapManager);
+			return;
+		}
+        FightSceneManager.CurrentBattleState = new PlayerWarriorMovementBattleState(FightSceneManager, MapManager);
     }
 }

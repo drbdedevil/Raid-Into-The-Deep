@@ -85,6 +85,7 @@ public partial class FightSceneManager : Control
 	
 	public Button ConfirmTurnButton { get; set; }
 	public Button CancelTurnButton { get; set; }
+	public Button SkipButton { get; set; }
 	/// <summary>
 	/// </summary>
 	public List<Command> ExecutedCommands { get; set; } = [];
@@ -111,6 +112,7 @@ public partial class FightSceneManager : Control
 		ConfirmTurnButton.SetDisabled(true);
 		CancelTurnButton = GetNode<Button>("Control/HBoxContainer/MarginContainer/CancelTurnButton");
 		CancelTurnButton.SetDisabled(true);
+		SkipButton = GetNode<Button>("Control/HBoxContainer/MarginContainer3/SkipButton");
 	
 		CurrentBattleState = new PlayerWarriorMovementBattleState(this, _mapManager);
 

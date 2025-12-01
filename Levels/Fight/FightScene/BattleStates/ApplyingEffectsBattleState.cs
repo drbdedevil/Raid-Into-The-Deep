@@ -16,6 +16,7 @@ public class ApplyingEffectsBattleState : BattleState
     public ApplyingEffectsBattleState(FightSceneManager fightSceneManager, MapManager mapManager) : base(fightSceneManager, mapManager)
     {
         StateTitleText = "Ох зря я сюда полез...";
+        FightSceneManager.SkipButton.SetDisabled(true);
         
         _effectManager = fightSceneManager.EffectManager;
 

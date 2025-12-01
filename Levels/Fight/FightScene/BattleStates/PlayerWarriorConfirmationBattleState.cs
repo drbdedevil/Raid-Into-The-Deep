@@ -14,6 +14,7 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.ConfirmTurnButton.SetDisabled(false);
         FightSceneManager.CancelTurnButton.ButtonUp += CancelTurn;
         FightSceneManager.CancelTurnButton.SetDisabled(false);
+        FightSceneManager.SkipButton.SetDisabled(true);
         
         StateTitleText = "Уверены ли в своём выборе? Подтвердите ваш выбор!";
     }
@@ -81,6 +82,7 @@ public class PlayerWarriorConfirmationBattleState : BattleState
         FightSceneManager.ConfirmTurnButton.SetDisabled(true);
         FightSceneManager.CancelTurnButton.ButtonUp -= CancelTurn;
         FightSceneManager.CancelTurnButton.SetDisabled(true);
+        FightSceneManager.SkipButton.SetDisabled(false);
     }
 
     private void SecondTurn()

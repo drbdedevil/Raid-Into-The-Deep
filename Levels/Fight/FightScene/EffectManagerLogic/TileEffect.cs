@@ -35,7 +35,7 @@ public class FireObstacleEffect : ObstacleEffect
 			FireEntityEffect entityEffect = new FireEntityEffect(2);
 			entityEffect.DamageByEffect = DamageByEffect;
 			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
-			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
+			obstacleHolder.Tile.BattleEntity.AddEffect(entityEffect);
 			GD.Print("Применился огонь на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
 		}
 		// GD.Print(obstacleHolder.Tile.CartesianPosition);
@@ -62,9 +62,9 @@ public class PoisonObstacleEffect : ObstacleEffect
 		if (obstacleHolder.Tile.BattleEntity != null)
 		{
 			PoisonEntityEffect entityEffect = new PoisonEntityEffect(2);
-			entityEffect.DamageByEffect = DamageByEffect;
+			entityEffect.DamageByEffect = DamageByEffect / 3;
 			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
-			obstacleHolder.Tile.BattleEntity.appliedEffects.Add(entityEffect);
+			obstacleHolder.Tile.BattleEntity.AddEffect(entityEffect);
 			GD.Print("Применилось ядовитое облако на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
 		}
 		// GD.Print(obstacleHolder.Tile.CartesianPosition);

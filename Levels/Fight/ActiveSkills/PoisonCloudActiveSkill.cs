@@ -36,7 +36,12 @@ public class PoisonCloudActiveSkill : ActiveSkill
                 return
                 [
                     artilleryTargetPosition, artilleryTargetPosition + Vector2I.Up,
-                    artilleryTargetPosition + Vector2I.Right + Vector2I.Up, artilleryTargetPosition + Vector2I.Right
+                    artilleryTargetPosition + Vector2I.Right + Vector2I.Up, artilleryTargetPosition + Vector2I.Right,
+                    artilleryTargetPosition + Vector2I.Up + Vector2I.Left,
+                    artilleryTargetPosition + Vector2I.Left,
+                    artilleryTargetPosition + Vector2I.Down + Vector2I.Left,
+                    artilleryTargetPosition + Vector2I.Down,
+                    artilleryTargetPosition + Vector2I.Down + Vector2I.Right,
                 ];
             }
 

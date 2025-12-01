@@ -80,7 +80,7 @@ skillTextureHover = ExtResource("13_h3esq")
 skillTextureUpgraded = ExtResource("14_qujly")
 skillTextureActive = ExtResource("11_b4rl1")
 skillName = "Ядовитое облако"
-skillDescription = "Создаётся ядовитое облако 2 на 2. Все, кто стоит в этом облаке, получают урон, равный \"Урон от эффекта\"/2. Облако держится 4 раунда."
+skillDescription = "Создаётся ядовитое облако 3 на 3 клеток. Все, кто стоит в этом облаке, получают урон, равный \"Урон от эффекта\"/3. Облако держится 4 раунда."
 skillType = 11
 metadata/_custom_type_script = "uid://dkwjy008wun2o"
 
