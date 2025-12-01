@@ -12,11 +12,22 @@
 [ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="6_mg3rq"]
 [ext_resource type="Texture2D" uid="uid://dtnpq46yyiga3" path="res://Textures/HubLocation/ResourcePanel.png" id="7_jgeiq"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="8_utgxf"]
-[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="9_bsy3p"]
 [ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="10_wmhyu"]
 [ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="11_fas3m"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="12_axjvr"]
 [ext_resource type="PackedScene" uid="uid://ba7ptlegyigi" path="res://Levels/HubLocation/WarriorPanels/ViewWarriorPanel.tscn" id="13_fk81j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d8pl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -198,6 +209,7 @@ offset_bottom = 52.0
 
 [node name="ChitinHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 layout_mode = 2
@@ -206,25 +218,13 @@ theme_override_fonts/font = ExtResource("8_utgxf")
 theme_override_font_sizes/font_size = 14
 text = "Хитин"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
-layout_mode = 2
-texture = ExtResource("9_bsy3p")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect"]
-layout_mode = 0
-offset_right = 23.0
-offset_bottom = 23.0
+size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("6_mg3rq")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -240,6 +240,7 @@ stretch_mode = 4
 
 [node name="CrystalBoxContainer" type="HBoxContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
 layout_mode = 2
@@ -248,25 +249,13 @@ theme_override_fonts/font = ExtResource("8_utgxf")
 theme_override_font_sizes/font_size = 14
 text = "Кристаллы"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
+[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
-layout_mode = 2
-texture = ExtResource("9_bsy3p")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="NumberLabel" type="Label" parent="VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect"]
-layout_mode = 0
-offset_right = 23.0
-offset_bottom = 23.0
+size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("6_mg3rq")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "40"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -71,12 +71,12 @@ public partial class RaceMap : Control
     
     private void OnCrystalsUpdate() 
 	{
-		Label CrystalLabel = GetNode<Label>("HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect/NumberLabel");
+		Label CrystalLabel = GetNode<Label>("HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/NumberLabel");
 		CrystalLabel.Text = GameDataManager.Instance.currentData.storageData.Crystals.ToString();
 	}
 	private void OnChitinFragmentsUpdate()
 	{
-		Label ChitinFragmentsLabel = GetNode<Label>("HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect/NumberLabel");
+		Label ChitinFragmentsLabel = GetNode<Label>("HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/NumberLabel");
 		ChitinFragmentsLabel.Text = GameDataManager.Instance.currentData.storageData.ChitinFragments.ToString();
 	}
 	private void UpdateUsedCharactersList()

@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://d1v1gi3i0prmh" path="res://Textures/RaceMap/RaceMapOut_Disable.png" id="5_b4cbp"]
 [ext_resource type="Texture2D" uid="uid://dtnpq46yyiga3" path="res://Textures/HubLocation/ResourcePanel.png" id="5_ghq32"]
 [ext_resource type="FontFile" uid="uid://bnhb3icxe7bgp" path="res://Fonts/EpilepsySans.ttf" id="6_qd4c2"]
-[ext_resource type="Texture2D" uid="uid://cv4mgempp2ros" path="res://Textures/HubLocation/NumberIcon.png" id="7_snhtr"]
 [ext_resource type="Texture2D" uid="uid://b4wp6uyguhk4a" path="res://Textures/HubLocation/Icons/Chitin.png" id="8_xqrsm"]
 [ext_resource type="Texture2D" uid="uid://c7suve0cv11t3" path="res://Textures/HubLocation/Icons/Crystal.png" id="9_tkyfr"]
 [ext_resource type="Texture2D" uid="uid://nesqm84ymw4l" path="res://Textures/HubLocation/Icons/Platform_1.png" id="10_mdk6t"]
@@ -29,6 +28,18 @@
 [ext_resource type="Texture2D" uid="uid://mb0tr18pi2mf" path="res://Textures/HubLocation/Forge/Melt_Pressed.png" id="27_77ja0"]
 [ext_resource type="Texture2D" uid="uid://da527c6sbypte" path="res://Textures/HubLocation/Forge/Melt_Hover.png" id="28_xhp82"]
 [ext_resource type="Texture2D" uid="uid://b5ypgompbso44" path="res://Textures/HubLocation/Forge/Melt_Disable.png" id="29_ido6t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d8pl"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxyu"]
 content_margin_left = 4.0
@@ -307,6 +318,7 @@ offset_bottom = 52.0
 
 [node name="ChitinHBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 layout_mode = 2
@@ -315,25 +327,13 @@ theme_override_fonts/font = ExtResource("6_qd4c2")
 theme_override_font_sizes/font_size = 14
 text = "Хитин"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
-layout_mode = 2
-texture = ExtResource("7_snhtr")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/ChitinHBoxContainer/TextureRect"]
-layout_mode = 0
-offset_right = 23.0
-offset_bottom = 23.0
+size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("2_6veol")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -349,6 +349,7 @@ stretch_mode = 4
 
 [node name="CrystalBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
 layout_mode = 2
@@ -357,25 +358,13 @@ theme_override_fonts/font = ExtResource("6_qd4c2")
 theme_override_font_sizes/font_size = 14
 text = "Кристаллы"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
+[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer"]
-custom_minimum_size = Vector2(23, 23)
-layout_mode = 2
-texture = ExtResource("7_snhtr")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="NumberLabel" type="Label" parent="HBoxContainer/Panel/VBoxContainer/ResourcePanel/VBoxContainer/CrystalBoxContainer/TextureRect"]
-layout_mode = 0
-offset_right = 23.0
-offset_bottom = 23.0
+size_flags_horizontal = 10
 theme_override_colors/font_color = Color(0.84705883, 0.21960784, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("2_6veol")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_3d8pl")
 text = "40"
 horizontal_alignment = 1
 vertical_alignment = 1

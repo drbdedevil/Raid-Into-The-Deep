@@ -63,6 +63,7 @@ public class PoisonObstacleEffect : ObstacleEffect
 		{
 			PoisonEntityEffect entityEffect = new PoisonEntityEffect(2);
 			entityEffect.DamageByEffect = DamageByEffect / 3;
+			entityEffect.DamageByEffect = entityEffect.DamageByEffect < 1 ? 1 : entityEffect.DamageByEffect;
 			entityEffect.entityHolder = obstacleHolder.Tile.BattleEntity;
 			obstacleHolder.Tile.BattleEntity.AddEffect(entityEffect);
 			GD.Print("Применилось ядовитое облако на клетке для " + obstacleHolder.Tile.BattleEntity.Id);
@@ -102,6 +103,7 @@ public class HealObstacleEffect : ObstacleEffect
 			Tile tileForHealing = mapManager.GetTileByCartesianCoord(coordForHealing);
 			if (tileForHealing != null && tileForHealing.BattleEntity != null)
 			{
+				Heal = Heal < 1 ? 1 : Heal;
 				tileForHealing.BattleEntity.ApplyHeal(obstacleHolder, Heal);
 				GD.Print("Применилось лечение для " + tileForHealing.BattleEntity.Id);
 			}

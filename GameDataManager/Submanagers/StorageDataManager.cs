@@ -51,11 +51,13 @@ public partial class StorageDataManager : Node
     public void AdjustCrystals(Int32 Value)
     {
         gameDataManager.currentData.storageData.Crystals += Value;
+        gameDataManager.currentData.storageData.Crystals = gameDataManager.currentData.storageData.Crystals > 1000 ? 1000 : gameDataManager.currentData.storageData.Crystals;
         EmitSignal(SignalName.OnCrystalsUpdate);
     }
     public void AdjustChitinFragments(Int32 Value)
     {
         gameDataManager.currentData.storageData.ChitinFragments += Value;
+        gameDataManager.currentData.storageData.ChitinFragments = gameDataManager.currentData.storageData.ChitinFragments > 1000 ? 1000 : gameDataManager.currentData.storageData.ChitinFragments;
         EmitSignal(SignalName.OnChitinFragmentsUpdate);
     }
     public bool TryAddWeapon(WeaponData InWeaponData)
