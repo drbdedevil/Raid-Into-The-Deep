@@ -117,7 +117,7 @@ public partial class Forge : Node, IStackPage
 				chosenWeaponDataForShackle.ID = Guid.NewGuid().ToString();
 				GD.Print(chosenWeaponDataForShackle.ID);
 				chosenWeaponDataForShackle.Damage = GD.RandRange(existingWeapon.DamageRange.X, existingWeapon.DamageRange.Y);
-				chosenWeaponDataForShackle.EffectID = GetWeightedRandomEffect(); // GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+				chosenWeaponDataForShackle.EffectID = GameDataManager.Instance.forgeDataManager.GetWeightedRandomEffect(); // GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
 
 				Label chitinLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer/TextureRect/NumberLabel");
 				Label crystalLabel = GetNode<Label>("VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer2/TextureRect/NumberLabel");
@@ -355,30 +355,7 @@ public partial class Forge : Node, IStackPage
 		crystalLabel.Text = crystalResult.ToString();
 	}
 
-	private int GetWeightedRandomEffect()
-	{
-		var effects = GameDataManager.Instance.effectDatabase.Effects;
-
-		float totalWeight = 0f;
-		foreach (var effect in effects)
-		{
-			totalWeight += effect.Weight;
-		}
-
-		double randomValue = GD.RandRange(0f, totalWeight);
-
-		float currentHeight = 0f;
-		for (int i = 0; i < effects.Count; ++i)
-		{
-			currentHeight += effects[i].Weight;
-			if (randomValue <= currentHeight)
-			{
-				return i;
-			}
-		}
-		
-		return 0;
-	}
+	
 
 	public void OnShow()
 	{

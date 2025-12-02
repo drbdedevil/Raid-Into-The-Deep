@@ -74,9 +74,34 @@ public partial class ForgeDataManager : Node
         weaponData.Name = currentWeaponRow.Name;
         weaponData.Damage = GD.RandRange(currentWeaponRow.DamageRange.X, currentWeaponRow.DamageRange.Y);
         weaponData.AttackShapeID = currentWeaponRow.AttackShapeID;
-        weaponData.EffectID = GD.RandRange(0, GameDataManager.Instance.effectDatabase.Effects.Count - 1);
+        weaponData.EffectID = GetWeightedRandomEffect();
         weaponData.TextureName = currentWeaponRow.WeaponTexture.ResourceName;
 
         return weaponData;
     }
+
+    public int GetWeightedRandomEffect()
+	{
+		var effects = GameDataManager.Instance.effectDatabase.Effects;
+
+		float totalWeight = 0f;
+		foreach (var effect in effects)
+		{
+			totalWeight += effect.Weight;
+		}
+
+		double randomValue = GD.RandRange(0f, totalWeight);
+
+		float currentHeight = 0f;
+		for (int i = 0; i < effects.Count; ++i)
+		{
+			currentHeight += effects[i].Weight;
+			if (randomValue <= currentHeight)
+			{
+				return i;
+			}
+		}
+		
+		return 0;
+	}
 }
