@@ -125,6 +125,13 @@ public class GameData
 	public RunMapData runMapData = new();
 }
 
+public enum EGameMode
+{
+	None = 0,
+	Usual = 1,
+	Simple = 2
+}
+
 public enum EWeaponType
 {
 	Sword = 0,

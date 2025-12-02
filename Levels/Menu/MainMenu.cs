@@ -32,13 +32,8 @@ public partial class MainMenu : Node
 	}
 	private void OnNewGameButtonPressed()
 	{
-		string saveName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-
-		GameDataManager.Instance.CreateNewGame();
-		GameDataManager.Instance.SetSavePath(saveName);
-		GameDataManager.Instance.Save();
-
-		GetTree().ChangeSceneToFile("res://Levels/HubLocation/HubLocation.tscn");
+		DifficultySelection difficultySelection = GetNode<DifficultySelection>("DifficultySelection");
+		difficultySelection.ShowPopup();
 	}
 	private void OnSettingsButtonPressed()
 	{

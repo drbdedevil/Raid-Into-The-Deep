@@ -25,6 +25,19 @@ public partial class CommandBlockDataManager : Node
             return;
         }
 		int experienceForAll = GameDataManager.Instance.currentData.commandBlockData.ExperienceByOneBattle / team.Count;
+
+		switch (gameDataManager.currentGameMode)
+        {
+            case EGameMode.Usual:
+                
+                break;
+            case EGameMode.Simple:
+                experienceForAll = (int)(experienceForAll * 1.25f);
+                break;
+            default:
+                break;
+        }
+
 		foreach (CharacterData characterData in team)
         {
             characterData.ExperiencePoints += experienceForAll;

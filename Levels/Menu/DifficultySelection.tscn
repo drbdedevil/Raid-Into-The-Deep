@@ -1,0 +1,248 @@
+[gd_scene load_steps=15 format=3 uid="uid://cynh3inu4tp4g"]
+
+[ext_resource type="Script" uid="uid://btgtorki640dd" path="res://Levels/Menu/DifficultySelection.cs" id="1_pplh8"]
+[ext_resource type="FontFile" uid="uid://bvv6c3hg5bpjr" path="res://Fonts/EpilepsySansBold.ttf" id="1_u3ld8"]
+[ext_resource type="Texture2D" uid="uid://dji4y4874eqko" path="res://Textures/GameModes/EasyModeNormal.png" id="3_8n806"]
+[ext_resource type="Texture2D" uid="uid://dwwicl7ci2r48" path="res://Textures/GameModes/EasyModePressed.png" id="4_7p2fs"]
+[ext_resource type="Texture2D" uid="uid://ci8xhgd7jr275" path="res://Textures/GameModes/EasyModeHover.png" id="5_peunn"]
+[ext_resource type="Texture2D" uid="uid://1pps7t65s34g" path="res://Textures/GameModes/HardModeNormal.png" id="6_8n806"]
+[ext_resource type="Texture2D" uid="uid://ya1bj46wiogv" path="res://Textures/GameModes/EasyModePicked.png" id="6_peunn"]
+[ext_resource type="Texture2D" uid="uid://c26thokdmkw13" path="res://Textures/GameModes/HardModePressed.png" id="7_7p2fs"]
+[ext_resource type="Texture2D" uid="uid://dsd47ch7j0rjv" path="res://Textures/GameModes/HardModeHoverl.png" id="8_peunn"]
+[ext_resource type="Texture2D" uid="uid://d11tn8lqylr6a" path="res://Textures/GameModes/HardModePicked.png" id="10_21nmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n806"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.011764706, 0.023529412, 0.06666667, 0.101960786)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_palf5"]
+bg_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn0pl"]
+bg_color = Color(0.54212487, 0.25420818, 0.090822615, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a3e1"]
+bg_color = Color(0.30968162, 0.13335145, 0.03324037, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24040109, 0.0975477, 0.020014487, 1)
+
+[node name="DifficultySelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pplh8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8235294)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -180.0
+offset_right = 250.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -178.0
+offset_right = 248.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -176.0
+offset_right = 246.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.988, 0.776, 0.537, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_u3ld8")
+theme_override_font_sizes/font_size = 24
+text = "Выбор режима"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SimpleButton" type="TextureButton" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("3_8n806")
+texture_pressed = ExtResource("4_7p2fs")
+texture_hover = ExtResource("5_peunn")
+texture_disabled = ExtResource("6_peunn")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_u3ld8")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_8n806")
+text = "Упрощённая игра, подходит для начи-нающих игроков. 
+
+ - Персонажи в тренировочной яме поя-вляются с оружием;
+ - Опыт за убийство врагов увеличен;
+ - Упрощённый ИИ врагов."
+autowrap_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="UsualButton" type="TextureButton" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("6_8n806")
+texture_pressed = ExtResource("7_7p2fs")
+texture_hover = ExtResource("8_peunn")
+texture_disabled = ExtResource("10_21nmq")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.41568628, 0.1882353, 0.05882353, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_u3ld8")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_8n806")
+text = "Стандартная игра, требующая тактики и стратегии. 
+
+ - Персонажи в тренировочной яме спа-внятся без оружия;
+ - Улучшенный ИИ врагов."
+autowrap_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="BackButton" type="Button" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_pressed_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_hover_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("1_u3ld8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_palf5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dn0pl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8a3e1")
+text = "Назад
+"
+
+[node name="CreateButtonGame" type="Button" parent="ColorRect2/ColorRect/ColorRect/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_pressed_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_colors/font_hover_color = Color(0.81960785, 0.62352943, 0.17254902, 1)
+theme_override_fonts/font = ExtResource("1_u3ld8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_palf5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dn0pl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8a3e1")
+text = "Создать игру"

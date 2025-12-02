@@ -19,6 +19,7 @@ public partial class GameDataManager : Node
 
 	[Export]
 	public bool IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
+	public EGameMode currentGameMode = EGameMode.None;
 
 	// Submanagers
 	public StorageDataManager storageDataManager { get; private set; }
@@ -87,9 +88,27 @@ public partial class GameDataManager : Node
 		AudioServer.SetBusVolumeDb(0, SettingsData.AudioVolume);
 
 	}
-	public void CreateNewGame()
+	public void CreateNewGame(EGameMode gameMode)
 	{
 		currentData = new GameData();
+		currentGameMode = gameMode;
+
+		switch (currentGameMode)
+        {
+            case EGameMode.Usual:
+                IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
+
+				NotificationSystem.Instance.ShowMessage("Создана обычная игра.", EMessageType.Default);
+                break;
+            case EGameMode.Simple:
+                IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = true;
+
+				NotificationSystem.Instance.ShowMessage("Создана упрощённая игра.", EMessageType.Default);
+                break;
+            default:
+                break;
+        }
+
 		forgeDataManager.GenerateWeaponsForShackle();
 		trainingPitsDataManager.GenerateCharactersForHiring(6);
 	}
