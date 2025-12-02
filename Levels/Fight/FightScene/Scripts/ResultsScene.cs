@@ -130,8 +130,8 @@ public partial class ResultsScene : Control
             }
 
             GameDataManager.Instance.commandBlockDataManager.ApplyRewardForVictory();
-
             GameDataManager.Instance.runMapDataManager.PassMapNode();
+
             SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
             sceneTree.ChangeSceneToPacked(runMapScene);
         }
@@ -140,6 +140,7 @@ public partial class ResultsScene : Control
             SceneTree sceneTree = Engine.GetMainLoop() as SceneTree;
             sceneTree.ChangeSceneToPacked(hubLocationScene);
         }
+        GameDataManager.Instance.trainingPitsDataManager.CheckAndGenerateCharactersPresenceInGame();
 
         GameDataManager.Instance.Save();
     }

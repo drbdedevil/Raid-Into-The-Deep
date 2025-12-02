@@ -40,7 +40,9 @@ public partial class CommandBlockDataManager : Node
         int currentLevel = characterData.Level;
 		int currentExperience = characterData.ExperiencePoints;
 		var experienceDatas = GameDataManager.Instance.charactersExperienceLevelsDatabase.Levels;
-		if (experienceDatas.Count > currentLevel && currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel)
+		if (experienceDatas.Count > currentLevel 
+			&& currentExperience >= experienceDatas[currentLevel].NeedableExperinceForNextLevel
+			&& currentLevel + characterData.SkillPoints < experienceDatas.Count)
         {
 			// characterData.ExperiencePoints -= experienceDatas[currentLevel].NeedableExperinceForNextLevel;
 			characterData.SkillPoints += 1;

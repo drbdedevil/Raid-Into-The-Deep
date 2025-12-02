@@ -277,4 +277,26 @@ public partial class TrainingPitsDataManager : Node
         }
         return false;
     }
+
+    public void CheckAndGenerateCharactersPresenceInGame()
+    {
+        int allExistedCharactersForNow = 
+        gameDataManager.currentData.trainingPitsData.CharactersForHiring.Count +
+        gameDataManager.currentData.livingSpaceData.UsedCharacters.Count +
+        gameDataManager.currentData.livingSpaceData.ReservedCharacters.Count;
+
+        if (allExistedCharactersForNow >= 3) return;
+
+        int requiredNumberOfCharacters = 4 - allExistedCharactersForNow;
+        GenerateCharactersForHiring(requiredNumberOfCharacters);
+
+        if (gameDataManager.currentData.storageData.Crystals < 50)
+        {
+            gameDataManager.storageDataManager.AdjustCrystals(requiredNumberOfCharacters * 13);
+        }
+        if (gameDataManager.currentData.storageData.ChitinFragments < 100)
+        {
+            gameDataManager.storageDataManager.AdjustChitinFragments(requiredNumberOfCharacters * 25);
+        }
+    }
 }

@@ -73,6 +73,7 @@ public partial class FightScenePanel : TextureRect
     private void OnEscapeButtonPressed()
     {
         GameDataManager.Instance.commandBlockDataManager.ApplyPunishmentForEscape();
+        GameDataManager.Instance.trainingPitsDataManager.CheckAndGenerateCharactersPresenceInGame();
 
         GameDataManager.Instance.Save();
 
