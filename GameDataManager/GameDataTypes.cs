@@ -123,6 +123,8 @@ public class GameData
 	public TrainingPitsData trainingPitsData = new();
 	public CommandBlockData commandBlockData = new();
 	public RunMapData runMapData = new();
+
+	public int gameMode { get; set; } = 1;
 }
 
 public enum EGameMode

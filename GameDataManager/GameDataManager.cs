@@ -92,6 +92,7 @@ public partial class GameDataManager : Node
 	{
 		currentData = new GameData();
 		currentGameMode = gameMode;
+		currentData.gameMode = (int)gameMode;
 
 		switch (currentGameMode)
         {
@@ -161,10 +162,14 @@ public partial class GameDataManager : Node
 			}
 
 			string json = File.ReadAllText(ProjectSettings.GlobalizePath(GetSavePath()));
-			var options = new JsonSerializerOptions { IncludeFields = true };
+			var options = new JsonSerializerOptions { 
+				IncludeFields = true,
+    			Converters = { new JsonStringEnumConverter() }
+			};
 
 			MapNode.ResetIds();
 			currentData = JsonSerializer.Deserialize<GameData>(json, options);
+			currentGameMode = (EGameMode)currentData.gameMode;
 			runMapDataManager.LoadNodeIds();
 			GD.Print("Сохранение загружено.");
 		}
