@@ -233,6 +233,198 @@ public static class PathFinder
     {
         return (int)startTile.CartesianPosition.DistanceTo(targetTile.CartesianPosition);
     }
+
+    public static List<Tile> CalculatePathToTarget_AStar(Tile startTile, Tile targetTile, MapManager mapManager, BattleEntity battleEntity)
+    {
+        // Если начальная или целевая клетка недоступны, возвращаем пустой путь
+        if (startTile == null || targetTile == null || !startTile.IsAllowedToSetBattleEntity || !targetTile.IsAllowedToSetBattleEntity)
+            return new List<Tile>();
+
+        // Приоритетная очередь для A* алгоритма
+        var frontier = new PriorityQueue<Tile, int>();
+        frontier.Enqueue(startTile, 0);
+        
+        // Словари для отслеживания пути и стоимости
+        var cameFrom = new Dictionary<Tile, Tile>();
+        var costSoFar = new Dictionary<Tile, int>();
+        
+        cameFrom[startTile] = null;
+        costSoFar[startTile] = 0;
+
+        while (frontier.Count > 0)
+        {
+            var current = frontier.Dequeue();
+
+            // Если достигли цели, прекращаем поиск
+            if (current.Equals(targetTile))
+                break;
+
+            // Получаем соседние клетки
+            var neighbors = GetNeighbors(current, mapManager);
+            
+            foreach (var next in neighbors)
+            {
+                // Проверяем, можно ли переместиться на эту клетку
+                if (!next.IsAllowedToSetBattleEntity)
+                    continue;
+
+                // Вычисляем новую стоимость пути
+                int newCost = costSoFar[current] + GetCost(current, next, battleEntity);
+                
+                // Если клетка еще не посещена или найден более дешевый путь
+                if (!costSoFar.ContainsKey(next) || newCost < costSoFar[next])
+                {
+                    costSoFar[next] = newCost;
+                    // Приоритет = стоимость пути + эвристическая оценка
+                    int priority = newCost + Heuristic(next, targetTile);
+                    frontier.Enqueue(next, priority);
+                    cameFrom[next] = current;
+                }
+            }
+        }
+
+        // Восстанавливаем путь от цели к началу
+        return ReconstructPath(cameFrom, startTile, targetTile);
+    }
+
+    private static List<Tile> GetNeighbors(Tile tile, MapManager mapManager)
+    {
+        var neighbors = new List<Tile>();
+        
+        // Координаты для 4-х направлений (верх, право, низ, лево)
+        Vector2I[] directions = new Vector2I[]
+        {
+            new Vector2I(0, 1),   // вверх
+            new Vector2I(1, 0),   // вправо
+            new Vector2I(0, -1),  // вниз
+            new Vector2I(-1, 0)   // влево
+        };
+        
+        foreach (var direction in directions)
+        {
+            // Вычисляем координаты соседней клетки
+            Vector2I neighborCoord = tile.CartesianPosition + direction;
+            
+            // Получаем клетку из менеджера карты
+            var neighbor = mapManager.GetTileByCartesianCoord(neighborCoord);
+            if (neighbor != null)
+            {
+                neighbors.Add(neighbor);
+            }
+        }
+        
+        return neighbors;
+    }
+
+    private static int GetCost(Tile from, Tile to, BattleEntity battleEntity)
+    {
+        // Базовая стоимость перемещения на соседнюю клетку = 1
+        int baseCost = 1;
+        
+        // Можно добавить дополнительные модификаторы стоимости:
+        // - Если на клетке есть препятствие с дополнительной сложностью
+        // - Если клетка занята врагом (может потребовать обход)
+        // - Тип местности и т.д.
+        
+        // Пример: если клетка занята препятствием, увеличиваем стоимость
+        if (to.ObstacleEntity != null && !to.ObstacleEntity.IsImpassable)
+        {
+            baseCost += 1; // Дополнительная стоимость для обхода препятствия
+        }
+        
+        return baseCost;
+    }
+
+    private static int Heuristic(Tile a, Tile b)
+    {
+        // Манхэттенское расстояние (для сетки 4-х направлений)
+        int dx = Math.Abs(a.CartesianPosition.X - b.CartesianPosition.X);
+        int dy = Math.Abs(a.CartesianPosition.Y - b.CartesianPosition.Y);
+        
+        return dx + dy;
+        
+        // Альтернативно можно использовать Евклидово расстояние:
+        // return (int)Math.Sqrt(Math.Pow(dx, 2) + Math.Pow(dy, 2));
+    }
+
+    private static List<Tile> ReconstructPath(Dictionary<Tile, Tile> cameFrom, Tile start, Tile goal)
+    {
+        var path = new List<Tile>();
+        
+        // Если путь до цели не найден
+        if (!cameFrom.ContainsKey(goal))
+            return path;
+        
+        // Восстанавливаем путь от цели к началу
+        var current = goal;
+        while (current != null && !current.Equals(start))
+        {
+            path.Add(current);
+            current = cameFrom[current];
+        }
+        
+        // Добавляем стартовую клетку и переворачиваем путь
+        path.Add(start);
+        path.Reverse();
+        
+        return path;
+    }
+}
+
+// Класс приоритетной очереди (если в вашем проекте его нет)
+public class PriorityQueue<TElement, TPriority> where TPriority : IComparable<TPriority>
+{
+    private List<(TElement Element, TPriority Priority)> elements = new List<(TElement, TPriority)>();
+
+    public int Count => elements.Count;
+
+    public void Enqueue(TElement item, TPriority priority)
+    {
+        elements.Add((item, priority));
+        int i = elements.Count - 1;
+        while (i > 0)
+        {
+            int parent = (i - 1) / 2;
+            if (elements[parent].Priority.CompareTo(elements[i].Priority) <= 0)
+                break;
+            
+            var temp = elements[i];
+            elements[i] = elements[parent];
+            elements[parent] = temp;
+            i = parent;
+        }
+    }
+
+    public TElement Dequeue()
+    {
+        var result = elements[0].Element;
+        elements[0] = elements[elements.Count - 1];
+        elements.RemoveAt(elements.Count - 1);
+        
+        int i = 0;
+        while (true)
+        {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            int smallest = i;
+            
+            if (left < elements.Count && elements[left].Priority.CompareTo(elements[smallest].Priority) < 0)
+                smallest = left;
+            
+            if (right < elements.Count && elements[right].Priority.CompareTo(elements[smallest].Priority) < 0)
+                smallest = right;
+            
+            if (smallest == i)
+                break;
+            
+            var temp = elements[i];
+            elements[i] = elements[smallest];
+            elements[smallest] = temp;
+            i = smallest;
+        }
+        
+        return result;
+    }
 }
 
 class TileCostPair

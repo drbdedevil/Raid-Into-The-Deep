@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using RaidIntoTheDeep.Levels.Fight.FightScene.Scripts;
 
@@ -25,8 +26,17 @@ public class MoveBattleEntityCommand : Command
     {
         if (_tileTarget is null) throw new ApplicationException("Target tile is null");
         if (_tileTarget.BattleEntity is not null && !Equals(_tileTarget.BattleEntity, _battleEntityToMove)) throw new ApplicationException("Tile уже занят");
+
+        List<Tile> path = new List<Tile>();
+        if (_battleEntityToMove is EnemyEntity && GameDataManager.Instance.currentGameMode == EGameMode.Usual)
+        {
+            path = PathFinder.CalculatePathToTarget_AStar(_previousTile, _tileTarget, _mapManager, _battleEntityToMove);
+        }
+        else
+        {
+            path = PathFinder.CalculatePathToTarget(_previousTile, _tileTarget, _mapManager, _battleEntityToMove);
+        }
         
-        var path = PathFinder.CalculatePathToTarget(_previousTile, _tileTarget, _mapManager, _battleEntityToMove);
         foreach (var tile in path)
         {
             if (tile.ObstacleEntity is not null && tile.ObstacleEntity.ImposedEffect is not null)

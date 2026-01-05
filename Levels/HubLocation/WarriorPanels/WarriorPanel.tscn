@@ -69,6 +69,7 @@ custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
