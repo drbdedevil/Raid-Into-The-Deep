@@ -92,6 +92,7 @@ size_flags_horizontal = 4
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+texture_filter = 1
 custom_minimum_size = Vector2(464, 437)
 layout_mode = 2
 texture = ExtResource("5_qnt0h")
@@ -163,6 +164,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 22
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/TextureRect/MeltVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -370,6 +372,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 22
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/TextureRect/ShackleVBoxContainer/TextureRect/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6

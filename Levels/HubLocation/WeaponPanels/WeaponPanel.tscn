@@ -46,6 +46,7 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -173,6 +174,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EffectTexture" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect2/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -198,6 +200,7 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("6_m531f")

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://5hvxamw657my" path="res://Levels/HubLocation/CharacterList/SkillButton.cs" id="2_00h6v"]
 
 [node name="SkillButton" type="TextureButton"]
+texture_filter = 1
 custom_minimum_size = Vector2(38.4, 38.4)
 texture_normal = ExtResource("1_7b36h")
 ignore_texture_size = true

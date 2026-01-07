@@ -95,20 +95,20 @@ public partial class GameDataManager : Node
 		currentData.gameMode = (int)gameMode;
 
 		switch (currentGameMode)
-        {
-            case EGameMode.Usual:
-                IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
+		{
+			case EGameMode.Usual:
+				IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = false;
 
 				NotificationSystem.Instance.ShowMessage("Создана обычная игра.", EMessageType.Default);
-                break;
-            case EGameMode.Simple:
-                IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = true;
+				break;
+			case EGameMode.Simple:
+				IsShouldGenerateWeaponOnStartToEveryCreatedCharacter = true;
 
 				NotificationSystem.Instance.ShowMessage("Создана упрощённая игра.", EMessageType.Default);
-                break;
-            default:
-                break;
-        }
+				break;
+			default:
+				break;
+		}
 
 		forgeDataManager.GenerateWeaponsForShackle();
 		trainingPitsDataManager.GenerateCharactersForHiring(6);
@@ -164,7 +164,7 @@ public partial class GameDataManager : Node
 			string json = File.ReadAllText(ProjectSettings.GlobalizePath(GetSavePath()));
 			var options = new JsonSerializerOptions { 
 				IncludeFields = true,
-    			Converters = { new JsonStringEnumConverter() }
+				Converters = { new JsonStringEnumConverter() }
 			};
 
 			MapNode.ResetIds();

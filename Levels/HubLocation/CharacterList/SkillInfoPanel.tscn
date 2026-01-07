@@ -73,6 +73,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(38.4, 38.4)
 layout_mode = 2
 size_flags_vertical = 4

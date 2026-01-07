@@ -58,6 +58,7 @@ custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -148,6 +149,7 @@ size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer2/WeaponButton"]
 z_as_relative = false
+texture_filter = 1
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -173,6 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EffectTexture" type="TextureRect" parent="TextureRect/HBoxContainer2/WeaponButton/TextureRect2/MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -188,6 +191,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer2/SkillButton"]
 z_as_relative = false
+texture_filter = 1
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
