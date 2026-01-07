@@ -715,6 +715,7 @@ theme_override_font_sizes/font_size = 12
 text = "Форма атаки"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/ColorRect/MarginContainer/GridContainer/ColorRect3/VBoxContainer/MarginContainer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("13_sgqvt")
